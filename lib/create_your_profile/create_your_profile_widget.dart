@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../main.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,11 +39,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
           'Your Profile',
-          style: FlutterFlowTheme.of(context).title2,
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Advent Sans',
+                color: Colors.white,
+                useGoogleFonts: false,
+              ),
         ),
         actions: [
           Padding(
@@ -79,7 +84,14 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         Expanded(
                           child: Text(
                             'Fill out your profile now in order to complete setup of your profile.',
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Advent Sans',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  useGoogleFonts: false,
+                                ),
                           ),
                         ),
                       ],
@@ -193,7 +205,12 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).title2,
+                            style: FlutterFlowTheme.of(context).title2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  useGoogleFonts: false,
+                                ),
                           ),
                         ),
                       ],

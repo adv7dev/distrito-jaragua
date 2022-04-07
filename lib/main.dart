@@ -15,6 +15,7 @@ import 'home_page/home_page_widget.dart';
 import 'social/social_widget.dart';
 import 'igrejas/igrejas_widget.dart';
 import 'all_chats_page/all_chats_page_widget.dart';
+import 'profile_page/profile_page_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -126,6 +127,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'social': SocialWidget(),
       'igrejas': IgrejasWidget(),
       'allChatsPage': AllChatsPageWidget(),
+      'ProfilePage': ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -170,6 +172,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Chat',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              size: 24,
+            ),
+            label: 'Perfil',
             tooltip: '',
           )
         ],
