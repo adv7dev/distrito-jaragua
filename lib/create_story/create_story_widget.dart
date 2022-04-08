@@ -38,7 +38,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF1A1F24),
+      backgroundColor: Color(0xFF14181B),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -91,7 +91,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.8,
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F5F8),
+                            color: Color(0xFF14181B),
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: Image.asset(
@@ -101,11 +101,14 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 3,
-                                color: Color(0x2D000000),
+                                color: Color(0xFF14181B),
                                 offset: Offset(0, 1),
                               )
                             ],
                             borderRadius: BorderRadius.circular(0),
+                            border: Border.all(
+                              color: Color(0xFF14181B),
+                            ),
                           ),
                         ),
                       ),
@@ -178,6 +181,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                                     begin: AlignmentDirectional(0, -1),
                                     end: AlignmentDirectional(0, 1),
                                   ),
+                                  shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -218,7 +222,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -361,6 +365,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                         width: 70,
                         height: 70,
                         decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: Color(0xFFF1F4F8),
@@ -375,7 +380,7 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                             children: [
                               Icon(
                                 Icons.videocam_sharp,
-                                color: Color(0xFFF1F4F8),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 size: 32,
                               ),
                               Text(
@@ -385,7 +390,8 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Advent Sans',
-                                      color: Color(0xFFF1F4F8),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 12,
                                       useGoogleFonts: false,
                                     ),

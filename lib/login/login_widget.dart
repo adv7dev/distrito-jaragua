@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../create_your_profile/create_your_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -763,8 +764,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         await Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => NavBarPage(
-                                                initialPage: 'HomePage'),
+                                            builder: (context) =>
+                                                CreateYourProfileWidget(),
                                           ),
                                         );
                                       } else {

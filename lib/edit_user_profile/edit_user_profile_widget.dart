@@ -61,14 +61,14 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
               },
             ),
             title: Text(
-              'Your Profile',
+              'Seus Perfil',
               style: FlutterFlowTheme.of(context).title2,
             ),
             actions: [],
             centerTitle: false,
             elevation: 0,
           ),
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -79,14 +79,21 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 24, 16),
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 10, 24, 16),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Text(
-                                'Fill out your profile now in order to complete setup of your profile.',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                'Altere as informações do seu perfil...',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Advent Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      useGoogleFonts: false,
+                                    ),
                               ),
                             ),
                           ],
@@ -156,7 +163,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                 ),
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Your Name',
+                                  labelText: 'Seu Nome',
                                   labelStyle:
                                       FlutterFlowTheme.of(context).subtitle1,
                                   enabledBorder: UnderlineInputBorder(
@@ -180,7 +187,14 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).title2,
+                                style: FlutterFlowTheme.of(context)
+                                    .title2
+                                    .override(
+                                      fontFamily: 'Advent Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      useGoogleFonts: false,
+                                    ),
                               ),
                             ),
                           ],
@@ -202,7 +216,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: 'UserName',
+                                    labelText: 'Nome de Usuário',
                                     labelStyle:
                                         FlutterFlowTheme.of(context).bodyText1,
                                     enabledBorder: UnderlineInputBorder(
@@ -226,7 +240,14 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       ),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context).title3,
+                                  style: FlutterFlowTheme.of(context)
+                                      .title3
+                                      .override(
+                                        fontFamily: 'Advent Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        useGoogleFonts: false,
+                                      ),
                                 ),
                               ),
                             ),
@@ -249,14 +270,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelText: 'Igreja',
                                     labelStyle:
                                         FlutterFlowTheme.of(context).bodyText1,
-                                    hintText: 'Your Bio',
+                                    hintText: 'Sua Igreja',
                                     hintStyle:
                                         FlutterFlowTheme.of(context).bodyText1,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
+                                        color: Color(0x00DBE2E7),
                                         width: 1,
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -266,7 +288,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFFDBE2E7),
+                                        color: Color(0x00DBE2E7),
                                         width: 1,
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -278,9 +300,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                         EdgeInsetsDirectional.fromSTEB(
                                             0, 8, 0, 0),
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText2
+                                      .override(
+                                        fontFamily: 'Advent Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        useGoogleFonts: false,
+                                      ),
                                   textAlign: TextAlign.start,
-                                  maxLines: 4,
                                 ),
                               ),
                             ),
@@ -309,7 +337,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   .update(usersUpdateData);
                               Navigator.pop(context);
                             },
-                            text: 'Save Changes',
+                            text: 'Salvar Alterações',
                             options: FFButtonOptions(
                               width: 200,
                               height: 50,

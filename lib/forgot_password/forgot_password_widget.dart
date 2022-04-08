@@ -27,7 +27,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
@@ -35,19 +35,23 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           },
           child: Icon(
             Icons.chevron_left_rounded,
-            color: Color(0xFF262D34),
+            color: FlutterFlowTheme.of(context).primaryBackground,
             size: 32,
           ),
         ),
         title: Text(
-          'Forgot Password',
-          style: FlutterFlowTheme.of(context).title2,
+          'Esqueceu Sua Senha?',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Advent Sans',
+                color: Colors.white,
+                useGoogleFonts: false,
+              ),
         ),
         actions: [],
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -57,7 +61,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               controller: phoneNumberController,
               obscureText: false,
               decoration: InputDecoration(
-                labelText: 'Enter your email',
+                labelText: 'Digite seu E-mail',
                 labelStyle: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Lexend Deca',
                       color: Color(0xFF95A1AC),
@@ -85,12 +89,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 filled: true,
-                fillColor: FlutterFlowTheme.of(context).tertiaryColor,
+                fillColor: FlutterFlowTheme.of(context).primaryBackground,
                 contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
               ),
               style: FlutterFlowTheme.of(context).bodyText1.override(
                     fontFamily: 'Lexend Deca',
-                    color: Color(0xFF1A1F24),
+                    color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
@@ -103,8 +107,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               children: [
                 Expanded(
                   child: Text(
-                    'We will send you an email with a link to reset your password, please enter the email associated with your account above.',
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    'Nós lhe enviaremos um e-mail com um link para redefinir sua senha, digite o e-mail associado à sua conta acima.',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Advent Sans',
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          useGoogleFonts: false,
+                        ),
                   ),
                 ),
               ],
@@ -129,14 +137,14 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   context: context,
                 );
               },
-              text: 'Send Reset Link',
+              text: 'Enviar Redefinição',
               options: FFButtonOptions(
                 width: 200,
                 height: 50,
                 color: FlutterFlowTheme.of(context).primaryColor,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Lexend Deca',
-                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                      color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),

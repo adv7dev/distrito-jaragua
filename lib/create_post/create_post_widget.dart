@@ -41,13 +41,13 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         title: Text(
-          'Create Post',
+          'Publicar Algo',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
-                color: Color(0xFF090F13),
+                color: FlutterFlowTheme.of(context).primaryText,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -73,7 +73,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,7 +156,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: Image.asset(
-                                                'assets/images/1piak_R.png',
+                                                'assets/images/gallery_(1).png',
                                               ).image,
                                             ),
                                             boxShadow: [
@@ -164,7 +164,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                 blurRadius: 3,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .secondaryText,
                                                 offset: Offset(0, 1),
                                               )
                                             ],
@@ -173,7 +173,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                             border: Border.all(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .primaryBackground,
                                             ),
                                           ),
                                         ),
@@ -212,56 +212,71 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
-                                      child: TextFormField(
-                                        controller: textController,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          hintText: 'Comment....',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText2
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF8B97A2),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFDBE2E7),
-                                              width: 1,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 5, 5, 5),
+                                        child: TextFormField(
+                                          controller: textController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            hintText: 'Comentário...',
+                                            hintStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyText2
+                                                .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(0),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFDBE2E7),
-                                              width: 1,
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(0),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 20, 20, 12),
                                           ),
-                                          contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20, 20, 20, 12),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          textAlign: TextAlign.start,
+                                          maxLines: 4,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF090F13),
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        textAlign: TextAlign.start,
-                                        maxLines: 4,
                                       ),
                                     ),
                                   ],
@@ -283,7 +298,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                         webGoogleMapsApiKey: '',
                         onSelect: (place) =>
                             setState(() => placePickerValue = place),
-                        defaultText: 'Location',
+                        defaultText: 'Localização',
                         icon: Icon(
                           Icons.place,
                           color: Color(0xFF95A1AC),
@@ -292,16 +307,18 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                         buttonOptions: FFButtonOptions(
                           width: 300,
                           height: 60,
-                          color: Colors.white,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF95A1AC),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Lexend Deca',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
                           borderSide: BorderSide(
-                            color: Color(0xFFDBE2E7),
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             width: 2,
                           ),
                           borderRadius: 8,
@@ -344,7 +361,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                     ),
                   );
                 },
-                text: 'Create Post',
+                text: 'Publicar',
                 options: FFButtonOptions(
                   width: 270,
                   height: 50,

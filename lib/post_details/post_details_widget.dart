@@ -56,7 +56,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
         final postDetailsUserPostsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -163,7 +163,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                             children: [
                               Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xFF4B39EF),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
@@ -178,7 +179,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      widget.userRecord.photoUrl,
+                                      valueOrDefault<String>(
+                                        widget.userRecord.photoUrl,
+                                        'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                      ),
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
@@ -199,7 +203,9 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF090F13),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
@@ -217,6 +223,9 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Advent Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 12,
                                               useGoogleFonts: false,
                                             ),
@@ -244,7 +253,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF090F13),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -292,12 +302,12 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                               .toList()
                                               .contains(currentUserReference),
                                           onIcon: Icon(
-                                            Icons.pets_rounded,
+                                            Icons.favorite,
                                             color: Color(0xFF4B39EF),
                                             size: 25,
                                           ),
                                           offIcon: Icon(
-                                            Icons.pets_outlined,
+                                            Icons.favorite_border,
                                             color: Color(0xFF95A1AC),
                                             size: 25,
                                           ),
@@ -368,7 +378,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -385,6 +396,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           .bodyText2
                                           .override(
                                             fontFamily: 'Advent Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             fontSize: 12,
                                             useGoogleFonts: false,
                                           ),
@@ -514,7 +527,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                               String>(
                                                             commentUsersRecord
                                                                 .photoUrl,
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/pbp73skqv1ru/shayna-douglas-lgILhKUELg4-unsplash.jpg',
+                                                            'https://i.ibb.co/cC6RmGZ/businessman.png',
                                                           ),
                                                           fit: BoxFit.cover,
                                                         ),
@@ -542,7 +555,16 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .subtitle2,
+                                                                    .subtitle2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Advent Sans',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryBackground,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
                                                               ),
                                                               Padding(
                                                                 padding:
@@ -557,7 +579,15 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                       .comment,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1,
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Advent Sans',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
                                                                 ),
                                                               ),
                                                               Padding(
@@ -587,6 +617,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Advent Sans',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontSize: 12,
                                                                               useGoogleFonts: false,
                                                                             ),
@@ -603,6 +634,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Advent Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 12,
                                                                             useGoogleFonts:
@@ -646,7 +679,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).primaryColor,
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 3,
@@ -655,6 +688,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -667,7 +704,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     controller: textController,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Comment here...',
+                                      hintText: 'Comentar...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                       enabledBorder: UnderlineInputBorder(
@@ -695,7 +732,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Advent Sans',
-                                          color: Color(0xFF1A1F24),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           useGoogleFonts: false,
                                         ),
                                   ),
@@ -703,7 +741,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     final postCommentsCreateData =
@@ -724,9 +762,13 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     await postDetailsUserPostsRecord.reference
                                         .update(userPostsUpdateData);
                                   },
-                                  text: 'Post',
+                                  text: '',
+                                  icon: Icon(
+                                    Icons.send,
+                                    size: 30,
+                                  ),
                                   options: FFButtonOptions(
-                                    width: 70,
+                                    width: 50,
                                     height: 40,
                                     color: FlutterFlowTheme.of(context)
                                         .tertiaryColor,
@@ -735,7 +777,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         .override(
                                           fontFamily: 'Advent Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primaryText,
                                           useGoogleFonts: false,
                                         ),
                                     elevation: 0,

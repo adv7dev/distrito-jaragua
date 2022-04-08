@@ -42,7 +42,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Your Profile',
+          'Complete Seu perfil',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Advent Sans',
                 color: Colors.white,
@@ -83,7 +83,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Fill out your profile now in order to complete setup of your profile.',
+                            'Para concluir o seu cadastro preencha as informaçoes abaixo.',
                             style: FlutterFlowTheme.of(context)
                                 .bodyText1
                                 .override(
@@ -104,12 +104,6 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                       height: 120,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.asset(
-                            'assets/images/1piak_R.png',
-                          ).image,
-                        ),
                         boxShadow: [
                           BoxShadow(
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -126,6 +120,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
                               context: context,
+                              maxWidth: 1000.00,
+                              maxHeight: 1000.00,
                               allowPhoto: true,
                             );
                             if (selectedMedia != null &&
@@ -157,14 +153,17 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             }
                           },
                           child: Container(
-                            width: 120,
-                            height: 120,
+                            width: 100,
+                            height: 100,
                             clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
-                              currentUserPhoto,
+                              valueOrDefault<String>(
+                                currentUserPhoto,
+                                'https://www.pngitem.com/pimgs/b/475-4750728_man-icon-png.png',
+                              ),
                             ),
                           ),
                         ),
@@ -181,7 +180,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             controller: yourNameController,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Your Name',
+                              labelText: 'Seu Nome',
                               labelStyle:
                                   FlutterFlowTheme.of(context).subtitle1,
                               enabledBorder: UnderlineInputBorder(
@@ -229,7 +228,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               controller: userNameController,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'UserName',
+                                labelText: 'nome de usuário',
                                 labelStyle:
                                     FlutterFlowTheme.of(context).bodyText1,
                                 enabledBorder: UnderlineInputBorder(
@@ -253,7 +252,13 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).title3,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Advent Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        useGoogleFonts: false,
+                                      ),
                             ),
                           ),
                         ),
@@ -275,7 +280,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               decoration: InputDecoration(
                                 labelStyle:
                                     FlutterFlowTheme.of(context).bodyText1,
-                                hintText: 'Your Bio',
+                                hintText: 'Sua Igreja',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).bodyText1,
                                 enabledBorder: UnderlineInputBorder(
@@ -301,9 +306,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                 contentPadding:
                                     EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyText2,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText2
+                                  .override(
+                                    fontFamily: 'Advent Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    useGoogleFonts: false,
+                                  ),
                               textAlign: TextAlign.start,
-                              maxLines: 4,
                             ),
                           ),
                         ),
@@ -329,16 +340,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             bio: bioController.text,
                           );
                           await currentUserReference.update(usersUpdateData);
-                          await Navigator.pushAndRemoveUntil(
+                          await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  NavBarPage(initialPage: 'social'),
+                                  NavBarPage(initialPage: 'HomePage'),
                             ),
-                            (r) => false,
                           );
                         },
-                        text: 'Complete Setup',
+                        text: 'Concluir',
                         options: FFButtonOptions(
                           width: 230,
                           height: 50,

@@ -84,7 +84,7 @@ class _StoryDetailsWidgetState extends State<StoryDetailsWidget> {
                                           valueOrDefault<String>(
                                             pageViewUserStoriesRecord
                                                 .storyPhoto,
-                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/be7tvmob7nwb/richard-brutyo-Sg3XwuEpybU-unsplash.jpg',
+                                            'https://cdn.pixabay.com/photo/2015/03/16/18/24/daisies-676368_960_720.jpg',
                                           ),
                                           width:
                                               MediaQuery.of(context).size.width,
@@ -174,7 +174,7 @@ class _StoryDetailsWidgetState extends State<StoryDetailsWidget> {
                                                                     String>(
                                                                   userInfoUsersRecord
                                                                       .photoUrl,
-                                                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/gu4akoa3hju1/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg',
+                                                                  'https://i.ibb.co/cC6RmGZ/businessman.png',
                                                                 ),
                                                                 fit: BoxFit
                                                                     .fitHeight,

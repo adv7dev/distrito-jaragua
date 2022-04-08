@@ -42,7 +42,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -62,19 +62,19 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Add Friends to chat',
+              'Adicionar amigos ao Chat',
               style: FlutterFlowTheme.of(context).subtitle1.override(
                     fontFamily: 'Lexend Deca',
-                    color: Color(0xFF95A1AC),
+                    color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
             ),
             Text(
-              'Select the friends to add to chat.',
+              'Selecione Seus Amigos para conversar.',
               style: FlutterFlowTheme.of(context).bodyText2.override(
                     fontFamily: 'Lexend Deca',
-                    color: Color(0xFF1A1F24),
+                    color: Color(0xFFD2D2D2),
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
@@ -85,7 +85,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -108,7 +108,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
               controller: textController,
               obscureText: false,
               decoration: InputDecoration(
-                hintText: 'Search for friends...',
+                hintText: 'Procurar por Crentes',
                 hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Lexend Deca',
                       color: Color(0xFF95A1AC),
@@ -151,144 +151,162 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
             ),
           ),
           Expanded(
-            child: StreamBuilder<List<UsersRecord>>(
-              stream: queryUsersRecord(
-                limit: 50,
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: CircularProgressIndicator(
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                      ),
-                    ),
-                  );
-                }
-                List<UsersRecord> listViewUsersRecordList = snapshot.data;
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: listViewUsersRecordList.length,
-                  itemBuilder: (context, listViewIndex) {
-                    final listViewUsersRecord =
-                        listViewUsersRecordList[listViewIndex];
-                    return Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
-                      child: Container(
-                        width: double.infinity,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 0,
-                              color: Color(0xFFDBE2E7),
-                              offset: Offset(0, 2),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xFF4E39F9),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 2, 2, 2),
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      valueOrDefault<String>(
-                                        listViewUsersRecord.photoUrl,
-                                        'https://picsum.photos/seed/495/600',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 0, 0),
-                                  child: Theme(
-                                    data: ThemeData(
-                                      unselectedWidgetColor: Color(0xFF707070),
-                                    ),
-                                    child: CheckboxListTile(
-                                      value: checkboxListTileValueMap[
-                                              listViewUsersRecord] ??=
-                                          widget.chat.users.contains(
-                                              listViewUsersRecord.reference),
-                                      onChanged: (newValue) => setState(() =>
-                                          checkboxListTileValueMap[
-                                              listViewUsersRecord] = newValue),
-                                      title: Text(
-                                        listViewUsersRecord.displayName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle1
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF95A1AC),
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                      subtitle: Text(
-                                        listViewUsersRecord.email,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText2
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF1A1F24),
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                      ),
-                                      tileColor: Color(0xFFF5F5F5),
-                                      activeColor: Color(0xFF4E39F9),
-                                      dense: false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.trailing,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
+              child: FutureBuilder<List<UsersRecord>>(
+                future: queryUsersRecordOnce(
+                  limit: 50,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: CircularProgressIndicator(
+                          color: FlutterFlowTheme.of(context).primaryColor,
                         ),
                       ),
                     );
-                  },
-                );
-              },
+                  }
+                  List<UsersRecord> listViewUsersRecordList = snapshot.data;
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewUsersRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewUsersRecord =
+                          listViewUsersRecordList[listViewIndex];
+                      return Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
+                        child: Container(
+                          width: double.infinity,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 0,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                offset: Offset(0, 2),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 2, 2, 2),
+                                    child: Container(
+                                      width: 50,
+                                      height: 50,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        valueOrDefault<String>(
+                                          listViewUsersRecord.photoUrl,
+                                          'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 0, 0),
+                                    child: Theme(
+                                      data: ThemeData(
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                      ),
+                                      child: CheckboxListTile(
+                                        value: checkboxListTileValueMap[
+                                                listViewUsersRecord] ??=
+                                            widget.chat.users.contains(
+                                                listViewUsersRecord.reference),
+                                        onChanged: (newValue) => setState(() =>
+                                            checkboxListTileValueMap[
+                                                    listViewUsersRecord] =
+                                                newValue),
+                                        title: Text(
+                                          listViewUsersRecord.displayName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                        subtitle: Text(
+                                          listViewUsersRecord.email,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText2
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                        tileColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        activeColor: Color(0xFF4E39F9),
+                                        dense: false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.trailing,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ),
           Container(
             width: double.infinity,
             height: 100,
             decoration: BoxDecoration(
-              color: Color(0xFF4E39F9),
+              color: FlutterFlowTheme.of(context).primaryBackground,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 4,
-                  color: Color(0x3314181B),
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   offset: Offset(0, -2),
                 )
               ],
@@ -297,6 +315,9 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                 bottomRight: Radius.circular(0),
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
+              ),
+              border: Border.all(
+                color: FlutterFlowTheme.of(context).primaryBackground,
               ),
             ),
             child: Padding(
@@ -313,11 +334,11 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
 
                   setState(() {});
                 },
-                text: 'Invite to Chat',
+                text: 'Chamar Crente',
                 options: FFButtonOptions(
                   width: 130,
                   height: 40,
-                  color: Color(0xFF4E39F9),
+                  color: FlutterFlowTheme.of(context).secondaryColor,
                   textStyle: FlutterFlowTheme.of(context).title3.override(
                         fontFamily: 'Lexend Deca',
                         color: Colors.white,

@@ -23,17 +23,21 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Messages',
-          style: FlutterFlowTheme.of(context).title2,
+          'Mensagens',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Advent Sans',
+                color: Color(0xFFF7F7F7),
+                useGoogleFonts: false,
+              ),
         ),
         actions: [],
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.push(
@@ -77,7 +81,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
               if (listViewChatsRecordList.isEmpty) {
                 return Center(
                   child: Image.asset(
-                    'assets/images/_Ame_o_seu_proximo_como_a_si_mesmo[b]._Nao_existe_mandamento_maior_do_que_estes._Marcos_12-29.png',
+                    'assets/images/chat_(1).png',
                     width: MediaQuery.of(context).size.width * 0.76,
                   ),
                 );

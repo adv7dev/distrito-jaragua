@@ -59,13 +59,15 @@ class _SocialWidgetState extends State<SocialWidget>
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
-        title: Image.asset(
-          'assets/images/logoSniff_dark@3x.png',
-          width: 100,
-          height: 40,
-          fit: BoxFit.fitWidth,
+        title: Text(
+          'Crente Social',
+          style: FlutterFlowTheme.of(context).title1.override(
+                fontFamily: 'Advent Sans',
+                color: Colors.white,
+                useGoogleFonts: false,
+              ),
         ),
         actions: [
           Padding(
@@ -88,7 +90,7 @@ class _SocialWidgetState extends State<SocialWidget>
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF1F5F8),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await showModalBottomSheet(
@@ -105,7 +107,7 @@ class _SocialWidgetState extends State<SocialWidget>
             },
           );
         },
-        backgroundColor: Color(0xFF4B39EF),
+        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         elevation: 8,
         child: Icon(
           Icons.create_rounded,
@@ -237,7 +239,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                             child: CachedNetworkImage(
                                               imageUrl: valueOrDefault<String>(
                                                 columnUsersRecord.photoUrl,
-                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ecyxfirnulof/karsten-winegeart-BJaqPaH6AGQ-unsplash.jpg',
+                                                'https://i.ibb.co/cC6RmGZ/businessman.png',
                                               ),
                                               fit: BoxFit.fitWidth,
                                             ),
@@ -341,8 +343,8 @@ class _SocialWidgetState extends State<SocialWidget>
                             return Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4,
@@ -400,7 +402,9 @@ class _SocialWidgetState extends State<SocialWidget>
                                                   child: Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0xFF4B39EF),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -429,7 +433,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                   String>(
                                                             userPostUsersRecord
                                                                 .photoUrl,
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/wn636nykq7im/lucrezia-carnelos-0liYTl4dJxk-unsplash.jpg',
+                                                            'https://i.ibb.co/cC6RmGZ/businessman.png',
                                                           ),
                                                           fit: BoxFit.fitWidth,
                                                         ),
@@ -482,7 +486,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                       ),
                                     ),
                                     FlutterFlowMediaDisplay(
-                                      path: socialFeedUserPostsRecord.postPhoto,
+                                      path: valueOrDefault<String>(
+                                        socialFeedUserPostsRecord.postPhoto,
+                                        'https://cdn.pixabay.com/photo/2016/04/05/03/18/prayer-1308663_960_720.jpg',
+                                      ),
                                       imageBuilder: (path) =>
                                           CachedNetworkImage(
                                         imageUrl: path,
@@ -558,9 +565,9 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                           from:
                                                                               0.0);
                                                                 },
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .paw,
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .favorite_border,
                                                                   color: Color(
                                                                       0xFF95A1AC),
                                                                   size: 25,
@@ -593,11 +600,12 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                       .update(
                                                                           userPostsUpdateData);
                                                                 },
-                                                                child: FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .paw,
-                                                                  color: Color(
-                                                                      0xFF4B39EF),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .favorite,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
                                                                   size: 25,
                                                                 ),
                                                               ).animated([
@@ -654,9 +662,12 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             .fromSTEB(
                                                                 4, 0, 0, 0),
                                                     child: Text(
-                                                      socialFeedUserPostsRecord
-                                                          .numComments
-                                                          .toString(),
+                                                      valueOrDefault<String>(
+                                                        socialFeedUserPostsRecord
+                                                            .numComments
+                                                            .toString(),
+                                                        'Sem Comentários',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -717,7 +728,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                 valueOrDefault<String>(
                                                   socialFeedUserPostsRecord
                                                       .postDescription,
-                                                  'I\'m back with a super quick Instagram redesign just for the fan. Rounded corners and cute icons, what else do we need, haha.⁣ ',
+                                                  'SEM DESCRIÇÃO',
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
