@@ -77,10 +77,11 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                           child: Stack(
                             children: [
                               Container(
-                                width: 500,
-                                height: 500,
+                                width: MediaQuery.of(context).size.width,
+                                height: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: InkWell(
@@ -94,7 +95,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                             imageUrl: valueOrDefault<String>(
                                               postDetailsUserPostsRecord
                                                   .postPhoto,
-                                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                              'https://cdn.pixabay.com/photo/2022/04/04/18/03/bird-7111988_960_720.jpg',
                                             ),
                                             fit: BoxFit.contain,
                                           ),
@@ -102,7 +103,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           tag: valueOrDefault<String>(
                                             postDetailsUserPostsRecord
                                                 .postPhoto,
-                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                            'https://cdn.pixabay.com/photo/2022/04/04/18/03/bird-7111988_960_720.jpg',
                                           ),
                                           useHeroAnimation: true,
                                         ),
@@ -112,7 +113,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   child: Hero(
                                     tag: valueOrDefault<String>(
                                       postDetailsUserPostsRecord.postPhoto,
-                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                      'https://cdn.pixabay.com/photo/2022/04/04/18/03/bird-7111988_960_720.jpg',
                                     ),
                                     transitionOnUserGestures: true,
                                     child: ClipRRect(
@@ -120,10 +121,11 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                       child: CachedNetworkImage(
                                         imageUrl: valueOrDefault<String>(
                                           postDetailsUserPostsRecord.postPhoto,
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                          'https://cdn.pixabay.com/photo/2022/04/04/18/03/bird-7111988_960_720.jpg',
                                         ),
-                                        width: 500,
-                                        height: 500,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: double.infinity,
                                         fit: BoxFit.contain,
                                       ),
                                     ),
@@ -140,7 +142,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   children: [
                                     Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      color: Color(0x3F000000),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40),
                                       ),
@@ -151,7 +154,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         icon: Icon(
                                           Icons.arrow_back_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryColor,
                                           size: 24,
                                         ),
                                         onPressed: () async {
@@ -166,11 +169,12 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         borderRadius: 30,
                                         borderWidth: 1,
                                         buttonSize: 44,
-                                        fillColor: Color(0x41000000),
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                         icon: Icon(
                                           Icons.more_vert_sharp,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryColor,
                                           size: 24,
                                         ),
                                         onPressed: () async {
@@ -821,8 +825,9 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     await PostCommentsRecord.collection
                                         .doc()
                                         .set(postCommentsCreateData);
-                                    await Future.delayed(
-                                        const Duration(milliseconds: 1000));
+                                    setState(() {
+                                      textController.clear();
+                                    });
                                   },
                                   child: Icon(
                                     Icons.send,
