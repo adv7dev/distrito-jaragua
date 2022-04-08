@@ -350,23 +350,32 @@ class _SocialWidgetState extends State<SocialWidget>
                                         socialFeedUserPostsRecord.postPhoto,
                                         'https://cdn.pixabay.com/photo/2016/04/05/03/18/prayer-1308663_960_720.jpg',
                                       ),
-                                      imageBuilder: (path) =>
-                                          CachedNetworkImage(
-                                        imageUrl: path,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 300,
-                                        fit: BoxFit.contain,
+                                      imageBuilder: (path) => ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: CachedNetworkImage(
+                                          imageUrl: path,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.3,
+                                          fit: BoxFit.contain,
+                                        ),
                                       ),
                                       videoPlayerBuilder: (path) =>
                                           FlutterFlowVideoPlayer(
                                         path: path,
-                                        width: 300,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                1,
                                         autoPlay: false,
                                         looping: true,
                                         showControls: true,
                                         allowFullScreen: true,
-                                        allowPlaybackSpeedMenu: false,
+                                        allowPlaybackSpeedMenu: true,
                                       ),
                                     ),
                                     Padding(

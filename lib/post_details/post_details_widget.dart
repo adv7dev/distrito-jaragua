@@ -71,127 +71,133 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    PageTransition(
-                                      type: PageTransitionType.fade,
-                                      child: FlutterFlowExpandedImageView(
-                                        image: CachedNetworkImage(
-                                          imageUrl: valueOrDefault<String>(
+                        Container(
+                          width: 500,
+                          height: 500,
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 500,
+                                height: 500,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: InkWell(
+                                  onTap: () async {
+                                    await Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: FlutterFlowExpandedImageView(
+                                          image: CachedNetworkImage(
+                                            imageUrl: valueOrDefault<String>(
+                                              postDetailsUserPostsRecord
+                                                  .postPhoto,
+                                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                            ),
+                                            fit: BoxFit.contain,
+                                          ),
+                                          allowRotation: false,
+                                          tag: valueOrDefault<String>(
                                             postDetailsUserPostsRecord
                                                 .postPhoto,
                                             'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
                                           ),
-                                          fit: BoxFit.contain,
+                                          useHeroAnimation: true,
                                         ),
-                                        allowRotation: false,
-                                        tag: valueOrDefault<String>(
+                                      ),
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag: valueOrDefault<String>(
+                                      postDetailsUserPostsRecord.postPhoto,
+                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
+                                    ),
+                                    transitionOnUserGestures: true,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0),
+                                      child: CachedNetworkImage(
+                                        imageUrl: valueOrDefault<String>(
                                           postDetailsUserPostsRecord.postPhoto,
                                           'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
                                         ),
-                                        useHeroAnimation: true,
+                                        width: 500,
+                                        height: 500,
+                                        fit: BoxFit.contain,
                                       ),
-                                    ),
-                                  );
-                                },
-                                child: Hero(
-                                  tag: valueOrDefault<String>(
-                                    postDetailsUserPostsRecord.postPhoto,
-                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
-                                  ),
-                                  transitionOnUserGestures: true,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0),
-                                    child: CachedNetworkImage(
-                                      imageUrl: valueOrDefault<String>(
-                                        postDetailsUserPostsRecord.postPhoto,
-                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/ot903vcfouv7/oscar-sutton-yihlaRCCvd4-unsplash.jpg',
-                                      ),
-                                      width: 100,
-                                      height: 430,
-                                      fit: BoxFit.contain,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Card(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: Color(0x3F000000),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30,
-                                      buttonSize: 46,
-                                      icon: Icon(
-                                        Icons.arrow_back_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
-                                        size: 24,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 12, 16, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      color: Color(0x3F000000),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(40),
                                       ),
-                                      onPressed: () async {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  ),
-                                  if (postDetailsUserPostsRecord.postOwner ??
-                                      true)
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30,
-                                      borderWidth: 1,
-                                      buttonSize: 44,
-                                      fillColor: Color(0x41000000),
-                                      icon: Icon(
-                                        Icons.more_vert_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
-                                        size: 24,
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        buttonSize: 46,
+                                        icon: Icon(
+                                          Icons.arrow_back_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
+                                          size: 24,
+                                        ),
+                                        onPressed: () async {
+                                          Navigator.pop(context);
+                                        },
                                       ),
-                                      onPressed: () async {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          context: context,
-                                          builder: (context) {
-                                            return Padding(
-                                              padding: MediaQuery.of(context)
-                                                  .viewInsets,
-                                              child: Container(
-                                                height: 250,
-                                                child: DeletePostWidget(
-                                                  postParameters:
-                                                      postDetailsUserPostsRecord,
+                                    ),
+                                    if (postDetailsUserPostsRecord.postOwner ??
+                                        true)
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        borderWidth: 1,
+                                        buttonSize: 44,
+                                        fillColor: Color(0x41000000),
+                                        icon: Icon(
+                                          Icons.more_vert_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
+                                          size: 24,
+                                        ),
+                                        onPressed: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: Container(
+                                                  height: 250,
+                                                  child: DeletePostWidget(
+                                                    postParameters:
+                                                        postDetailsUserPostsRecord,
+                                                  ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                ],
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
@@ -806,8 +812,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                     size: 30,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 50,
-                                    height: 40,
+                                    width: 45,
+                                    height: 45,
                                     color: FlutterFlowTheme.of(context)
                                         .tertiaryColor,
                                     textStyle: FlutterFlowTheme.of(context)
