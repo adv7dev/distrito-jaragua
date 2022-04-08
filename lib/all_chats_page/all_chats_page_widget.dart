@@ -132,22 +132,20 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                         unreadColor: FlutterFlowTheme.of(context).primaryColor,
                         titleTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           fontStyle: FontStyle.normal,
                         ),
                         dateTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                         ),
                         previewTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                         ),

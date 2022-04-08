@@ -139,7 +139,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   otherUsersBoxDecoration: BoxDecoration(
-                    color: Color(0xFF4B39EF),
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
