@@ -126,7 +126,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         width:
                                             MediaQuery.of(context).size.width,
                                         height: double.infinity,
-                                        fit: BoxFit.contain,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),

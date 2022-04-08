@@ -360,7 +360,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                   .size
                                                   .height *
                                               0.3,
-                                          fit: BoxFit.contain,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                       videoPlayerBuilder: (path) =>

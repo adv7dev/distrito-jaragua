@@ -100,7 +100,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     columnUsersRecord.photoUrl,
                                                     'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',
                                                   ),
-                                                  fit: BoxFit.contain,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
