@@ -281,7 +281,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                 .photoUrl,
                                                             'https://i.ibb.co/cC6RmGZ/businessman.png',
                                                           ),
-                                                          fit: BoxFit.fitWidth,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
@@ -326,20 +326,31 @@ class _SocialWidgetState extends State<SocialWidget>
                                               size: 20,
                                             ),
                                             onPressed: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child: DeletePostWidget(),
-                                                  );
-                                                },
-                                              );
+                                              if ((userPostUsersRecord.uid) ==
+                                                  (currentJwtToken)) {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child: Container(
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.3,
+                                                        child:
+                                                            DeletePostWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }
                                             },
                                           ),
                                         ],
@@ -356,10 +367,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                           imageUrl: path,
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.3,
+                                          height: 300,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
