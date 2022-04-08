@@ -9,6 +9,7 @@ import '../main.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreateYourProfileWidget extends StatefulWidget {
@@ -336,15 +337,17 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                           final usersUpdateData = createUsersRecordData(
                             displayName: yourNameController.text,
                             userName: userNameController.text,
-                            photoUrl: currentUserPhoto,
+                            photoUrl: uploadedFileUrl,
                             bio: bioController.text,
                           );
                           await currentUserReference.update(usersUpdateData);
                           await Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  NavBarPage(initialPage: 'HomePage'),
+                            PageTransition(
+                              type: PageTransitionType.bottomToTop,
+                              duration: Duration(milliseconds: 200),
+                              reverseDuration: Duration(milliseconds: 200),
+                              child: NavBarPage(initialPage: 'HomePage'),
                             ),
                           );
                         },

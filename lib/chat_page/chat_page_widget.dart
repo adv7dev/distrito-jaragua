@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChatPageWidget extends StatefulWidget {
@@ -76,17 +77,6 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           children: [
             if (!(isGroupChat()) ?? true)
               Text(
-                'Group Chat',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Advent Sans',
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      useGoogleFonts: false,
-                    ),
-              ),
-            if (!(isGroupChat()) ?? true)
-              Text(
                 widget.chatUser.displayName,
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Advent Sans',
@@ -107,8 +97,11 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                 onTap: () async {
                   await Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => AddChatUsersWidget(
+                    PageTransition(
+                      type: PageTransitionType.bottomToTop,
+                      duration: Duration(milliseconds: 300),
+                      reverseDuration: Duration(milliseconds: 300),
+                      child: AddChatUsersWidget(
                         chat: _chatInfo.chatRecord,
                       ),
                     ),
@@ -186,8 +179,9 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: CircularProgressIndicator(
+                    child: SpinKitRing(
                       color: FlutterFlowTheme.of(context).primaryColor,
+                      size: 50,
                     ),
                   ),
                 ),

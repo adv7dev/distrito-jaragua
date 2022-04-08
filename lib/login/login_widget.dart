@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -333,8 +334,12 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                       await Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) => NavBarPage(
+                                        PageTransition(
+                                          type: PageTransitionType.bottomToTop,
+                                          duration: Duration(milliseconds: 300),
+                                          reverseDuration:
+                                              Duration(milliseconds: 300),
+                                          child: NavBarPage(
                                               initialPage: 'HomePage'),
                                         ),
                                       );
@@ -763,9 +768,14 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                         await Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CreateYourProfileWidget(),
+                                          PageTransition(
+                                            type:
+                                                PageTransitionType.bottomToTop,
+                                            duration:
+                                                Duration(milliseconds: 300),
+                                            reverseDuration:
+                                                Duration(milliseconds: 300),
+                                            child: CreateYourProfileWidget(),
                                           ),
                                         );
                                       } else {

@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -105,9 +106,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 onTap: () async {
                   await Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          NavBarPage(initialPage: 'ProfilePage'),
+                    PageTransition(
+                      type: PageTransitionType.bottomToTop,
+                      duration: Duration(milliseconds: 300),
+                      reverseDuration: Duration(milliseconds: 300),
+                      child: NavBarPage(initialPage: 'ProfilePage'),
                     ),
                   );
                 },
@@ -191,9 +194,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: CircularProgressIndicator(
+                                      child: SpinKitRing(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
+                                        size: 50,
                                       ),
                                     ),
                                   );

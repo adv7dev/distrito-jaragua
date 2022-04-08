@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CommentsWidget extends StatefulWidget {
@@ -34,7 +35,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).tertiaryColor,
+        color: FlutterFlowTheme.of(context).primaryBackground,
       ),
       child: StreamBuilder<UserStoriesRecord>(
         stream: UserStoriesRecord.getDocument(widget.story.reference),
@@ -45,8 +46,9 @@ class _CommentsWidgetState extends State<CommentsWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: CircularProgressIndicator(
+                child: SpinKitRing(
                   color: FlutterFlowTheme.of(context).primaryColor,
+                  size: 50,
                 ),
               ),
             );
@@ -77,7 +79,13 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                           children: [
                             Text(
                               'Comments',
-                              style: FlutterFlowTheme.of(context).title3,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Advent Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        useGoogleFonts: false,
+                                      ),
                             ),
                           ],
                         ),
@@ -98,9 +106,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: CircularProgressIndicator(
+                                child: SpinKitRing(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
+                                  size: 50,
                                 ),
                               ),
                             );
@@ -138,9 +147,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: CircularProgressIndicator(
+                                          child: SpinKitRing(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
+                                            size: 50,
                                           ),
                                         ),
                                       );
@@ -149,7 +159,8 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                     return Container(
                                       width: 100,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFF1F4F8),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Padding(
@@ -190,7 +201,16 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle2,
+                                                              .subtitle2
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Advent Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -203,7 +223,16 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
                                                       ),
                                                     ),
                                                     Padding(
@@ -231,6 +260,9 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Advent Sans',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         12,
                                                                     useGoogleFonts:
@@ -249,6 +281,9 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
                                                                   fontSize: 12,
                                                                   useGoogleFonts:
                                                                       false,
@@ -281,7 +316,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 3,
@@ -327,14 +362,14 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Advent Sans',
-                                      color: Color(0xFF1A1F24),
+                                      color: Colors.white,
                                       useGoogleFonts: false,
                                     ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             final storyCommentsCreateData =
@@ -355,11 +390,16 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                             await columnUserStoriesRecord.reference
                                 .update(userStoriesUpdateData);
                           },
-                          text: 'Post',
+                          text: '',
+                          icon: Icon(
+                            Icons.send,
+                            color: Color(0xFFFCFCFC),
+                            size: 15,
+                          ),
                           options: FFButtonOptions(
-                            width: 70,
+                            width: 45,
                             height: 40,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle: FlutterFlowTheme.of(context)
                                 .subtitle2
                                 .override(

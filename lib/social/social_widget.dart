@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/create_modal_widget.dart';
+import '../create_post/create_post_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_media_display.dart';
@@ -9,13 +9,12 @@ import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_video_player.dart';
 import '../post_details/post_details_widget.dart';
-import '../story_details/story_details_widget.dart';
 import '../view_profile_page_other/view_profile_page_other_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -93,18 +92,14 @@ class _SocialWidgetState extends State<SocialWidget>
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: Container(
-                  height: 240,
-                  child: CreateModalWidget(),
-                ),
-              );
-            },
+          await Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.bottomToTop,
+              duration: Duration(milliseconds: 300),
+              reverseDuration: Duration(milliseconds: 300),
+              child: CreatePostWidget(),
+            ),
           );
         },
         backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
@@ -119,169 +114,6 @@ class _SocialWidgetState extends State<SocialWidget>
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 3,
-                    color: Color(0x3A000000),
-                    offset: Offset(0, 1),
-                  )
-                ],
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(12),
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Divider(
-                    height: 8,
-                    thickness: 2,
-                    color: Color(0xFFDBE2E7),
-                  ),
-                  Container(
-                    height: 72,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 8),
-                      child: StreamBuilder<List<UserStoriesRecord>>(
-                        stream: queryUserStoriesRecord(
-                          queryBuilder: (userStoriesRecord) => userStoriesRecord
-                              .orderBy('storyPostedAt', descending: true),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: CircularProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
-                              ),
-                            );
-                          }
-                          List<UserStoriesRecord>
-                              listViewUserStoriesRecordList = snapshot.data;
-                          if (listViewUserStoriesRecordList.isEmpty) {
-                            return Center(
-                              child: Image.asset(
-                                'assets/images/df3hg_',
-                                width: 60,
-                              ),
-                            );
-                          }
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: listViewUserStoriesRecordList.length,
-                            itemBuilder: (context, listViewIndex) {
-                              final listViewUserStoriesRecord =
-                                  listViewUserStoriesRecordList[listViewIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                                child: StreamBuilder<UsersRecord>(
-                                  stream: UsersRecord.getDocument(
-                                      listViewUserStoriesRecord.user),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    final columnUsersRecord = snapshot.data;
-                                    return InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type:
-                                                PageTransitionType.bottomToTop,
-                                            duration:
-                                                Duration(milliseconds: 200),
-                                            reverseDuration:
-                                                Duration(milliseconds: 200),
-                                            child: StoryDetailsWidget(
-                                              initialStoryIndex: listViewIndex,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 40,
-                                            clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: CachedNetworkImage(
-                                              imageUrl: valueOrDefault<String>(
-                                                columnUsersRecord.photoUrl,
-                                                'https://i.ibb.co/cC6RmGZ/businessman.png',
-                                              ),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 0, 0),
-                                            child: AutoSizeText(
-                                              valueOrDefault<String>(
-                                                columnUsersRecord.displayName,
-                                                'Ellie May',
-                                              ).maybeHandleOverflow(
-                                                maxChars: 8,
-                                                replacement: '…',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        fontSize: 12,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 32),
               child: StreamBuilder<List<UserPostsRecord>>(
@@ -296,8 +128,9 @@ class _SocialWidgetState extends State<SocialWidget>
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: CircularProgressIndicator(
+                        child: SpinKitRing(
                           color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 50,
                         ),
                       ),
                     );
@@ -332,9 +165,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: CircularProgressIndicator(
+                                  child: SpinKitRing(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
+                                    size: 50,
                                   ),
                                 ),
                               );
@@ -358,8 +192,12 @@ class _SocialWidgetState extends State<SocialWidget>
                                 onTap: () async {
                                   await Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PostDetailsWidget(
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PostDetailsWidget(
                                         userRecord: userPostUsersRecord,
                                         postReference:
                                             socialFeedUserPostsRecord.reference,
@@ -382,8 +220,14 @@ class _SocialWidgetState extends State<SocialWidget>
                                             onTap: () async {
                                               await Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
+                                                PageTransition(
+                                                  type: PageTransitionType
+                                                      .bottomToTop,
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  reverseDuration: Duration(
+                                                      milliseconds: 300),
+                                                  child:
                                                       ViewProfilePageOtherWidget(
                                                     userDetails:
                                                         userPostUsersRecord,
@@ -456,8 +300,9 @@ class _SocialWidgetState extends State<SocialWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
-                                                          color:
-                                                              Color(0xFF090F13),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -735,7 +580,10 @@ class _SocialWidgetState extends State<SocialWidget>
                                                     .bodyText1
                                                     .override(
                                                       fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF090F13),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.normal,

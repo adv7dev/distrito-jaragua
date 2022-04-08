@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../page_jaragua/page_jaragua_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,8 +54,11 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                           onTap: () async {
                             await Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => PageJaraguaWidget(),
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: PageJaraguaWidget(),
                               ),
                             );
                           },

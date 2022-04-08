@@ -6,6 +6,7 @@ import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllChatsPageWidget extends StatefulWidget {
@@ -42,8 +43,11 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => CreateGroupChatWidget(),
+            PageTransition(
+              type: PageTransitionType.bottomToTop,
+              duration: Duration(milliseconds: 300),
+              reverseDuration: Duration(milliseconds: 300),
+              child: CreateGroupChatWidget(),
             ),
           );
         },
@@ -71,8 +75,9 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: CircularProgressIndicator(
+                    child: SpinKitRing(
                       color: FlutterFlowTheme.of(context).primaryColor,
+                      size: 50,
                     ),
                   ),
                 );
@@ -103,8 +108,12 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                         onTap: chatInfo != null
                             ? () => Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatPageWidget(
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                        Duration(milliseconds: 300),
+                                    child: ChatPageWidget(
                                       chatUser: chatInfo.otherUsers.length == 1
                                           ? chatInfo.otherUsersList.first
                                           : null,
@@ -119,24 +128,26 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                             .contains(currentUserReference),
                         title: chatInfo.chatPreviewTitle(),
                         userProfilePic: chatInfo.chatPreviewPic(),
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         unreadColor: FlutterFlowTheme.of(context).primaryColor,
                         titleTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color: Colors.black,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           fontStyle: FontStyle.normal,
                         ),
                         dateTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color: Color(0xFF95A1AC),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                         ),
                         previewTextStyle: GoogleFonts.getFont(
                           'Lexend Deca',
-                          color: Color(0xFF95A1AC),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                         ),

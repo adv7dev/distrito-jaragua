@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -5,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddChatUsersWidget extends StatefulWidget {
@@ -155,6 +157,8 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
               child: FutureBuilder<List<UsersRecord>>(
                 future: queryUsersRecordOnce(
+                  queryBuilder: (usersRecord) => usersRecord.where('uid',
+                      isEqualTo: currentUserUid != '' ? currentUserUid : null),
                   limit: 50,
                 ),
                 builder: (context, snapshot) {
@@ -164,8 +168,9 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: CircularProgressIndicator(
+                        child: SpinKitRing(
                           color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 50,
                         ),
                       ),
                     );

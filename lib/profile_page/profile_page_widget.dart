@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,8 +39,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: CircularProgressIndicator(
+                      child: SpinKitRing(
                         color: FlutterFlowTheme.of(context).primaryColor,
+                        size: 50,
                       ),
                     ),
                   );
@@ -336,9 +338,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   onTap: () async {
                                     await Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            EditUserProfileWidget(),
+                                      PageTransition(
+                                        type: PageTransitionType.bottomToTop,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration:
+                                            Duration(milliseconds: 300),
+                                        child: EditUserProfileWidget(),
                                       ),
                                     );
                                   },
@@ -527,8 +532,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 await signOut();
                                 await Navigator.pushAndRemoveUntil(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginWidget(),
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                        Duration(milliseconds: 300),
+                                    child: LoginWidget(),
                                   ),
                                   (r) => false,
                                 );

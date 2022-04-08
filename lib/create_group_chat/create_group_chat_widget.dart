@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreateGroupChatWidget extends StatefulWidget {
@@ -38,7 +39,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -46,7 +47,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
           buttonSize: 24,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF95A1AC),
+            color: FlutterFlowTheme.of(context).secondaryColor,
             size: 24,
           ),
           onPressed: () async {
@@ -58,19 +59,19 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Create Group Chat',
+              'Criar Gupo de Crentes',
               style: FlutterFlowTheme.of(context).subtitle1.override(
                     fontFamily: 'Lexend Deca',
-                    color: Color(0xFF95A1AC),
+                    color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
             ),
             Text(
-              'Select the friends to add to chat.',
+              'Selecione as pessoas abaixo.',
               style: FlutterFlowTheme.of(context).bodyText2.override(
                     fontFamily: 'Lexend Deca',
-                    color: Color(0xFF1A1F24),
+                    color: FlutterFlowTheme.of(context).secondaryText,
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
@@ -81,7 +82,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -104,7 +105,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
               controller: textController,
               obscureText: false,
               decoration: InputDecoration(
-                hintText: 'Search for friends...',
+                hintText: 'Pesquisar por Crentes',
                 hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Lexend Deca',
                       color: Color(0xFF95A1AC),
@@ -158,8 +159,9 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: CircularProgressIndicator(
+                      child: SpinKitRing(
                         color: FlutterFlowTheme.of(context).primaryColor,
+                        size: 50,
                       ),
                     ),
                   );
@@ -179,7 +181,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                         width: double.infinity,
                         height: 70,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 0,
@@ -196,7 +198,8 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                             children: [
                               Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xFF4E39F9),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                 ),
@@ -211,7 +214,10 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      listViewUsersRecord.photoUrl,
+                                      valueOrDefault<String>(
+                                        listViewUsersRecord.photoUrl,
+                                        'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -222,7 +228,9 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                                       2, 0, 0, 0),
                                   child: Theme(
                                     data: ThemeData(
-                                      unselectedWidgetColor: Color(0xFF707070),
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                     ),
                                     child: CheckboxListTile(
                                       value: checkboxListTileValueMap[
@@ -236,7 +244,9 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                                             .subtitle1
                                             .override(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF95A1AC),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               fontSize: 18,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -247,13 +257,19 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                                             .bodyText2
                                             .override(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF1A1F24),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
-                                      tileColor: Color(0xFFF5F5F5),
-                                      activeColor: Color(0xFF4E39F9),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
                                       dense: false,
                                       controlAffinity:
                                           ListTileControlAffinity.trailing,
@@ -275,7 +291,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
             width: double.infinity,
             height: 100,
             decoration: BoxDecoration(
-              color: Color(0xFF4E39F9),
+              color: FlutterFlowTheme.of(context).primaryBackground,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 4,
@@ -301,8 +317,11 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                   );
                   await Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => ChatPageWidget(
+                    PageTransition(
+                      type: PageTransitionType.bottomToTop,
+                      duration: Duration(milliseconds: 300),
+                      reverseDuration: Duration(milliseconds: 300),
+                      child: ChatPageWidget(
                         chatRef: groupChat.reference,
                       ),
                     ),
@@ -310,11 +329,11 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
 
                   setState(() {});
                 },
-                text: 'Create Chat',
+                text: 'Criar Grupo',
                 options: FFButtonOptions(
                   width: 130,
                   height: 40,
-                  color: Color(0xFF4E39F9),
+                  color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).title3.override(
                         fontFamily: 'Lexend Deca',
                         color: Colors.white,
