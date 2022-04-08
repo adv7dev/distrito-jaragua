@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/delete_post_widget.dart';
 import '../create_post/create_post_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -62,6 +63,7 @@ class _SocialWidgetState extends State<SocialWidget>
         automaticallyImplyLeading: false,
         title: Text(
           'Crente Social',
+          textAlign: TextAlign.start,
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: 'Advent Sans',
                 color: Colors.white,
@@ -86,7 +88,7 @@ class _SocialWidgetState extends State<SocialWidget>
             ),
           ),
         ],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -105,7 +107,7 @@ class _SocialWidgetState extends State<SocialWidget>
         backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         elevation: 8,
         child: Icon(
-          Icons.create_rounded,
+          Icons.camera_alt,
           color: Colors.white,
           size: 24,
         ),
@@ -323,8 +325,21 @@ class _SocialWidgetState extends State<SocialWidget>
                                                       .tertiaryColor,
                                               size: 20,
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
+                                            onPressed: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child: DeletePostWidget(),
+                                                  );
+                                                },
+                                              );
                                             },
                                           ),
                                         ],
@@ -341,7 +356,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                         width:
                                             MediaQuery.of(context).size.width,
                                         height: 300,
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.contain,
                                       ),
                                       videoPlayerBuilder: (path) =>
                                           FlutterFlowVideoPlayer(

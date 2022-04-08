@@ -34,14 +34,14 @@ class _DeletePostWidgetState extends State<DeletePostWidget> {
           children: [
             FFButtonWidget(
               onPressed: () async {
-                await widget.postParameters.reference.delete();
+                await widget.postParameters.postUser.delete();
                 Navigator.pop(context);
               },
               text: 'Delete Post',
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 60,
-                color: Color(0xFFE06666),
+                color: Color(0xFFF52E2E),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Advent Sans',
                       color: Colors.white,
