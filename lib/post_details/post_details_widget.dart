@@ -6,10 +6,10 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -745,12 +745,23 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16, 4, 0, 4),
                                   child: TextFormField(
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      'textController',
+                                      Duration(milliseconds: 2000),
+                                      () => setState(() {}),
+                                    ),
                                     controller: textController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Comentar...',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Advent Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: false,
+                                          ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
@@ -771,6 +782,18 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
+                                      suffixIcon: textController.text.isNotEmpty
+                                          ? InkWell(
+                                              onTap: () => setState(
+                                                () => textController.clear(),
+                                              ),
+                                              child: Icon(
+                                                Icons.clear,
+                                                color: Colors.white,
+                                                size: 22,
+                                              ),
+                                            )
+                                          : null,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
@@ -786,50 +809,26 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
+                                child: InkWell(
+                                  onTap: () async {
                                     final postCommentsCreateData =
                                         createPostCommentsRecordData(
-                                      timePosted: getCurrentTimestamp,
                                       comment: textController.text,
+                                      timePosted: getCurrentTimestamp,
                                       user: currentUserReference,
-                                      post:
-                                          postDetailsUserPostsRecord.reference,
+                                      post: widget.postReference,
                                     );
                                     await PostCommentsRecord.collection
                                         .doc()
                                         .set(postCommentsCreateData);
-
-                                    final userPostsUpdateData = {
-                                      'numComments': FieldValue.increment(1),
-                                    };
-                                    await postDetailsUserPostsRecord.reference
-                                        .update(userPostsUpdateData);
+                                    await Future.delayed(
+                                        const Duration(milliseconds: 1000));
                                   },
-                                  text: '',
-                                  icon: Icon(
+                                  child: Icon(
                                     Icons.send,
-                                    size: 30,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 45,
-                                    height: 45,
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          useGoogleFonts: false,
-                                        ),
-                                    elevation: 0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: 12,
+                                        .secondaryColor,
+                                    size: 35,
                                   ),
                                 ),
                               ),
