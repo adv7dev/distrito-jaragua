@@ -142,6 +142,12 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                 return;
                               }
                             }
+
+                            final usersUpdateData = createUsersRecordData(
+                              photoUrl: uploadedFileUrl1,
+                            );
+                            await editUserProfileUsersRecord.reference
+                                .update(usersUpdateData);
                           },
                           child: Container(
                             width: 120,
@@ -401,7 +407,6 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               final usersUpdateData = createUsersRecordData(
                                 displayName: yourNameController?.text ?? '',
                                 userName: userNameController?.text ?? '',
-                                photoUrl: uploadedFileUrl1,
                                 bio: bioController?.text ?? '',
                                 capa: uploadedFileUrl2,
                               );
