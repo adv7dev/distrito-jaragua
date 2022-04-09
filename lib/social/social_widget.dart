@@ -314,8 +314,8 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          if (socialFeedUserPostsRecord
-                                                  .postOwner ??
+                                          if (!(socialFeedUserPostsRecord
+                                                  .postOwner) ??
                                               true)
                                             FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
@@ -340,7 +340,11 @@ class _SocialWidgetState extends State<SocialWidget>
                                                           MediaQuery.of(context)
                                                               .viewInsets,
                                                       child: Container(
-                                                        height: 30,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.3,
                                                         child:
                                                             DeletePostWidget(),
                                                       ),
