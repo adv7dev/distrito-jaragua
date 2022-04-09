@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/delete_post_widget.dart';
 import '../create_post/create_post_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -313,21 +314,41 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30,
-                                            buttonSize: 46,
-                                            icon: Icon(
-                                              Icons.keyboard_control,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
-                                              size: 20,
+                                          if (!(socialFeedUserPostsRecord
+                                                  .postOwner) ??
+                                              true)
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30,
+                                              buttonSize: 46,
+                                              icon: Icon(
+                                                Icons.keyboard_control,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiaryColor,
+                                                size: 20,
+                                              ),
+                                              onPressed: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child: Container(
+                                                        height: 30,
+                                                        child:
+                                                            DeletePostWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
                                         ],
                                       ),
                                     ),

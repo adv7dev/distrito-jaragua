@@ -1,5 +1,6 @@
 import '../backend/backend.dart';
 import '../chat_page/chat_page_widget.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_toggle_icon.dart';
@@ -11,6 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ViewProfilePageOtherWidget extends StatefulWidget {
   const ViewProfilePageOtherWidget({
@@ -196,20 +198,56 @@ class _ViewProfilePageOtherWidgetState
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   4, 4, 4, 4),
-                                          child: Container(
-                                            width: 90,
-                                            height: 90,
-                                            clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                  type: PageTransitionType.fade,
+                                                  child:
+                                                      FlutterFlowExpandedImageView(
+                                                    image: Image.network(
+                                                      valueOrDefault<String>(
+                                                        viewProfilePageOtherUsersRecord
+                                                            .photoUrl,
+                                                        'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                      ),
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                    allowRotation: false,
+                                                    tag: valueOrDefault<String>(
+                                                      viewProfilePageOtherUsersRecord
+                                                          .photoUrl,
+                                                      'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                    ),
+                                                    useHeroAnimation: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Hero(
+                                              tag: valueOrDefault<String>(
                                                 viewProfilePageOtherUsersRecord
                                                     .photoUrl,
                                                 'https://i.ibb.co/cC6RmGZ/businessman.png',
                                               ),
-                                              fit: BoxFit.fitWidth,
+                                              transitionOnUserGestures: true,
+                                              child: Container(
+                                                width: 90,
+                                                height: 90,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    viewProfilePageOtherUsersRecord
+                                                        .photoUrl,
+                                                    'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                  ),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),

@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../edit_user_profile/edit_user_profile_widget.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ProfilePageWidget extends StatefulWidget {
   const ProfilePageWidget({Key key}) : super(key: key);
@@ -73,16 +75,52 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0, 0),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
-                                                columnUsersRecord.capa,
-                                                'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child:
+                                                        FlutterFlowExpandedImageView(
+                                                      image: Image.network(
+                                                        valueOrDefault<String>(
+                                                          columnUsersRecord
+                                                              .capa,
+                                                          'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                                        ),
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                      allowRotation: false,
+                                                      tag: valueOrDefault<
+                                                          String>(
+                                                        columnUsersRecord.capa,
+                                                        'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                                      ),
+                                                      useHeroAnimation: true,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Hero(
+                                                tag: valueOrDefault<String>(
+                                                  columnUsersRecord.capa,
+                                                  'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                                ),
+                                                transitionOnUserGestures: true,
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    columnUsersRecord.capa,
+                                                    'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                                  ),
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  height: 150,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 150,
-                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                           Align(
@@ -91,19 +129,60 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 105, 0, 0),
-                                              child: Container(
-                                                width: 80,
-                                                height: 80,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await Navigator.push(
+                                                    context,
+                                                    PageTransition(
+                                                      type: PageTransitionType
+                                                          .fade,
+                                                      child:
+                                                          FlutterFlowExpandedImageView(
+                                                        image: Image.network(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            columnUsersRecord
+                                                                .photoUrl,
+                                                            'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',
+                                                          ),
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                        allowRotation: false,
+                                                        tag: valueOrDefault<
+                                                            String>(
+                                                          columnUsersRecord
+                                                              .photoUrl,
+                                                          'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',
+                                                        ),
+                                                        useHeroAnimation: true,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Hero(
+                                                  tag: valueOrDefault<String>(
                                                     columnUsersRecord.photoUrl,
                                                     'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',
                                                   ),
-                                                  fit: BoxFit.cover,
+                                                  transitionOnUserGestures:
+                                                      true,
+                                                  child: Container(
+                                                    width: 80,
+                                                    height: 80,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: Image.network(
+                                                      valueOrDefault<String>(
+                                                        columnUsersRecord
+                                                            .photoUrl,
+                                                        'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',
+                                                      ),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
