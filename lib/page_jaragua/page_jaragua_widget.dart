@@ -118,7 +118,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       height: 32,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                            .customColor1,
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Align(
@@ -499,7 +499,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                               height: MediaQuery.of(context).size.height * 1,
                               decoration: BoxDecoration(
                                 color:
-                                    FlutterFlowTheme.of(context).customColor1,
+                                    FlutterFlowTheme.of(context).secondaryColor,
                                 borderRadius: BorderRadius.circular(10),
                                 shape: BoxShape.rectangle,
                               ),

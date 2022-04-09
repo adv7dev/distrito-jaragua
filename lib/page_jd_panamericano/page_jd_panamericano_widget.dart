@@ -115,7 +115,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                     height: 32,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .customColor1,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Align(
@@ -182,7 +182,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context).customColor1,
                               borderRadius: BorderRadius.circular(10),
                               shape: BoxShape.rectangle,
                             ),
@@ -202,7 +202,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                         Icon(
                                           Icons.people_sharp,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .primaryText,
                                           size: 50,
                                         ),
                                       ],
@@ -223,7 +223,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                                   fontFamily: 'Advent Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryBackground,
+                                                      .primaryText,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
@@ -252,7 +252,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context).customColor1,
                               borderRadius: BorderRadius.circular(10),
                               shape: BoxShape.rectangle,
                             ),
@@ -272,7 +272,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                         Icon(
                                           Icons.mouse,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .primaryText,
                                           size: 50,
                                         ),
                                       ],
@@ -297,7 +297,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                                     fontFamily: 'Advent Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                                     useGoogleFonts: false,
                                                   ),
                                             ),
@@ -327,7 +327,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context).customColor1,
                               borderRadius: BorderRadius.circular(10),
                               shape: BoxShape.rectangle,
                             ),
@@ -347,7 +347,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                         Icon(
                                           Icons.mic_external_on,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .primaryText,
                                           size: 50,
                                         ),
                                       ],
@@ -372,7 +372,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                                     fontFamily: 'Advent Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                                     useGoogleFonts: false,
                                                   ),
                                             ),
@@ -402,7 +402,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context).customColor1,
                               borderRadius: BorderRadius.circular(10),
                               shape: BoxShape.rectangle,
                             ),
@@ -422,7 +422,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                         Icon(
                                           Icons.person_search_sharp,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .primaryText,
                                           size: 50,
                                         ),
                                       ],
@@ -447,7 +447,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                                     fontFamily: 'Advent Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryBackground,
+                                                        .primaryText,
                                                     useGoogleFonts: false,
                                                   ),
                                             ),
@@ -477,7 +477,8 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 1,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).customColor1,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                               borderRadius: BorderRadius.circular(10),
                               shape: BoxShape.rectangle,
                             ),

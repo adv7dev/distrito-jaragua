@@ -26,6 +26,8 @@ import 'aurora_sonoplastia_record.dart';
 import 'aurora_musica_record.dart';
 import 'anuncios_aurora_record.dart';
 import 'escala_pastoral_record.dart';
+import 'aurora_limpeza_record.dart';
+import 'aurora_sabatina_record.dart';
 
 import 'index.dart';
 
@@ -62,6 +64,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   AuroraMusicaRecord,
   AnunciosAuroraRecord,
   EscalaPastoralRecord,
+  AuroraLimpezaRecord,
+  AuroraSabatinaRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

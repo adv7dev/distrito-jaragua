@@ -30,6 +30,8 @@ import 'schema/aurora_sonoplastia_record.dart';
 import 'schema/aurora_musica_record.dart';
 import 'schema/anuncios_aurora_record.dart';
 import 'schema/escala_pastoral_record.dart';
+import 'schema/aurora_limpeza_record.dart';
+import 'schema/aurora_sabatina_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -62,6 +64,8 @@ export 'schema/aurora_sonoplastia_record.dart';
 export 'schema/aurora_musica_record.dart';
 export 'schema/anuncios_aurora_record.dart';
 export 'schema/escala_pastoral_record.dart';
+export 'schema/aurora_limpeza_record.dart';
+export 'schema/aurora_sabatina_record.dart';
 
 /// Functions to query UserPostsRecords (as a Stream and as a Future).
 Stream<List<UserPostsRecord>> queryUserPostsRecord(
@@ -500,6 +504,40 @@ Future<List<EscalaPastoralRecord>> queryEscalaPastoralRecordOnce(
         bool singleRecord = false}) =>
     queryCollectionOnce(
         EscalaPastoralRecord.collection, EscalaPastoralRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query AuroraLimpezaRecords (as a Stream and as a Future).
+Stream<List<AuroraLimpezaRecord>> queryAuroraLimpezaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        AuroraLimpezaRecord.collection, AuroraLimpezaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<AuroraLimpezaRecord>> queryAuroraLimpezaRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        AuroraLimpezaRecord.collection, AuroraLimpezaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query AuroraSabatinaRecords (as a Stream and as a Future).
+Stream<List<AuroraSabatinaRecord>> queryAuroraSabatinaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        AuroraSabatinaRecord.collection, AuroraSabatinaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<AuroraSabatinaRecord>> queryAuroraSabatinaRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        AuroraSabatinaRecord.collection, AuroraSabatinaRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(
