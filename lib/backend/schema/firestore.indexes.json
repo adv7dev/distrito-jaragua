@@ -57,6 +57,20 @@
       ]
     },
     {
+      "collectionGroup": "anuncios_distrital",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ativo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "data",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "escala_pastoral",
       "queryScope": "COLLECTION",
       "fields": [

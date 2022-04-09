@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
+import '../view_all_anuncios/view_all_anuncios_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -147,30 +148,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Anuncios Distrital',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Advent Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: false,
-                              ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                          child: Icon(
-                            Icons.chevron_right,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
-                            size: 24,
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ViewAllAnunciosWidget(),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Anuncios Distrital',
+                            style: FlutterFlowTheme.of(context).title2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.chevron_right,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              size: 24,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Row(
@@ -188,7 +204,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .primaryBackground,
                             ),
                             child: StreamBuilder<List<AnunciosDistritalRecord>>(
-                              stream: queryAnunciosDistritalRecord(),
+                              stream: queryAnunciosDistritalRecord(
+                                queryBuilder: (anunciosDistritalRecord) =>
+                                    anunciosDistritalRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data', descending: true),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
