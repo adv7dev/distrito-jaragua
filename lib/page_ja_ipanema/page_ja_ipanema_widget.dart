@@ -1,6 +1,6 @@
-import '../esc_musica_jaragua/esc_musica_jaragua_widget.dart';
-import '../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
-import '../esc_sonoplastia_jaragua/esc_sonoplastia_jaragua_widget.dart';
+import '../esc_musica_ipanema/esc_musica_ipanema_widget.dart';
+import '../esc_pregadores_ipanema/esc_pregadores_ipanema_widget.dart';
+import '../esc_sonoplastia_ipanema/esc_sonoplastia_ipanema_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -11,14 +11,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
-class PageJaraguaWidget extends StatefulWidget {
-  const PageJaraguaWidget({Key key}) : super(key: key);
+class PageJaIpanemaWidget extends StatefulWidget {
+  const PageJaIpanemaWidget({Key key}) : super(key: key);
 
   @override
-  _PageJaraguaWidgetState createState() => _PageJaraguaWidgetState();
+  _PageJaIpanemaWidgetState createState() => _PageJaIpanemaWidgetState();
 }
 
-class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
+class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -52,7 +52,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       type: PageTransitionType.fade,
                                       child: FlutterFlowExpandedImageView(
                                         image: Image.asset(
-                                          'assets/images/Design_sem_nome_(2).png',
+                                          'assets/images/Capturar.PNG',
                                           fit: BoxFit.contain,
                                         ),
                                         allowRotation: false,
@@ -68,7 +68,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      'assets/images/Design_sem_nome_(2).png',
+                                      'assets/images/Capturar.PNG',
                                       width: 374,
                                       height: 150,
                                       fit: BoxFit.fitWidth,
@@ -122,7 +122,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 2),
                                         child: AutoSizeText(
-                                          'IASD JARAGUÁ',
+                                          'IASD JD. IPANEMA',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .title1
@@ -159,7 +159,6 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                       mainAxisSpacing: 10,
                       childAspectRatio: 1,
                     ),
-                    primary: false,
                     scrollDirection: Axis.vertical,
                     children: [
                       InkWell(
@@ -170,15 +169,15 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                               type: PageTransitionType.bottomToTop,
                               duration: Duration(milliseconds: 300),
                               reverseDuration: Duration(milliseconds: 300),
-                              child: EscPregadoresJaraguaWidget(),
+                              child: EscPregadoresIpanemaWidget(),
                             ),
                           );
                         },
                         child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).customColor1,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             borderRadius: BorderRadius.circular(10),
                             shape: BoxShape.rectangle,
                           ),
@@ -196,7 +195,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       Icon(
                                         Icons.people_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                            .primaryBackground,
                                         size: 50,
                                       ),
                                     ],
@@ -217,7 +216,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                                 fontFamily: 'Advent Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .primaryBackground,
                                                 useGoogleFonts: false,
                                               ),
                                         ),
@@ -238,15 +237,15 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                               type: PageTransitionType.bottomToTop,
                               duration: Duration(milliseconds: 300),
                               reverseDuration: Duration(milliseconds: 300),
-                              child: EscSonoplastiaJaraguaWidget(),
+                              child: EscSonoplastiaIpanemaWidget(),
                             ),
                           );
                         },
                         child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).customColor1,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             borderRadius: BorderRadius.circular(10),
                             shape: BoxShape.rectangle,
                           ),
@@ -264,7 +263,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       Icon(
                                         Icons.mouse,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                            .primaryBackground,
                                         size: 50,
                                       ),
                                     ],
@@ -288,7 +287,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                                   fontFamily: 'Advent Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .primaryBackground,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
@@ -310,15 +309,15 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                               type: PageTransitionType.bottomToTop,
                               duration: Duration(milliseconds: 300),
                               reverseDuration: Duration(milliseconds: 300),
-                              child: EscMusicaJaraguaWidget(),
+                              child: EscMusicaIpanemaWidget(),
                             ),
                           );
                         },
                         child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).customColor1,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             borderRadius: BorderRadius.circular(10),
                             shape: BoxShape.rectangle,
                           ),
@@ -336,7 +335,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       Icon(
                                         Icons.mic_external_on,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                            .primaryBackground,
                                         size: 50,
                                       ),
                                     ],
@@ -347,7 +346,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
-                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
@@ -360,7 +359,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                                   fontFamily: 'Advent Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .primaryBackground,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
@@ -380,51 +379,51 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                             context,
                             PageTransition(
                               type: PageTransitionType.bottomToTop,
-                              duration: Duration(milliseconds: 300),
-                              reverseDuration: Duration(milliseconds: 300),
+                              duration: Duration(milliseconds: 500),
+                              reverseDuration: Duration(milliseconds: 500),
                               child: ItinerarioPastoralWidget(),
                             ),
                           );
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 1,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).customColor1,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             borderRadius: BorderRadius.circular(10),
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.person_search_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 50,
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Padding(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.person_search_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        size: 50,
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 10, 0, 0),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
-                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
                                           AutoSizeText(
-                                            'Itinerario \nPASTORAL',
+                                            'Itinerario\nPASTORAL',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -432,7 +431,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                                   fontFamily: 'Advent Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .primaryBackground,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
@@ -440,8 +439,8 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

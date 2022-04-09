@@ -12,17 +12,33 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 import '../../login/login_widget.dart';
 import '../../create_your_profile/create_your_profile_widget.dart';
-import '../../forgot_password/forgot_password_widget.dart';
-import '../../create_post/create_post_widget.dart';
-import '../../post_details/post_details_widget.dart';
 import '../../edit_user_profile/edit_user_profile_widget.dart';
+import '../../forgot_password/forgot_password_widget.dart';
 import '../../change_password/change_password_widget.dart';
 import '../../view_profile_page_other/view_profile_page_other_widget.dart';
+import '../../create_post/create_post_widget.dart';
+import '../../post_details/post_details_widget.dart';
 import '../../chat_page/chat_page_widget.dart';
 import '../../add_chat_users/add_chat_users_widget.dart';
 import '../../create_group_chat/create_group_chat_widget.dart';
 import '../../page_jaragua/page_jaragua_widget.dart';
 import '../../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
+import '../../esc_sonoplastia_jaragua/esc_sonoplastia_jaragua_widget.dart';
+import '../../esc_musica_jaragua/esc_musica_jaragua_widget.dart';
+import '../../page_ja_ipanema/page_ja_ipanema_widget.dart';
+import '../../esc_pregadores_ipanema/esc_pregadores_ipanema_widget.dart';
+import '../../esc_sonoplastia_ipanema/esc_sonoplastia_ipanema_widget.dart';
+import '../../esc_musica_ipanema/esc_musica_ipanema_widget.dart';
+import '../../page_jd_panamericano/page_jd_panamericano_widget.dart';
+import '../../esc_pregadores_panamericano/esc_pregadores_panamericano_widget.dart';
+import '../../esc_sonoplastia_panamericano/esc_sonoplastia_panamericano_widget.dart';
+import '../../esc_musica_panamericano/esc_musica_panamericano_widget.dart';
+import '../../page_vilaaurora/page_vilaaurora_widget.dart';
+import '../../esc_pregadores_vilaaurora/esc_pregadores_vilaaurora_widget.dart';
+import '../../esc_sonoplastia_aurora/esc_sonoplastia_aurora_widget.dart';
+import '../../esc_musica_aurora/esc_musica_aurora_widget.dart';
+import '../../itinerario_pastoral/itinerario_pastoral_widget.dart';
+import '../../view_all_anuncios/view_all_anuncios_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -90,20 +106,21 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
 final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'login': (data) async => LoginWidget(),
+  'ProfilePage': (data) async => NavBarPage(initialPage: 'ProfilePageWidget'),
   'createYourProfile': (data) async => CreateYourProfileWidget(),
+  'editUserProfile': (data) async => EditUserProfileWidget(),
   'forgotPassword': (data) async => ForgotPasswordWidget(),
+  'changePassword': (data) async => ChangePasswordWidget(),
+  'viewProfilePageOther': (data) async => ViewProfilePageOtherWidget(
+        userDetails: await getDocumentParameter(
+            data, 'userDetails', UsersRecord.serializer),
+      ),
   'social': (data) async => NavBarPage(initialPage: 'SocialWidget'),
   'createPost': (data) async => CreatePostWidget(),
   'postDetails': (data) async => PostDetailsWidget(
         postReference: getParameter(data, 'postReference'),
         userRecord: await getDocumentParameter(
             data, 'userRecord', UsersRecord.serializer),
-      ),
-  'editUserProfile': (data) async => EditUserProfileWidget(),
-  'changePassword': (data) async => ChangePasswordWidget(),
-  'viewProfilePageOther': (data) async => ViewProfilePageOtherWidget(
-        userDetails: await getDocumentParameter(
-            data, 'userDetails', UsersRecord.serializer),
       ),
   'chatPage': (data) async => ChatPageWidget(
         chatUser: await getDocumentParameter(
@@ -118,7 +135,24 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),
   'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(),
-  'ProfilePage': (data) async => NavBarPage(initialPage: 'ProfilePageWidget'),
+  'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(),
+  'esc_musica_jaragua': (data) async => EscMusicaJaraguaWidget(),
+  'page_ja_ipanema': (data) async => PageJaIpanemaWidget(),
+  'esc_pregadores_ipanema': (data) async => EscPregadoresIpanemaWidget(),
+  'esc_sonoplastia_ipanema': (data) async => EscSonoplastiaIpanemaWidget(),
+  'esc_musica_ipanema': (data) async => EscMusicaIpanemaWidget(),
+  'page_jd_panamericano': (data) async => PageJdPanamericanoWidget(),
+  'esc_pregadores_panamericano': (data) async =>
+      EscPregadoresPanamericanoWidget(),
+  'esc_sonoplastia_panamericano': (data) async =>
+      EscSonoplastiaPanamericanoWidget(),
+  'esc_musica_panamericano': (data) async => EscMusicaPanamericanoWidget(),
+  'page_vilaaurora': (data) async => PageVilaauroraWidget(),
+  'esc_pregadores_vilaaurora': (data) async => EscPregadoresVilaauroraWidget(),
+  'esc_sonoplastia_aurora': (data) async => EscSonoplastiaAuroraWidget(),
+  'esc_musica_aurora': (data) async => EscMusicaAuroraWidget(),
+  'itinerario_pastoral': (data) async => ItinerarioPastoralWidget(),
+  'view_all_anuncios': (data) async => ViewAllAnunciosWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

@@ -10,6 +10,22 @@ import 'chats_record.dart';
 import 'chat_messages_record.dart';
 import 'anuncios_distrital_record.dart';
 import 'jaragua_pregadores_record.dart';
+import 'jaragua_sonoplastia_record.dart';
+import 'jaragua_musica_record.dart';
+import 'anuncios_jaragua_record.dart';
+import 'ipanema_pregadores_record.dart';
+import 'ipanema_sonoplastia_record.dart';
+import 'ipanema_musica_record.dart';
+import 'anuncios_ipanema_record.dart';
+import 'panamericano_pregadores_record.dart';
+import 'panamericano_sonoplastia_record.dart';
+import 'panamericano_musica_record.dart';
+import 'anuncios_panamericano_record.dart';
+import 'aurora_pregadores_record.dart';
+import 'aurora_sonoplastia_record.dart';
+import 'aurora_musica_record.dart';
+import 'anuncios_aurora_record.dart';
+import 'escala_pastoral_record.dart';
 
 import 'index.dart';
 
@@ -30,6 +46,22 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   ChatMessagesRecord,
   AnunciosDistritalRecord,
   JaraguaPregadoresRecord,
+  JaraguaSonoplastiaRecord,
+  JaraguaMusicaRecord,
+  AnunciosJaraguaRecord,
+  IpanemaPregadoresRecord,
+  IpanemaSonoplastiaRecord,
+  IpanemaMusicaRecord,
+  AnunciosIpanemaRecord,
+  PanamericanoPregadoresRecord,
+  PanamericanoSonoplastiaRecord,
+  PanamericanoMusicaRecord,
+  AnunciosPanamericanoRecord,
+  AuroraPregadoresRecord,
+  AuroraSonoplastiaRecord,
+  AuroraMusicaRecord,
+  AnunciosAuroraRecord,
+  EscalaPastoralRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
