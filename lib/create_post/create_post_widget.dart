@@ -294,9 +294,12 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       FlutterFlowPlacePicker(
-                        iOSGoogleMapsApiKey: '',
-                        androidGoogleMapsApiKey: '',
-                        webGoogleMapsApiKey: '',
+                        iOSGoogleMapsApiKey:
+                            'AIzaSyA0wbCC3DFfid1Sb85uNPWe867UNl8KcUs',
+                        androidGoogleMapsApiKey:
+                            'AIzaSyBVIFllOxj8fjJ9cTzCQzoW9RyOstOgR_4',
+                        webGoogleMapsApiKey:
+                            'AIzaSyAY-OCLRl5rIfpjdSj04FHgnzpHobW7bs4',
                         onSelect: (place) =>
                             setState(() => placePickerValue = place),
                         defaultText: 'Localização',
