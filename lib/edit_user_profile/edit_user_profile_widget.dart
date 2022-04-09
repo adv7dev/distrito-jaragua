@@ -19,10 +19,11 @@ class EditUserProfileWidget extends StatefulWidget {
 }
 
 class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
-  String uploadedFileUrl = '';
+  String uploadedFileUrl1 = '';
   TextEditingController yourNameController;
   TextEditingController userNameController;
   TextEditingController bioController;
+  String uploadedFileUrl2 = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -128,7 +129,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
                               if (downloadUrl != null) {
-                                setState(() => uploadedFileUrl = downloadUrl);
+                                setState(() => uploadedFileUrl1 = downloadUrl);
                                 showUploadMessage(
                                   context,
                                   'Success!',
@@ -148,6 +149,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFFDBE2E7),
                               shape: BoxShape.circle,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.network(
+                                editUserProfileUsersRecord.photoUrl,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -317,10 +327,69 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Color(0xFFF5F5F5),
+                              child: InkWell(
+                                onTap: () async {
+                                  final selectedMedia =
+                                      await selectMediaWithSourceBottomSheet(
+                                    context: context,
+                                    allowPhoto: true,
+                                  );
+                                  if (selectedMedia != null &&
+                                      validateFileFormat(
+                                          selectedMedia.storagePath, context)) {
+                                    showUploadMessage(
+                                      context,
+                                      'Uploading file...',
+                                      showLoading: true,
+                                    );
+                                    final downloadUrl = await uploadData(
+                                        selectedMedia.storagePath,
+                                        selectedMedia.bytes);
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    if (downloadUrl != null) {
+                                      setState(
+                                          () => uploadedFileUrl2 = downloadUrl);
+                                      showUploadMessage(
+                                        context,
+                                        'Success!',
+                                      );
+                                    } else {
+                                      showUploadMessage(
+                                        context,
+                                        'Failed to upload media',
+                                      );
+                                      return;
+                                    }
+                                  }
+                                },
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    editUserProfileUsersRecord.capa,
+                                    'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                  ),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -332,8 +401,9 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               final usersUpdateData = createUsersRecordData(
                                 displayName: yourNameController?.text ?? '',
                                 userName: userNameController?.text ?? '',
-                                photoUrl: uploadedFileUrl,
+                                photoUrl: uploadedFileUrl1,
                                 bio: bioController?.text ?? '',
+                                capa: uploadedFileUrl2,
                               );
                               await currentUserReference
                                   .update(usersUpdateData);

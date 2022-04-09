@@ -73,8 +73,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0, 0),
-                                            child: Image.asset(
-                                              'assets/images/Escala_da_Igreja_Adventista_do_Vila_Aurora_-_Dist._Jaragu._(1).png',
+                                            child: Image.network(
+                                              valueOrDefault<String>(
+                                                columnUsersRecord.capa,
+                                                'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
+                                              ),
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
