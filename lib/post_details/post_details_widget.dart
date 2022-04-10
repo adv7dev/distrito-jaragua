@@ -142,8 +142,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                   children: [
                                     Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color: Colors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40),
                                       ),
@@ -157,8 +156,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                               .secondaryColor,
                                           size: 24,
                                         ),
-                                        onPressed: () async {
-                                          Navigator.pop(context);
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
                                         },
                                       ),
                                     ),
@@ -170,11 +169,10 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         borderWidth: 1,
                                         buttonSize: 44,
                                         fillColor: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                            .alternate,
                                         icon: Icon(
                                           Icons.more_vert_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                          color: Colors.white,
                                           size: 24,
                                         ),
                                         onPressed: () async {
@@ -762,8 +760,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Advent Sans',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                            color: Colors.white,
                                             useGoogleFonts: false,
                                           ),
                                       enabledBorder: UnderlineInputBorder(
@@ -803,8 +800,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Advent Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Colors.white,
                                           useGoogleFonts: false,
                                         ),
                                   ),

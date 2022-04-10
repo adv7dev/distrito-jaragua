@@ -3,15 +3,12 @@ import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_media_display.dart';
-import '../flutter_flow/flutter_flow_place_picker.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_video_player.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/place.dart';
 import '../flutter_flow/upload_media.dart';
 import '../main.dart';
-import 'dart:io';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +25,6 @@ class CreatePostWidget extends StatefulWidget {
 class _CreatePostWidgetState extends State<CreatePostWidget> {
   String uploadedFileUrl = '';
   TextEditingController textController;
-  var placePickerValue = FFPlace();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -276,7 +272,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           textAlign: TextAlign.start,
-                                          maxLines: 4,
+                                          maxLines: 7,
                                         ),
                                       ),
                                     ),
@@ -285,47 +281,6 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      FlutterFlowPlacePicker(
-                        iOSGoogleMapsApiKey:
-                            'AIzaSyA0wbCC3DFfid1Sb85uNPWe867UNl8KcUs',
-                        androidGoogleMapsApiKey:
-                            'AIzaSyBVIFllOxj8fjJ9cTzCQzoW9RyOstOgR_4',
-                        webGoogleMapsApiKey:
-                            'AIzaSyAY-OCLRl5rIfpjdSj04FHgnzpHobW7bs4',
-                        onSelect: (place) =>
-                            setState(() => placePickerValue = place),
-                        defaultText: 'Localização',
-                        icon: Icon(
-                          Icons.place,
-                          color: Color(0xFF95A1AC),
-                          size: 24,
-                        ),
-                        buttonOptions: FFButtonOptions(
-                          width: 300,
-                          height: 60,
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .subtitle2
-                              .override(
-                                fontFamily: 'Lexend Deca',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            width: 2,
-                          ),
-                          borderRadius: 8,
                         ),
                       ),
                     ],

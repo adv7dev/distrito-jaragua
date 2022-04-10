@@ -159,7 +159,10 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Image.network(
-                                editUserProfileUsersRecord.photoUrl,
+                                valueOrDefault<String>(
+                                  editUserProfileUsersRecord.photoUrl,
+                                  'https://www.pngitem.com/pimgs/m/475-4750728_add-user-group-woman-man-icon-add-user.png',
+                                ),
                                 width: 100,
                                 height: 100,
                                 fit: BoxFit.cover,

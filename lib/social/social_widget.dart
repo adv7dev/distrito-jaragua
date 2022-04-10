@@ -314,45 +314,41 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          if (!(socialFeedUserPostsRecord
-                                                  .postOwner) ??
-                                              true)
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 30,
-                                              buttonSize: 46,
-                                              icon: Icon(
-                                                Icons.keyboard_control,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                size: 20,
-                                              ),
-                                              onPressed: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
-                                                      child: Container(
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.3,
-                                                        child:
-                                                            DeletePostWidget(),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 30,
+                                            buttonSize: 46,
+                                            icon: Icon(
+                                              Icons.keyboard_control,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiaryColor,
+                                              size: 20,
                                             ),
+                                            onPressed: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child: Container(
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              0.3,
+                                                      child: DeletePostWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -362,7 +358,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                         'https://cdn.pixabay.com/photo/2016/04/05/03/18/prayer-1308663_960_720.jpg',
                                       ),
                                       imageBuilder: (path) => ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(0),
                                         child: CachedNetworkImage(
                                           imageUrl: path,
                                           width:
