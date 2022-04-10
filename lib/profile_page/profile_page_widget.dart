@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
+import '../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -658,8 +659,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PageJaraguaAdmWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'ADM JARAGUÁ',
                                 options: FFButtonOptions(
