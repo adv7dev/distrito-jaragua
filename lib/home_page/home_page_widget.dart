@@ -153,9 +153,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           PageTransition(
-                            type: PageTransitionType.bottomToTop,
-                            duration: Duration(milliseconds: 300),
-                            reverseDuration: Duration(milliseconds: 300),
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 400),
+                            reverseDuration: Duration(milliseconds: 400),
                             child: ViewAllAnunciosWidget(),
                           ),
                         );

@@ -74,6 +74,8 @@ class _ViewAllAnunciosWidgetState extends State<ViewAllAnunciosWidget> {
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Advent Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
@@ -425,6 +427,8 @@ class _ViewAllAnunciosWidgetState extends State<ViewAllAnunciosWidget> {
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Advent Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,

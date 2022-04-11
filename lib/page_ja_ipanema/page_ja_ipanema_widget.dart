@@ -170,6 +170,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                             mainAxisSpacing: 10,
                             childAspectRatio: 1,
                           ),
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
