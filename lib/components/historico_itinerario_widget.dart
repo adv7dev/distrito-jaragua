@@ -20,8 +20,15 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          Divider(
+            height: 10,
+            thickness: 5,
+            indent: 5,
+            endIndent: 5,
+            color: FlutterFlowTheme.of(context).secondaryColor,
+          ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+            padding: EdgeInsetsDirectional.fromSTEB(10, 40, 10, 10),
             child: StreamBuilder<List<EscalaPastoralRecord>>(
               stream: queryEscalaPastoralRecord(
                 queryBuilder: (escalaPastoralRecord) =>
