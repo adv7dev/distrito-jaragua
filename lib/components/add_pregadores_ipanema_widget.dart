@@ -43,356 +43,331 @@ class _AddPregadoresIpanemaWidgetState
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 10),
-      child: StreamBuilder<List<IpanemaPregadoresRecord>>(
-        stream: queryIpanemaPregadoresRecord(
-          singleRecord: true,
-        ),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: SpinKitRing(
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  size: 50,
-                ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'ADD Pregadores - IPANEMA',
+                    style: FlutterFlowTheme.of(context).title3.override(
+                          fontFamily: 'Advent Sans',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontWeight: FontWeight.bold,
+                          useGoogleFonts: false,
+                        ),
+                  ),
+                ],
               ),
-            );
-          }
-          List<IpanemaPregadoresRecord> columnIpanemaPregadoresRecordList =
-              snapshot.data;
-          // Return an empty Container when the document does not exist.
-          if (snapshot.data.isEmpty) {
-            return Container();
-          }
-          final columnIpanemaPregadoresRecord =
-              columnIpanemaPregadoresRecordList.isNotEmpty
-                  ? columnIpanemaPregadoresRecordList.first
-                  : null;
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'ADD Pregadores - IPANEMA',
-                        style: FlutterFlowTheme.of(context).title3.override(
-                              fontFamily: 'Advent Sans',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontWeight: FontWeight.bold,
-                              useGoogleFonts: false,
-                            ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: Image.network(
+                          'https://www.pngitem.com/pimgs/m/475-4750728_add-user-group-woman-man-icon-add-user.png',
+                        ).image,
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.network(
-                              'https://www.pngitem.com/pimgs/m/475-4750728_add-user-group-woman-man-icon-add-user.png',
-                            ).image,
-                          ),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: InkWell(
-                          onTap: () async {
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: InkWell(
+                      onTap: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          showUploadMessage(
+                            context,
+                            'Uploading file...',
+                            showLoading: true,
+                          );
+                          final downloadUrls = await Future.wait(
+                              selectedMedia.map((m) async =>
+                                  await uploadData(m.storagePath, m.bytes)));
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          if (downloadUrls != null) {
+                            setState(
+                                () => uploadedFileUrl = downloadUrls.first);
+                            showUploadMessage(
+                              context,
+                              'Success!',
                             );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              final downloadUrls = await Future.wait(
-                                  selectedMedia.map((m) async =>
-                                      await uploadData(
-                                          m.storagePath, m.bytes)));
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              if (downloadUrls != null) {
-                                setState(
-                                    () => uploadedFileUrl = downloadUrls.first);
-                                showUploadMessage(
-                                  context,
-                                  'Success!',
-                                );
-                              } else {
-                                showUploadMessage(
-                                  context,
-                                  'Failed to upload media',
-                                );
-                                return;
-                              }
-                            }
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.network(
-                              columnIpanemaPregadoresRecord.img,
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).alternate,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                        child: TextFormField(
-                          controller: textController1,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Nome',
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Advent Sans',
-                                    color: Colors.white,
-                                    useGoogleFonts: false,
-                                  ),
+                          } else {
+                            showUploadMessage(
+                              context,
+                              'Failed to upload media',
+                            );
+                            return;
+                          }
+                        }
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.network(
+                          '',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          borderRadius: BorderRadius.circular(10),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).alternate,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                    child: TextFormField(
+                      controller: textController1,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'Nome',
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 1, 0, 0),
-                          child: TextFormField(
-                            controller: textController2,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              hintText: 'IGREJA',
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
-                              ),
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Advent Sans',
-                                      color: Colors.white,
-                                      useGoogleFonts: false,
-                                    ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 1, 0, 0),
-                          child: TextFormField(
-                            controller: textController3,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              hintText: 'WHATSAPP',
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(4.0),
-                                  topRight: Radius.circular(4.0),
-                                ),
-                              ),
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Advent Sans',
-                                      color: Colors.white,
-                                      useGoogleFonts: false,
-                                    ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Advent Sans',
+                            color: Colors.white,
+                            useGoogleFonts: false,
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
-                        child: FlutterFlowCalendar(
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          weekFormat: false,
-                          weekStartsMonday: false,
-                          onChange: (DateTimeRange newSelectedDate) {
-                            setState(
-                                () => calendarSelectedDay = newSelectedDate);
-                          },
-                          titleStyle: TextStyle(),
-                          dayOfWeekStyle: TextStyle(),
-                          dateStyle: TextStyle(),
-                          selectedDateStyle: TextStyle(),
-                          inactiveDateStyle: TextStyle(),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            final ipanemaPregadoresCreateData =
-                                createIpanemaPregadoresRecordData(
-                              nome: textController1.text,
-                              data: calendarSelectedDay.start,
-                              whatsapp: textController3.text,
-                              igreja: textController2.text,
-                              ativo: true,
-                              img: uploadedFileUrl,
-                            );
-                            await IpanemaPregadoresRecord.collection
-                                .doc()
-                                .set(ipanemaPregadoresCreateData);
-                            Navigator.pop(context);
-                          },
-                          text: 'Adicionar',
-                          options: FFButtonOptions(
-                            width: 130,
-                            height: 40,
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Advent Sans',
-                                      color: Colors.white,
-                                      useGoogleFonts: false,
-                                    ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: 12,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
             ),
-          );
-        },
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).alternate,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 1, 0, 0),
+                      child: TextFormField(
+                        controller: textController2,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'IGREJA',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Advent Sans',
+                              color: Colors.white,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).alternate,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 1, 0, 0),
+                      child: TextFormField(
+                        controller: textController3,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'WHATSAPP',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Advent Sans',
+                              color: Colors.white,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    child: FlutterFlowCalendar(
+                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      iconColor: FlutterFlowTheme.of(context).primaryText,
+                      weekFormat: false,
+                      weekStartsMonday: false,
+                      onChange: (DateTimeRange newSelectedDate) {
+                        setState(() => calendarSelectedDay = newSelectedDate);
+                      },
+                      titleStyle: TextStyle(
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                      ),
+                      dayOfWeekStyle: TextStyle(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                      dateStyle: TextStyle(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                      selectedDateStyle: TextStyle(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                      inactiveDateStyle: TextStyle(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        final ipanemaPregadoresCreateData =
+                            createIpanemaPregadoresRecordData(
+                          nome: textController1.text,
+                          data: calendarSelectedDay.start,
+                          whatsapp: textController3.text,
+                          igreja: textController2.text,
+                          ativo: true,
+                          img: uploadedFileUrl,
+                        );
+                        await IpanemaPregadoresRecord.collection
+                            .doc()
+                            .set(ipanemaPregadoresCreateData);
+                        Navigator.pop(context);
+                      },
+                      text: 'Adicionar',
+                      options: FFButtonOptions(
+                        width: 130,
+                        height: 40,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color: Colors.white,
+                                  useGoogleFonts: false,
+                                ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 12,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

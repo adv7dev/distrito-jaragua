@@ -287,7 +287,7 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
                     ),

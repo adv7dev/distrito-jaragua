@@ -6,7 +6,10 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
+import '../page_aurora_adm/page_aurora_adm_widget.dart';
+import '../page_ipanema_adm/page_ipanema_adm_widget.dart';
 import '../page_jaragua_adm/page_jaragua_adm_widget.dart';
+import '../page_panamericano_adm/page_panamericano_adm_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -704,8 +707,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PageIpanemaAdmWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'ADM JD. IPANEMA',
                                 options: FFButtonOptions(
@@ -740,8 +752,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PagePanamericanoAdmWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'ADM JD. PAN',
                                 options: FFButtonOptions(
@@ -776,8 +797,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration:
+                                          Duration(milliseconds: 300),
+                                      child: PageAuroraAdmWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'ADM AURORA',
                                 options: FFButtonOptions(
