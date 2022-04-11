@@ -11,16 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AddPregadoresJaraguaWidget extends StatefulWidget {
-  const AddPregadoresJaraguaWidget({Key key}) : super(key: key);
+class AddPregadoresPanamericanoWidget extends StatefulWidget {
+  const AddPregadoresPanamericanoWidget({Key key}) : super(key: key);
 
   @override
-  _AddPregadoresJaraguaWidgetState createState() =>
-      _AddPregadoresJaraguaWidgetState();
+  _AddPregadoresPanamericanoWidgetState createState() =>
+      _AddPregadoresPanamericanoWidgetState();
 }
 
-class _AddPregadoresJaraguaWidgetState
-    extends State<AddPregadoresJaraguaWidget> {
+class _AddPregadoresPanamericanoWidgetState
+    extends State<AddPregadoresPanamericanoWidget> {
   DateTimeRange calendarSelectedDay;
   String uploadedFileUrl = '';
   TextEditingController textController1;
@@ -43,8 +43,8 @@ class _AddPregadoresJaraguaWidgetState
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 10),
-      child: StreamBuilder<List<JaraguaPregadoresRecord>>(
-        stream: queryJaraguaPregadoresRecord(
+      child: StreamBuilder<List<IpanemaPregadoresRecord>>(
+        stream: queryIpanemaPregadoresRecord(
           singleRecord: true,
         ),
         builder: (context, snapshot) {
@@ -61,15 +61,15 @@ class _AddPregadoresJaraguaWidgetState
               ),
             );
           }
-          List<JaraguaPregadoresRecord> columnJaraguaPregadoresRecordList =
+          List<IpanemaPregadoresRecord> columnIpanemaPregadoresRecordList =
               snapshot.data;
           // Return an empty Container when the document does not exist.
           if (snapshot.data.isEmpty) {
             return Container();
           }
-          final columnJaraguaPregadoresRecord =
-              columnJaraguaPregadoresRecordList.isNotEmpty
-                  ? columnJaraguaPregadoresRecordList.first
+          final columnIpanemaPregadoresRecord =
+              columnIpanemaPregadoresRecordList.isNotEmpty
+                  ? columnIpanemaPregadoresRecordList.first
                   : null;
           return SingleChildScrollView(
             child: Column(
@@ -81,7 +81,7 @@ class _AddPregadoresJaraguaWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'ADD Pregadores - JARAGUÁ',
+                        'ADD Pregadores - IPANEMA',
                         style: FlutterFlowTheme.of(context).title3.override(
                               fontFamily: 'Advent Sans',
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -150,7 +150,7 @@ class _AddPregadoresJaraguaWidgetState
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: Image.network(
-                              columnJaraguaPregadoresRecord.img,
+                              columnIpanemaPregadoresRecord.img,
                               width: 100,
                               height: 100,
                               fit: BoxFit.cover,
@@ -326,7 +326,7 @@ class _AddPregadoresJaraguaWidgetState
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: FlutterFlowCalendar(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                           iconColor: FlutterFlowTheme.of(context).primaryText,
                           weekFormat: false,
                           weekStartsMonday: false,
@@ -364,8 +364,8 @@ class _AddPregadoresJaraguaWidgetState
                         padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final jaraguaPregadoresCreateData =
-                                createJaraguaPregadoresRecordData(
+                            final ipanemaPregadoresCreateData =
+                                createIpanemaPregadoresRecordData(
                               nome: textController1.text,
                               data: calendarSelectedDay.start,
                               whatsapp: textController3.text,
@@ -373,9 +373,9 @@ class _AddPregadoresJaraguaWidgetState
                               ativo: true,
                               img: uploadedFileUrl,
                             );
-                            await JaraguaPregadoresRecord.collection
+                            await IpanemaPregadoresRecord.collection
                                 .doc()
-                                .set(jaraguaPregadoresCreateData);
+                                .set(ipanemaPregadoresCreateData);
                             Navigator.pop(context);
                           },
                           text: 'Adicionar',
