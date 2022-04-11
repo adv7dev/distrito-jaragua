@@ -1,3 +1,4 @@
+import '../add_chat_users/add_chat_users_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../chat_page/chat_page_widget.dart';
@@ -34,8 +35,30 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                 useGoogleFonts: false,
               ),
         ),
-        actions: [],
-        centerTitle: false,
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+            child: InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 300),
+                    reverseDuration: Duration(milliseconds: 300),
+                    child: AddChatUsersWidget(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.person_add_outlined,
+                color: FlutterFlowTheme.of(context).secondaryColor,
+                size: 30,
+              ),
+            ),
+          ),
+        ],
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

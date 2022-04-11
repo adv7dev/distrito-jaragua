@@ -71,7 +71,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
               'Selecione as pessoas abaixo.',
               style: FlutterFlowTheme.of(context).bodyText2.override(
                     fontFamily: 'Lexend Deca',
-                    color: FlutterFlowTheme.of(context).secondaryText,
+                    color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                   ),
