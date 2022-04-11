@@ -179,8 +179,9 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                             child: StreamBuilder<List<EscalaPastoralRecord>>(
                               stream: queryEscalaPastoralRecord(
                                 queryBuilder: (escalaPastoralRecord) =>
-                                    escalaPastoralRecord.orderBy('data',
-                                        descending: true),
+                                    escalaPastoralRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data'),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
