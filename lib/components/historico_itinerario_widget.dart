@@ -56,7 +56,7 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
                         children: [
                           Container(
                             width: MediaQuery.of(context).size.width * 0.95,
-                            height: 100,
+                            height: MediaQuery.of(context).size.height * 0.25,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).alternate,
                               borderRadius: BorderRadius.circular(10),
