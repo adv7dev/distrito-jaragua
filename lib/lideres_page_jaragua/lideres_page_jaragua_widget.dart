@@ -54,143 +54,147 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: FlutterFlowTheme.of(context).alternate,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 10),
-                                  child:
-                                      StreamBuilder<List<LideresJaraguaRecord>>(
-                                    stream: queryLideresJaraguaRecord(
-                                      queryBuilder: (lideresJaraguaRecord) =>
-                                          lideresJaraguaRecord.orderBy('nome'),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50,
-                                            height: 50,
-                                            child: SpinKitRing(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryColor,
-                                              size: 50,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<LideresJaraguaRecord>
-                                          columnLideresJaraguaRecordList =
-                                          snapshot.data;
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            columnLideresJaraguaRecordList
-                                                .length, (columnIndex) {
-                                          final columnLideresJaraguaRecord =
-                                              columnLideresJaraguaRecordList[
-                                                  columnIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 15),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100),
-                                                  child: Image.network(
-                                                    'https://picsum.photos/seed/735/600',
-                                                    width: 70,
-                                                    height: 70,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            columnLideresJaraguaRecord
-                                                                .nome,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .subtitle1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Advent Sans',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            columnLideresJaraguaRecord
-                                                                .cargo,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Advent Sans',
-                                                                  color: Color(
-                                                                      0xFFC1C1C1),
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
+                        Expanded(
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: StreamBuilder<
+                                        List<LideresJaraguaRecord>>(
+                                      stream: queryLideresJaraguaRecord(
+                                        queryBuilder: (lideresJaraguaRecord) =>
+                                            lideresJaraguaRecord
+                                                .orderBy('nome'),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50,
+                                              height: 50,
+                                              child: SpinKitRing(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                                size: 50,
+                                              ),
                                             ),
                                           );
-                                        }),
-                                      );
-                                    },
+                                        }
+                                        List<LideresJaraguaRecord>
+                                            columnLideresJaraguaRecordList =
+                                            snapshot.data;
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: List.generate(
+                                              columnLideresJaraguaRecordList
+                                                  .length, (columnIndex) {
+                                            final columnLideresJaraguaRecord =
+                                                columnLideresJaraguaRecordList[
+                                                    columnIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 15),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                    child: Image.network(
+                                                      'https://picsum.photos/seed/735/600',
+                                                      width: 70,
+                                                      height: 70,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              columnLideresJaraguaRecord
+                                                                  .nome,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .subtitle1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Advent Sans',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              columnLideresJaraguaRecord
+                                                                  .cargo,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Advent Sans',
+                                                                    color: Color(
+                                                                        0xFFC1C1C1),
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .italic,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
