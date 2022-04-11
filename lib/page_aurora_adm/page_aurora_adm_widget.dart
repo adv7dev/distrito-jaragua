@@ -1,4 +1,6 @@
+import '../components/add_musica_aurora_widget.dart';
 import '../components/add_pregadores_aurora_widget.dart';
+import '../components/add_sonoplastia_aurora_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -101,8 +103,23 @@ class _PageAuroraAdmWidgetState extends State<PageAuroraAdmWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddSonoplastiaAuroraWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'ADD SONOPLASTAS',
                         options: FFButtonOptions(
@@ -133,8 +150,23 @@ class _PageAuroraAdmWidgetState extends State<PageAuroraAdmWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddMusicaAuroraWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'ADD CANTORES',
                         options: FFButtonOptions(

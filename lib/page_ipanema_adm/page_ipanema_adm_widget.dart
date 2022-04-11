@@ -1,4 +1,6 @@
+import '../components/add_musica_ipanema_widget.dart';
 import '../components/add_pregadores_ipanema_widget.dart';
+import '../components/add_sonoplastia_ipanema_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -101,8 +103,23 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddSonoplastiaIpanemaWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'ADD SONOPLASTAS',
                         options: FFButtonOptions(
@@ -133,8 +150,23 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddMusicaIpanemaWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'ADD CANTORES',
                         options: FFButtonOptions(
