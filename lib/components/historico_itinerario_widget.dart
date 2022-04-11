@@ -16,155 +16,95 @@ class HistoricoItinerarioWidget extends StatefulWidget {
 class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: StreamBuilder<List<EscalaPastoralRecord>>(
-                    stream: queryEscalaPastoralRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: SpinKitRing(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              size: 50,
-                            ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+            child: StreamBuilder<List<EscalaPastoralRecord>>(
+              stream: queryEscalaPastoralRecord(
+                queryBuilder: (escalaPastoralRecord) =>
+                    escalaPastoralRecord.where('ativo', isEqualTo: false),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: SpinKitRing(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                List<EscalaPastoralRecord> columnEscalaPastoralRecordList =
+                    snapshot.data;
+                return Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(columnEscalaPastoralRecordList.length,
+                      (columnIndex) {
+                    final columnEscalaPastoralRecord =
+                        columnEscalaPastoralRecordList[columnIndex];
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFEEEEEE),
                           ),
-                        );
-                      }
-                      List<EscalaPastoralRecord>
-                          gridViewEscalaPastoralRecordList = snapshot.data;
-                      return GridView.builder(
-                        padding: EdgeInsets.zero,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          childAspectRatio: 1,
-                        ),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: gridViewEscalaPastoralRecordList.length,
-                        itemBuilder: (context, gridViewIndex) {
-                          final gridViewEscalaPastoralRecord =
-                              gridViewEscalaPastoralRecordList[gridViewIndex];
-                          return Container(
-                            width: 100,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                              child: Column(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          gridViewEscalaPastoralRecord.igreja,
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Advent Sans',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                useGoogleFonts: false,
-                                              ),
+                                  Text(
+                                    columnEscalaPastoralRecord.igreja,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Advent Sans',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: false,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            dateTimeFormat(
-                                                'd/M/y',
-                                                gridViewEscalaPastoralRecord
-                                                    .data),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: Colors.white,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            dateTimeFormat(
-                                                'EEEE',
-                                                gridViewEscalaPastoralRecord
-                                                    .data),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: Colors.white,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    dateTimeFormat('d/M/y',
+                                        columnEscalaPastoralRecord.data),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Advent Sans',
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
