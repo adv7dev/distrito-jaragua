@@ -40,14 +40,15 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
             child: InkWell(
               onTap: () async {
-                await Navigator.push(
+                await Navigator.pushAndRemoveUntil(
                   context,
                   PageTransition(
-                    type: PageTransitionType.fade,
+                    type: PageTransitionType.bottomToTop,
                     duration: Duration(milliseconds: 300),
                     reverseDuration: Duration(milliseconds: 300),
                     child: AddChatUsersWidget(),
                   ),
+                  (r) => false,
                 );
               },
               child: Icon(
