@@ -50,7 +50,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
           ],
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -105,26 +105,79 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Image.network(
-                                    'https://picsum.photos/seed/804/600',
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            columnUsersRecord.displayName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
-                                          ),
-                                        ],
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 5, 5, 5),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.network(
+                                        columnUsersRecord.photoUrl,
+                                        width: 70,
+                                        height: 70,
+                                        fit: BoxFit.cover,
                                       ),
-                                    ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                columnUsersRecord.displayName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily:
+                                                              'Advent Sans',
+                                                          color: Colors.white,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                columnUsersRecord.bio,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Advent Sans',
+                                                      color: Color(0xFFCBCBCB),
+                                                      fontStyle:
+                                                          FontStyle.italic,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 10, 0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.message,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          size: 30,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
