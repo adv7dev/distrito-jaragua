@@ -157,8 +157,6 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
               child: FutureBuilder<List<UsersRecord>>(
                 future: queryUsersRecordOnce(
-                  queryBuilder: (usersRecord) => usersRecord.where('uid',
-                      isEqualTo: currentUserUid != '' ? currentUserUid : null),
                   limit: 50,
                 ),
                 builder: (context, snapshot) {
