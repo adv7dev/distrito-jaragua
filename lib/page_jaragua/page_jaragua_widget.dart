@@ -593,9 +593,9 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                               child: FlutterFlowGoogleMap(
                                 controller: googleMapsController,
                                 onCameraIdle: (latLng) =>
-                                    googleMapsCenter = latLng,
+                                    setState(() => googleMapsCenter = latLng),
                                 initialLocation: googleMapsCenter ??=
-                                    LatLng(-23.453268, -46.7369486),
+                                    LatLng(-23.4532681, -46.7347599),
                                 markerColor: GoogleMarkerColor.violet,
                                 mapType: MapType.normal,
                                 style: GoogleMapStyle.standard,
@@ -604,7 +604,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                 allowZoom: true,
                                 showZoomControls: true,
                                 showLocation: true,
-                                showCompass: false,
+                                showCompass: true,
                                 showMapToolbar: false,
                                 showTraffic: false,
                                 centerMapOnMarkerTap: true,
