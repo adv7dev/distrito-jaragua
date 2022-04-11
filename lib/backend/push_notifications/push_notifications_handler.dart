@@ -133,9 +133,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         chatRef: getParameter(data, 'chatRef'),
       ),
   'allChatsPage': (data) async => NavBarPage(initialPage: 'AllChatsPageWidget'),
-  'addChatUsers': (data) async => AddChatUsersWidget(
-        chat: await getDocumentParameter(data, 'chat', ChatsRecord.serializer),
-      ),
+  'addChatUsers': (data) async => AddChatUsersWidget(),
   'createGroupChat': (data) async => CreateGroupChatWidget(),
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),

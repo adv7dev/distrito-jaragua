@@ -101,9 +101,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                       type: PageTransitionType.bottomToTop,
                       duration: Duration(milliseconds: 300),
                       reverseDuration: Duration(milliseconds: 300),
-                      child: AddChatUsersWidget(
-                        chat: _chatInfo.chatRecord,
-                      ),
+                      child: AddChatUsersWidget(),
                     ),
                   );
                 },

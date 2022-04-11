@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../chat_page/chat_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddChatUsersWidget extends StatefulWidget {
-  const AddChatUsersWidget({
-    Key key,
-    this.chat,
-  }) : super(key: key);
-
-  final ChatsRecord chat;
+  const AddChatUsersWidget({Key key}) : super(key: key);
 
   @override
   _AddChatUsersWidgetState createState() => _AddChatUsersWidgetState();
@@ -27,20 +22,9 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          buttonSize: 24,
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Color(0xFF95A1AC),
-            size: 24,
-          ),
-          onPressed: () async {
-            Navigator.pop(context);
-          },
-        ),
+        iconTheme:
+            IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
+        automaticallyImplyLeading: true,
         title: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,39 +82,54 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
-                      child: Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).alternate,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.network(
-                                  'https://picsum.photos/seed/804/600',
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          columnUsersRecord.displayName,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.bottomToTop,
+                              duration: Duration(milliseconds: 300),
+                              reverseDuration: Duration(milliseconds: 300),
+                              child: ChatPageWidget(
+                                chatUser: columnUsersRecord,
+                              ),
                             ),
-                          ],
+                          );
+                        },
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: FlutterFlowTheme.of(context).alternate,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Image.network(
+                                    'https://picsum.photos/seed/804/600',
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            columnUsersRecord.displayName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
