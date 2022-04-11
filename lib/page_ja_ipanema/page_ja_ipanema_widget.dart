@@ -567,6 +567,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(1, 1, 1, 1),
@@ -578,7 +579,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                           ),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.95,
-                            height: 350,
+                            height: 370,
                             decoration: BoxDecoration(
                               color: Color(0xFFEEEEEE),
                               borderRadius: BorderRadius.circular(10),
