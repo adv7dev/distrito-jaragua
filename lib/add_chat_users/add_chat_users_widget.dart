@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -30,7 +29,6 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
           .toList();
 
   TextEditingController textController;
-  ChatsRecord groupChat;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -155,8 +153,8 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
           Expanded(
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
-              child: FutureBuilder<List<UsersRecord>>(
-                future: queryUsersRecordOnce(
+              child: StreamBuilder<List<UsersRecord>>(
+                stream: queryUsersRecord(
                   limit: 50,
                 ),
                 builder: (context, snapshot) {
@@ -323,40 +321,32 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                 color: FlutterFlowTheme.of(context).primaryBackground,
               ),
             ),
-            child: Visibility(
-              visible:
-                  widget.chat.users?.contains(currentUserReference) ?? true,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 34),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    groupChat = await FFChatManager.instance.addGroupMembers(
-                      widget.chat,
-                      checkboxListTileCheckedItems
-                          .map((e) => e.reference)
-                          .toList(),
-                    );
-                    Navigator.pop(context);
-
-                    setState(() {});
-                  },
-                  text: 'Chamar Crente',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).secondaryColor,
-                    textStyle: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 34),
+              child: FFButtonWidget(
+                onPressed: () async {
+                  await FFChatManager.instance.addGroupMembers(
+                    widget.chat,
+                    [widget.chat.userA],
+                  );
+                  Navigator.pop(context);
+                },
+                text: 'Chamar Crente',
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  textStyle: FlutterFlowTheme.of(context).title3.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
                   ),
+                  borderRadius: 12,
                 ),
               ),
             ),
