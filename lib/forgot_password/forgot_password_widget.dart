@@ -36,7 +36,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           },
           child: Icon(
             Icons.chevron_left_rounded,
-            color: FlutterFlowTheme.of(context).primaryBackground,
+            color: FlutterFlowTheme.of(context).secondaryColor,
             size: 32,
           ),
         ),
@@ -49,7 +49,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               ),
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

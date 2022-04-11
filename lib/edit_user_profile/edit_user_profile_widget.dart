@@ -48,7 +48,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -56,7 +56,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
               buttonSize: 46,
               icon: Icon(
                 Icons.arrow_back_rounded,
-                color: Colors.black,
+                color: FlutterFlowTheme.of(context).secondaryColor,
                 size: 24,
               ),
               onPressed: () async {
@@ -64,11 +64,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
               },
             ),
             title: Text(
-              'Seus Perfil',
-              style: FlutterFlowTheme.of(context).title2,
+              'Seu Perfil',
+              style: FlutterFlowTheme.of(context).title2.override(
+                    fontFamily: 'Advent Sans',
+                    color: Colors.white,
+                    useGoogleFonts: false,
+                  ),
             ),
             actions: [],
-            centerTitle: false,
+            centerTitle: true,
             elevation: 0,
           ),
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -116,20 +120,22 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                               pickerFontFamily: 'Lexend Deca',
                             );
                             if (selectedMedia != null &&
-                                validateFileFormat(
-                                    selectedMedia.storagePath, context)) {
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
                               showUploadMessage(
                                 context,
                                 'Uploading file...',
                                 showLoading: true,
                               );
-                              final downloadUrl = await uploadData(
-                                  selectedMedia.storagePath,
-                                  selectedMedia.bytes);
+                              final downloadUrls = await Future.wait(
+                                  selectedMedia.map((m) async =>
+                                      await uploadData(
+                                          m.storagePath, m.bytes)));
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
-                              if (downloadUrl != null) {
-                                setState(() => uploadedFileUrl1 = downloadUrl);
+                              if (downloadUrls != null) {
+                                setState(() =>
+                                    uploadedFileUrl1 = downloadUrls.first);
                                 showUploadMessage(
                                   context,
                                   'Success!',
@@ -352,21 +358,23 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                     allowPhoto: true,
                                   );
                                   if (selectedMedia != null &&
-                                      validateFileFormat(
-                                          selectedMedia.storagePath, context)) {
+                                      selectedMedia.every((m) =>
+                                          validateFileFormat(
+                                              m.storagePath, context))) {
                                     showUploadMessage(
                                       context,
                                       'Uploading file...',
                                       showLoading: true,
                                     );
-                                    final downloadUrl = await uploadData(
-                                        selectedMedia.storagePath,
-                                        selectedMedia.bytes);
+                                    final downloadUrls = await Future.wait(
+                                        selectedMedia.map((m) async =>
+                                            await uploadData(
+                                                m.storagePath, m.bytes)));
                                     ScaffoldMessenger.of(context)
                                         .hideCurrentSnackBar();
-                                    if (downloadUrl != null) {
-                                      setState(
-                                          () => uploadedFileUrl2 = downloadUrl);
+                                    if (downloadUrls != null) {
+                                      setState(() => uploadedFileUrl2 =
+                                          downloadUrls.first);
                                       showUploadMessage(
                                         context,
                                         'Success!',
@@ -379,6 +387,12 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       return;
                                     }
                                   }
+
+                                  final usersUpdateData = createUsersRecordData(
+                                    photoUrl: uploadedFileUrl2,
+                                  );
+                                  await currentUserReference
+                                      .update(usersUpdateData);
                                 },
                                 child: Image.network(
                                   valueOrDefault<String>(
@@ -411,7 +425,6 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                 displayName: yourNameController?.text ?? '',
                                 userName: userNameController?.text ?? '',
                                 bio: bioController?.text ?? '',
-                                capa: uploadedFileUrl2,
                               );
                               await currentUserReference
                                   .update(usersUpdateData);

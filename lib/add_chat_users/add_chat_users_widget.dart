@@ -325,36 +325,40 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                 color: FlutterFlowTheme.of(context).primaryBackground,
               ),
             ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 34),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  groupChat = await FFChatManager.instance.addGroupMembers(
-                    widget.chat,
-                    checkboxListTileCheckedItems
-                        .map((e) => e.reference)
-                        .toList(),
-                  );
-                  Navigator.pop(context);
+            child: Visibility(
+              visible:
+                  widget.chat.users?.contains(currentUserReference) ?? true,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 34),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    groupChat = await FFChatManager.instance.addGroupMembers(
+                      widget.chat,
+                      checkboxListTileCheckedItems
+                          .map((e) => e.reference)
+                          .toList(),
+                    );
+                    Navigator.pop(context);
 
-                  setState(() {});
-                },
-                text: 'Chamar Crente',
-                options: FFButtonOptions(
-                  width: 130,
-                  height: 40,
-                  color: FlutterFlowTheme.of(context).secondaryColor,
-                  textStyle: FlutterFlowTheme.of(context).title3.override(
-                        fontFamily: 'Lexend Deca',
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
+                    setState(() {});
+                  },
+                  text: 'Chamar Crente',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    textStyle: FlutterFlowTheme.of(context).title3.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: 12,
                   ),
-                  borderRadius: 12,
                 ),
               ),
             ),

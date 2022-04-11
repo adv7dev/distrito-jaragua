@@ -64,7 +64,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
             ),
           ),
         ],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -78,7 +78,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 24, 16),
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 5, 24, 16),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -126,20 +126,22 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               allowPhoto: true,
                             );
                             if (selectedMedia != null &&
-                                validateFileFormat(
-                                    selectedMedia.storagePath, context)) {
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
                               showUploadMessage(
                                 context,
                                 'Uploading file...',
                                 showLoading: true,
                               );
-                              final downloadUrl = await uploadData(
-                                  selectedMedia.storagePath,
-                                  selectedMedia.bytes);
+                              final downloadUrls = await Future.wait(
+                                  selectedMedia.map((m) async =>
+                                      await uploadData(
+                                          m.storagePath, m.bytes)));
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
-                              if (downloadUrl != null) {
-                                setState(() => uploadedFileUrl = downloadUrl);
+                              if (downloadUrls != null) {
+                                setState(
+                                    () => uploadedFileUrl = downloadUrls.first);
                                 showUploadMessage(
                                   context,
                                   'Success!',

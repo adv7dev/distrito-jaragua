@@ -49,7 +49,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               ),
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
