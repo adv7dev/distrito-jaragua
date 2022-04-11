@@ -329,8 +329,8 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final ipanemaPregadoresCreateData =
-                            createIpanemaPregadoresRecordData(
+                        final auroraPregadoresCreateData =
+                            createAuroraPregadoresRecordData(
                           nome: textController1.text,
                           data: calendarSelectedDay.start,
                           whatsapp: textController3.text,
@@ -338,9 +338,9 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                           ativo: true,
                           img: uploadedFileUrl,
                         );
-                        await IpanemaPregadoresRecord.collection
+                        await AuroraPregadoresRecord.collection
                             .doc()
-                            .set(ipanemaPregadoresCreateData);
+                            .set(auroraPregadoresCreateData);
                         Navigator.pop(context);
                       },
                       text: 'Adicionar',

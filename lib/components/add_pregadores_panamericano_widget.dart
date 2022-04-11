@@ -330,8 +330,8 @@ class _AddPregadoresPanamericanoWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(100, 0, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final ipanemaPregadoresCreateData =
-                            createIpanemaPregadoresRecordData(
+                        final panamericanoPregadoresCreateData =
+                            createPanamericanoPregadoresRecordData(
                           nome: textController1.text,
                           data: calendarSelectedDay.start,
                           whatsapp: textController3.text,
@@ -339,9 +339,9 @@ class _AddPregadoresPanamericanoWidgetState
                           ativo: true,
                           img: uploadedFileUrl,
                         );
-                        await IpanemaPregadoresRecord.collection
+                        await PanamericanoPregadoresRecord.collection
                             .doc()
-                            .set(ipanemaPregadoresCreateData);
+                            .set(panamericanoPregadoresCreateData);
                         Navigator.pop(context);
                       },
                       text: 'Adicionar',
