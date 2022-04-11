@@ -1,5 +1,4 @@
 import '../esc_musica_panamericano/esc_musica_panamericano_widget.dart';
-import '../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
 import '../esc_pregadores_panamericano/esc_pregadores_panamericano_widget.dart';
 import '../esc_sonoplastia_panamericano/esc_sonoplastia_panamericano_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -7,6 +6,7 @@ import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../itinerario_pastoral/itinerario_pastoral_widget.dart';
+import '../lideres_page_panamericano/lideres_page_panamericano_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -507,7 +507,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                                       duration: Duration(milliseconds: 300),
                                       reverseDuration:
                                           Duration(milliseconds: 300),
-                                      child: EscPregadoresJaraguaWidget(),
+                                      child: LideresPagePanamericanoWidget(),
                                     ),
                                   );
                                 },

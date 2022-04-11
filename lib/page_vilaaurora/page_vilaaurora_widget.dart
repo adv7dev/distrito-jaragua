@@ -1,5 +1,4 @@
 import '../esc_musica_aurora/esc_musica_aurora_widget.dart';
-import '../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
 import '../esc_pregadores_vilaaurora/esc_pregadores_vilaaurora_widget.dart';
 import '../esc_sonoplastia_aurora/esc_sonoplastia_aurora_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -7,6 +6,7 @@ import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../itinerario_pastoral/itinerario_pastoral_widget.dart';
+import '../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -505,7 +505,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
                                         Duration(milliseconds: 300),
-                                    child: EscPregadoresJaraguaWidget(),
+                                    child: LideresPageAuroraWidget(),
                                   ),
                                 );
                               },
