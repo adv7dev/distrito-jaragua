@@ -389,7 +389,7 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   }
 
                                   final usersUpdateData = createUsersRecordData(
-                                    photoUrl: uploadedFileUrl2,
+                                    capa: uploadedFileUrl2,
                                   );
                                   await currentUserReference
                                       .update(usersUpdateData);
