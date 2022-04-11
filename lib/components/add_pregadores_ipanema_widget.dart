@@ -77,7 +77,7 @@ class _AddPregadoresIpanemaWidgetState
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: Image.network(
-                          'https://www.pngitem.com/pimgs/m/475-4750728_add-user-group-woman-man-icon-add-user.png',
+                          '',
                         ).image,
                       ),
                       borderRadius: BorderRadius.circular(100),
@@ -120,7 +120,7 @@ class _AddPregadoresIpanemaWidgetState
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.network(
-                          '',
+                          'https://www.pngitem.com/pimgs/m/475-4750728_add-user-group-woman-man-icon-add-user.png',
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
@@ -304,16 +304,16 @@ class _AddPregadoresIpanemaWidgetState
                         color: FlutterFlowTheme.of(context).secondaryColor,
                       ),
                       dayOfWeekStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
                       ),
                       dateStyle: TextStyle(
                         color: FlutterFlowTheme.of(context).primaryText,
                       ),
                       selectedDateStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: Colors.white,
                       ),
                       inactiveDateStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).secondaryText,
                       ),
                     ),
                   ),

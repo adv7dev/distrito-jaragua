@@ -406,7 +406,7 @@ class _EscPregadoresIpanemaWidgetState
                         stream: queryIpanemaPregadoresRecord(
                           queryBuilder: (ipanemaPregadoresRecord) =>
                               ipanemaPregadoresRecord.where('ativo',
-                                  isEqualTo: true),
+                                  isEqualTo: false),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
