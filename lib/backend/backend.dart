@@ -32,6 +32,10 @@ import 'schema/anuncios_aurora_record.dart';
 import 'schema/escala_pastoral_record.dart';
 import 'schema/aurora_limpeza_record.dart';
 import 'schema/aurora_sabatina_record.dart';
+import 'schema/lideres_jaragua_record.dart';
+import 'schema/lideres_ipanema_record.dart';
+import 'schema/lideres_panamericano_record.dart';
+import 'schema/lideres_aurora_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -66,6 +70,10 @@ export 'schema/anuncios_aurora_record.dart';
 export 'schema/escala_pastoral_record.dart';
 export 'schema/aurora_limpeza_record.dart';
 export 'schema/aurora_sabatina_record.dart';
+export 'schema/lideres_jaragua_record.dart';
+export 'schema/lideres_ipanema_record.dart';
+export 'schema/lideres_panamericano_record.dart';
+export 'schema/lideres_aurora_record.dart';
 
 /// Functions to query UserPostsRecords (as a Stream and as a Future).
 Stream<List<UserPostsRecord>> queryUserPostsRecord(
@@ -851,6 +859,119 @@ Future<FFFirestorePage<AuroraSabatinaRecord>> queryAuroraSabatinaRecordPage({
 }) =>
     queryCollectionPage(
         AuroraSabatinaRecord.collection, AuroraSabatinaRecord.serializer,
+        queryBuilder: queryBuilder,
+        nextPageMarker: nextPageMarker,
+        pageSize: pageSize);
+
+/// Functions to query LideresJaraguaRecords (as a Stream and as a Future).
+Stream<List<LideresJaraguaRecord>> queryLideresJaraguaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        LideresJaraguaRecord.collection, LideresJaraguaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<LideresJaraguaRecord>> queryLideresJaraguaRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        LideresJaraguaRecord.collection, LideresJaraguaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<LideresJaraguaRecord>> queryLideresJaraguaRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+}) =>
+    queryCollectionPage(
+        LideresJaraguaRecord.collection, LideresJaraguaRecord.serializer,
+        queryBuilder: queryBuilder,
+        nextPageMarker: nextPageMarker,
+        pageSize: pageSize);
+
+/// Functions to query LideresIpanemaRecords (as a Stream and as a Future).
+Stream<List<LideresIpanemaRecord>> queryLideresIpanemaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        LideresIpanemaRecord.collection, LideresIpanemaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<LideresIpanemaRecord>> queryLideresIpanemaRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        LideresIpanemaRecord.collection, LideresIpanemaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<LideresIpanemaRecord>> queryLideresIpanemaRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+}) =>
+    queryCollectionPage(
+        LideresIpanemaRecord.collection, LideresIpanemaRecord.serializer,
+        queryBuilder: queryBuilder,
+        nextPageMarker: nextPageMarker,
+        pageSize: pageSize);
+
+/// Functions to query LideresPanamericanoRecords (as a Stream and as a Future).
+Stream<List<LideresPanamericanoRecord>> queryLideresPanamericanoRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(LideresPanamericanoRecord.collection,
+        LideresPanamericanoRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<LideresPanamericanoRecord>> queryLideresPanamericanoRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(LideresPanamericanoRecord.collection,
+        LideresPanamericanoRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<LideresPanamericanoRecord>>
+    queryLideresPanamericanoRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+}) =>
+        queryCollectionPage(LideresPanamericanoRecord.collection,
+            LideresPanamericanoRecord.serializer,
+            queryBuilder: queryBuilder,
+            nextPageMarker: nextPageMarker,
+            pageSize: pageSize);
+
+/// Functions to query LideresAuroraRecords (as a Stream and as a Future).
+Stream<List<LideresAuroraRecord>> queryLideresAuroraRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        LideresAuroraRecord.collection, LideresAuroraRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<LideresAuroraRecord>> queryLideresAuroraRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        LideresAuroraRecord.collection, LideresAuroraRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<LideresAuroraRecord>> queryLideresAuroraRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+}) =>
+    queryCollectionPage(
+        LideresAuroraRecord.collection, LideresAuroraRecord.serializer,
         queryBuilder: queryBuilder,
         nextPageMarker: nextPageMarker,
         pageSize: pageSize);

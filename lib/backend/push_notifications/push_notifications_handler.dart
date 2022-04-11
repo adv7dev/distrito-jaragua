@@ -43,6 +43,7 @@ import '../../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import '../../page_ipanema_adm/page_ipanema_adm_widget.dart';
 import '../../page_panamericano_adm/page_panamericano_adm_widget.dart';
 import '../../page_aurora_adm/page_aurora_adm_widget.dart';
+import '../../lideres_page_jaragua/lideres_page_jaragua_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -161,6 +162,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Page_Ipanema_adm': (data) async => PageIpanemaAdmWidget(),
   'Page_Panamericano_adm': (data) async => PagePanamericanoAdmWidget(),
   'Page_Aurora_adm': (data) async => PageAuroraAdmWidget(),
+  'Lideres_Page_Jaragua': (data) async => LideresPageJaraguaWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
