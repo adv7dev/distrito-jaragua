@@ -27,12 +27,7 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
               children: [
                 Expanded(
                   child: StreamBuilder<List<EscalaPastoralRecord>>(
-                    stream: queryEscalaPastoralRecord(
-                      queryBuilder: (escalaPastoralRecord) =>
-                          escalaPastoralRecord
-                              .where('ativo', isEqualTo: false)
-                              .orderBy('ativo', descending: true),
-                    ),
+                    stream: queryEscalaPastoralRecord(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
