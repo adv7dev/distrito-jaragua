@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/delete_anuncios_widget.dart';
+import '../components/delete_anuncios_jaragua_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -142,7 +142,8 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                           .size
                                                           .height *
                                                       0.5,
-                                                  child: DeleteAnunciosWidget(),
+                                                  child:
+                                                      DeleteAnunciosJaraguaWidget(),
                                                 ),
                                               );
                                             },
@@ -176,7 +177,7 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                                 .height *
                                                             0.4,
                                                         child:
-                                                            DeleteAnunciosWidget(),
+                                                            DeleteAnunciosJaraguaWidget(),
                                                       ),
                                                     );
                                                   },

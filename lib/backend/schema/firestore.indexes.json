@@ -127,6 +127,62 @@
       ]
     },
     {
+      "collectionGroup": "anuncios_panamericano",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ativo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "data",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "anuncios_panamericano",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ativo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "data",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "anuncios_aurora",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ativo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "data",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "anuncios_aurora",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ativo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "data",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "chat_messages",
       "queryScope": "COLLECTION",
       "fields": [

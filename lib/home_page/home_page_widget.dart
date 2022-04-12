@@ -4,8 +4,11 @@ import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
+import '../view_all_anuncios_aurora/view_all_anuncios_aurora_widget.dart';
 import '../view_all_anuncios_distrital/view_all_anuncios_distrital_widget.dart';
+import '../view_all_anuncios_ipanema/view_all_anuncios_ipanema_widget.dart';
 import '../view_all_anuncios_jaragua/view_all_anuncios_jaragua_widget.dart';
+import '../view_all_anuncios_panamericano/view_all_anuncios_panamericano_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -487,7 +490,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           PageTransition(
-                            type: PageTransitionType.bottomToTop,
+                            type: PageTransitionType.rightToLeft,
                             duration: Duration(milliseconds: 300),
                             reverseDuration: Duration(milliseconds: 300),
                             child: ViewAllAnunciosJaraguaWidget(),
@@ -809,21 +812,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Jard. Ipanema Anuncios',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Advent Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: false,
-                              ),
-                        ),
-                      ],
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ViewAllAnunciosIpanemaWidget(),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Jard. Ipanema Anuncios',
+                            style: FlutterFlowTheme.of(context).title2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.chevron_right,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              size: 24,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Row(
@@ -1113,21 +1139,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Jard. Panamericano Anuncios',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Advent Sans',
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ViewAllAnunciosPanamericanoWidget(),
+                          ),
+                        );
+                      },
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Jard. Panamericano Anuncios',
+                              style:
+                                  FlutterFlowTheme.of(context).title2.override(
+                                        fontFamily: 'Advent Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: false,
+                                      ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              child: Icon(
+                                Icons.chevron_right,
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: false,
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                size: 24,
                               ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   Row(
@@ -1419,21 +1473,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Vila Aurora Anuncios',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Advent Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: false,
-                              ),
-                        ),
-                      ],
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ViewAllAnunciosAuroraWidget(),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Vila Aurora Anuncios',
+                            style: FlutterFlowTheme.of(context).title2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.chevron_right,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              size: 24,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Row(

@@ -8,21 +8,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DeleteAnunciosWidget extends StatefulWidget {
-  const DeleteAnunciosWidget({
+class DeleteAnunciosAuroraWidget extends StatefulWidget {
+  const DeleteAnunciosAuroraWidget({
     Key key,
-    this.anunciosdistrital,
-    this.anunciosJaragua,
+    this.anunciosAurora,
   }) : super(key: key);
 
-  final DocumentReference anunciosdistrital;
-  final DocumentReference anunciosJaragua;
+  final DocumentReference anunciosAurora;
 
   @override
-  _DeleteAnunciosWidgetState createState() => _DeleteAnunciosWidgetState();
+  _DeleteAnunciosAuroraWidgetState createState() =>
+      _DeleteAnunciosAuroraWidgetState();
 }
 
-class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
+class _DeleteAnunciosAuroraWidgetState
+    extends State<DeleteAnunciosAuroraWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,18 +51,10 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
           children: [
             FFButtonWidget(
               onPressed: () async {
-                final anunciosDistritalUpdateData =
-                    createAnunciosDistritalRecordData(
+                final anunciosAuroraUpdateData = createAnunciosAuroraRecordData(
                   ativo: false,
                 );
-                await widget.anunciosdistrital
-                    .update(anunciosDistritalUpdateData);
-
-                final anunciosJaraguaUpdateData =
-                    createAnunciosJaraguaRecordData(
-                  ativo: false,
-                );
-                await widget.anunciosJaragua.update(anunciosJaraguaUpdateData);
+                await widget.anunciosAurora.update(anunciosAuroraUpdateData);
                 Navigator.pop(context);
               },
               text: 'Enviar Para  o Histórico',
@@ -87,8 +79,7 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  await widget.anunciosdistrital.delete();
-                  await widget.anunciosJaragua.delete();
+                  await widget.anunciosAurora.delete();
                   Navigator.pop(context);
                 },
                 text: 'Deletar',

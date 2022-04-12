@@ -49,6 +49,8 @@ import '../../lideres_page_panamericano/lideres_page_panamericano_widget.dart';
 import '../../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import '../../view_all_anuncios_jaragua/view_all_anuncios_jaragua_widget.dart';
 import '../../view_all_anuncios_ipanema/view_all_anuncios_ipanema_widget.dart';
+import '../../view_all_anuncios_panamericano/view_all_anuncios_panamericano_widget.dart';
+import '../../view_all_anuncios_aurora/view_all_anuncios_aurora_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -142,8 +144,12 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'createGroupChat': (data) async => CreateGroupChatWidget(),
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),
-  'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(),
-  'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(),
+  'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(
+        jaraguapregadores: getParameter(data, 'jaraguapregadores'),
+      ),
+  'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(
+        jaraguasonoplastia: getParameter(data, 'jaraguasonoplastia'),
+      ),
   'esc_musica_jaragua': (data) async => EscMusicaJaraguaWidget(),
   'page_ja_ipanema': (data) async => PageJaIpanemaWidget(),
   'esc_pregadores_ipanema': (data) async => EscPregadoresIpanemaWidget(),
@@ -172,6 +178,11 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Lideres_Page_Aurora': (data) async => LideresPageAuroraWidget(),
   'view_all_anuncios_Jaragua': (data) async => ViewAllAnunciosJaraguaWidget(),
   'view_all_anuncios_Ipanema': (data) async => ViewAllAnunciosIpanemaWidget(),
+  'view_all_anuncios_Panamericano': (data) async =>
+      ViewAllAnunciosPanamericanoWidget(),
+  'view_all_anuncios_Aurora': (data) async => ViewAllAnunciosAuroraWidget(
+        anunciosAurora: getParameter(data, 'anunciosAurora'),
+      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
