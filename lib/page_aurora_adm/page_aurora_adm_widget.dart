@@ -1,10 +1,11 @@
+import '../components/add_lideres_widget.dart';
 import '../components/add_musica_aurora_widget.dart';
+import '../components/add_musica_jaragua_widget.dart';
 import '../components/add_pregadores_aurora_widget.dart';
 import '../components/add_sonoplastia_aurora_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -199,14 +200,20 @@ class _PageAuroraAdmWidgetState extends State<PageAuroraAdmWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.bottomToTop,
-                              duration: Duration(milliseconds: 300),
-                              reverseDuration: Duration(milliseconds: 300),
-                              child: LideresPageAuroraWidget(),
-                            ),
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddLideresWidget(),
+                                ),
+                              );
+                            },
                           );
                         },
                         text: 'ADD LIDERES',
@@ -221,6 +228,53 @@ class _PageAuroraAdmWidgetState extends State<PageAuroraAdmWidget> {
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: false,
                                   ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddMusicaJaraguaWidget(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        text: 'ADD ANUNCIOS',
+                        options: FFButtonOptions(
+                          width: 200,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).customColor1,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Advent Sans',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w500,
+                                useGoogleFonts: false,
+                              ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,

@@ -1,4 +1,6 @@
+import '../components/add_lideres_widget.dart';
 import '../components/add_musica_ipanema_widget.dart';
+import '../components/add_musica_jaragua_widget.dart';
 import '../components/add_pregadores_ipanema_widget.dart';
 import '../components/add_sonoplastia_ipanema_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -197,8 +199,22 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddLideresWidget(),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'ADD LIDERES',
                         options: FFButtonOptions(
@@ -212,6 +228,53 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: false,
                                   ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: AddMusicaJaraguaWidget(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        text: 'ADD ANUNCIOS',
+                        options: FFButtonOptions(
+                          width: 200,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).customColor1,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: 'Advent Sans',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w500,
+                                useGoogleFonts: false,
+                              ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
