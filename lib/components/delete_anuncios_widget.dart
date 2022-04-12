@@ -27,7 +27,7 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 240,
+      height: 300,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -88,6 +88,7 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
               child: FFButtonWidget(
                 onPressed: () async {
                   await widget.anunciosdistrital.delete();
+                  await widget.anunciosJaragua.delete();
                   Navigator.pop(context);
                 },
                 text: 'Deletar',
