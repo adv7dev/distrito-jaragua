@@ -44,7 +44,7 @@ class _ViewAllAnunciosJaraguaWidgetState
           },
         ),
         title: Text(
-          'Anuncios Distrital',
+          'Jaraguá Anuncios',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Advent Sans',
                 color: Colors.white,

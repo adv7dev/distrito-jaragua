@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/delete_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -133,28 +134,29 @@ class _ViewAllAnunciosDistritalWidgetState
                                         children: [
                                           InkWell(
                                             onLongPress: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child: Container(
-                                                      height:
+                                              if ((currentUserDocument
+                                                      ?.admJaragua) ==
+                                                  true) {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
                                                           MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.4,
+                                                              .viewInsets,
                                                       child:
-                                                          DeleteAnunciosWidget(),
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                                          DeleteAnunciosWidget(
+                                                        anunciosdistrital:
+                                                            columnAnunciosDistritalRecord
+                                                                .reference,
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }
                                             },
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,

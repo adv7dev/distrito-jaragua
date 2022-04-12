@@ -1,6 +1,9 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,12 +11,10 @@ import 'package:google_fonts/google_fonts.dart';
 class DeleteAnunciosWidget extends StatefulWidget {
   const DeleteAnunciosWidget({
     Key key,
-    this.ativo,
-    this.nome,
+    this.anunciosdistrital,
   }) : super(key: key);
 
-  final bool ativo;
-  final String nome;
+  final DocumentReference anunciosdistrital;
 
   @override
   _DeleteAnunciosWidgetState createState() => _DeleteAnunciosWidgetState();
@@ -47,8 +48,14 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                final anunciosDistritalUpdateData =
+                    createAnunciosDistritalRecordData(
+                  ativo: false,
+                );
+                await widget.anunciosdistrital
+                    .update(anunciosDistritalUpdateData);
+                Navigator.pop(context);
               },
               text: 'Enviar Para  o Histórico',
               options: FFButtonOptions(
@@ -71,8 +78,9 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  await widget.anunciosdistrital.delete();
+                  Navigator.pop(context);
                 },
                 text: 'Deletar',
                 options: FFButtonOptions(
@@ -96,8 +104,8 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  Navigator.pop(context);
                 },
                 text: 'Cancel',
                 options: FFButtonOptions(
