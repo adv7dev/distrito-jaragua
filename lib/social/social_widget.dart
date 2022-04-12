@@ -347,7 +347,8 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             0.4,
                                                         child: DeletePostWidget(
                                                           postParameters:
-                                                              socialFeedUserPostsRecord,
+                                                              socialFeedUserPostsRecord
+                                                                  .reference,
                                                         ),
                                                       ),
                                                     );

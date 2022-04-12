@@ -1,7 +1,7 @@
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +12,7 @@ class DeletePostWidget extends StatefulWidget {
     this.postParameters,
   }) : super(key: key);
 
-  final UserPostsRecord postParameters;
+  final DocumentReference postParameters;
 
   @override
   _DeletePostWidgetState createState() => _DeletePostWidgetState();
@@ -34,7 +34,7 @@ class _DeletePostWidgetState extends State<DeletePostWidget> {
           children: [
             FFButtonWidget(
               onPressed: () async {
-                await widget.postParameters.postUser.delete();
+                await widget.postParameters.delete();
                 Navigator.pop(context);
               },
               text: 'Delete Post',

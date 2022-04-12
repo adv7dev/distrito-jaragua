@@ -187,7 +187,8 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                                   height: 250,
                                                   child: DeletePostWidget(
                                                     postParameters:
-                                                        postDetailsUserPostsRecord,
+                                                        postDetailsUserPostsRecord
+                                                            .reference,
                                                   ),
                                                 ),
                                               );
