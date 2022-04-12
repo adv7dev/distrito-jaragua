@@ -19,29 +19,29 @@ class AddLideresWidget extends StatefulWidget {
 
 class _AddLideresWidgetState extends State<AddLideresWidget> {
   String uploadedFileUrl1 = '';
-  TextEditingController textController1;
-  TextEditingController textController2;
+  TextEditingController nomeJaraguaController;
+  TextEditingController cargoJaraguaController;
   String uploadedFileUrl2 = '';
-  TextEditingController textController3;
-  TextEditingController textController4;
+  TextEditingController nomeIpanemaController;
+  TextEditingController cargoIpanemaController;
   String uploadedFileUrl3 = '';
-  TextEditingController textController5;
-  TextEditingController textController6;
+  TextEditingController nomePanController;
+  TextEditingController cargoPanController;
   String uploadedFileUrl4 = '';
-  TextEditingController textController7;
-  TextEditingController textController8;
+  TextEditingController nomeAuroraController;
+  TextEditingController cargoAuroraController;
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
-    textController7 = TextEditingController();
-    textController8 = TextEditingController();
+    cargoAuroraController = TextEditingController();
+    nomeAuroraController = TextEditingController();
+    cargoIpanemaController = TextEditingController();
+    nomeIpanemaController = TextEditingController();
+    cargoJaraguaController = TextEditingController();
+    nomeJaraguaController = TextEditingController();
+    cargoPanController = TextEditingController();
+    nomePanController = TextEditingController();
   }
 
   @override
@@ -168,10 +168,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: TextFormField(
-                                    controller: textController1,
+                                    controller: nomeJaraguaController,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Nome',
+                                      hintText: 'Nome ',
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
@@ -224,7 +224,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 1, 0, 0),
                                     child: TextFormField(
-                                      controller: textController2,
+                                      controller: cargoJaraguaController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Cargo',
@@ -273,9 +273,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   onPressed: () async {
                                     final lideresJaraguaCreateData =
                                         createLideresJaraguaRecordData(
-                                      nome: textController7.text,
+                                      nome: nomeJaraguaController.text,
                                       img: uploadedFileUrl1,
-                                      cargo: textController8.text,
+                                      cargo: cargoJaraguaController.text,
                                     );
                                     await LideresJaraguaRecord.collection
                                         .doc()
@@ -430,7 +430,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: TextFormField(
-                                    controller: textController3,
+                                    controller: nomeIpanemaController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Nome',
@@ -486,7 +486,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 1, 0, 0),
                                     child: TextFormField(
-                                      controller: textController4,
+                                      controller: cargoIpanemaController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Cargo',
@@ -535,9 +535,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   onPressed: () async {
                                     final lideresIpanemaCreateData =
                                         createLideresIpanemaRecordData(
-                                      nome: textController7.text,
+                                      nome: nomeIpanemaController.text,
                                       img: uploadedFileUrl2,
-                                      cargo: textController8.text,
+                                      cargo: cargoIpanemaController.text,
                                     );
                                     await LideresIpanemaRecord.collection
                                         .doc()
@@ -692,7 +692,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: TextFormField(
-                                    controller: textController5,
+                                    controller: nomePanController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Nome',
@@ -748,7 +748,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 1, 0, 0),
                                     child: TextFormField(
-                                      controller: textController6,
+                                      controller: cargoPanController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Cargo',
@@ -797,9 +797,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   onPressed: () async {
                                     final lideresPanamericanoCreateData =
                                         createLideresPanamericanoRecordData(
-                                      nome: textController7.text,
+                                      nome: nomePanController.text,
                                       img: uploadedFileUrl3,
-                                      cargo: textController8.text,
+                                      cargo: cargoPanController.text,
                                     );
                                     await LideresPanamericanoRecord.collection
                                         .doc()
@@ -954,7 +954,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: TextFormField(
-                                    controller: textController7,
+                                    controller: nomeAuroraController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Nome',
@@ -1010,7 +1010,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 1, 0, 0),
                                     child: TextFormField(
-                                      controller: textController8,
+                                      controller: cargoAuroraController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Cargo',
@@ -1059,9 +1059,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   onPressed: () async {
                                     final lideresAuroraCreateData =
                                         createLideresAuroraRecordData(
-                                      nome: textController7.text,
+                                      nome: nomeAuroraController.text,
                                       img: uploadedFileUrl4,
-                                      cargo: textController8.text,
+                                      cargo: cargoAuroraController.text,
                                     );
                                     await LideresAuroraRecord.collection
                                         .doc()
