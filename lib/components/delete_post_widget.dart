@@ -21,29 +21,50 @@ class DeletePostWidget extends StatefulWidget {
 class _DeletePostWidgetState extends State<DeletePostWidget> {
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: !(widget.postParameters.postOwner) ?? true,
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Color(0xFF1A1F24),
-        ),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              FFButtonWidget(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        color: Color(0xFF1A1F24),
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            FFButtonWidget(
+              onPressed: () async {
+                await widget.postParameters.postUser.delete();
+                Navigator.pop(context);
+              },
+              text: 'Delete Post',
+              options: FFButtonOptions(
+                width: double.infinity,
+                height: 60,
+                color: Color(0xFFF52E2E),
+                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                      fontFamily: 'Advent Sans',
+                      color: Colors.white,
+                      useGoogleFonts: false,
+                    ),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1,
+                ),
+                borderRadius: 40,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+              child: FFButtonWidget(
                 onPressed: () async {
-                  await widget.postParameters.postUser.delete();
                   Navigator.pop(context);
                 },
-                text: 'Delete Post',
+                text: 'Cancel',
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 60,
-                  color: Color(0xFFF52E2E),
+                  color: Color(0xFF262D34),
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Advent Sans',
                         color: Colors.white,
@@ -56,32 +77,8 @@ class _DeletePostWidgetState extends State<DeletePostWidget> {
                   borderRadius: 40,
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    Navigator.pop(context);
-                  },
-                  text: 'Cancel',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 60,
-                    color: Color(0xFF262D34),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Advent Sans',
-                          color: Colors.white,
-                          useGoogleFonts: false,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 40,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -344,9 +344,11 @@ class _SocialWidgetState extends State<SocialWidget>
                                                                     context)
                                                                 .size
                                                                 .height *
-                                                            0.3,
-                                                        child:
-                                                            DeletePostWidget(),
+                                                            0.4,
+                                                        child: DeletePostWidget(
+                                                          postParameters:
+                                                              socialFeedUserPostsRecord,
+                                                        ),
                                                       ),
                                                     );
                                                   },
