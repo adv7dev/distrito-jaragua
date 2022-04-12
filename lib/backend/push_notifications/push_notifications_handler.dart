@@ -47,6 +47,7 @@ import '../../lideres_page_jaragua/lideres_page_jaragua_widget.dart';
 import '../../lideres_page_ipanema/lideres_page_ipanema_widget.dart';
 import '../../lideres_page_panamericano/lideres_page_panamericano_widget.dart';
 import '../../lideres_page_aurora/lideres_page_aurora_widget.dart';
+import '../../view_all_anuncios_jaragua/view_all_anuncios_jaragua_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -168,6 +169,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Lideres_Page_Ipanema': (data) async => LideresPageIpanemaWidget(),
   'Lideres_Page_Panamericano': (data) async => LideresPagePanamericanoWidget(),
   'Lideres_Page_Aurora': (data) async => LideresPageAuroraWidget(),
+  'view_all_anuncios_Jaragua': (data) async => ViewAllAnunciosJaraguaWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
