@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../components/delete_musica_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -122,136 +123,88 @@ class _EscMusicaAuroraWidgetState extends State<EscMusicaAuroraWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 5, 5, 5),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    columnAuroraMusicaRecord
-                                                        .img,
-                                                    'https://i.ibb.co/cC6RmGZ/businessman.png',
-                                                  ),
-                                                  width: 100,
-                                                  height: 100,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 0, 0, 0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'NOME: ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
+                                          InkWell(
+                                            onLongPress: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child: Container(
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              0.5,
+                                                      child: DeleteMusicaWidget(
+                                                        auroraMusica:
                                                             columnAuroraMusicaRecord
-                                                                .nome,
-                                                            'S/ Nome',
-                                                          ).maybeHandleOverflow(
-                                                            maxChars: 20,
-                                                            replacement: '…',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFDBDBDB),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                      ],
+                                                                .reference,
+                                                      ),
                                                     ),
-                                                    Divider(
-                                                      height: 10,
-                                                      color: Color(0xFFD4D4D4),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(5, 5, 5, 5),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      columnAuroraMusicaRecord
+                                                          .img,
+                                                      'https://i.ibb.co/cC6RmGZ/businessman.png',
                                                     ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'DATA: ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            dateTimeFormat(
-                                                                'd/M/y',
-                                                                columnAuroraMusicaRecord
-                                                                    .data),
-                                                            'S/ Data',
+                                                    width: 100,
+                                                    height: 100,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(5, 0, 0, 0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'NOME: ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFDBDBDB),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(10,
-                                                                      0, 0, 0),
-                                                          child: Text(
+                                                          Text(
                                                             valueOrDefault<
                                                                 String>(
-                                                              dateTimeFormat(
-                                                                  'EEEE',
-                                                                  columnAuroraMusicaRecord
-                                                                      .data),
-                                                              'S/ Dia',
+                                                              columnAuroraMusicaRecord
+                                                                  .nome,
+                                                              'S/ Nome',
+                                                            ).maybeHandleOverflow(
+                                                              maxChars: 20,
+                                                              replacement: '…',
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -260,7 +213,7 @@ class _EscMusicaAuroraWidgetState extends State<EscMusicaAuroraWidget> {
                                                                   fontFamily:
                                                                       'Advent Sans',
                                                                   color: Color(
-                                                                      0xFFF9F9F9),
+                                                                      0xFFDBDBDB),
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -268,100 +221,182 @@ class _EscMusicaAuroraWidgetState extends State<EscMusicaAuroraWidget> {
                                                                       false,
                                                                 ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'WhatsApp: ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                        AutoSizeText(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            columnAuroraMusicaRecord
-                                                                .whatsapp,
-                                                            'S/ Whats',
+                                                        ],
+                                                      ),
+                                                      Divider(
+                                                        height: 10,
+                                                        color:
+                                                            Color(0xFFD4D4D4),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'DATA: ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFD4D4D4),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Igreja: ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            columnAuroraMusicaRecord
-                                                                .igreja,
-                                                            'S/ Igreja',
-                                                          ).maybeHandleOverflow(
-                                                            maxChars: 20,
-                                                            replacement: '…',
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              dateTimeFormat(
+                                                                  'd/M/y',
+                                                                  columnAuroraMusicaRecord
+                                                                      .data),
+                                                              'S/ Data',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Color(
+                                                                      0xFFDBDBDB),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFDBDBDB),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts:
-                                                                    false,
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        0,
+                                                                        0,
+                                                                        0),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                dateTimeFormat(
+                                                                    'EEEE',
+                                                                    columnAuroraMusicaRecord
+                                                                        .data),
+                                                                'S/ Dia',
                                                               ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Advent Sans',
+                                                                    color: Color(
+                                                                        0xFFF9F9F9),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'WhatsApp: ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                          ),
+                                                          AutoSizeText(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              columnAuroraMusicaRecord
+                                                                  .whatsapp,
+                                                              'S/ Whats',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Color(
+                                                                      0xFFD4D4D4),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Igreja: ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              columnAuroraMusicaRecord
+                                                                  .igreja,
+                                                              'S/ Igreja',
+                                                            ).maybeHandleOverflow(
+                                                              maxChars: 20,
+                                                              replacement: '…',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Advent Sans',
+                                                                  color: Color(
+                                                                      0xFFDBDBDB),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),

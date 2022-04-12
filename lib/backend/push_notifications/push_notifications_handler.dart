@@ -145,9 +145,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),
   'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(),
-  'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(
-        jaraguasonoplastia: getParameter(data, 'jaraguasonoplastia'),
-      ),
+  'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(),
   'esc_musica_jaragua': (data) async => EscMusicaJaraguaWidget(),
   'page_ja_ipanema': (data) async => PageJaIpanemaWidget(),
   'esc_pregadores_ipanema': (data) async => EscPregadoresIpanemaWidget(),

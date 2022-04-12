@@ -171,6 +171,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                             mainAxisSpacing: 10,
                             childAspectRatio: 1,
                           ),
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
