@@ -1,6 +1,6 @@
 # distrito-jaragua
 
-A new Flutter project.
+Seja muito Bem vindo ao Projeto APP IASD Distrito Jaraguá
 
 ## Getting Started
 
