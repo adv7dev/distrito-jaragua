@@ -34,6 +34,9 @@ abstract class AnunciosPanamericanoRecord
   String get local;
 
   @nullable
+  String get horario;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -44,7 +47,8 @@ abstract class AnunciosPanamericanoRecord
         ..img = ''
         ..video = ''
         ..ativo = false
-        ..local = '';
+        ..local = ''
+        ..horario = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('anuncios_panamericano');
@@ -78,6 +82,7 @@ Map<String, dynamic> createAnunciosPanamericanoRecordData({
   String video,
   bool ativo,
   String local,
+  String horario,
 }) =>
     serializers.toFirestore(
         AnunciosPanamericanoRecord.serializer,
@@ -88,4 +93,5 @@ Map<String, dynamic> createAnunciosPanamericanoRecordData({
           ..img = img
           ..video = video
           ..ativo = ativo
-          ..local = local));
+          ..local = local
+          ..horario = horario));

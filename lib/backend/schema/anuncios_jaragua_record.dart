@@ -30,6 +30,9 @@ abstract class AnunciosJaraguaRecord
   String get local;
 
   @nullable
+  String get horario;
+
+  @nullable
   String get video;
 
   @nullable
@@ -43,6 +46,7 @@ abstract class AnunciosJaraguaRecord
         ..img = ''
         ..ativo = false
         ..local = ''
+        ..horario = ''
         ..video = '';
 
   static CollectionReference get collection =>
@@ -74,6 +78,7 @@ Map<String, dynamic> createAnunciosJaraguaRecordData({
   String img,
   bool ativo,
   String local,
+  String horario,
   String video,
 }) =>
     serializers.toFirestore(
@@ -85,4 +90,5 @@ Map<String, dynamic> createAnunciosJaraguaRecordData({
           ..img = img
           ..ativo = ativo
           ..local = local
+          ..local = horario
           ..video = video));

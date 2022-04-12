@@ -24,6 +24,9 @@ abstract class AnunciosAuroraRecord
   String get local;
 
   @nullable
+  String get horario;
+
+  @nullable
   bool get ativo;
 
   @nullable
@@ -40,6 +43,7 @@ abstract class AnunciosAuroraRecord
     ..titulo = ''
     ..descricao = ''
     ..local = ''
+    ..horario = ''
     ..ativo = false
     ..img = ''
     ..video = '';
@@ -71,6 +75,7 @@ Map<String, dynamic> createAnunciosAuroraRecordData({
   String descricao,
   DateTime data,
   String local,
+  String horario,
   bool ativo,
   String img,
   String video,
@@ -82,6 +87,7 @@ Map<String, dynamic> createAnunciosAuroraRecordData({
           ..descricao = descricao
           ..data = data
           ..local = local
+          ..horario = horario
           ..ativo = ativo
           ..img = img
           ..video = video));

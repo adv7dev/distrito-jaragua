@@ -27,7 +27,11 @@ abstract class AnunciosDistritalRecord
   String get descricao;
 
   @nullable
+  String get horario;
+
+  @nullable
   bool get ativo;
+
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -39,6 +43,7 @@ abstract class AnunciosDistritalRecord
         ..local = ''
         ..titulo = ''
         ..descricao = ''
+        ..horario = ''
         ..ativo = false;
 
   static CollectionReference get collection =>
@@ -70,6 +75,7 @@ Map<String, dynamic> createAnunciosDistritalRecordData({
   String local,
   String titulo,
   String descricao,
+  String horario,
   bool ativo,
 }) =>
     serializers.toFirestore(
@@ -80,4 +86,5 @@ Map<String, dynamic> createAnunciosDistritalRecordData({
           ..local = local
           ..titulo = titulo
           ..descricao = descricao
+          ..horario = horario
           ..ativo = ativo));

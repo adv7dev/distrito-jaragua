@@ -27,6 +27,9 @@ abstract class AnunciosIpanemaRecord
   String get local;
 
   @nullable
+  String get horario;
+
+  @nullable
   bool get ativo;
 
   @nullable
@@ -42,6 +45,7 @@ abstract class AnunciosIpanemaRecord
         ..descricao = ''
         ..img = ''
         ..local = ''
+        ..horario = ''
         ..ativo = false
         ..video = '';
 
@@ -73,6 +77,7 @@ Map<String, dynamic> createAnunciosIpanemaRecordData({
   DateTime data,
   String img,
   String local,
+  String horario,
   bool ativo,
   String video,
 }) =>
@@ -84,5 +89,6 @@ Map<String, dynamic> createAnunciosIpanemaRecordData({
           ..data = data
           ..img = img
           ..local = local
+          ..horario = horario
           ..ativo = ativo
           ..video = video));

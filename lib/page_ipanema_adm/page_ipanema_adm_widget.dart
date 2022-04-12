@@ -1,6 +1,6 @@
+import '../components/add_anuncios_widget.dart';
 import '../components/add_lideres_widget.dart';
 import '../components/add_musica_ipanema_widget.dart';
-import '../components/add_musica_jaragua_widget.dart';
 import '../components/add_pregadores_ipanema_widget.dart';
 import '../components/add_sonoplastia_ipanema_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -27,16 +27,16 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
+        IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
         automaticallyImplyLeading: true,
         title: Text(
           'ADM IPANEMA',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Colors.white,
-                fontSize: 22,
-                useGoogleFonts: false,
-              ),
+            fontFamily: 'Advent Sans',
+            color: Colors.white,
+            fontSize: 22,
+            useGoogleFonts: false,
+          ),
         ),
         actions: [],
         centerTitle: true,
@@ -62,14 +62,14 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             context: context,
                             builder: (context) {
                               return Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
+                                  MediaQuery.of(context).size.height * 0.7,
                                   child: AddPregadoresIpanemaWidget(),
                                 ),
                               );
@@ -84,11 +84,11 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Advent Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: false,
-                              ),
+                            fontFamily: 'Advent Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: false,
+                          ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
@@ -109,14 +109,14 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             context: context,
                             builder: (context) {
                               return Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
+                                  MediaQuery.of(context).size.height * 0.7,
                                   child: AddSonoplastiaIpanemaWidget(),
                                 ),
                               );
@@ -131,11 +131,11 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Advent Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: false,
-                              ),
+                            fontFamily: 'Advent Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: false,
+                          ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
@@ -156,14 +156,14 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             context: context,
                             builder: (context) {
                               return Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
+                                  MediaQuery.of(context).size.height * 0.7,
                                   child: AddMusicaIpanemaWidget(),
                                 ),
                               );
@@ -178,56 +178,11 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Advent Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: false,
-                              ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
+                            fontFamily: 'Advent Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: false,
                           ),
-                          borderRadius: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.7,
-                                  child: AddLideresWidget(),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        text: 'ADD LIDERES',
-                        options: FFButtonOptions(
-                          width: 200,
-                          height: 40,
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Advent Sans',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
@@ -248,15 +203,61 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             context: context,
                             builder: (context) {
                               return Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
-                                  child: AddMusicaJaraguaWidget(),
+                                  MediaQuery.of(context).size.height * 0.7,
+                                  child: AddLideresWidget(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        text: 'ADD LIDERES',
+                        options: FFButtonOptions(
+                          width: 200,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                            fontFamily: 'Advent Sans',
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: false,
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.7,
+                                  child: AddAnunciosWidget(),
                                 ),
                               );
                             },
@@ -270,11 +271,11 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Advent Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
-                                useGoogleFonts: false,
-                              ),
+                            fontFamily: 'Advent Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: false,
+                          ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
@@ -298,10 +299,10 @@ class _PageIpanemaAdmWidgetState extends State<PageIpanemaAdmWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Advent Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                useGoogleFonts: false,
-                              ),
+                            fontFamily: 'Advent Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            useGoogleFonts: false,
+                          ),
                         ),
                       ),
                     ],
