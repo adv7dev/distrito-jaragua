@@ -177,7 +177,11 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                                 .height *
                                                             0.4,
                                                         child:
-                                                            DeleteAnunciosJaraguaWidget(),
+                                                            DeleteAnunciosJaraguaWidget(
+                                                          anunciosJaragua:
+                                                              columnAnunciosJaraguaRecord
+                                                                  .reference,
+                                                        ),
                                                       ),
                                                     );
                                                   },

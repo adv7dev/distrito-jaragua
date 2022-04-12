@@ -178,7 +178,11 @@ class _ViewAllAnunciosIpanemaWidgetState
                                                                 .height *
                                                             0.5,
                                                         child:
-                                                            DeleteAnunciosIpanemaWidget(),
+                                                            DeleteAnunciosIpanemaWidget(
+                                                          anunciosIpanema:
+                                                              columnAnunciosIpanemaRecord
+                                                                  .reference,
+                                                        ),
                                                       ),
                                                     );
                                                   },

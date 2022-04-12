@@ -144,9 +144,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'createGroupChat': (data) async => CreateGroupChatWidget(),
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),
-  'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(
-        jaraguapregadores: getParameter(data, 'jaraguapregadores'),
-      ),
+  'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(),
   'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(
         jaraguasonoplastia: getParameter(data, 'jaraguasonoplastia'),
       ),
@@ -180,9 +178,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'view_all_anuncios_Ipanema': (data) async => ViewAllAnunciosIpanemaWidget(),
   'view_all_anuncios_Panamericano': (data) async =>
       ViewAllAnunciosPanamericanoWidget(),
-  'view_all_anuncios_Aurora': (data) async => ViewAllAnunciosAuroraWidget(
-        anunciosAurora: getParameter(data, 'anunciosAurora'),
-      ),
+  'view_all_anuncios_Aurora': (data) async => ViewAllAnunciosAuroraWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

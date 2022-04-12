@@ -132,7 +132,11 @@ class _EscPregadoresIpanemaWidgetState
                                                       .size
                                                       .height *
                                                   0.5,
-                                              child: DeletePregadoresWidget(),
+                                              child: DeletePregadoresWidget(
+                                                ipanemaPregadores:
+                                                    columnIpanemaPregadoresRecord
+                                                        .reference,
+                                              ),
                                             ),
                                           );
                                         },
