@@ -135,7 +135,7 @@ class _ViewAllAnunciosDistritalWidgetState
                                           InkWell(
                                             onLongPress: () async {
                                               if ((currentUserDocument
-                                                      ?.admJaragua) ==
+                                                      ?.admGeral) ==
                                                   true) {
                                                 await showModalBottomSheet(
                                                   isScrollControlled: true,

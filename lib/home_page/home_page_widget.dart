@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../view_all_anuncios_distrital/view_all_anuncios_distrital_widget.dart';
+import '../view_all_anuncios_jaragua/view_all_anuncios_jaragua_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -481,21 +482,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Jaraguá Anuncios',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Advent Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                useGoogleFonts: false,
-                              ),
-                        ),
-                      ],
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ViewAllAnunciosJaraguaWidget(),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Jaraguá Anuncios',
+                            style: FlutterFlowTheme.of(context).title2.override(
+                                  fontFamily: 'Advent Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                            child: Icon(
+                              Icons.chevron_right,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              size: 24,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Row(

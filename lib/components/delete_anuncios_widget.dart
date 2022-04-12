@@ -12,9 +12,11 @@ class DeleteAnunciosWidget extends StatefulWidget {
   const DeleteAnunciosWidget({
     Key key,
     this.anunciosdistrital,
+    this.anunciosJaragua,
   }) : super(key: key);
 
   final DocumentReference anunciosdistrital;
+  final DocumentReference anunciosJaragua;
 
   @override
   _DeleteAnunciosWidgetState createState() => _DeleteAnunciosWidgetState();
@@ -55,6 +57,12 @@ class _DeleteAnunciosWidgetState extends State<DeleteAnunciosWidget> {
                 );
                 await widget.anunciosdistrital
                     .update(anunciosDistritalUpdateData);
+
+                final anunciosJaraguaUpdateData =
+                    createAnunciosJaraguaRecordData(
+                  ativo: false,
+                );
+                await widget.anunciosJaragua.update(anunciosJaraguaUpdateData);
                 Navigator.pop(context);
               },
               text: 'Enviar Para  o Histórico',

@@ -60,6 +60,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get capa;
 
   @nullable
+  @BuiltValueField(wireName: 'adm_geral')
+  bool get admGeral;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -76,7 +80,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..admIpanema = false
     ..admPanamericano = false
     ..admAurora = false
-    ..capa = '';
+    ..capa = ''
+    ..admGeral = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -114,6 +119,7 @@ Map<String, dynamic> createUsersRecordData({
   bool admPanamericano,
   bool admAurora,
   String capa,
+  bool admGeral,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -131,4 +137,5 @@ Map<String, dynamic> createUsersRecordData({
           ..admIpanema = admIpanema
           ..admPanamericano = admPanamericano
           ..admAurora = admAurora
-          ..capa = capa));
+          ..capa = capa
+          ..admGeral = admGeral));

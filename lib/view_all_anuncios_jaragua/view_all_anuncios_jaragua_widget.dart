@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/delete_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -124,131 +125,228 @@ class _ViewAllAnunciosJaraguaWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
-                                    child: Card(
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          InkWell(
-                                            onLongPress: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child: Container(
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.4,
-                                                      child:
-                                                          DeleteAnunciosWidget(),
-                                                    ),
-                                                  );
-                                                },
+                                    child: InkWell(
+                                      onTap: () async {
+                                        if ((currentUserDocument?.admJaragua) ==
+                                            true) {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.5,
+                                                  child: DeleteAnunciosWidget(),
+                                                ),
                                               );
                                             },
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(5, 5, 5, 5),
-                                                  child: InkWell(
-                                                    onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        PageTransition(
-                                                          type:
-                                                              PageTransitionType
-                                                                  .fade,
-                                                          child:
-                                                              FlutterFlowExpandedImageView(
-                                                            image:
-                                                                Image.network(
-                                                              valueOrDefault<
-                                                                  String>(
+                                          );
+                                        }
+                                      },
+                                      child: Card(
+                                        clipBehavior:
+                                            Clip.antiAliasWithSaveLayer,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            InkWell(
+                                              onLongPress: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                      child: Container(
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.4,
+                                                        child:
+                                                            DeleteAnunciosWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                5, 5, 5, 5),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          PageTransition(
+                                                            type:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                            child:
+                                                                FlutterFlowExpandedImageView(
+                                                              image:
+                                                                  Image.network(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  columnAnunciosJaraguaRecord
+                                                                      .img,
+                                                                  'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
+                                                                ),
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                              ),
+                                                              allowRotation:
+                                                                  false,
+                                                              tag:
+                                                                  valueOrDefault<
+                                                                      String>(
                                                                 columnAnunciosJaraguaRecord
                                                                     .img,
-                                                                'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
+                                                                'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                                    '$columnIndex',
                                                               ),
-                                                              fit: BoxFit
-                                                                  .contain,
+                                                              useHeroAnimation:
+                                                                  true,
                                                             ),
-                                                            allowRotation:
-                                                                false,
-                                                            tag: valueOrDefault<
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: Hero(
+                                                        tag: valueOrDefault<
+                                                            String>(
+                                                          columnAnunciosJaraguaRecord
+                                                              .img,
+                                                          'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                              '$columnIndex',
+                                                        ),
+                                                        transitionOnUserGestures:
+                                                            true,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          child: Image.network(
+                                                            valueOrDefault<
                                                                 String>(
                                                               columnAnunciosJaraguaRecord
                                                                   .img,
-                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                                  '$columnIndex',
+                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
                                                             ),
-                                                            useHeroAnimation:
-                                                                true,
+                                                            width: 100,
+                                                            height: 100,
+                                                            fit: BoxFit.cover,
                                                           ),
-                                                        ),
-                                                      );
-                                                    },
-                                                    child: Hero(
-                                                      tag: valueOrDefault<
-                                                          String>(
-                                                        columnAnunciosJaraguaRecord
-                                                            .img,
-                                                        'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                            '$columnIndex',
-                                                      ),
-                                                      transitionOnUserGestures:
-                                                          true,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        child: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            columnAnunciosJaraguaRecord
-                                                                .img,
-                                                            'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                          ),
-                                                          width: 100,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                5, 15, 0, 0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Expanded(
-                                                              child:
-                                                                  AutoSizeText(
-                                                                columnAnunciosJaraguaRecord
-                                                                    .titulo,
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5, 15, 0, 0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  columnAnunciosJaraguaRecord
+                                                                      .titulo,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Advent Sans',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Divider(
+                                                            height: 10,
+                                                            color: Color(
+                                                                0xFFD4D4D4),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        5),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      columnAnunciosJaraguaRecord
+                                                                          .descricao,
+                                                                      'Sem Descrição',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Advent Sans',
+                                                                          color:
+                                                                              Colors.white,
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          fontStyle:
+                                                                              FontStyle.italic,
+                                                                          useGoogleFonts:
+                                                                              false,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                'DATA: ',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1
@@ -261,158 +359,14 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                                           false,
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Divider(
-                                                          height: 10,
-                                                          color:
-                                                              Color(0xFFD4D4D4),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 0, 5),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    columnAnunciosJaraguaRecord
-                                                                        .descricao,
-                                                                    'Sem Descrição',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Advent Sans',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                        fontStyle:
-                                                                            FontStyle.italic,
-                                                                        useGoogleFonts:
-                                                                            false,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              'DATA: ',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Advent Sans',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    useGoogleFonts:
-                                                                        false,
-                                                                  ),
-                                                            ),
-                                                            Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                dateTimeFormat(
-                                                                    'd/M/y',
-                                                                    columnAnunciosJaraguaRecord
-                                                                        .data),
-                                                                'S/ Data',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Advent Sans',
-                                                                    color: Color(
-                                                                        0xFFDBDBDB),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                    useGoogleFonts:
-                                                                        false,
-                                                                  ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                              child: Text(
+                                                              Text(
                                                                 valueOrDefault<
                                                                     String>(
                                                                   dateTimeFormat(
-                                                                      'EEEE',
+                                                                      'd/M/y',
                                                                       columnAnunciosJaraguaRecord
                                                                           .data),
-                                                                  'Sem Horário',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Advent Sans',
-                                                                      color: Color(
-                                                                          0xFFF9F9F9),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                      useGoogleFonts:
-                                                                          false,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              'LOCAL: ',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Advent Sans',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    useGoogleFonts:
-                                                                        false,
-                                                                  ),
-                                                            ),
-                                                            Expanded(
-                                                              child:
-                                                                  AutoSizeText(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  columnAnunciosJaraguaRecord
-                                                                      .local,
-                                                                  'S/ Igreja',
+                                                                  'S/ Data',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -429,17 +383,97 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                                           false,
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    dateTimeFormat(
+                                                                        'EEEE',
+                                                                        columnAnunciosJaraguaRecord
+                                                                            .data),
+                                                                    'Sem Horário',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Advent Sans',
+                                                                        color: Color(
+                                                                            0xFFF9F9F9),
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'LOCAL: ',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Advent Sans',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                              ),
+                                                              Expanded(
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    columnAnunciosJaraguaRecord
+                                                                        .local,
+                                                                    'S/ Igreja',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Advent Sans',
+                                                                        color: Color(
+                                                                            0xFFDBDBDB),
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
