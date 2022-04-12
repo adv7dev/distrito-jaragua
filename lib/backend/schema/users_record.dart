@@ -64,6 +64,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   bool get admGeral;
 
   @nullable
+  DocumentReference get postUser;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -120,6 +123,7 @@ Map<String, dynamic> createUsersRecordData({
   bool admAurora,
   String capa,
   bool admGeral,
+  DocumentReference postUser,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -138,4 +142,5 @@ Map<String, dynamic> createUsersRecordData({
           ..admPanamericano = admPanamericano
           ..admAurora = admAurora
           ..capa = capa
-          ..admGeral = admGeral));
+          ..admGeral = admGeral
+          ..postUser = postUser));

@@ -161,40 +161,43 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         },
                                       ),
                                     ),
-                                    if (postDetailsUserPostsRecord.postOwner ??
-                                        true)
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        borderWidth: 1,
-                                        buttonSize: 44,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        icon: Icon(
-                                          Icons.more_vert_sharp,
-                                          color: Colors.white,
-                                          size: 24,
-                                        ),
-                                        onPressed: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: Container(
-                                                  height: 250,
-                                                  child: DeletePostWidget(
-                                                    postParameters:
-                                                        postDetailsUserPostsRecord
-                                                            .reference,
+                                    if (currentUserDocument?.admGeral ?? true)
+                                      AuthUserStreamWidget(
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30,
+                                          borderWidth: 1,
+                                          buttonSize: 44,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          icon: Icon(
+                                            Icons.more_vert_sharp,
+                                            color: Colors.white,
+                                            size: 24,
+                                          ),
+                                          onPressed: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: Container(
+                                                    height: 250,
+                                                    child: DeletePostWidget(
+                                                      postParameters:
+                                                          postDetailsUserPostsRecord
+                                                              .reference,
+                                                    ),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
                                       ),
                                   ],
                                 ),

@@ -314,47 +314,49 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          if (!(socialFeedUserPostsRecord
-                                                  .postOwner) ??
+                                          if (currentUserDocument?.admGeral ??
                                               true)
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 30,
-                                              buttonSize: 46,
-                                              icon: Icon(
-                                                Icons.keyboard_control,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                size: 20,
-                                              ),
-                                              onPressed: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
-                                                      child: Container(
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.4,
-                                                        child: DeletePostWidget(
-                                                          postParameters:
-                                                              socialFeedUserPostsRecord
-                                                                  .reference,
+                                            AuthUserStreamWidget(
+                                              child: FlutterFlowIconButton(
+                                                borderColor: Colors.transparent,
+                                                borderRadius: 30,
+                                                buttonSize: 46,
+                                                icon: Icon(
+                                                  Icons.keyboard_control,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiaryColor,
+                                                  size: 20,
+                                                ),
+                                                onPressed: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                                context)
+                                                            .viewInsets,
+                                                        child: Container(
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.4,
+                                                          child:
+                                                              DeletePostWidget(
+                                                            postParameters:
+                                                                socialFeedUserPostsRecord
+                                                                    .reference,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
                                             ),
                                         ],
                                       ),
