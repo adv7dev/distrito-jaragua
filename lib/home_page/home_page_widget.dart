@@ -4,7 +4,7 @@ import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
-import '../view_all_anuncios/view_all_anuncios_widget.dart';
+import '../view_all_anuncios_distrital/view_all_anuncios_distrital_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -156,7 +156,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             type: PageTransitionType.rightToLeft,
                             duration: Duration(milliseconds: 400),
                             reverseDuration: Duration(milliseconds: 400),
-                            child: ViewAllAnunciosWidget(),
+                            child: ViewAllAnunciosDistritalWidget(),
                           ),
                         );
                       },

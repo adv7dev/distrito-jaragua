@@ -218,6 +218,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                                         listViewUsersRecord.photoUrl,
                                         'https://i.ibb.co/cC6RmGZ/businessman.png',
                                       ),
+                                      fit: BoxFit.contain,
                                     ),
                                   ),
                                 ),

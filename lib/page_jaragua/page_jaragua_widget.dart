@@ -533,8 +533,7 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                         children: [
                                           Icon(
                                             Icons.people_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                            color: Colors.white,
                                             size: 50,
                                           ),
                                         ],
@@ -551,18 +550,16 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                                               child: AutoSizeText(
                                                 'Lideres por DEPARTAMENTO',
                                                 textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 12,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Advent Sans',
+                                                          color: Colors.white,
+                                                          fontSize: 12,
+                                                          useGoogleFonts: false,
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -580,30 +577,17 @@ class _PageJaraguaWidgetState extends State<PageJaraguaWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 20),
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(1, 1, 1, 1),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 10,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                      Expanded(
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: FlutterFlowTheme.of(context).secondaryColor,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            height: 350,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEEEEEE),
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                width: 5,
-                              ),
-                            ),
+                            width: 200,
+                            height: 200,
                             child: Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),

@@ -314,41 +314,45 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30,
-                                            buttonSize: 46,
-                                            icon: Icon(
-                                              Icons.keyboard_control,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
-                                              size: 20,
-                                            ),
-                                            onPressed: () async {
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child: Container(
-                                                      height:
+                                          if (socialFeedUserPostsRecord
+                                                  .postOwner ??
+                                              true)
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30,
+                                              buttonSize: 46,
+                                              icon: Icon(
+                                                Icons.keyboard_control,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiaryColor,
+                                                size: 20,
+                                              ),
+                                              onPressed: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
                                                           MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.3,
-                                                      child: DeletePostWidget(),
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            },
-                                          ),
+                                                              .viewInsets,
+                                                      child: Container(
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.3,
+                                                        child:
+                                                            DeletePostWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
                                         ],
                                       ),
                                     ),

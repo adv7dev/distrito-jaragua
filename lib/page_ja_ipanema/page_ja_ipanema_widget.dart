@@ -590,7 +590,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                       Expanded(
                         child: Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Color(0xFFF5F5F5),
+                          color: FlutterFlowTheme.of(context).secondaryColor,
                           child: Container(
                             width: 200,
                             height: 200,

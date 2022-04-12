@@ -711,59 +711,35 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(1, 1, 1, 1),
-                            child: Material(
-                              color: Colors.transparent,
-                              elevation: 10,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                height: 350,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    width: 5,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 5, 5, 5),
-                                  child: FlutterFlowGoogleMap(
-                                    controller: googleMapsController,
-                                    onCameraIdle: (latLng) => setState(
-                                        () => googleMapsCenter = latLng),
-                                    initialLocation: googleMapsCenter ??=
-                                        LatLng(-23.434956604554362,
-                                            -46.75258160383246),
-                                    markerColor: GoogleMarkerColor.violet,
-                                    mapType: MapType.normal,
-                                    style: GoogleMapStyle.standard,
-                                    initialZoom: 14,
-                                    allowInteraction: true,
-                                    allowZoom: true,
-                                    showZoomControls: true,
-                                    showLocation: true,
-                                    showCompass: true,
-                                    showMapToolbar: false,
-                                    showTraffic: false,
-                                    centerMapOnMarkerTap: true,
-                                  ),
-                                ),
-                              ),
+                    Expanded(
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        child: Container(
+                          height: 200,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                            child: FlutterFlowGoogleMap(
+                              controller: googleMapsController,
+                              onCameraIdle: (latLng) =>
+                                  setState(() => googleMapsCenter = latLng),
+                              initialLocation: googleMapsCenter ??= LatLng(
+                                  -23.434956604554362, -46.75258160383246),
+                              markerColor: GoogleMarkerColor.violet,
+                              mapType: MapType.normal,
+                              style: GoogleMapStyle.standard,
+                              initialZoom: 14,
+                              allowInteraction: true,
+                              allowZoom: true,
+                              showZoomControls: true,
+                              showLocation: true,
+                              showCompass: true,
+                              showMapToolbar: false,
+                              showTraffic: false,
+                              centerMapOnMarkerTap: true,
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
