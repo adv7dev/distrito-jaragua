@@ -46,7 +46,7 @@ class _DeletePregadoresWidgetState extends State<DeletePregadoresWidget> {
                       Expanded(
                         child: Container(
                           width: double.infinity,
-                          height: 270,
+                          height: 300,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -192,7 +192,7 @@ class _DeletePregadoresWidgetState extends State<DeletePregadoresWidget> {
                       Expanded(
                         child: Container(
                           width: double.infinity,
-                          height: 270,
+                          height: 300,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -338,7 +338,7 @@ class _DeletePregadoresWidgetState extends State<DeletePregadoresWidget> {
                       Expanded(
                         child: Container(
                           width: double.infinity,
-                          height: 270,
+                          height: 300,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -484,7 +484,7 @@ class _DeletePregadoresWidgetState extends State<DeletePregadoresWidget> {
                       Expanded(
                         child: Container(
                           width: double.infinity,
-                          height: 270,
+                          height: 300,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [

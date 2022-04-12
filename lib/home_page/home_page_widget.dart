@@ -212,7 +212,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 queryBuilder: (anunciosDistritalRecord) =>
                                     anunciosDistritalRecord
                                         .where('ativo', isEqualTo: true)
-                                        .orderBy('data', descending: true),
+                                        .orderBy('data'),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -540,7 +540,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .primaryBackground,
                             ),
                             child: StreamBuilder<List<AnunciosJaraguaRecord>>(
-                              stream: queryAnunciosJaraguaRecord(),
+                              stream: queryAnunciosJaraguaRecord(
+                                queryBuilder: (anunciosJaraguaRecord) =>
+                                    anunciosJaraguaRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data'),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -867,7 +872,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .primaryBackground,
                             ),
                             child: StreamBuilder<List<AnunciosIpanemaRecord>>(
-                              stream: queryAnunciosIpanemaRecord(),
+                              stream: queryAnunciosIpanemaRecord(
+                                queryBuilder: (anunciosIpanemaRecord) =>
+                                    anunciosIpanemaRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data'),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -1200,7 +1210,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                             child:
                                 StreamBuilder<List<AnunciosPanamericanoRecord>>(
-                              stream: queryAnunciosPanamericanoRecord(),
+                              stream: queryAnunciosPanamericanoRecord(
+                                queryBuilder: (anunciosPanamericanoRecord) =>
+                                    anunciosPanamericanoRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data'),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -1528,7 +1543,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .primaryBackground,
                             ),
                             child: StreamBuilder<List<AnunciosAuroraRecord>>(
-                              stream: queryAnunciosAuroraRecord(),
+                              stream: queryAnunciosAuroraRecord(
+                                queryBuilder: (anunciosAuroraRecord) =>
+                                    anunciosAuroraRecord
+                                        .where('ativo', isEqualTo: true)
+                                        .orderBy('data'),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
