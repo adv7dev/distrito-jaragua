@@ -314,8 +314,8 @@ class _SocialWidgetState extends State<SocialWidget>
                                               ],
                                             ),
                                           ),
-                                          if (!(socialFeedUserPostsRecord
-                                                  .postOwner) ??
+                                          if (socialFeedUserPostsRecord
+                                                  .postOwner ??
                                               true)
                                             FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
