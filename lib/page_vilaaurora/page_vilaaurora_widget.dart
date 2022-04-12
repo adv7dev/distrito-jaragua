@@ -1,3 +1,5 @@
+import '../esc_escola_s_aurora/esc_escola_s_aurora_widget.dart';
+import '../esc_limpeza_aurora/esc_limpeza_aurora_widget.dart';
 import '../esc_musica_aurora/esc_musica_aurora_widget.dart';
 import '../esc_pregadores_vilaaurora/esc_pregadores_vilaaurora_widget.dart';
 import '../esc_sonoplastia_aurora/esc_sonoplastia_aurora_widget.dart';
@@ -575,19 +577,113 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).customColor1,
-                                borderRadius: BorderRadius.circular(10),
-                                shape: BoxShape.rectangle,
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                        Duration(milliseconds: 300),
+                                    child: EscLimpezaAuroraWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                      FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.cleaning_services,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 50,
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 10, 0, 0),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Escala da \nLIMPEZA',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily:
+                                                            'Advent Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                                child: SingleChildScrollView(
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                        Duration(milliseconds: 300),
+                                    child: EscEscolaSAuroraWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                      FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -598,108 +694,48 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Icon(
-                                            Icons.cleaning_services,
+                                            Icons.school_outlined,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             size: 50,
                                           ),
                                         ],
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 0),
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              AutoSizeText(
-                                                'Escala da \nLIMPEZA',
-                                                textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      useGoogleFonts: false,
-                                                    ),
-                                              ),
-                                            ],
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 10, 0, 0),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Escala da \nESC. SABATINA',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily:
+                                                            'Advent Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).customColor1,
-                                borderRadius: BorderRadius.circular(10),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.school_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 50,
-                                        ),
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 0),
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              AutoSizeText(
-                                                'Escala da \nESC. SABATINA',
-                                                textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      useGoogleFonts: false,
-                                                    ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ),
                             ),

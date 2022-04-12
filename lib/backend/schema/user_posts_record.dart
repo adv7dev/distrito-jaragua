@@ -33,9 +33,6 @@ abstract class UserPostsRecord
   int get numComments;
 
   @nullable
-  DocumentReference get dogProfile;
-
-  @nullable
   bool get postOwner;
 
   @nullable
@@ -78,7 +75,6 @@ Map<String, dynamic> createUserPostsRecordData({
   DocumentReference postUser,
   DateTime timePosted,
   int numComments,
-  DocumentReference dogProfile,
   bool postOwner,
 }) =>
     serializers.toFirestore(
@@ -91,5 +87,4 @@ Map<String, dynamic> createUserPostsRecordData({
           ..timePosted = timePosted
           ..likes = null
           ..numComments = numComments
-          ..dogProfile = dogProfile
           ..postOwner = postOwner));

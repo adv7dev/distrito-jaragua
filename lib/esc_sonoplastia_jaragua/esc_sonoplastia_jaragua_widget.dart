@@ -1,11 +1,9 @@
 import '../backend/backend.dart';
-import '../components/delete_pregadores_widget.dart';
 import '../components/delete_sonoplastia_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,28 +18,6 @@ class EscSonoplastiaJaraguaWidget extends StatefulWidget {
 class _EscSonoplastiaJaraguaWidgetState
     extends State<EscSonoplastiaJaraguaWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return Padding(
-            padding: MediaQuery.of(context).viewInsets,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: DeletePregadoresWidget(),
-            ),
-          );
-        },
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
