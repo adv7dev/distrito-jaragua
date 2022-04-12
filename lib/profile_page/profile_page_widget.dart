@@ -10,6 +10,7 @@ import '../page_aurora_adm/page_aurora_adm_widget.dart';
 import '../page_ipanema_adm/page_ipanema_adm_widget.dart';
 import '../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import '../page_panamericano_adm/page_panamericano_adm_widget.dart';
+import '../termos_de_servicos/termos_de_servicos_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -560,48 +561,63 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     width: 1,
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 0, 0, 0),
-                                      child: Icon(
-                                        Icons.text_snippet_outlined,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        size: 24,
+                                child: InkWell(
+                                  onTap: () async {
+                                    await Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.bottomToTop,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration:
+                                            Duration(milliseconds: 300),
+                                        child: TermosDeServicosWidget(),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12, 0, 0, 0),
-                                      child: Text(
-                                        'Termos de serviço',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0.9, 0),
+                                    );
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12, 0, 0, 0),
                                         child: Icon(
-                                          Icons.arrow_forward_ios,
+                                          Icons.text_snippet_outlined,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 18,
+                                              .primaryColor,
+                                          size: 24,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12, 0, 0, 0),
+                                        child: Text(
+                                          'Termos de serviço',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.9, 0),
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

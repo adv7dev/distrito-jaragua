@@ -22,6 +22,7 @@ import '../../chat_page/chat_page_widget.dart';
 import '../../add_chat_users/add_chat_users_widget.dart';
 import '../../create_group_chat/create_group_chat_widget.dart';
 import '../../page_jaragua/page_jaragua_widget.dart';
+import '../../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import '../../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
 import '../../esc_sonoplastia_jaragua/esc_sonoplastia_jaragua_widget.dart';
 import '../../esc_musica_jaragua/esc_musica_jaragua_widget.dart';
@@ -37,12 +38,14 @@ import '../../page_vilaaurora/page_vilaaurora_widget.dart';
 import '../../esc_pregadores_vilaaurora/esc_pregadores_vilaaurora_widget.dart';
 import '../../esc_sonoplastia_aurora/esc_sonoplastia_aurora_widget.dart';
 import '../../esc_musica_aurora/esc_musica_aurora_widget.dart';
+import '../../esc_limpeza_aurora/esc_limpeza_aurora_widget.dart';
+import '../../esc_escola_s_aurora/esc_escola_s_aurora_widget.dart';
+import '../../view_all_anuncios_aurora/view_all_anuncios_aurora_widget.dart';
+import '../../page_aurora_adm/page_aurora_adm_widget.dart';
 import '../../itinerario_pastoral/itinerario_pastoral_widget.dart';
 import '../../view_all_anuncios_distrital/view_all_anuncios_distrital_widget.dart';
-import '../../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import '../../page_ipanema_adm/page_ipanema_adm_widget.dart';
 import '../../page_panamericano_adm/page_panamericano_adm_widget.dart';
-import '../../page_aurora_adm/page_aurora_adm_widget.dart';
 import '../../lideres_page_jaragua/lideres_page_jaragua_widget.dart';
 import '../../lideres_page_ipanema/lideres_page_ipanema_widget.dart';
 import '../../lideres_page_panamericano/lideres_page_panamericano_widget.dart';
@@ -50,7 +53,7 @@ import '../../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import '../../view_all_anuncios_jaragua/view_all_anuncios_jaragua_widget.dart';
 import '../../view_all_anuncios_ipanema/view_all_anuncios_ipanema_widget.dart';
 import '../../view_all_anuncios_panamericano/view_all_anuncios_panamericano_widget.dart';
-import '../../view_all_anuncios_aurora/view_all_anuncios_aurora_widget.dart';
+import '../../termos_de_servicos/termos_de_servicos_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -144,6 +147,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'createGroupChat': (data) async => CreateGroupChatWidget(),
   'igrejas': (data) async => NavBarPage(initialPage: 'IgrejasWidget'),
   'page_jaragua': (data) async => PageJaraguaWidget(),
+  'Page_Jaragua_adm': (data) async => PageJaraguaAdmWidget(),
   'esc_pregadores_jaragua': (data) async => EscPregadoresJaraguaWidget(),
   'esc_sonoplastia_jaragua': (data) async => EscSonoplastiaJaraguaWidget(),
   'esc_musica_jaragua': (data) async => EscMusicaJaraguaWidget(),
@@ -161,13 +165,15 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'esc_pregadores_vilaaurora': (data) async => EscPregadoresVilaauroraWidget(),
   'esc_sonoplastia_aurora': (data) async => EscSonoplastiaAuroraWidget(),
   'esc_musica_aurora': (data) async => EscMusicaAuroraWidget(),
+  'esc_Limpeza_aurora': (data) async => EscLimpezaAuroraWidget(),
+  'esc_EscolaS_aurora': (data) async => EscEscolaSAuroraWidget(),
+  'view_all_anuncios_Aurora': (data) async => ViewAllAnunciosAuroraWidget(),
+  'Page_Aurora_adm': (data) async => PageAuroraAdmWidget(),
   'itinerario_pastoral': (data) async => ItinerarioPastoralWidget(),
   'view_all_anuncios_Distrital': (data) async =>
       ViewAllAnunciosDistritalWidget(),
-  'Page_Jaragua_adm': (data) async => PageJaraguaAdmWidget(),
   'Page_Ipanema_adm': (data) async => PageIpanemaAdmWidget(),
   'Page_Panamericano_adm': (data) async => PagePanamericanoAdmWidget(),
-  'Page_Aurora_adm': (data) async => PageAuroraAdmWidget(),
   'Lideres_Page_Jaragua': (data) async => LideresPageJaraguaWidget(),
   'Lideres_Page_Ipanema': (data) async => LideresPageIpanemaWidget(),
   'Lideres_Page_Panamericano': (data) async => LideresPagePanamericanoWidget(),
@@ -176,7 +182,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'view_all_anuncios_Ipanema': (data) async => ViewAllAnunciosIpanemaWidget(),
   'view_all_anuncios_Panamericano': (data) async =>
       ViewAllAnunciosPanamericanoWidget(),
-  'view_all_anuncios_Aurora': (data) async => ViewAllAnunciosAuroraWidget(),
+  'Termos_de_Servicos': (data) async => TermosDeServicosWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
