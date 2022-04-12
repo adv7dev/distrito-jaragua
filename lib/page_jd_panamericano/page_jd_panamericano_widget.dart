@@ -175,6 +175,7 @@ class _PageJdPanamericanoWidgetState extends State<PageJdPanamericanoWidget> {
                               mainAxisSpacing: 10,
                               childAspectRatio: 1,
                             ),
+                            primary: false,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             children: [

@@ -210,6 +210,7 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                     mainAxisSpacing: 5,
                                     childAspectRatio: 1.5,
                                   ),
+                                  primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount:
