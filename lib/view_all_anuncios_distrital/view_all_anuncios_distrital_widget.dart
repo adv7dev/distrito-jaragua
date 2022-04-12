@@ -154,7 +154,11 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                 .height *
                                                             0.5,
                                                         child:
-                                                            DeleteAnunciosDistritalWidget(),
+                                                            DeleteAnunciosDistritalWidget(
+                                                          anunciosdistrital:
+                                                              columnAnunciosDistritalRecord
+                                                                  .reference,
+                                                        ),
                                                       ),
                                                     );
                                                   },
