@@ -64,7 +64,7 @@ Future<List<SelectedMedia>> selectMediaWithSourceBottomSheet({
               padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: ListTile(
                 title: Text(
-                  'Choose Source',
+                  'Escolha a Fonte',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.getFont(
                     pickerFontFamily,
@@ -90,12 +90,12 @@ Future<List<SelectedMedia>> selectMediaWithSourceBottomSheet({
               ),
             ] else if (allowPhoto)
               createUploadMediaListTile(
-                'Gallery',
+                'Galeria',
                 MediaSource.photoGallery,
               )
             else
               createUploadMediaListTile(
-                'Gallery',
+                'Galeria',
                 MediaSource.videoGallery,
               ),
             const Divider(),

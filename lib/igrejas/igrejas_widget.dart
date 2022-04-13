@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../page_ja_ipanema/page_ja_ipanema_widget.dart';
@@ -17,8 +18,53 @@ class IgrejasWidget extends StatefulWidget {
   _IgrejasWidgetState createState() => _IgrejasWidgetState();
 }
 
-class _IgrejasWidgetState extends State<IgrejasWidget> {
+class _IgrejasWidgetState extends State<IgrejasWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.easeIn,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      delay: 200,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'textOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +76,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
         title: Text(
           'IGREJAS DO DISTRITO',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Colors.white,
-                useGoogleFonts: false,
-              ),
-        ),
+            fontFamily: 'Advent Sans',
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            useGoogleFonts: false,
+          ),
+        ).animated([animationsMap['textOnPageLoadAnimation']]),
         actions: [],
         centerTitle: true,
         elevation: 2,
@@ -77,12 +124,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -96,18 +143,18 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
+                                                    BorderRadius.circular(
+                                                        100),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                2, 2, 2, 2),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        2, 2, 2, 2),
                                                     child: ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              100),
+                                                      BorderRadius.circular(
+                                                          100),
                                                       child: Image.asset(
                                                         'assets/images/Design_sem_nome_(2).png',
                                                         width: 100,
@@ -128,7 +175,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -138,15 +185,15 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   Text(
                                                     'IASD Jaraguá',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .title1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color: Colors.white,
-                                                          fontSize: 25,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color: Colors.white,
+                                                      fontSize: 25,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -157,22 +204,22 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                MainAxisAlignment.start,
                                                 children: [
                                                   AutoSizeText(
                                                     'Rua Tomás Ribeiro Colaço, 315 \n Jardim Vivan - São Paulo, SP\nCEP: 02993-100',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color:
-                                                              Color(0xFFE7E7E7),
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color:
+                                                      Color(0xFFE7E7E7),
+                                                      fontWeight:
+                                                      FontWeight.normal,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -197,12 +244,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Advent Sans',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                useGoogleFonts: false,
-                                              ),
+                                            fontFamily: 'Advent Sans',
+                                            color:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            useGoogleFonts: false,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -247,12 +294,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -266,18 +313,18 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
+                                                    BorderRadius.circular(
+                                                        100),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                2, 2, 2, 2),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        2, 2, 2, 2),
                                                     child: ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              100),
+                                                      BorderRadius.circular(
+                                                          100),
                                                       child: Image.asset(
                                                         'assets/images/Capturar.PNG',
                                                         width: 100,
@@ -298,7 +345,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -308,15 +355,15 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   Text(
                                                     'IASD Jd. Ipanema',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .title1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color: Colors.white,
-                                                          fontSize: 25,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color: Colors.white,
+                                                      fontSize: 25,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -327,22 +374,22 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                MainAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Avenida Alexios Jafet, 696 - \nJardim Ipanema - São Paulo, SP\nCEP: 05187-010',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color:
-                                                              Color(0xFFE7E7E7),
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color:
+                                                      Color(0xFFE7E7E7),
+                                                      fontWeight:
+                                                      FontWeight.normal,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -391,12 +438,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -410,18 +457,18 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
+                                                    BorderRadius.circular(
+                                                        100),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                2, 2, 2, 2),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        2, 2, 2, 2),
                                                     child: ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              100),
+                                                      BorderRadius.circular(
+                                                          100),
                                                       child: Image.asset(
                                                         'assets/images/panamericano.PNG',
                                                         width: 100,
@@ -442,7 +489,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             Row(
                                               mainAxisSize: MainAxisSize.min,
@@ -450,15 +497,15 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                 AutoSizeText(
                                                   'IASD Jd. Panamericano',
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .title1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color: Colors.white,
-                                                        fontSize: 22,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color: Colors.white,
+                                                    fontSize: 22,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -468,22 +515,22 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                MainAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Rua Sebastião Laranjeiras, 244 \nJardim Panamericano - São Paulo, SP\nCEP: 02992-050',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color:
-                                                              Color(0xFFE7E7E7),
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color:
+                                                      Color(0xFFE7E7E7),
+                                                      fontWeight:
+                                                      FontWeight.normal,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -532,12 +579,12 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -551,18 +598,18 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFEEEEEE),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
+                                                    BorderRadius.circular(
+                                                        100),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                2, 2, 2, 2),
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        2, 2, 2, 2),
                                                     child: ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              100),
+                                                      BorderRadius.circular(
+                                                          100),
                                                       child: Image.asset(
                                                         'assets/images/Escala_da_Igreja_Adventista_do_Vila_Aurora_-_Dist._Jaragu._(1).png',
                                                         width: 100,
@@ -583,7 +630,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -593,15 +640,15 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                                   Text(
                                                     'IASD Vila Aurora',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .title1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color: Colors.white,
-                                                          fontSize: 25,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color: Colors.white,
+                                                      fontSize: 25,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -612,22 +659,22 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                MainAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Rua Giacomo Saratelli, 22A\nVila Aurora - São Paulo, SP\nCEP: 05186-090',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily:
-                                                              'Advent Sans',
-                                                          color:
-                                                              Color(0xFFE7E7E7),
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                                      fontFamily:
+                                                      'Advent Sans',
+                                                      color:
+                                                      Color(0xFFE7E7E7),
+                                                      fontWeight:
+                                                      FontWeight.normal,
+                                                      useGoogleFonts: false,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -648,7 +695,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget> {
                 ),
               ],
             ),
-          ),
+          ).animated([animationsMap['columnOnPageLoadAnimation']]),
         ),
       ),
     );

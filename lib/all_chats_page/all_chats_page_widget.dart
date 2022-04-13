@@ -28,12 +28,14 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Mensagens',
+          'MENSAGENS',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Color(0xFFF7F7F7),
-                useGoogleFonts: false,
-              ),
+            fontFamily: 'Advent Sans',
+            color: Color(0xFFF7F7F7),
+            fontSize: 28,
+            fontWeight: FontWeight.w600,
+            useGoogleFonts: false,
+          ),
         ),
         actions: [
           Padding(
@@ -74,7 +76,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
             ),
           );
         },
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         elevation: 8,
         child: Icon(
           Icons.add,
@@ -120,7 +122,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                 itemCount: listViewChatsRecordList.length,
                 itemBuilder: (context, listViewIndex) {
                   final listViewChatsRecord =
-                      listViewChatsRecordList[listViewIndex];
+                  listViewChatsRecordList[listViewIndex];
                   return StreamBuilder<FFChatInfo>(
                     stream: FFChatManager.instance
                         .getChatInfo(chatRecord: listViewChatsRecord),
@@ -130,20 +132,20 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                       return FFChatPreview(
                         onTap: chatInfo != null
                             ? () => Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.bottomToTop,
-                                    duration: Duration(milliseconds: 300),
-                                    reverseDuration:
-                                        Duration(milliseconds: 300),
-                                    child: ChatPageWidget(
-                                      chatUser: chatInfo.otherUsers.length == 1
-                                          ? chatInfo.otherUsersList.first
-                                          : null,
-                                      chatRef: chatInfo.chatRecord.reference,
-                                    ),
-                                  ),
-                                )
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration:
+                            Duration(milliseconds: 300),
+                            child: ChatPageWidget(
+                              chatUser: chatInfo.otherUsers.length == 1
+                                  ? chatInfo.otherUsersList.first
+                                  : null,
+                              chatRef: chatInfo.chatRecord.reference,
+                            ),
+                          ),
+                        )
                             : null,
                         lastChatText: chatInfo.chatPreviewMessage(),
                         lastChatTime: listViewChatsRecord.lastMessageTime,
@@ -173,7 +175,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                           fontSize: 14,
                         ),
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(12, 3, 3, 3),
+                        EdgeInsetsDirectional.fromSTEB(12, 3, 3, 3),
                         borderRadius: BorderRadius.circular(0),
                       );
                     },

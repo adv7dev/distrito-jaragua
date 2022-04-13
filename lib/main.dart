@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
               color: Colors.transparent,
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/_Ame_o_seu_proximo_como_a_si_mesmo[b]._Nao_existe_mandamento_maior_do_que_estes._Marcos_12-29.png',
+                  'assets/images/APP_DISTRITO_JARAGUÁ.png',
                   fit: BoxFit.fitHeight,
                 ),
               ),

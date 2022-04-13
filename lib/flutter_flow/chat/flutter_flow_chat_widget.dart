@@ -88,7 +88,7 @@ class FFChatWidget extends StatelessWidget {
                         ),
                     ],
                     inputDecoration: InputDecoration.collapsed(
-                      hintText: 'Type message here',
+                      hintText: 'Escrever Messagem',
                       hintStyle: inputHintTextStyle ??
                           GoogleFonts.getFont(
                             'DM Sans',
