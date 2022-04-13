@@ -147,7 +147,9 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         borderRadius: BorderRadius.circular(40),
                                       ),
                                       child: InkWell(
-                                        onDoubleTap: () async {},
+                                        onDoubleTap: () async {
+                                          Navigator.pop(context);
+                                        },
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,

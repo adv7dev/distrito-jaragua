@@ -56,42 +56,36 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
                     children: List.generate(
                         columnEscalaPastoralRecordList.length, (columnIndex) {
                       final columnEscalaPastoralRecord =
-                          columnEscalaPastoralRecordList[columnIndex];
+                      columnEscalaPastoralRecordList[columnIndex];
                       return Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.95,
-                              height: 100,
-                              decoration: BoxDecoration(
+                            Expanded(
+                              child: Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
                                 color: FlutterFlowTheme.of(context).alternate,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 10, 10, 10),
-                                child: SingleChildScrollView(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 10, 10, 10),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Expanded(
-                                            child: Text(
-                                              columnEscalaPastoralRecord.igreja,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Advent Sans',
-                                                    color: Colors.white,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                          Text(
+                                            columnEscalaPastoralRecord.igreja,
+                                            style: FlutterFlowTheme.of(context)
+                                                .title3
+                                                .override(
+                                              fontFamily: 'Advent Sans',
+                                              color: Colors.white,
+                                              useGoogleFonts: false,
                                             ),
                                           ),
                                         ],
@@ -108,15 +102,15 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
                                                   columnEscalaPastoralRecord
                                                       .data),
                                               style: FlutterFlowTheme.of(
-                                                      context)
+                                                  context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Advent Sans',
-                                                    color: Color(0xFFD9D9D9),
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w500,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                                fontFamily: 'Advent Sans',
+                                                color: Color(0xFFDC8A5D),
+                                                fontWeight:
+                                                FontWeight.normal,
+                                                useGoogleFonts: false,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -132,14 +126,11 @@ class _HistoricoItinerarioWidgetState extends State<HistoricoItinerarioWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryColor,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: false,
-                                                ),
+                                              fontFamily: 'Advent Sans',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w300,
+                                              useGoogleFonts: false,
+                                            ),
                                           ),
                                         ],
                                       ),

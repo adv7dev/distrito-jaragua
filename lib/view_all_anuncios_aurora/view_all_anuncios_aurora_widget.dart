@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/delete_anuncios_aurora_widget.dart';
 import '../components/delete_anuncios_jaragua_widget.dart';
+import '../components/detalhes_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -48,11 +49,11 @@ class _ViewAllAnunciosAuroraWidgetState
         title: Text(
           'Aurora Anuncios',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Colors.white,
-                fontSize: 22,
-                useGoogleFonts: false,
-              ),
+            fontFamily: 'Advent Sans',
+            color: Colors.white,
+            fontSize: 22,
+            useGoogleFonts: false,
+          ),
         ),
         actions: [],
         centerTitle: true,
@@ -77,14 +78,14 @@ class _ViewAllAnunciosAuroraWidgetState
                           Text(
                             'Ativos:',
                             style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Advent Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts: false,
-                                    ),
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Advent Sans',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryText,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
+                            ),
                           ),
                         ],
                       ),
@@ -107,385 +108,446 @@ class _ViewAllAnunciosAuroraWidgetState
                                 height: 50,
                                 child: SpinKitRing(
                                   color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
                                 ),
                               ),
                             );
                           }
                           List<AnunciosAuroraRecord>
-                              columnAnunciosAuroraRecordList = snapshot.data;
+                          columnAnunciosAuroraRecordList = snapshot.data;
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(
                                 columnAnunciosAuroraRecordList.length,
-                                (columnIndex) {
-                              final columnAnunciosAuroraRecord =
+                                    (columnIndex) {
+                                  final columnAnunciosAuroraRecord =
                                   columnAnunciosAuroraRecordList[columnIndex];
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: InkWell(
-                                      onTap: () async {
-                                        if ((currentUserDocument?.admJaragua) ==
-                                            true) {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: Container(
-                                                  height: MediaQuery.of(context)
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () async {
+                                            if ((currentUserDocument?.admJaragua) ==
+                                                true) {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor: Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding: MediaQuery.of(context)
+                                                        .viewInsets,
+                                                    child: Container(
+                                                      height: MediaQuery.of(context)
                                                           .size
                                                           .height *
-                                                      0.5,
-                                                  child:
+                                                          0.5,
+                                                      child:
                                                       DeleteAnunciosJaraguaWidget(),
-                                                ),
+                                                    ),
+                                                  );
+                                                },
                                               );
-                                            },
-                                          );
-                                        }
-                                      },
-                                      child: Card(
-                                        clipBehavior:
+                                            }
+                                          },
+                                          child: Card(
+                                            clipBehavior:
                                             Clip.antiAliasWithSaveLayer,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            InkWell(
-                                              onLongPress: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding:
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                InkWell(
+                                                  onTap: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                          context)
+                                                          .primaryBackground,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Padding(
+                                                          padding:
                                                           MediaQuery.of(context)
                                                               .viewInsets,
-                                                      child: Container(
-                                                        height: MediaQuery.of(
-                                                                    context)
+                                                          child: Container(
+                                                            height: MediaQuery.of(
+                                                                context)
                                                                 .size
                                                                 .height *
-                                                            0.5,
-                                                        child:
-                                                            DeleteAnunciosAuroraWidget(
-                                                          anunciosAurora:
+                                                                0.7,
+                                                            child:
+                                                            DetalhesAnunciosWidget(
+                                                              titulo:
                                                               columnAnunciosAuroraRecord
-                                                                  .reference,
-                                                        ),
-                                                      ),
+                                                                  .titulo,
+                                                              descricao:
+                                                              columnAnunciosAuroraRecord
+                                                                  .descricao,
+                                                              data:
+                                                              columnAnunciosAuroraRecord
+                                                                  .data,
+                                                              horario:
+                                                              columnAnunciosAuroraRecord
+                                                                  .horario,
+                                                              img:
+                                                              columnAnunciosAuroraRecord
+                                                                  .img,
+                                                              local:
+                                                              columnAnunciosAuroraRecord
+                                                                  .local,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
                                                     );
                                                   },
-                                                );
-                                              },
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
+                                                  onLongPress: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                      Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Padding(
+                                                          padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
+                                                          child: Container(
+                                                            height: MediaQuery.of(
+                                                                context)
+                                                                .size
+                                                                .height *
+                                                                0.5,
+                                                            child:
+                                                            DeleteAnunciosAuroraWidget(
+                                                              anunciosAurora:
+                                                              columnAnunciosAuroraRecord
+                                                                  .reference,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  child: Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                5, 5, 5, 5),
-                                                    child: InkWell(
-                                                      onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          PageTransition(
-                                                            type:
+                                                            5, 5, 5, 5),
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            await Navigator.push(
+                                                              context,
+                                                              PageTransition(
+                                                                type:
                                                                 PageTransitionType
                                                                     .fade,
-                                                            child:
+                                                                child:
                                                                 FlutterFlowExpandedImageView(
-                                                              image:
+                                                                  image:
                                                                   Image.network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      columnAnunciosAuroraRecord
+                                                                          .img,
+                                                                      'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
+                                                                    ),
+                                                                    fit: BoxFit
+                                                                        .contain,
+                                                                  ),
+                                                                  allowRotation:
+                                                                  false,
+                                                                  tag:
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    columnAnunciosAuroraRecord
+                                                                        .img,
+                                                                    'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                                        '$columnIndex',
+                                                                  ),
+                                                                  useHeroAnimation:
+                                                                  true,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                          child: Hero(
+                                                            tag: valueOrDefault<
+                                                                String>(
+                                                              columnAnunciosAuroraRecord
+                                                                  .img,
+                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                                  '$columnIndex',
+                                                            ),
+                                                            transitionOnUserGestures:
+                                                            true,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                              child: Image.network(
                                                                 valueOrDefault<
                                                                     String>(
                                                                   columnAnunciosAuroraRecord
                                                                       .img,
                                                                   'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
                                                                 ),
-                                                                fit: BoxFit
-                                                                    .contain,
+                                                                width: 100,
+                                                                height: 100,
+                                                                fit: BoxFit.cover,
                                                               ),
-                                                              allowRotation:
-                                                                  false,
-                                                              tag:
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                columnAnunciosAuroraRecord
-                                                                    .img,
-                                                                'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                                    '$columnIndex',
-                                                              ),
-                                                              useHeroAnimation:
-                                                                  true,
                                                             ),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag: valueOrDefault<
-                                                            String>(
-                                                          columnAnunciosAuroraRecord
-                                                              .img,
-                                                          'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                              '$columnIndex',
-                                                        ),
-                                                        transitionOnUserGestures:
-                                                            true,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          child: Image.network(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              columnAnunciosAuroraRecord
-                                                                  .img,
-                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                            ),
-                                                            width: 100,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 15, 0, 0),
-                                                      child: Column(
-                                                        mainAxisSize:
+                                                              5, 15, 0, 0),
+                                                          child: Column(
+                                                            mainAxisSize:
                                                             MainAxisSize.max,
-                                                        crossAxisAlignment:
+                                                            crossAxisAlignment:
                                                             CrossAxisAlignment
                                                                 .start,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisSize:
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
-                                                            children: [
-                                                              Expanded(
-                                                                child:
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
                                                                     AutoSizeText(
-                                                                  columnAnunciosAuroraRecord
-                                                                      .titulo,
-                                                                  style: FlutterFlowTheme.of(
+                                                                      columnAnunciosAuroraRecord
+                                                                          .titulo
+                                                                          .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                        30,
+                                                                        replacement:
+                                                                        '…',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
-                                                                      .override(
+                                                                          .bodyText1
+                                                                          .override(
                                                                         fontFamily:
-                                                                            'Advent Sans',
+                                                                        'Advent Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         useGoogleFonts:
-                                                                            false,
+                                                                        false,
                                                                       ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Divider(
-                                                            height: 10,
-                                                            color: Color(
-                                                                0xFFD4D4D4),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        5),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      columnAnunciosAuroraRecord
-                                                                          .descricao,
-                                                                      'Sem Descrição',
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Advent Sans',
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          fontStyle:
-                                                                              FontStyle.italic,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
-                                                                'DATA: ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Advent Sans',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      useGoogleFonts:
-                                                                          false,
-                                                                    ),
+                                                                ],
                                                               ),
-                                                              Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  dateTimeFormat(
-                                                                      'd/M/y',
-                                                                      columnAnunciosAuroraRecord
-                                                                          .data),
-                                                                  'S/ Data',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Advent Sans',
-                                                                      color: Color(
-                                                                          0xFFDBDBDB),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                      useGoogleFonts:
-                                                                          false,
-                                                                    ),
+                                                              Divider(
+                                                                height: 10,
+                                                                color: Color(
+                                                                    0xFFD4D4D4),
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                child: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    dateTimeFormat(
-                                                                        'EEEE',
-                                                                        columnAnunciosAuroraRecord
-                                                                            .data),
-                                                                    'Sem Horário',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Advent Sans',
-                                                                        color: Color(
-                                                                            0xFFF9F9F9),
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                        useGoogleFonts:
-                                                                            false,
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    5),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          columnAnunciosAuroraRecord
+                                                                              .descricao,
+                                                                          'Sem Descrição',
+                                                                        ).maybeHandleOverflow(
+                                                                          maxChars:
+                                                                          40,
+                                                                          replacement:
+                                                                          '…',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                          fontFamily:
+                                                                          'Advent Sans',
+                                                                          color:
+                                                                          Colors.white,
+                                                                          fontWeight:
+                                                                          FontWeight.normal,
+                                                                          fontStyle:
+                                                                          FontStyle.italic,
+                                                                          useGoogleFonts:
+                                                                          false,
+                                                                        ),
                                                                       ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
+                                                              Row(
+                                                                mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'LOCAL: ',
-                                                                style: FlutterFlowTheme.of(
+                                                                children: [
+                                                                  Text(
+                                                                    'DATA: ',
+                                                                    style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
-                                                                    .override(
+                                                                        .bodyText1
+                                                                        .override(
                                                                       fontFamily:
-                                                                          'Advent Sans',
+                                                                      'Advent Sans',
                                                                       color: Colors
                                                                           .white,
                                                                       useGoogleFonts:
-                                                                          false,
+                                                                      false,
                                                                     ),
-                                                              ),
-                                                              Expanded(
-                                                                child:
-                                                                    AutoSizeText(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    columnAnunciosAuroraRecord
-                                                                        .local,
-                                                                    'S/ Igreja',
                                                                   ),
-                                                                  style: FlutterFlowTheme.of(
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      dateTimeFormat(
+                                                                          'd/M/y',
+                                                                          columnAnunciosAuroraRecord
+                                                                              .data),
+                                                                      'S/ Data',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                      fontFamily:
+                                                                      'Advent Sans',
+                                                                      color: Color(
+                                                                          0xFFDBDBDB),
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                      useGoogleFonts:
+                                                                      false,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                        10,
+                                                                        0,
+                                                                        0,
+                                                                        0),
+                                                                    child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        dateTimeFormat(
+                                                                            'EEEE',
+                                                                            columnAnunciosAuroraRecord
+                                                                                .data),
+                                                                        'Sem Horário',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
-                                                                      .override(
+                                                                          .bodyText1
+                                                                          .override(
                                                                         fontFamily:
-                                                                            'Advent Sans',
+                                                                        'Advent Sans',
+                                                                        color: Color(
+                                                                            0xFFF9F9F9),
+                                                                        fontWeight:
+                                                                        FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                        false,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'LOCAL: ',
+                                                                    style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                      fontFamily:
+                                                                      'Advent Sans',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      useGoogleFonts:
+                                                                      false,
+                                                                    ),
+                                                                  ),
+                                                                  Expanded(
+                                                                    child:
+                                                                    AutoSizeText(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        columnAnunciosAuroraRecord
+                                                                            .local,
+                                                                        'S/ Igreja',
+                                                                      ).maybeHandleOverflow(
+                                                                        maxChars:
+                                                                        30,
+                                                                        replacement:
+                                                                        '…',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Advent Sans',
                                                                         color: Color(
                                                                             0xFFDBDBDB),
                                                                         fontWeight:
-                                                                            FontWeight.normal,
+                                                                        FontWeight.normal,
                                                                         useGoogleFonts:
-                                                                            false,
+                                                                        false,
                                                                       ),
-                                                                ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
                                                           ),
-                                                        ],
+                                                        ),
                                                       ),
-                                                    ),
+                                                    ],
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }),
+                                    ],
+                                  );
+                                }),
                           );
                         },
                       ),
@@ -503,14 +565,14 @@ class _ViewAllAnunciosAuroraWidgetState
                           Text(
                             'Histórico:',
                             style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Advent Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts: false,
-                                    ),
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Advent Sans',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryText,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
+                            ),
                           ),
                         ],
                       ),
@@ -541,295 +603,305 @@ class _ViewAllAnunciosAuroraWidgetState
                         );
                       }
                       List<AnunciosAuroraRecord>
-                          columnAnunciosAuroraRecordList = snapshot.data;
+                      columnAnunciosAuroraRecordList = snapshot.data;
                       return Column(
                         mainAxisSize: MainAxisSize.max,
                         children:
-                            List.generate(columnAnunciosAuroraRecordList.length,
+                        List.generate(columnAnunciosAuroraRecordList.length,
                                 (columnIndex) {
-                          final columnAnunciosAuroraRecord =
+                              final columnAnunciosAuroraRecord =
                               columnAnunciosAuroraRecordList[columnIndex];
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      color: FlutterFlowTheme.of(context).alternate,
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Padding(
-                                            padding:
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5, 5, 5, 5),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  PageTransition(
-                                                    type:
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    await Navigator.push(
+                                                      context,
+                                                      PageTransition(
+                                                        type:
                                                         PageTransitionType.fade,
-                                                    child:
+                                                        child:
                                                         FlutterFlowExpandedImageView(
-                                                      image: Image.network(
+                                                          image: Image.network(
+                                                            valueOrDefault<String>(
+                                                              columnAnunciosAuroraRecord
+                                                                  .img,
+                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
+                                                            ),
+                                                            fit: BoxFit.contain,
+                                                          ),
+                                                          allowRotation: false,
+                                                          tag: valueOrDefault<
+                                                              String>(
+                                                            columnAnunciosAuroraRecord
+                                                                .img,
+                                                            'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                                '$columnIndex',
+                                                          ),
+                                                          useHeroAnimation: true,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Hero(
+                                                    tag: valueOrDefault<String>(
+                                                      columnAnunciosAuroraRecord
+                                                          .img,
+                                                      'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
+                                                          '$columnIndex',
+                                                    ),
+                                                    transitionOnUserGestures: true,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                      BorderRadius.circular(10),
+                                                      child: Image.network(
                                                         valueOrDefault<String>(
                                                           columnAnunciosAuroraRecord
                                                               .img,
                                                           'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
                                                         ),
-                                                        fit: BoxFit.contain,
+                                                        width: 100,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      allowRotation: false,
-                                                      tag: valueOrDefault<
-                                                          String>(
-                                                        columnAnunciosAuroraRecord
-                                                            .img,
-                                                        'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                            '$columnIndex',
-                                                      ),
-                                                      useHeroAnimation: true,
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                              child: Hero(
-                                                tag: valueOrDefault<String>(
-                                                  columnAnunciosAuroraRecord
-                                                      .img,
-                                                  'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                      '$columnIndex',
-                                                ),
-                                                transitionOnUserGestures: true,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    valueOrDefault<String>(
-                                                      columnAnunciosAuroraRecord
-                                                          .img,
-                                                      'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                    ),
-                                                    width: 100,
-                                                    height: 100,
-                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 0, 0, 0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(5, 0, 0, 0),
+                                                  child: Column(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    crossAxisAlignment:
                                                     CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
                                                     children: [
-                                                      Expanded(
-                                                        child: AutoSizeText(
-                                                          columnAnunciosAuroraRecord
-                                                              .titulo,
-                                                          style: FlutterFlowTheme
+                                                      Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: AutoSizeText(
+                                                              columnAnunciosAuroraRecord
+                                                                  .titulo
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 30,
+                                                                replacement: '…',
+                                                              ),
+                                                              style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
-                                                              .override(
+                                                                  .bodyText1
+                                                                  .override(
                                                                 fontFamily:
-                                                                    'Advent Sans',
+                                                                'Advent Sans',
                                                                 color: Colors
                                                                     .white,
                                                                 useGoogleFonts:
-                                                                    false,
+                                                                false,
                                                               ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Divider(
-                                                    height: 10,
-                                                    color: Color(0xFFD4D4D4),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 0, 0, 5),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              columnAnunciosAuroraRecord
-                                                                  .descricao,
-                                                              'Sem Descrição',
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Advent Sans',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'DATA: ',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyText1
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Advent Sans',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                        ],
                                                       ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          dateTimeFormat(
-                                                              'd/M/y',
-                                                              columnAnunciosAuroraRecord
-                                                                  .data),
-                                                          'S/ Data',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Advent Sans',
-                                                                  color: Color(
-                                                                      0xFFDBDBDB),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
+                                                      Divider(
+                                                        height: 10,
+                                                        color: Color(0xFFD4D4D4),
                                                       ),
                                                       Padding(
                                                         padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            0, 0, 0, 5),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  columnAnunciosAuroraRecord
+                                                                      .descricao,
+                                                                  'Sem Descrição',
+                                                                ).maybeHandleOverflow(
+                                                                  maxChars: 40,
+                                                                  replacement: '…',
+                                                                ),
+                                                                style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                                  fontStyle:
+                                                                  FontStyle
+                                                                      .italic,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'DATA: ',
+                                                            style: FlutterFlowTheme
+                                                                .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                              fontFamily:
+                                                              'Advent Sans',
+                                                              color:
+                                                              Colors.white,
+                                                              useGoogleFonts:
+                                                              false,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            valueOrDefault<String>(
+                                                              dateTimeFormat(
+                                                                  'd/M/y',
+                                                                  columnAnunciosAuroraRecord
+                                                                      .data),
+                                                              'S/ Data',
+                                                            ),
+                                                            style:
+                                                            FlutterFlowTheme.of(
+                                                                context)
+                                                                .bodyText1
+                                                                .override(
+                                                              fontFamily:
+                                                              'Advent Sans',
+                                                              color: Color(
+                                                                  0xFFDBDBDB),
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .normal,
+                                                              useGoogleFonts:
+                                                              false,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(10, 0,
-                                                                    0, 0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            dateTimeFormat(
-                                                                'EEEE',
-                                                                columnAnunciosAuroraRecord
-                                                                    .data),
-                                                            'Sem Horário',
-                                                          ),
-                                                          style: FlutterFlowTheme
+                                                                0, 0),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                dateTimeFormat(
+                                                                    'EEEE',
+                                                                    columnAnunciosAuroraRecord
+                                                                        .data),
+                                                                'Sem Horário',
+                                                              ),
+                                                              style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
-                                                              .override(
+                                                                  .bodyText1
+                                                                  .override(
                                                                 fontFamily:
-                                                                    'Advent Sans',
+                                                                'Advent Sans',
                                                                 color: Color(
                                                                     0xFFF9F9F9),
                                                                 fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
+                                                                FontWeight
+                                                                    .normal,
                                                                 useGoogleFonts:
-                                                                    false,
+                                                                false,
                                                               ),
-                                                        ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
+                                                      Row(
+                                                        mainAxisSize:
                                                         MainAxisSize.max,
-                                                    crossAxisAlignment:
+                                                        crossAxisAlignment:
                                                         CrossAxisAlignment
                                                             .start,
-                                                    children: [
-                                                      Text(
-                                                        'LOCAL: ',
-                                                        style: FlutterFlowTheme
+                                                        children: [
+                                                          Text(
+                                                            'LOCAL: ',
+                                                            style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
-                                                            .override(
+                                                                .bodyText1
+                                                                .override(
                                                               fontFamily:
-                                                                  'Advent Sans',
+                                                              'Advent Sans',
                                                               color:
-                                                                  Colors.white,
+                                                              Colors.white,
                                                               useGoogleFonts:
-                                                                  false,
+                                                              false,
                                                             ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            columnAnunciosAuroraRecord
-                                                                .local,
-                                                            'S/ Igreja',
                                                           ),
-                                                          style: FlutterFlowTheme
+                                                          Expanded(
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                columnAnunciosAuroraRecord
+                                                                    .local,
+                                                                'S/ Igreja',
+                                                              ).maybeHandleOverflow(
+                                                                maxChars: 30,
+                                                                replacement: '…',
+                                                              ),
+                                                              style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
-                                                              .override(
+                                                                  .bodyText1
+                                                                  .override(
                                                                 fontFamily:
-                                                                    'Advent Sans',
+                                                                'Advent Sans',
                                                                 color: Color(
                                                                     0xFFDBDBDB),
                                                                 fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
+                                                                FontWeight
+                                                                    .normal,
                                                                 useGoogleFonts:
-                                                                    false,
+                                                                false,
                                                               ),
-                                                        ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
-                                                ],
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ],
-                          );
-                        }),
+                                ],
+                              );
+                            }),
                       );
                     },
                   ),

@@ -1,7 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/detalhes_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
-import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key key}) : super(key: key);
@@ -354,103 +353,171 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 borderRadius:
                                                 BorderRadius.circular(10),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        5, 7, 5, 3),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                                child:
-                                                                FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewAnunciosDistritalRecord
-                                                                          .img,
-                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                  false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewAnunciosDistritalRecord
-                                                                        .img,
-                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                  true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              listViewAnunciosDistritalRecord
-                                                                  .img,
-                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                  '$listViewIndex',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                            true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  10),
-                                                              child:
-                                                              Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewAnunciosDistritalRecord
-                                                                      .img,
-                                                                  'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                ),
-                                                                width: 190,
-                                                                height: 150,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ).animated([
-                                                          animationsMap[
-                                                          'imageOnActionTriggerAnimation']
-                                                        ]),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                            context)
+                                                            .viewInsets,
+                                                        child:
+                                                        DetalhesAnunciosWidget(
+                                                          titulo:
+                                                          listViewAnunciosDistritalRecord
+                                                              .titulo,
+                                                          descricao:
+                                                          listViewAnunciosDistritalRecord
+                                                              .descricao,
+                                                          data:
+                                                          listViewAnunciosDistritalRecord
+                                                              .data,
+                                                          horario:
+                                                          listViewAnunciosDistritalRecord
+                                                              .horario,
+                                                          img:
+                                                          listViewAnunciosDistritalRecord
+                                                              .img,
+                                                          local:
+                                                          listViewAnunciosDistritalRecord
+                                                              .local,
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Column(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
-                                                          5, 0, 5, 0),
+                                                          5, 7, 5, 3),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10),
+                                                            child:
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewAnunciosDistritalRecord
+                                                                    .img,
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                                              ),
+                                                              width: 190,
+                                                              height: 150,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ).animated([
+                                                            animationsMap[
+                                                            'imageOnActionTriggerAnimation']
+                                                          ]),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child:
+                                                              AutoSizeText(
+                                                                listViewAnunciosDistritalRecord
+                                                                    .titulo
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                  '…',
+                                                                ),
+                                                                textAlign:
+                                                                TextAlign
+                                                                    .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                      context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SingleChildScrollView(
+                                                      scrollDirection:
+                                                      Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewAnunciosDistritalRecord
+                                                                    .data),
+                                                            style: FlutterFlowTheme
+                                                                .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                              fontFamily:
+                                                              'Advent Sans',
+                                                              color: FlutterFlowTheme.of(
+                                                                  context)
+                                                                  .primaryText,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .normal,
+                                                              useGoogleFonts:
+                                                              false,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(10, 0,
+                                                          10, 10),
                                                       child: Row(
                                                         mainAxisSize:
                                                         MainAxisSize.max,
@@ -459,11 +526,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             .center,
                                                         children: [
                                                           Expanded(
-                                                            child: AutoSizeText(
+                                                            child: Text(
                                                               listViewAnunciosDistritalRecord
-                                                                  .titulo
+                                                                  .local
                                                                   .maybeHandleOverflow(
-                                                                maxChars: 25,
+                                                                maxChars: 15,
                                                                 replacement:
                                                                 '…',
                                                               ),
@@ -481,7 +548,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .primaryText,
                                                                 fontWeight:
                                                                 FontWeight
-                                                                    .w600,
+                                                                    .normal,
                                                                 useGoogleFonts:
                                                                 false,
                                                               ),
@@ -490,84 +557,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  SingleChildScrollView(
-                                                    scrollDirection:
-                                                    Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              'd/M/y',
-                                                              listViewAnunciosDistritalRecord
-                                                                  .data),
-                                                          style: FlutterFlowTheme
-                                                              .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                            fontFamily:
-                                                            'Advent Sans',
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
-                                                                .primaryText,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .normal,
-                                                            useGoogleFonts:
-                                                            false,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10, 0, 10, 10),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewAnunciosDistritalRecord
-                                                                .local
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 15,
-                                                              replacement: '…',
-                                                            ),
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: FlutterFlowTheme
-                                                                .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                              'Advent Sans',
-                                                              color: FlutterFlowTheme.of(
-                                                                  context)
-                                                                  .primaryText,
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .normal,
-                                                              useGoogleFonts:
-                                                              false,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -693,100 +684,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 borderRadius:
                                                 BorderRadius.circular(10),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        5, 7, 5, 3),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                                child:
-                                                                FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewAnunciosJaraguaRecord
-                                                                          .img,
-                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                  false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewAnunciosJaraguaRecord
-                                                                        .img,
-                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                  true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              listViewAnunciosJaraguaRecord
-                                                                  .img,
-                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                  '$listViewIndex',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                            true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  10),
-                                                              child:
-                                                              Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewAnunciosJaraguaRecord
-                                                                      .img,
-                                                                  'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                ),
-                                                                width: 140,
-                                                                height: 140,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                            context)
+                                                            .viewInsets,
+                                                        child:
+                                                        DetalhesAnunciosWidget(
+                                                          titulo:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .titulo,
+                                                          descricao:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .descricao,
+                                                          data:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .data,
+                                                          horario:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .horario,
+                                                          img:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .img,
+                                                          local:
+                                                          listViewAnunciosJaraguaRecord
+                                                              .local,
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Column(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
-                                                          5, 0, 5, 0),
+                                                          5, 7, 5, 3),
                                                       child: Row(
                                                         mainAxisSize:
                                                         MainAxisSize.max,
@@ -794,91 +739,89 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         MainAxisAlignment
                                                             .center,
                                                         children: [
-                                                          Expanded(
-                                                            child: AutoSizeText(
-                                                              listViewAnunciosJaraguaRecord
-                                                                  .titulo
-                                                                  .maybeHandleOverflow(
-                                                                maxChars: 25,
-                                                                replacement:
-                                                                '…',
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10),
+                                                            child:
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewAnunciosJaraguaRecord
+                                                                    .img,
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
                                                               ),
-                                                              textAlign:
-                                                              TextAlign
-                                                                  .center,
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .primaryText,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
+                                                              width: 140,
+                                                              height: 140,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  SingleChildScrollView(
-                                                    scrollDirection:
-                                                    Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              'd/M h:mm a',
-                                                              listViewAnunciosJaraguaRecord
-                                                                  .data),
-                                                          style: FlutterFlowTheme
-                                                              .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                            fontFamily:
-                                                            'Advent Sans',
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
-                                                                .primaryText,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .normal,
-                                                            useGoogleFonts:
-                                                            false,
-                                                          ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child:
+                                                              AutoSizeText(
+                                                                listViewAnunciosJaraguaRecord
+                                                                    .titulo
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                  '…',
+                                                                ),
+                                                                textAlign:
+                                                                TextAlign
+                                                                    .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                      context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10, 0, 10, 10),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewAnunciosJaraguaRecord
-                                                                .local,
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                    SingleChildScrollView(
+                                                      scrollDirection:
+                                                      Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewAnunciosJaraguaRecord
+                                                                    .data),
                                                             style: FlutterFlowTheme
                                                                 .of(context)
                                                                 .bodyText1
@@ -895,11 +838,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               false,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(10, 0,
+                                                          10, 10),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              listViewAnunciosJaraguaRecord
+                                                                  .local,
+                                                              textAlign:
+                                                              TextAlign
+                                                                  .center,
+                                                              style: FlutterFlowTheme
+                                                                  .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                fontFamily:
+                                                                'Advent Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                                useGoogleFonts:
+                                                                false,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1025,100 +1007,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 borderRadius:
                                                 BorderRadius.circular(10),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        5, 7, 5, 3),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                                child:
-                                                                FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewAnunciosIpanemaRecord
-                                                                          .img,
-                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                  false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewAnunciosIpanemaRecord
-                                                                        .img,
-                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                  true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              listViewAnunciosIpanemaRecord
-                                                                  .img,
-                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                  '$listViewIndex',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                            true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  10),
-                                                              child:
-                                                              Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewAnunciosIpanemaRecord
-                                                                      .img,
-                                                                  'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                ),
-                                                                width: 140,
-                                                                height: 140,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                            context)
+                                                            .viewInsets,
+                                                        child:
+                                                        DetalhesAnunciosWidget(
+                                                          titulo:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .titulo,
+                                                          descricao:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .descricao,
+                                                          data:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .data,
+                                                          horario:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .horario,
+                                                          img:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .img,
+                                                          local:
+                                                          listViewAnunciosIpanemaRecord
+                                                              .local,
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Column(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
-                                                          5, 0, 5, 0),
+                                                          5, 7, 5, 3),
                                                       child: Row(
                                                         mainAxisSize:
                                                         MainAxisSize.max,
@@ -1126,91 +1062,89 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         MainAxisAlignment
                                                             .center,
                                                         children: [
-                                                          Expanded(
-                                                            child: AutoSizeText(
-                                                              listViewAnunciosIpanemaRecord
-                                                                  .titulo
-                                                                  .maybeHandleOverflow(
-                                                                maxChars: 25,
-                                                                replacement:
-                                                                '…',
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10),
+                                                            child:
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewAnunciosIpanemaRecord
+                                                                    .img,
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
                                                               ),
-                                                              textAlign:
-                                                              TextAlign
-                                                                  .center,
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .primaryText,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
+                                                              width: 140,
+                                                              height: 140,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  SingleChildScrollView(
-                                                    scrollDirection:
-                                                    Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              'd/M h:mm a',
-                                                              listViewAnunciosIpanemaRecord
-                                                                  .data),
-                                                          style: FlutterFlowTheme
-                                                              .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                            fontFamily:
-                                                            'Advent Sans',
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
-                                                                .primaryText,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .normal,
-                                                            useGoogleFonts:
-                                                            false,
-                                                          ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child:
+                                                              AutoSizeText(
+                                                                listViewAnunciosIpanemaRecord
+                                                                    .titulo
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                  '…',
+                                                                ),
+                                                                textAlign:
+                                                                TextAlign
+                                                                    .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                      context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10, 0, 10, 10),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewAnunciosIpanemaRecord
-                                                                .local,
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                    SingleChildScrollView(
+                                                      scrollDirection:
+                                                      Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewAnunciosIpanemaRecord
+                                                                    .data),
                                                             style: FlutterFlowTheme
                                                                 .of(context)
                                                                 .bodyText1
@@ -1227,11 +1161,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               false,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(10, 0,
+                                                          10, 10),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              listViewAnunciosIpanemaRecord
+                                                                  .local,
+                                                              textAlign:
+                                                              TextAlign
+                                                                  .center,
+                                                              style: FlutterFlowTheme
+                                                                  .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                fontFamily:
+                                                                'Advent Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                                useGoogleFonts:
+                                                                false,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1364,100 +1337,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 borderRadius:
                                                 BorderRadius.circular(10),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        5, 7, 5, 3),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                                child:
-                                                                FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewAnunciosPanamericanoRecord
-                                                                          .img,
-                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                  false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewAnunciosPanamericanoRecord
-                                                                        .img,
-                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                  true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              listViewAnunciosPanamericanoRecord
-                                                                  .img,
-                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                  '$listViewIndex',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                            true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  10),
-                                                              child:
-                                                              Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewAnunciosPanamericanoRecord
-                                                                      .img,
-                                                                  'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                ),
-                                                                width: 140,
-                                                                height: 140,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                            context)
+                                                            .viewInsets,
+                                                        child:
+                                                        DetalhesAnunciosWidget(
+                                                          titulo:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .titulo,
+                                                          descricao:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .descricao,
+                                                          data:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .data,
+                                                          horario:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .horario,
+                                                          img:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .img,
+                                                          local:
+                                                          listViewAnunciosPanamericanoRecord
+                                                              .local,
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Column(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
-                                                          5, 0, 5, 0),
+                                                          5, 7, 5, 3),
                                                       child: Row(
                                                         mainAxisSize:
                                                         MainAxisSize.max,
@@ -1465,91 +1392,89 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         MainAxisAlignment
                                                             .center,
                                                         children: [
-                                                          Expanded(
-                                                            child: AutoSizeText(
-                                                              listViewAnunciosPanamericanoRecord
-                                                                  .titulo
-                                                                  .maybeHandleOverflow(
-                                                                maxChars: 25,
-                                                                replacement:
-                                                                '…',
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10),
+                                                            child:
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewAnunciosPanamericanoRecord
+                                                                    .img,
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
                                                               ),
-                                                              textAlign:
-                                                              TextAlign
-                                                                  .center,
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .primaryText,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
+                                                              width: 140,
+                                                              height: 140,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  SingleChildScrollView(
-                                                    scrollDirection:
-                                                    Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              'd/M h:mm a',
-                                                              listViewAnunciosPanamericanoRecord
-                                                                  .data),
-                                                          style: FlutterFlowTheme
-                                                              .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                            fontFamily:
-                                                            'Advent Sans',
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
-                                                                .primaryText,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .normal,
-                                                            useGoogleFonts:
-                                                            false,
-                                                          ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child:
+                                                              AutoSizeText(
+                                                                listViewAnunciosPanamericanoRecord
+                                                                    .titulo
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                  '…',
+                                                                ),
+                                                                textAlign:
+                                                                TextAlign
+                                                                    .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                      context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10, 0, 10, 10),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewAnunciosPanamericanoRecord
-                                                                .local,
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                    SingleChildScrollView(
+                                                      scrollDirection:
+                                                      Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewAnunciosPanamericanoRecord
+                                                                    .data),
                                                             style: FlutterFlowTheme
                                                                 .of(context)
                                                                 .bodyText1
@@ -1566,11 +1491,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               false,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(10, 0,
+                                                          10, 10),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              listViewAnunciosPanamericanoRecord
+                                                                  .local,
+                                                              textAlign:
+                                                              TextAlign
+                                                                  .center,
+                                                              style: FlutterFlowTheme
+                                                                  .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                fontFamily:
+                                                                'Advent Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                                useGoogleFonts:
+                                                                false,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1696,100 +1660,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 borderRadius:
                                                 BorderRadius.circular(10),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        5, 7, 5, 3),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                                child:
-                                                                FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewAnunciosAuroraRecord
-                                                                          .img,
-                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                  false,
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewAnunciosAuroraRecord
-                                                                        .img,
-                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  useHeroAnimation:
-                                                                  true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag: valueOrDefault<
-                                                                String>(
-                                                              listViewAnunciosAuroraRecord
-                                                                  .img,
-                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
-                                                                  '$listViewIndex',
-                                                            ),
-                                                            transitionOnUserGestures:
-                                                            true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  10),
-                                                              child:
-                                                              Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewAnunciosAuroraRecord
-                                                                      .img,
-                                                                  'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
-                                                                ),
-                                                                width: 140,
-                                                                height: 140,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                            context)
+                                                            .viewInsets,
+                                                        child:
+                                                        DetalhesAnunciosWidget(
+                                                          titulo:
+                                                          listViewAnunciosAuroraRecord
+                                                              .titulo,
+                                                          descricao:
+                                                          listViewAnunciosAuroraRecord
+                                                              .descricao,
+                                                          data:
+                                                          listViewAnunciosAuroraRecord
+                                                              .data,
+                                                          horario:
+                                                          listViewAnunciosAuroraRecord
+                                                              .horario,
+                                                          img:
+                                                          listViewAnunciosAuroraRecord
+                                                              .img,
+                                                          local:
+                                                          listViewAnunciosAuroraRecord
+                                                              .local,
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Column(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
-                                                          5, 0, 5, 0),
+                                                          5, 7, 5, 3),
                                                       child: Row(
                                                         mainAxisSize:
                                                         MainAxisSize.max,
@@ -1797,91 +1715,89 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         MainAxisAlignment
                                                             .center,
                                                         children: [
-                                                          Expanded(
-                                                            child: AutoSizeText(
-                                                              listViewAnunciosAuroraRecord
-                                                                  .titulo
-                                                                  .maybeHandleOverflow(
-                                                                maxChars: 25,
-                                                                replacement:
-                                                                '…',
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10),
+                                                            child:
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewAnunciosAuroraRecord
+                                                                    .img,
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
                                                               ),
-                                                              textAlign:
-                                                              TextAlign
-                                                                  .center,
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .primaryText,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
+                                                              width: 140,
+                                                              height: 140,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  SingleChildScrollView(
-                                                    scrollDirection:
-                                                    Axis.horizontal,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text(
-                                                          dateTimeFormat(
-                                                              'd/M h:mm a',
-                                                              listViewAnunciosAuroraRecord
-                                                                  .data),
-                                                          style: FlutterFlowTheme
-                                                              .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                            fontFamily:
-                                                            'Advent Sans',
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
-                                                                .primaryText,
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .normal,
-                                                            useGoogleFonts:
-                                                            false,
-                                                          ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                          MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                          children: [
+                                                            Expanded(
+                                                              child:
+                                                              AutoSizeText(
+                                                                listViewAnunciosAuroraRecord
+                                                                    .titulo
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                  '…',
+                                                                ),
+                                                                textAlign:
+                                                                TextAlign
+                                                                    .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Advent Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                      context)
+                                                                      .primaryText,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  useGoogleFonts:
+                                                                  false,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10, 0, 10, 10),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewAnunciosAuroraRecord
-                                                                .local,
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                    SingleChildScrollView(
+                                                      scrollDirection:
+                                                      Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Text(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewAnunciosAuroraRecord
+                                                                    .data),
                                                             style: FlutterFlowTheme
                                                                 .of(context)
                                                                 .bodyText1
@@ -1898,11 +1814,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               false,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(10, 0,
+                                                          10, 10),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              listViewAnunciosAuroraRecord
+                                                                  .local,
+                                                              textAlign:
+                                                              TextAlign
+                                                                  .center,
+                                                              style: FlutterFlowTheme
+                                                                  .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                fontFamily:
+                                                                'Advent Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                                useGoogleFonts:
+                                                                false,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),

@@ -1,4 +1,7 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/add_itinerario_widget.dart';
+import '../components/delete_itinerario_widget.dart';
 import '../components/historico_itinerario_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -43,10 +46,10 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
         title: Text(
           'ITINERARIO PASTORAL',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Colors.white,
-                useGoogleFonts: false,
-              ),
+            fontFamily: 'Advent Sans',
+            color: Colors.white,
+            useGoogleFonts: false,
+          ),
         ),
         actions: [],
         centerTitle: true,
@@ -87,7 +90,7 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                           Expanded(
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                              EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -102,14 +105,14 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .title2
                                               .override(
-                                                fontFamily: 'Advent Sans',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                useGoogleFonts: false,
-                                              ),
+                                            fontFamily: 'Advent Sans',
+                                            color:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: false,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -123,13 +126,13 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Advent Sans',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontStyle: FontStyle.italic,
-                                                useGoogleFonts: false,
-                                              ),
+                                            fontFamily: 'Advent Sans',
+                                            color:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontStyle: FontStyle.italic,
+                                            useGoogleFonts: false,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -146,18 +149,59 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  fontStyle: FontStyle.italic,
-                                                  useGoogleFonts: false,
-                                                ),
+                                              fontFamily: 'Advent Sans',
+                                              color: FlutterFlowTheme.of(
+                                                  context)
+                                                  .secondaryText,
+                                              fontStyle: FontStyle.italic,
+                                              useGoogleFonts: false,
+                                            ),
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
+                                  if (currentUserDocument?.admGeral ?? true)
+                                    AuthUserStreamWidget(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                10, 0, 0, 0),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryBackground,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Padding(
+                                                      padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                      child:
+                                                      AddItinerarioWidget(),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Icon(
+                                                Icons.add_circle,
+                                                color:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryColor,
+                                                size: 30,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                 ],
                               ),
                             ),
@@ -199,12 +243,12 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                   );
                                 }
                                 List<EscalaPastoralRecord>
-                                    gridViewEscalaPastoralRecordList =
+                                gridViewEscalaPastoralRecordList =
                                     snapshot.data;
                                 return GridView.builder(
                                   padding: EdgeInsets.zero,
                                   gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
                                     crossAxisSpacing: 5,
                                     mainAxisSpacing: 5,
@@ -214,122 +258,162 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount:
-                                      gridViewEscalaPastoralRecordList.length,
+                                  gridViewEscalaPastoralRecordList.length,
                                   itemBuilder: (context, gridViewIndex) {
                                     final gridViewEscalaPastoralRecord =
-                                        gridViewEscalaPastoralRecordList[
-                                            gridViewIndex];
-                                    return Container(
-                                      width: 100,
-                                      height: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    gridViewEscalaPastoralRecord
-                                                        .igreja,
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
+                                    gridViewEscalaPastoralRecordList[
+                                    gridViewIndex];
+                                    return InkWell(
+                                      onLongPress: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.of(context)
+                                                  .viewInsets,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                    0.4,
+                                                child: DeleteItinerarioWidget(
+                                                  itinerario:
+                                                  gridViewEscalaPastoralRecord
+                                                      .reference,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 100,
+                                        height: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              5, 5, 5, 5),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      gridViewEscalaPastoralRecord
+                                                          .igreja,
+                                                      textAlign:
+                                                      TextAlign.center,
+                                                      style:
+                                                      FlutterFlowTheme.of(
+                                                          context)
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily:
+                                                        'Advent Sans',
+                                                        color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
-                                                        .override(
+                                                            .secondaryColor,
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                        FontWeight
+                                                            .bold,
+                                                        useGoogleFonts:
+                                                        false,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        dateTimeFormat(
+                                                            'd/M/y',
+                                                            gridViewEscalaPastoralRecord
+                                                                .data),
+                                                        textAlign:
+                                                        TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                            .of(context)
+                                                            .bodyText1
+                                                            .override(
                                                           fontFamily:
-                                                              'Advent Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
+                                                          'Advent Sans',
+                                                          color:
+                                                          Colors.white,
                                                           fontSize: 15,
                                                           fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
+                                                          FontWeight
+                                                              .w500,
+                                                          useGoogleFonts:
+                                                          false,
                                                         ),
-                                                  ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      dateTimeFormat(
-                                                          'd/M/y',
-                                                          gridViewEscalaPastoralRecord
-                                                              .data),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Advent Sans',
-                                                            color: Colors.white,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      dateTimeFormat(
-                                                          'EEEE',
-                                                          gridViewEscalaPastoralRecord
-                                                              .data),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Advent Sans',
-                                                            color: Colors.white,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 10, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        dateTimeFormat(
+                                                            'EEEE',
+                                                            gridViewEscalaPastoralRecord
+                                                                .data),
+                                                        textAlign:
+                                                        TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                            .of(context)
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily:
+                                                          'Advent Sans',
+                                                          color:
+                                                          Colors.white,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .w500,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );
@@ -354,14 +438,14 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             context: context,
                             builder: (context) {
                               return Padding(
                                 padding: MediaQuery.of(context).viewInsets,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.7,
+                                  MediaQuery.of(context).size.height * 0.7,
                                   child: HistoricoItinerarioWidget(),
                                 ),
                               );
@@ -374,11 +458,11 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                           height: 40,
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Advent Sans',
-                                    color: Colors.white,
-                                    useGoogleFonts: false,
-                                  ),
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                            fontFamily: 'Advent Sans',
+                            color: Colors.white,
+                            useGoogleFonts: false,
+                          ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,

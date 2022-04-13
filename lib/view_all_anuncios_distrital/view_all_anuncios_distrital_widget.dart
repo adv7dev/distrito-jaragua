@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/add_anuncios_widget.dart';
 import '../components/delete_anuncios_distrital_widget.dart';
+import '../components/detalhes_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -171,6 +172,50 @@ class _ViewAllAnunciosDistritalWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                        child: Container(
+                                                          height:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                              0.7,
+                                                          child:
+                                                          DetalhesAnunciosWidget(
+                                                            titulo:
+                                                            columnAnunciosDistritalRecord
+                                                                .titulo,
+                                                            descricao:
+                                                            columnAnunciosDistritalRecord
+                                                                .descricao,
+                                                            data:
+                                                            columnAnunciosDistritalRecord
+                                                                .data,
+                                                            horario:
+                                                            columnAnunciosDistritalRecord
+                                                                .horario,
+                                                            img:
+                                                            columnAnunciosDistritalRecord
+                                                                .img,
+                                                            local:
+                                                            columnAnunciosDistritalRecord
+                                                                .local,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
                                                 onLongPress: () async {
                                                   if ((currentUserDocument
                                                       ?.admGeral) ==
@@ -295,7 +340,10 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                   child:
                                                                   AutoSizeText(
                                                                     columnAnunciosDistritalRecord
-                                                                        .titulo,
+                                                                        .titulo
+                                                                        .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                        30),
                                                                     style: FlutterFlowTheme.of(
                                                                         context)
                                                                         .bodyText1
@@ -333,7 +381,9 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                         columnAnunciosDistritalRecord
                                                                             .descricao,
                                                                         'Sem Descrição',
-                                                                      ),
+                                                                      ).maybeHandleOverflow(
+                                                                          maxChars:
+                                                                          50),
                                                                       style: FlutterFlowTheme.of(
                                                                           context)
                                                                           .bodyText1
@@ -460,6 +510,10 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                       columnAnunciosDistritalRecord
                                                                           .local,
                                                                       'S/ Igreja',
+                                                                    ).maybeHandleOverflow(
+                                                                      maxChars: 20,
+                                                                      replacement:
+                                                                      '…',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                         context)
@@ -643,7 +697,9 @@ class _ViewAllAnunciosDistritalWidgetState
                                                           Expanded(
                                                             child: AutoSizeText(
                                                               columnAnunciosDistritalRecord
-                                                                  .titulo,
+                                                                  .titulo
+                                                                  .maybeHandleOverflow(
+                                                                  maxChars: 30),
                                                               style: FlutterFlowTheme
                                                                   .of(context)
                                                                   .bodyText1
@@ -679,7 +735,8 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                   columnAnunciosDistritalRecord
                                                                       .descricao,
                                                                   'Sem Descrição',
-                                                                ),
+                                                                ).maybeHandleOverflow(
+                                                                    maxChars: 40),
                                                                 style: FlutterFlowTheme
                                                                     .of(context)
                                                                     .bodyText1
@@ -804,6 +861,9 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                 columnAnunciosDistritalRecord
                                                                     .local,
                                                                 'S/ Igreja',
+                                                              ).maybeHandleOverflow(
+                                                                maxChars: 20,
+                                                                replacement: '…',
                                                               ),
                                                               style: FlutterFlowTheme
                                                                   .of(context)

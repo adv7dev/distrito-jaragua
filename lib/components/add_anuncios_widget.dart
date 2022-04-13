@@ -28,7 +28,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
   DateTimeRange calendarDISTRITALSelectedDay;
   String uploadedFileUrl1 = '';
   TextEditingController tituloDistritalController;
-  TextEditingController descricaoDistritalController;
+  TextEditingController textController2;
   TextEditingController horarioDistritalController;
   TextEditingController lOCALDistritalController;
   DateTimeRange calendarJARAGUASelectedDay;
@@ -65,9 +65,9 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
-    descricaoDistritalController = TextEditingController();
-    tituloDistritalController = TextEditingController();
     horarioDistritalController = TextEditingController();
+    textController2 = TextEditingController();
+    tituloDistritalController = TextEditingController();
     lOCALDistritalController = TextEditingController();
     calendarJARAGUASelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
@@ -278,44 +278,66 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                     FlutterFlowTheme.of(context).alternate,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 1, 5, 1),
-                                    child: TextFormField(
-                                      controller: descricaoDistritalController,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText: 'Descrição',
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              2, 2, 2, 2),
+                                          child: TextFormField(
+                                            controller: textController2,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              hintText: 'Descrição',
+                                              hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2
+                                                  .override(
+                                                fontFamily:
+                                                'Lexend Deca',
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                fontWeight:
+                                                FontWeight.normal,
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x003F3F3F),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x003F3F3F),
+                                                  width: 1,
+                                                ),
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                              ),
+                                              filled: true,
+                                              fillColor: Color(0x00FFFFFF),
+                                              contentPadding:
+                                              EdgeInsetsDirectional
+                                                  .fromSTEB(20, 20, 20, 12),
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                              fontFamily: 'Lexend Deca',
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            maxLines: 10,
                                           ),
                                         ),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: Colors.white,
-                                        useGoogleFonts: false,
-                                        lineHeight: 3,
-                                      ),
-                                    ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -445,7 +467,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   width:
                                   MediaQuery.of(context).size.width * 0.8,
                                   height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.6,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -502,8 +524,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                       img: uploadedFileUrl1,
                                       local: lOCALDistritalController.text,
                                       titulo: tituloDistritalController.text,
-                                      descricao:
-                                      descricaoDistritalController.text,
+                                      descricao: textController2.text,
                                       horario: horarioDistritalController.text,
                                     );
                                     await AnunciosDistritalRecord.collection
@@ -753,8 +774,8 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         fontFamily: 'Advent Sans',
                                         color: Colors.white,
                                         useGoogleFonts: false,
-                                        lineHeight: 3,
                                       ),
+                                      maxLines: 10,
                                     ),
                                   ),
                                 ),
@@ -885,7 +906,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   width:
                                   MediaQuery.of(context).size.width * 0.8,
                                   height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.6,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -1193,8 +1214,8 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         fontFamily: 'Advent Sans',
                                         color: Colors.white,
                                         useGoogleFonts: false,
-                                        lineHeight: 3,
                                       ),
+                                      maxLines: 10,
                                     ),
                                   ),
                                 ),
@@ -1325,7 +1346,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   width:
                                   MediaQuery.of(context).size.width * 0.8,
                                   height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.6,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -1633,8 +1654,8 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         fontFamily: 'Advent Sans',
                                         color: Colors.white,
                                         useGoogleFonts: false,
-                                        lineHeight: 3,
                                       ),
+                                      maxLines: 10,
                                     ),
                                   ),
                                 ),
@@ -1765,7 +1786,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   width:
                                   MediaQuery.of(context).size.width * 0.8,
                                   height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.6,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -2071,8 +2092,8 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         fontFamily: 'Advent Sans',
                                         color: Colors.white,
                                         useGoogleFonts: false,
-                                        lineHeight: 3,
                                       ),
+                                      maxLines: 10,
                                     ),
                                   ),
                                 ),
@@ -2203,7 +2224,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   width:
                                   MediaQuery.of(context).size.width * 0.8,
                                   height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.6,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
