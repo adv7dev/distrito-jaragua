@@ -92,23 +92,35 @@ class _DetalhesAnunciosWidgetState extends State<DetalhesAnunciosWidget> {
                                         type: PageTransitionType.fade,
                                         child: FlutterFlowExpandedImageView(
                                           image: Image.network(
-                                            widget.img,
+                                            valueOrDefault<String>(
+                                              widget.img,
+                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                            ),
                                             fit: BoxFit.contain,
                                           ),
                                           allowRotation: false,
-                                          tag: widget.img,
+                                          tag: valueOrDefault<String>(
+                                            widget.img,
+                                            'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                          ),
                                           useHeroAnimation: true,
                                         ),
                                       ),
                                     );
                                   },
                                   child: Hero(
-                                    tag: widget.img,
+                                    tag: valueOrDefault<String>(
+                                      widget.img,
+                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                    ),
                                     transitionOnUserGestures: true,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5),
                                       child: Image.network(
-                                        widget.img,
+                                        valueOrDefault<String>(
+                                          widget.img,
+                                          'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                        ),
                                         width: 100,
                                         height: 300,
                                         fit: BoxFit.cover,

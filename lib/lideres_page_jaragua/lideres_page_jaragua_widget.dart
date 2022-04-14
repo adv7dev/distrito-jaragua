@@ -26,16 +26,16 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
+        IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
         automaticallyImplyLeading: true,
         title: Text(
           'LIDERES JARAGUÁ',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Advent Sans',
-                color: Colors.white,
-                fontSize: 22,
-                useGoogleFonts: false,
-              ),
+            fontFamily: 'Advent Sans',
+            color: Colors.white,
+            fontSize: 22,
+            useGoogleFonts: false,
+          ),
         ),
         actions: [],
         centerTitle: true,
@@ -86,30 +86,30 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               child: Text(
                                                 'PR. SIDNEI GUIMARÃES',
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .title2
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  fontSize: 18,
+                                                  fontWeight:
+                                                  FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -121,26 +121,26 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                               child: Text(
                                                 'Pastor do Distrito do Jaraguá',
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontStyle:
-                                                          FontStyle.italic,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .secondaryText,
+                                                  fontStyle:
+                                                  FontStyle.italic,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 3, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 3, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -148,19 +148,19 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                                 child: Text(
                                                   'sidnei.guimaraes@adventista.org',
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontStyle:
-                                                            FontStyle.italic,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .secondaryText,
+                                                    fontStyle:
+                                                    FontStyle.italic,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -192,7 +192,7 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                             ),
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -216,15 +216,15 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                               height: 50,
                                               child: SpinKitRing(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
                                                 size: 50,
                                               ),
                                             ),
                                           );
                                         }
                                         List<LideresJaraguaRecord>
-                                            columnLideresJaraguaRecordList =
+                                        columnLideresJaraguaRecordList =
                                             snapshot.data;
                                         return Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -232,31 +232,31 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                               columnLideresJaraguaRecordList
                                                   .length, (columnIndex) {
                                             final columnLideresJaraguaRecord =
-                                                columnLideresJaraguaRecordList[
-                                                    columnIndex];
+                                            columnLideresJaraguaRecordList[
+                                            columnIndex];
                                             return InkWell(
                                               onLongPress: () async {
                                                 await showModalBottomSheet(
                                                   isScrollControlled: true,
                                                   backgroundColor:
-                                                      Colors.transparent,
+                                                  Colors.transparent,
                                                   context: context,
                                                   builder: (context) {
                                                     return Padding(
                                                       padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
                                                       child: Container(
                                                         height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
+                                                            context)
+                                                            .size
+                                                            .height *
                                                             0.5,
                                                         child:
-                                                            DeleteLideresWidget(
+                                                        DeleteLideresWidget(
                                                           jaraguaLideres:
-                                                              columnLideresJaraguaRecord
-                                                                  .reference,
+                                                          columnLideresJaraguaRecord
+                                                              .reference,
                                                         ),
                                                       ),
                                                     );
@@ -265,18 +265,18 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                               },
                                               child: Card(
                                                 clipBehavior:
-                                                    Clip.antiAliasWithSaveLayer,
+                                                Clip.antiAliasWithSaveLayer,
                                                 color: Color(0xFF2B4344),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10, 5, 0, 15),
                                                   child: Row(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
+                                                    MainAxisSize.max,
                                                     children: [
                                                       InkWell(
                                                         onTap: () async {
@@ -284,43 +284,60 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                                             context,
                                                             PageTransition(
                                                               type:
-                                                                  PageTransitionType
-                                                                      .fade,
+                                                              PageTransitionType
+                                                                  .fade,
                                                               child:
-                                                                  FlutterFlowExpandedImageView(
+                                                              FlutterFlowExpandedImageView(
                                                                 image: Image
                                                                     .network(
-                                                                  columnLideresJaraguaRecord
-                                                                      .img,
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    columnLideresJaraguaRecord
+                                                                        .img,
+                                                                    'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                                  ),
                                                                   fit: BoxFit
                                                                       .contain,
                                                                 ),
                                                                 allowRotation:
-                                                                    false,
+                                                                false,
                                                                 tag:
-                                                                    columnLideresJaraguaRecord
-                                                                        .img,
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  columnLideresJaraguaRecord
+                                                                      .img,
+                                                                  'https://i.ibb.co/cC6RmGZ/businessman.png' +
+                                                                      '$columnIndex',
+                                                                ),
                                                                 useHeroAnimation:
-                                                                    true,
+                                                                true,
                                                               ),
                                                             ),
                                                           );
                                                         },
                                                         child: Hero(
-                                                          tag:
-                                                              columnLideresJaraguaRecord
-                                                                  .img,
+                                                          tag: valueOrDefault<
+                                                              String>(
+                                                            columnLideresJaraguaRecord
+                                                                .img,
+                                                            'https://i.ibb.co/cC6RmGZ/businessman.png' +
+                                                                '$columnIndex',
+                                                          ),
                                                           transitionOnUserGestures:
-                                                              true,
+                                                          true,
                                                           child: ClipRRect(
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100),
+                                                            BorderRadius
+                                                                .circular(
+                                                                100),
                                                             child:
-                                                                Image.network(
-                                                              columnLideresJaraguaRecord
-                                                                  .img,
+                                                            Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                columnLideresJaraguaRecord
+                                                                    .img,
+                                                                'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                              ),
                                                               width: 70,
                                                               height: 70,
                                                               fit: BoxFit.cover,
@@ -328,67 +345,74 @@ class _LideresPageJaraguaWidgetState extends State<LideresPageJaraguaWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(10, 0,
-                                                                    0, 0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Text(
-                                                                  columnLideresJaraguaRecord
-                                                                      .nome,
-                                                                  style: FlutterFlowTheme.of(
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(10,
+                                                              0, 10, 0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                            MainAxisSize
+                                                                .max,
+                                                            crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      columnLideresJaraguaRecord
+                                                                          .nome,
+                                                                      style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .subtitle1
-                                                                      .override(
+                                                                          .subtitle1
+                                                                          .override(
                                                                         fontFamily:
-                                                                            'Advent Sans',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        'Advent Sans',
+                                                                        color:
+                                                                        Colors.white,
                                                                         fontWeight:
-                                                                            FontWeight.w600,
+                                                                        FontWeight.w600,
                                                                         useGoogleFonts:
-                                                                            false,
+                                                                        false,
                                                                       ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Text(
-                                                                  columnLideresJaraguaRecord
-                                                                      .cargo,
-                                                                  style: FlutterFlowTheme.of(
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      columnLideresJaraguaRecord
+                                                                          .cargo,
+                                                                      style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
-                                                                      .override(
+                                                                          .bodyText1
+                                                                          .override(
                                                                         fontFamily:
-                                                                            'Advent Sans',
-                                                                        color: Color(
-                                                                            0xFFC1C1C1),
+                                                                        'Advent Sans',
+                                                                        color:
+                                                                        Color(0xFFC1C1C1),
                                                                         fontStyle:
-                                                                            FontStyle.italic,
+                                                                        FontStyle.italic,
                                                                         useGoogleFonts:
-                                                                            false,
+                                                                        false,
                                                                       ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
