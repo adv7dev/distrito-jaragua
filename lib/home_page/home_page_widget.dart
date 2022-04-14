@@ -100,6 +100,36 @@ class _HomePageWidgetState extends State<HomePageWidget>
         opacity: 1,
       ),
     ),
+    'imageOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'iconOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
   };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -140,7 +170,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     color: Colors.black,
                     size: 30,
                   ),
-                ),
+                ).animated([animationsMap['iconOnPageLoadAnimation']]),
               ),
             if (Theme.of(context).brightness == Brightness.dark ?? true)
               Padding(
@@ -188,7 +218,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Advent Sans',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 27,
+                      fontSize: 25,
                       useGoogleFonts: false,
                     ),
                   ),
@@ -225,7 +255,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     fit: BoxFit.cover,
                   ),
                 ),
-              ),
+              ).animated([animationsMap['imageOnPageLoadAnimation']]),
             ),
           ),
         ],

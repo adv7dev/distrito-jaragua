@@ -21,23 +21,6 @@ class IgrejasWidget extends StatefulWidget {
 class _IgrejasWidgetState extends State<IgrejasWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.easeIn,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
     'textOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
@@ -695,7 +678,7 @@ class _IgrejasWidgetState extends State<IgrejasWidget>
                 ),
               ],
             ),
-          ).animated([animationsMap['columnOnPageLoadAnimation']]),
+          ),
         ),
       ),
     );

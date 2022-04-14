@@ -41,12 +41,32 @@ class _SocialWidgetState extends State<SocialWidget>
         opacity: 1,
       ),
     ),
+    'textOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
   };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
     setupTriggerAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
@@ -69,7 +89,7 @@ class _SocialWidgetState extends State<SocialWidget>
             color: Colors.white,
             useGoogleFonts: false,
           ),
-        ),
+        ).animated([animationsMap['textOnPageLoadAnimation']]),
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),

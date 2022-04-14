@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../esc_escola_s_aurora/esc_escola_s_aurora_widget.dart';
 import '../esc_limpeza_aurora/esc_limpeza_aurora_widget.dart';
 import '../esc_musica_aurora/esc_musica_aurora_widget.dart';
@@ -8,6 +9,7 @@ import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../itinerario_pastoral/itinerario_pastoral_widget.dart';
+import '../kits_musical_widget/kits_musical_widget.dart';
 import '../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +52,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             child: Stack(
                               children: [
                                 InkWell(
@@ -126,24 +128,24 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.03, 1.08),
+                                        AlignmentDirectional(0.03, 1.08),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 2),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 2),
                                           child: AutoSizeText(
                                             'IASD Vila Aurora',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 30,
-                                                  useGoogleFonts: false,
-                                                ),
+                                              fontFamily: 'Advent Sans',
+                                              color: FlutterFlowTheme.of(
+                                                  context)
+                                                  .primaryText,
+                                              fontSize: 30,
+                                              useGoogleFonts: false,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -167,7 +169,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                         child: GridView(
                           padding: EdgeInsets.zero,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                          SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
@@ -185,7 +187,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscPregadoresVilaauroraWidget(),
                                   ),
                                 );
@@ -195,7 +197,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -206,18 +208,18 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.people_sharp,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
@@ -227,22 +229,22 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               AutoSizeText(
                                                 'Escala de \nPREGADORES',
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -261,7 +263,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscSonoplastiaAuroraWidget(),
                                   ),
                                 );
@@ -271,7 +273,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -282,48 +284,48 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.mouse,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da\nSONOPLASTIA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -343,7 +345,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscMusicaAuroraWidget(),
                                   ),
                                 );
@@ -353,7 +355,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -364,48 +366,48 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.mic_external_on,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da\nMUSICA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -425,7 +427,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 500),
                                     reverseDuration:
-                                        Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     child: ItinerarioPastoralWidget(),
                                   ),
                                 );
@@ -435,7 +437,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -446,48 +448,48 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.person_search_sharp,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Itinerario\nPASTORAL',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -507,7 +509,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: LideresPageAuroraWidget(),
                                   ),
                                 );
@@ -528,12 +530,12 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    CrossAxisAlignment.center,
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             Icons.emoji_people,
@@ -549,24 +551,24 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               child: AutoSizeText(
                                                 'Lideres por DEPARTAMENTO',
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 12,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  fontSize: 12,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -585,7 +587,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscLimpezaAuroraWidget(),
                                   ),
                                 );
@@ -595,7 +597,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -606,48 +608,48 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.cleaning_services,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da \nLIMPEZA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -667,7 +669,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscEscolaSAuroraWidget(),
                                   ),
                                 );
@@ -677,7 +679,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -691,7 +693,7 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             Icons.school_outlined,
@@ -704,30 +706,110 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da \nESC. SABATINA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                    Duration(milliseconds: 300),
+                                    child: KitsMusicalWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                  FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.queue_music,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 50,
+                                          ),
+                                        ],
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Ensaio \nMusical',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -756,24 +838,57 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                           height: 200,
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: FlutterFlowGoogleMap(
-                              controller: googleMapsController,
-                              onCameraIdle: (latLng) =>
-                                  setState(() => googleMapsCenter = latLng),
-                              initialLocation: googleMapsCenter ??= LatLng(
-                                  -23.434956604554362, -46.75258160383246),
-                              markerColor: GoogleMarkerColor.violet,
-                              mapType: MapType.normal,
-                              style: GoogleMapStyle.standard,
-                              initialZoom: 14,
-                              allowInteraction: true,
-                              allowZoom: true,
-                              showZoomControls: true,
-                              showLocation: true,
-                              showCompass: true,
-                              showMapToolbar: false,
-                              showTraffic: false,
-                              centerMapOnMarkerTap: true,
+                            child: StreamBuilder<List<AnunciosAuroraRecord>>(
+                              stream: queryAnunciosAuroraRecord(
+                                singleRecord: true,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: SpinKitRing(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        size: 50,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<AnunciosAuroraRecord>
+                                googleMapAnunciosAuroraRecordList =
+                                    snapshot.data;
+                                // Return an empty Container when the document does not exist.
+                                if (snapshot.data.isEmpty) {
+                                  return Container();
+                                }
+                                final googleMapAnunciosAuroraRecord =
+                                googleMapAnunciosAuroraRecordList.isNotEmpty
+                                    ? googleMapAnunciosAuroraRecordList
+                                    .first
+                                    : null;
+                                return FlutterFlowGoogleMap(
+                                  controller: googleMapsController,
+                                  onCameraIdle: (latLng) =>
+                                      setState(() => googleMapsCenter = latLng),
+                                  initialLocation: googleMapsCenter ??= LatLng(
+                                      -23.434956604554362, -46.75258160383246),
+                                  markerColor: GoogleMarkerColor.violet,
+                                  mapType: MapType.normal,
+                                  style: GoogleMapStyle.standard,
+                                  initialZoom: 14,
+                                  allowInteraction: true,
+                                  allowZoom: true,
+                                  showZoomControls: true,
+                                  showLocation: true,
+                                  showCompass: true,
+                                  showMapToolbar: false,
+                                  showTraffic: false,
+                                  centerMapOnMarkerTap: true,
+                                );
+                              },
                             ),
                           ),
                         ),

@@ -27,6 +27,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(JaraguaMusicaRecord.serializer)
       ..add(JaraguaPregadoresRecord.serializer)
       ..add(JaraguaSonoplastiaRecord.serializer)
+      ..add(KitsMusicalRecord.serializer)
       ..add(LideresAuroraRecord.serializer)
       ..add(LideresIpanemaRecord.serializer)
       ..add(LideresJaraguaRecord.serializer)
@@ -39,6 +40,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserPostsRecord.serializer)
       ..add(UserStoriesRecord.serializer)
       ..add(UsersRecord.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(DocumentReference, const [const FullType(Object)])
+          ]),
+          () => new ListBuilder<DocumentReference<Object>>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(DocumentReference, const [const FullType(Object)])
+          ]),
+          () => new ListBuilder<DocumentReference<Object>>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(DocumentReference, const [const FullType(Object)])

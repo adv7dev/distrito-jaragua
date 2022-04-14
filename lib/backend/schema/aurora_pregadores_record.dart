@@ -30,6 +30,9 @@ abstract class AuroraPregadoresRecord
   bool get ativo;
 
   @nullable
+  BuiltList<DocumentReference> get usarios;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -39,7 +42,8 @@ abstract class AuroraPregadoresRecord
         ..img = ''
         ..igreja = ''
         ..whatsapp = ''
-        ..ativo = false;
+        ..ativo = false
+        ..usarios = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('aurora_pregadores');
@@ -80,4 +84,6 @@ Map<String, dynamic> createAuroraPregadoresRecordData({
           ..img = img
           ..igreja = igreja
           ..whatsapp = whatsapp
-          ..ativo = ativo));
+          ..ativo = ativo
+          ..usarios = null));
+

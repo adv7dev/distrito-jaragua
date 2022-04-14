@@ -70,6 +70,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
+  @nullable
+  BuiltList<DocumentReference> get usuarios;
+
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
     ..displayName = ''
     ..email = ''
@@ -84,7 +87,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..admPanamericano = false
     ..admAurora = false
     ..capa = ''
-    ..admGeral = false;
+    ..admGeral = false
+    ..usuarios = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -143,4 +147,5 @@ Map<String, dynamic> createUsersRecordData({
           ..admAurora = admAurora
           ..capa = capa
           ..admGeral = admGeral
-          ..postUser = postUser));
+          ..postUser = postUser
+          ..usuarios = null));

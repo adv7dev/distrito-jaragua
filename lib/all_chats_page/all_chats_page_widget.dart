@@ -4,6 +4,7 @@ import '../backend/backend.dart';
 import '../chat_page/chat_page_widget.dart';
 import '../create_group_chat/create_group_chat_widget.dart';
 import '../flutter_flow/chat/index.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,36 @@ class AllChatsPageWidget extends StatefulWidget {
   _AllChatsPageWidgetState createState() => _AllChatsPageWidgetState();
 }
 
-class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
+class _AllChatsPageWidgetState extends State<AllChatsPageWidget>
+    with TickerProviderStateMixin {
+  final animationsMap = {
+    'textOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +65,7 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
             fontWeight: FontWeight.w600,
             useGoogleFonts: false,
           ),
-        ),
+        ).animated([animationsMap['textOnPageLoadAnimation']]),
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),

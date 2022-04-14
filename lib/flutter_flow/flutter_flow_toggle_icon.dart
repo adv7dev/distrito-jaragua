@@ -15,7 +15,7 @@ class ToggleIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => IconButton(
-        onPressed: onPressed,
-        icon: value ? onIcon : offIcon,
-      );
+    onPressed: onPressed,
+    icon: value ? onIcon : offIcon,
+  );
 }

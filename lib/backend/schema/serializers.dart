@@ -32,6 +32,7 @@ import 'lideres_jaragua_record.dart';
 import 'lideres_ipanema_record.dart';
 import 'lideres_panamericano_record.dart';
 import 'lideres_aurora_record.dart';
+import 'kits_musical_record.dart';
 
 import 'index.dart';
 
@@ -74,6 +75,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   LideresIpanemaRecord,
   LideresPanamericanoRecord,
   LideresAuroraRecord,
+  KitsMusicalRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

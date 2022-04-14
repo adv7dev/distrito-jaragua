@@ -140,6 +140,15 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType(Object)])));
     }
+    value = object.usuarios;
+    if (value != null) {
+      result
+        ..add('usuarios')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(DocumentReference, const [const FullType(Object)])
+            ])));
+    }
     return result;
   }
 
@@ -226,6 +235,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
                       DocumentReference, const [const FullType(Object)]))
               as DocumentReference<Object>;
           break;
+        case 'usuarios':
+          result.usuarios.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType(Object)])
+              ])) as BuiltList<Object>);
+          break;
       }
     }
 
@@ -268,6 +284,8 @@ class _$UsersRecord extends UsersRecord {
   final DocumentReference<Object> postUser;
   @override
   final DocumentReference<Object> reference;
+  @override
+  final BuiltList<DocumentReference<Object>> usuarios;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder) updates]) =>
       (new UsersRecordBuilder()..update(updates)).build();
@@ -289,7 +307,8 @@ class _$UsersRecord extends UsersRecord {
       this.capa,
       this.admGeral,
       this.postUser,
-      this.reference})
+      this.reference,
+      this.usuarios})
       : super._();
 
   @override
@@ -319,7 +338,8 @@ class _$UsersRecord extends UsersRecord {
         capa == other.capa &&
         admGeral == other.admGeral &&
         postUser == other.postUser &&
-        reference == other.reference;
+        reference == other.reference &&
+        usuarios == other.usuarios;
   }
 
   @override
@@ -341,27 +361,30 @@ class _$UsersRecord extends UsersRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        displayName
+                                                                        $jc(
+                                                                            0,
+                                                                            displayName
+                                                                                .hashCode),
+                                                                        email
                                                                             .hashCode),
-                                                                    email
+                                                                    photoUrl
                                                                         .hashCode),
-                                                                photoUrl
-                                                                    .hashCode),
-                                                            uid.hashCode),
-                                                        createdTime.hashCode),
-                                                    phoneNumber.hashCode),
-                                                userName.hashCode),
-                                            bio.hashCode),
-                                        isFollowed.hashCode),
-                                    admJaragua.hashCode),
-                                admIpanema.hashCode),
-                            admPanamericano.hashCode),
-                        admAurora.hashCode),
-                    capa.hashCode),
-                admGeral.hashCode),
-            postUser.hashCode),
-        reference.hashCode));
+                                                                uid.hashCode),
+                                                            createdTime
+                                                                .hashCode),
+                                                        phoneNumber.hashCode),
+                                                    userName.hashCode),
+                                                bio.hashCode),
+                                            isFollowed.hashCode),
+                                        admJaragua.hashCode),
+                                    admIpanema.hashCode),
+                                admPanamericano.hashCode),
+                            admAurora.hashCode),
+                        capa.hashCode),
+                    admGeral.hashCode),
+                postUser.hashCode),
+            reference.hashCode),
+        usuarios.hashCode));
   }
 
   @override
@@ -383,7 +406,8 @@ class _$UsersRecord extends UsersRecord {
           ..add('capa', capa)
           ..add('admGeral', admGeral)
           ..add('postUser', postUser)
-          ..add('reference', reference))
+          ..add('reference', reference)
+          ..add('usuarios', usuarios))
         .toString();
   }
 }
@@ -462,6 +486,12 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   set reference(DocumentReference<Object> reference) =>
       _$this._reference = reference;
 
+  ListBuilder<DocumentReference<Object>> _usuarios;
+  ListBuilder<DocumentReference<Object>> get usuarios =>
+      _$this._usuarios ??= new ListBuilder<DocumentReference<Object>>();
+  set usuarios(ListBuilder<DocumentReference<Object>> usuarios) =>
+      _$this._usuarios = usuarios;
+
   UsersRecordBuilder() {
     UsersRecord._initializeBuilder(this);
   }
@@ -486,6 +516,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _admGeral = $v.admGeral;
       _postUser = $v.postUser;
       _reference = $v.reference;
+      _usuarios = $v.usuarios?.toBuilder();
       _$v = null;
     }
     return this;
@@ -504,25 +535,39 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
 
   @override
   _$UsersRecord build() {
-    final _$result = _$v ??
-        new _$UsersRecord._(
-            displayName: displayName,
-            email: email,
-            photoUrl: photoUrl,
-            uid: uid,
-            createdTime: createdTime,
-            phoneNumber: phoneNumber,
-            userName: userName,
-            bio: bio,
-            isFollowed: isFollowed,
-            admJaragua: admJaragua,
-            admIpanema: admIpanema,
-            admPanamericano: admPanamericano,
-            admAurora: admAurora,
-            capa: capa,
-            admGeral: admGeral,
-            postUser: postUser,
-            reference: reference);
+    _$UsersRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$UsersRecord._(
+              displayName: displayName,
+              email: email,
+              photoUrl: photoUrl,
+              uid: uid,
+              createdTime: createdTime,
+              phoneNumber: phoneNumber,
+              userName: userName,
+              bio: bio,
+              isFollowed: isFollowed,
+              admJaragua: admJaragua,
+              admIpanema: admIpanema,
+              admPanamericano: admPanamericano,
+              admAurora: admAurora,
+              capa: capa,
+              admGeral: admGeral,
+              postUser: postUser,
+              reference: reference,
+              usuarios: _usuarios?.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'usuarios';
+        _usuarios?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'UsersRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

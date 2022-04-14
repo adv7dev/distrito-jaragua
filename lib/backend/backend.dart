@@ -37,6 +37,7 @@ import 'schema/lideres_ipanema_record.dart';
 import 'schema/lideres_panamericano_record.dart';
 import 'schema/lideres_aurora_record.dart';
 import 'schema/serializers.dart';
+import 'schema/kits_musical_record.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'schema/index.dart';
@@ -74,6 +75,7 @@ export 'schema/lideres_jaragua_record.dart';
 export 'schema/lideres_ipanema_record.dart';
 export 'schema/lideres_panamericano_record.dart';
 export 'schema/lideres_aurora_record.dart';
+export 'schema/kits_musical_record.dart';
 
 /// Functions to query UserPostsRecords (as a Stream and as a Future).
 Stream<List<UserPostsRecord>> queryUserPostsRecord(
@@ -254,6 +256,33 @@ Future<FFFirestorePage<ChatsRecord>> queryChatsRecordPage({
   int pageSize,
 }) =>
     queryCollectionPage(ChatsRecord.collection, ChatsRecord.serializer,
+        queryBuilder: queryBuilder,
+        nextPageMarker: nextPageMarker,
+        pageSize: pageSize);
+
+/// Functions to query KitsMusicalRecords (as a Stream and as a Future).
+Stream<List<KitsMusicalRecord>> queryKitsMusicalRecord(
+    {Query Function(Query) queryBuilder,
+      int limit = -1,
+      bool singleRecord = false}) =>
+    queryCollection(KitsMusicalRecord.collection, KitsMusicalRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<KitsMusicalRecord>> queryKitsMusicalRecordOnce(
+    {Query Function(Query) queryBuilder,
+      int limit = -1,
+      bool singleRecord = false}) =>
+    queryCollectionOnce(
+        KitsMusicalRecord.collection, KitsMusicalRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<KitsMusicalRecord>> queryKitsMusicalRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+}) =>
+    queryCollectionPage(
+        KitsMusicalRecord.collection, KitsMusicalRecord.serializer,
         queryBuilder: queryBuilder,
         nextPageMarker: nextPageMarker,
         pageSize: pageSize);

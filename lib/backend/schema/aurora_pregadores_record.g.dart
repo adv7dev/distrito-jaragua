@@ -67,6 +67,15 @@ class _$AuroraPregadoresRecordSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
+    value = object.usarios;
+    if (value != null) {
+      result
+        ..add('usarios')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(DocumentReference, const [const FullType(Object)])
+            ])));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -114,6 +123,13 @@ class _$AuroraPregadoresRecordSerializer
           result.ativo = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
+        case 'usarios':
+          result.usarios.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType(Object)])
+              ])) as BuiltList<Object>);
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -141,6 +157,8 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
   @override
   final bool ativo;
   @override
+  final BuiltList<DocumentReference<Object>> usarios;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$AuroraPregadoresRecord(
@@ -154,6 +172,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
       this.igreja,
       this.whatsapp,
       this.ativo,
+      this.usarios,
       this.reference})
       : super._();
 
@@ -176,6 +195,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
         igreja == other.igreja &&
         whatsapp == other.whatsapp &&
         ativo == other.ativo &&
+        usarios == other.usarios &&
         reference == other.reference;
   }
 
@@ -185,11 +205,13 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, nome.hashCode), data.hashCode),
-                        img.hashCode),
-                    igreja.hashCode),
-                whatsapp.hashCode),
-            ativo.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, nome.hashCode), data.hashCode),
+                            img.hashCode),
+                        igreja.hashCode),
+                    whatsapp.hashCode),
+                ativo.hashCode),
+            usarios.hashCode),
         reference.hashCode));
   }
 
@@ -202,6 +224,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
           ..add('igreja', igreja)
           ..add('whatsapp', whatsapp)
           ..add('ativo', ativo)
+          ..add('usarios', usarios)
           ..add('reference', reference))
         .toString();
   }
@@ -235,6 +258,12 @@ class AuroraPregadoresRecordBuilder
   bool get ativo => _$this._ativo;
   set ativo(bool ativo) => _$this._ativo = ativo;
 
+  ListBuilder<DocumentReference<Object>> _usarios;
+  ListBuilder<DocumentReference<Object>> get usarios =>
+      _$this._usarios ??= new ListBuilder<DocumentReference<Object>>();
+  set usarios(ListBuilder<DocumentReference<Object>> usarios) =>
+      _$this._usarios = usarios;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -253,6 +282,7 @@ class AuroraPregadoresRecordBuilder
       _igreja = $v.igreja;
       _whatsapp = $v.whatsapp;
       _ativo = $v.ativo;
+      _usarios = $v.usarios?.toBuilder();
       _reference = $v.reference;
       _$v = null;
     }
@@ -272,15 +302,29 @@ class AuroraPregadoresRecordBuilder
 
   @override
   _$AuroraPregadoresRecord build() {
-    final _$result = _$v ??
-        new _$AuroraPregadoresRecord._(
-            nome: nome,
-            data: data,
-            img: img,
-            igreja: igreja,
-            whatsapp: whatsapp,
-            ativo: ativo,
-            reference: reference);
+    _$AuroraPregadoresRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$AuroraPregadoresRecord._(
+              nome: nome,
+              data: data,
+              img: img,
+              igreja: igreja,
+              whatsapp: whatsapp,
+              ativo: ativo,
+              usarios: _usarios?.build(),
+              reference: reference);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'usarios';
+        _usarios?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AuroraPregadoresRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
