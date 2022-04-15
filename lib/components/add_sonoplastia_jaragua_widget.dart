@@ -51,11 +51,11 @@ class _AddSonoplastiaJaraguaWidgetState
                   Text(
                     'ADD Sonoplasta - JARAGUÁ',
                     style: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Advent Sans',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: false,
-                        ),
+                      fontFamily: 'Advent Sans',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      useGoogleFonts: false,
+                    ),
                   ),
                 ],
               ),
@@ -81,8 +81,9 @@ class _AddSonoplastiaJaraguaWidgetState
                     child: InkWell(
                       onTap: () async {
                         final selectedMedia =
-                            await selectMediaWithSourceBottomSheet(
+                        await selectMediaWithSourceBottomSheet(
                           context: context,
+                          imageQuality: 50,
                           allowPhoto: true,
                         );
                         if (selectedMedia != null &&
@@ -95,11 +96,11 @@ class _AddSonoplastiaJaraguaWidgetState
                           );
                           final downloadUrls = await Future.wait(
                               selectedMedia.map((m) async =>
-                                  await uploadData(m.storagePath, m.bytes)));
+                              await uploadData(m.storagePath, m.bytes)));
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           if (downloadUrls != null) {
                             setState(
-                                () => uploadedFileUrl = downloadUrls.first);
+                                    () => uploadedFileUrl = downloadUrls.first);
                             showUploadMessage(
                               context,
                               'Success!',
@@ -166,10 +167,10 @@ class _AddSonoplastiaJaraguaWidgetState
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Advent Sans',
-                            color: Color(0xFFF3F3F3),
-                            useGoogleFonts: false,
-                          ),
+                        fontFamily: 'Advent Sans',
+                        color: Color(0xFFF3F3F3),
+                        useGoogleFonts: false,
+                      ),
                     ),
                   ),
                 ),
@@ -225,7 +226,7 @@ class _AddSonoplastiaJaraguaWidgetState
                     child: FFButtonWidget(
                       onPressed: () async {
                         final jaraguaSonoplastiaCreateData =
-                            createJaraguaSonoplastiaRecordData(
+                        createJaraguaSonoplastiaRecordData(
                           nome: textController.text,
                           data: calendarSelectedDay.start,
                           ativo: true,
@@ -242,11 +243,11 @@ class _AddSonoplastiaJaraguaWidgetState
                         height: 40,
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Advent Sans',
-                                  color: Colors.white,
-                                  useGoogleFonts: false,
-                                ),
+                        FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,

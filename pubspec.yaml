@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.1.0+4
+version: 3.2.0+5
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -60,6 +60,7 @@ dependencies:
   shared_preferences: 2.0.11
 
 
+
   sign_in_with_apple:
     git:
       url: https://github.com/asmengistu/dart_packages
@@ -70,6 +71,8 @@ dependencies:
   url_launcher: 6.0.15
   video_player: 2.2.7
   webviewx: 0.1.0
+  youtube_plyr_iframe: 2.0.7
+  expandable: ^5.0.1
 
 
   # The following adds the Cupertino Icons font to your application.

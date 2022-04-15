@@ -55,11 +55,11 @@ class _AddPregadoresPanamericanoWidgetState
                   Text(
                     'ADD Pregadores - IPANEMA',
                     style: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Advent Sans',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: false,
-                        ),
+                      fontFamily: 'Advent Sans',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      useGoogleFonts: false,
+                    ),
                   ),
                 ],
               ),
@@ -85,8 +85,9 @@ class _AddPregadoresPanamericanoWidgetState
                     child: InkWell(
                       onTap: () async {
                         final selectedMedia =
-                            await selectMediaWithSourceBottomSheet(
+                        await selectMediaWithSourceBottomSheet(
                           context: context,
+                          imageQuality: 50,
                           allowPhoto: true,
                         );
                         if (selectedMedia != null &&
@@ -99,11 +100,11 @@ class _AddPregadoresPanamericanoWidgetState
                           );
                           final downloadUrls = await Future.wait(
                               selectedMedia.map((m) async =>
-                                  await uploadData(m.storagePath, m.bytes)));
+                              await uploadData(m.storagePath, m.bytes)));
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           if (downloadUrls != null) {
                             setState(
-                                () => uploadedFileUrl = downloadUrls.first);
+                                    () => uploadedFileUrl = downloadUrls.first);
                             showUploadMessage(
                               context,
                               'Success!',
@@ -170,10 +171,10 @@ class _AddPregadoresPanamericanoWidgetState
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Advent Sans',
-                            color: Colors.white,
-                            useGoogleFonts: false,
-                          ),
+                        fontFamily: 'Advent Sans',
+                        color: Colors.white,
+                        useGoogleFonts: false,
+                      ),
                     ),
                   ),
                 ),
@@ -220,10 +221,10 @@ class _AddPregadoresPanamericanoWidgetState
                           ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: Colors.white,
-                              useGoogleFonts: false,
-                            ),
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                       ),
                     ),
                   ),
@@ -271,10 +272,10 @@ class _AddPregadoresPanamericanoWidgetState
                           ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: Colors.white,
-                              useGoogleFonts: false,
-                            ),
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                       ),
                     ),
                   ),
@@ -331,7 +332,7 @@ class _AddPregadoresPanamericanoWidgetState
                     child: FFButtonWidget(
                       onPressed: () async {
                         final panamericanoPregadoresCreateData =
-                            createPanamericanoPregadoresRecordData(
+                        createPanamericanoPregadoresRecordData(
                           nome: textController1.text,
                           data: calendarSelectedDay.start,
                           whatsapp: textController3.text,
@@ -350,11 +351,11 @@ class _AddPregadoresPanamericanoWidgetState
                         height: 40,
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Advent Sans',
-                                  color: Colors.white,
-                                  useGoogleFonts: false,
-                                ),
+                        FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,

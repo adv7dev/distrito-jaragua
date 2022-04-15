@@ -18,32 +18,31 @@ abstract class KitsMusicalRecord
   String get banda;
 
   @nullable
-  @BuiltValueField(wireName: 'url_cantada')
-  String get urlCantada;
+  String get cantada;
 
   @nullable
-  @BuiltValueField(wireName: 'url_playback')
-  String get urlPlayback;
+  String get playback;
 
   @nullable
-  @BuiltValueField(wireName: 'url_soprano')
-  String get urlSoprano;
+  String get tenor;
 
   @nullable
-  @BuiltValueField(wireName: 'url_contralto')
-  String get urlContralto;
+  String get contralto;
 
   @nullable
-  @BuiltValueField(wireName: 'url_barito')
-  String get urlBarito;
+  String get soprano;
 
   @nullable
-  @BuiltValueField(wireName: 'url_tenor')
-  String get urlTenor;
+  String get baixo;
 
   @nullable
-  @BuiltValueField(wireName: 'url_baixo')
-  String get urlBaixo;
+  String get barito;
+
+  @nullable
+  DateTime get data;
+
+  @nullable
+  String get letras;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -52,13 +51,14 @@ abstract class KitsMusicalRecord
   static void _initializeBuilder(KitsMusicalRecordBuilder builder) => builder
     ..nome = ''
     ..banda = ''
-    ..urlCantada = ''
-    ..urlPlayback = ''
-    ..urlSoprano = ''
-    ..urlContralto = ''
-    ..urlBarito = ''
-    ..urlTenor = ''
-    ..urlBaixo = '';
+    ..cantada = ''
+    ..playback = ''
+    ..tenor = ''
+    ..contralto = ''
+    ..soprano = ''
+    ..baixo = ''
+    ..barito = ''
+    ..letras = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('kits_musical');
@@ -84,23 +84,27 @@ abstract class KitsMusicalRecord
 Map<String, dynamic> createKitsMusicalRecordData({
   String nome,
   String banda,
-  String urlCantada,
-  String urlPlayback,
-  String urlSoprano,
-  String urlContralto,
-  String urlBarito,
-  String urlTenor,
-  String urlBaixo,
+  String cantada,
+  String playback,
+  String tenor,
+  String contralto,
+  String soprano,
+  String baixo,
+  String barito,
+  DateTime data,
+  String letras,
 }) =>
     serializers.toFirestore(
         KitsMusicalRecord.serializer,
         KitsMusicalRecord((k) => k
           ..nome = nome
           ..banda = banda
-          ..urlCantada = urlCantada
-          ..urlPlayback = urlPlayback
-          ..urlSoprano = urlSoprano
-          ..urlContralto = urlContralto
-          ..urlBarito = urlBarito
-          ..urlTenor = urlTenor
-          ..urlBaixo = urlBaixo));
+          ..cantada = cantada
+          ..playback = playback
+          ..tenor = tenor
+          ..contralto = contralto
+          ..soprano = soprano
+          ..baixo = baixo
+          ..barito = barito
+          ..data = data
+          ..letras = letras));

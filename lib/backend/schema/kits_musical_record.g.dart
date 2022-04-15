@@ -35,52 +35,66 @@ class _$KitsMusicalRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlCantada;
+    value = object.cantada;
     if (value != null) {
       result
-        ..add('url_cantada')
+        ..add('cantada')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlPlayback;
+    value = object.playback;
     if (value != null) {
       result
-        ..add('url_playback')
+        ..add('playback')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlSoprano;
+    value = object.tenor;
     if (value != null) {
       result
-        ..add('url_soprano')
+        ..add('tenor')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlContralto;
+    value = object.contralto;
     if (value != null) {
       result
-        ..add('url_contralto')
+        ..add('contralto')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlBarito;
+    value = object.soprano;
     if (value != null) {
       result
-        ..add('url_barito')
+        ..add('soprano')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlTenor;
+    value = object.baixo;
     if (value != null) {
       result
-        ..add('url_tenor')
+        ..add('baixo')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.urlBaixo;
+    value = object.barito;
     if (value != null) {
       result
-        ..add('url_baixo')
+        ..add('barito')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.data;
+    if (value != null) {
+      result
+        ..add('data')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
+    }
+    value = object.letras;
+    if (value != null) {
+      result
+        ..add('letras')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -115,32 +129,40 @@ class _$KitsMusicalRecordSerializer
           result.banda = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_cantada':
-          result.urlCantada = serializers.deserialize(value,
+        case 'cantada':
+          result.cantada = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_playback':
-          result.urlPlayback = serializers.deserialize(value,
+        case 'playback':
+          result.playback = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_soprano':
-          result.urlSoprano = serializers.deserialize(value,
+        case 'tenor':
+          result.tenor = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_contralto':
-          result.urlContralto = serializers.deserialize(value,
+        case 'contralto':
+          result.contralto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_barito':
-          result.urlBarito = serializers.deserialize(value,
+        case 'soprano':
+          result.soprano = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_tenor':
-          result.urlTenor = serializers.deserialize(value,
+        case 'baixo':
+          result.baixo = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url_baixo':
-          result.urlBaixo = serializers.deserialize(value,
+        case 'barito':
+          result.barito = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'data':
+          result.data = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime;
+          break;
+        case 'letras':
+          result.letras = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'Document__Reference__Field':
@@ -162,19 +184,23 @@ class _$KitsMusicalRecord extends KitsMusicalRecord {
   @override
   final String banda;
   @override
-  final String urlCantada;
+  final String cantada;
   @override
-  final String urlPlayback;
+  final String playback;
   @override
-  final String urlSoprano;
+  final String tenor;
   @override
-  final String urlContralto;
+  final String contralto;
   @override
-  final String urlBarito;
+  final String soprano;
   @override
-  final String urlTenor;
+  final String baixo;
   @override
-  final String urlBaixo;
+  final String barito;
+  @override
+  final DateTime data;
+  @override
+  final String letras;
   @override
   final DocumentReference<Object> reference;
 
@@ -185,13 +211,15 @@ class _$KitsMusicalRecord extends KitsMusicalRecord {
   _$KitsMusicalRecord._(
       {this.nome,
       this.banda,
-      this.urlCantada,
-      this.urlPlayback,
-      this.urlSoprano,
-      this.urlContralto,
-      this.urlBarito,
-      this.urlTenor,
-      this.urlBaixo,
+      this.cantada,
+      this.playback,
+      this.tenor,
+      this.contralto,
+      this.soprano,
+      this.baixo,
+      this.barito,
+      this.data,
+      this.letras,
       this.reference})
       : super._();
 
@@ -209,13 +237,15 @@ class _$KitsMusicalRecord extends KitsMusicalRecord {
     return other is KitsMusicalRecord &&
         nome == other.nome &&
         banda == other.banda &&
-        urlCantada == other.urlCantada &&
-        urlPlayback == other.urlPlayback &&
-        urlSoprano == other.urlSoprano &&
-        urlContralto == other.urlContralto &&
-        urlBarito == other.urlBarito &&
-        urlTenor == other.urlTenor &&
-        urlBaixo == other.urlBaixo &&
+        cantada == other.cantada &&
+        playback == other.playback &&
+        tenor == other.tenor &&
+        contralto == other.contralto &&
+        soprano == other.soprano &&
+        baixo == other.baixo &&
+        barito == other.barito &&
+        data == other.data &&
+        letras == other.letras &&
         reference == other.reference;
   }
 
@@ -228,14 +258,20 @@ class _$KitsMusicalRecord extends KitsMusicalRecord {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc($jc(0, nome.hashCode), banda.hashCode),
-                                    urlCantada.hashCode),
-                                urlPlayback.hashCode),
-                            urlSoprano.hashCode),
-                        urlContralto.hashCode),
-                    urlBarito.hashCode),
-                urlTenor.hashCode),
-            urlBaixo.hashCode),
+                                $jc(
+                                    $jc(
+                                        $jc(
+                                            $jc($jc(0, nome.hashCode),
+                                                banda.hashCode),
+                                            cantada.hashCode),
+                                        playback.hashCode),
+                                    tenor.hashCode),
+                                contralto.hashCode),
+                            soprano.hashCode),
+                        baixo.hashCode),
+                    barito.hashCode),
+                data.hashCode),
+            letras.hashCode),
         reference.hashCode));
   }
 
@@ -244,13 +280,15 @@ class _$KitsMusicalRecord extends KitsMusicalRecord {
     return (newBuiltValueToStringHelper('KitsMusicalRecord')
           ..add('nome', nome)
           ..add('banda', banda)
-          ..add('urlCantada', urlCantada)
-          ..add('urlPlayback', urlPlayback)
-          ..add('urlSoprano', urlSoprano)
-          ..add('urlContralto', urlContralto)
-          ..add('urlBarito', urlBarito)
-          ..add('urlTenor', urlTenor)
-          ..add('urlBaixo', urlBaixo)
+          ..add('cantada', cantada)
+          ..add('playback', playback)
+          ..add('tenor', tenor)
+          ..add('contralto', contralto)
+          ..add('soprano', soprano)
+          ..add('baixo', baixo)
+          ..add('barito', barito)
+          ..add('data', data)
+          ..add('letras', letras)
           ..add('reference', reference))
         .toString();
   }
@@ -268,33 +306,41 @@ class KitsMusicalRecordBuilder
   String get banda => _$this._banda;
   set banda(String banda) => _$this._banda = banda;
 
-  String _urlCantada;
-  String get urlCantada => _$this._urlCantada;
-  set urlCantada(String urlCantada) => _$this._urlCantada = urlCantada;
+  String _cantada;
+  String get cantada => _$this._cantada;
+  set cantada(String cantada) => _$this._cantada = cantada;
 
-  String _urlPlayback;
-  String get urlPlayback => _$this._urlPlayback;
-  set urlPlayback(String urlPlayback) => _$this._urlPlayback = urlPlayback;
+  String _playback;
+  String get playback => _$this._playback;
+  set playback(String playback) => _$this._playback = playback;
 
-  String _urlSoprano;
-  String get urlSoprano => _$this._urlSoprano;
-  set urlSoprano(String urlSoprano) => _$this._urlSoprano = urlSoprano;
+  String _tenor;
+  String get tenor => _$this._tenor;
+  set tenor(String tenor) => _$this._tenor = tenor;
 
-  String _urlContralto;
-  String get urlContralto => _$this._urlContralto;
-  set urlContralto(String urlContralto) => _$this._urlContralto = urlContralto;
+  String _contralto;
+  String get contralto => _$this._contralto;
+  set contralto(String contralto) => _$this._contralto = contralto;
 
-  String _urlBarito;
-  String get urlBarito => _$this._urlBarito;
-  set urlBarito(String urlBarito) => _$this._urlBarito = urlBarito;
+  String _soprano;
+  String get soprano => _$this._soprano;
+  set soprano(String soprano) => _$this._soprano = soprano;
 
-  String _urlTenor;
-  String get urlTenor => _$this._urlTenor;
-  set urlTenor(String urlTenor) => _$this._urlTenor = urlTenor;
+  String _baixo;
+  String get baixo => _$this._baixo;
+  set baixo(String baixo) => _$this._baixo = baixo;
 
-  String _urlBaixo;
-  String get urlBaixo => _$this._urlBaixo;
-  set urlBaixo(String urlBaixo) => _$this._urlBaixo = urlBaixo;
+  String _barito;
+  String get barito => _$this._barito;
+  set barito(String barito) => _$this._barito = barito;
+
+  DateTime _data;
+  DateTime get data => _$this._data;
+  set data(DateTime data) => _$this._data = data;
+
+  String _letras;
+  String get letras => _$this._letras;
+  set letras(String letras) => _$this._letras = letras;
 
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
@@ -310,13 +356,15 @@ class KitsMusicalRecordBuilder
     if ($v != null) {
       _nome = $v.nome;
       _banda = $v.banda;
-      _urlCantada = $v.urlCantada;
-      _urlPlayback = $v.urlPlayback;
-      _urlSoprano = $v.urlSoprano;
-      _urlContralto = $v.urlContralto;
-      _urlBarito = $v.urlBarito;
-      _urlTenor = $v.urlTenor;
-      _urlBaixo = $v.urlBaixo;
+      _cantada = $v.cantada;
+      _playback = $v.playback;
+      _tenor = $v.tenor;
+      _contralto = $v.contralto;
+      _soprano = $v.soprano;
+      _baixo = $v.baixo;
+      _barito = $v.barito;
+      _data = $v.data;
+      _letras = $v.letras;
       _reference = $v.reference;
       _$v = null;
     }
@@ -340,13 +388,15 @@ class KitsMusicalRecordBuilder
         new _$KitsMusicalRecord._(
             nome: nome,
             banda: banda,
-            urlCantada: urlCantada,
-            urlPlayback: urlPlayback,
-            urlSoprano: urlSoprano,
-            urlContralto: urlContralto,
-            urlBarito: urlBarito,
-            urlTenor: urlTenor,
-            urlBaixo: urlBaixo,
+            cantada: cantada,
+            playback: playback,
+            tenor: tenor,
+            contralto: contralto,
+            soprano: soprano,
+            baixo: baixo,
+            barito: barito,
+            data: data,
+            letras: letras,
             reference: reference);
     replace(_$result);
     return _$result;

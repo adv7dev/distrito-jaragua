@@ -63,7 +63,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -72,19 +72,19 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
+                                    fontFamily: 'Advent Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -105,8 +105,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       final selectedMedia =
-                                          await selectMediaWithSourceBottomSheet(
+                                      await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        imageQuality: 50,
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
@@ -120,8 +121,8 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                         );
                                         final downloadUrls = await Future.wait(
                                             selectedMedia.map((m) async =>
-                                                await uploadData(
-                                                    m.storagePath, m.bytes)));
+                                            await uploadData(
+                                                m.storagePath, m.bytes)));
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
                                         if (downloadUrls != null) {
@@ -196,10 +197,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Color(0xFFF3F3F3),
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Color(0xFFF3F3F3),
+                                      useGoogleFonts: false,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -207,17 +208,17 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.8,
+                                  MediaQuery.of(context).size.width * 0.8,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    FlutterFlowTheme.of(context).alternate,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -252,10 +253,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Advent Sans',
-                                            color: Colors.white,
-                                            useGoogleFonts: false,
-                                          ),
+                                        fontFamily: 'Advent Sans',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -264,7 +265,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -272,7 +273,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     final lideresJaraguaCreateData =
-                                        createLideresJaraguaRecordData(
+                                    createLideresJaraguaRecordData(
                                       nome: nomeJaraguaController.text,
                                       img: uploadedFileUrl1,
                                       cargo: cargoJaraguaController.text,
@@ -291,10 +292,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Colors.white,
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Colors.white,
+                                      useGoogleFonts: false,
+                                    ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
@@ -325,7 +326,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -334,19 +335,19 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
+                                    fontFamily: 'Advent Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -367,8 +368,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       final selectedMedia =
-                                          await selectMediaWithSourceBottomSheet(
+                                      await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        imageQuality: 50,
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
@@ -382,8 +384,8 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                         );
                                         final downloadUrls = await Future.wait(
                                             selectedMedia.map((m) async =>
-                                                await uploadData(
-                                                    m.storagePath, m.bytes)));
+                                            await uploadData(
+                                                m.storagePath, m.bytes)));
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
                                         if (downloadUrls != null) {
@@ -458,10 +460,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Color(0xFFF3F3F3),
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Color(0xFFF3F3F3),
+                                      useGoogleFonts: false,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -469,17 +471,17 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.8,
+                                  MediaQuery.of(context).size.width * 0.8,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    FlutterFlowTheme.of(context).alternate,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -514,10 +516,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Advent Sans',
-                                            color: Colors.white,
-                                            useGoogleFonts: false,
-                                          ),
+                                        fontFamily: 'Advent Sans',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -526,7 +528,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -534,7 +536,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     final lideresIpanemaCreateData =
-                                        createLideresIpanemaRecordData(
+                                    createLideresIpanemaRecordData(
                                       nome: nomeIpanemaController.text,
                                       img: uploadedFileUrl2,
                                       cargo: cargoIpanemaController.text,
@@ -553,10 +555,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Colors.white,
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Colors.white,
+                                      useGoogleFonts: false,
+                                    ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
@@ -587,7 +589,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -596,19 +598,19 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
+                                    fontFamily: 'Advent Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -629,8 +631,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       final selectedMedia =
-                                          await selectMediaWithSourceBottomSheet(
+                                      await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        imageQuality: 50,
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
@@ -644,8 +647,8 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                         );
                                         final downloadUrls = await Future.wait(
                                             selectedMedia.map((m) async =>
-                                                await uploadData(
-                                                    m.storagePath, m.bytes)));
+                                            await uploadData(
+                                                m.storagePath, m.bytes)));
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
                                         if (downloadUrls != null) {
@@ -720,10 +723,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Color(0xFFF3F3F3),
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Color(0xFFF3F3F3),
+                                      useGoogleFonts: false,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -731,17 +734,17 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.8,
+                                  MediaQuery.of(context).size.width * 0.8,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    FlutterFlowTheme.of(context).alternate,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -776,10 +779,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Advent Sans',
-                                            color: Colors.white,
-                                            useGoogleFonts: false,
-                                          ),
+                                        fontFamily: 'Advent Sans',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -788,7 +791,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -796,7 +799,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     final lideresPanamericanoCreateData =
-                                        createLideresPanamericanoRecordData(
+                                    createLideresPanamericanoRecordData(
                                       nome: nomePanController.text,
                                       img: uploadedFileUrl3,
                                       cargo: cargoPanController.text,
@@ -815,10 +818,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Colors.white,
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Colors.white,
+                                      useGoogleFonts: false,
+                                    ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
@@ -849,7 +852,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -858,19 +861,19 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
+                                    fontFamily: 'Advent Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -891,8 +894,9 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                   child: InkWell(
                                     onTap: () async {
                                       final selectedMedia =
-                                          await selectMediaWithSourceBottomSheet(
+                                      await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        imageQuality: 50,
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
@@ -906,8 +910,8 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                         );
                                         final downloadUrls = await Future.wait(
                                             selectedMedia.map((m) async =>
-                                                await uploadData(
-                                                    m.storagePath, m.bytes)));
+                                            await uploadData(
+                                                m.storagePath, m.bytes)));
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
                                         if (downloadUrls != null) {
@@ -982,10 +986,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Color(0xFFF3F3F3),
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Color(0xFFF3F3F3),
+                                      useGoogleFonts: false,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -993,17 +997,17 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.8,
+                                  MediaQuery.of(context).size.width * 0.8,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    FlutterFlowTheme.of(context).alternate,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -1038,10 +1042,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Advent Sans',
-                                            color: Colors.white,
-                                            useGoogleFonts: false,
-                                          ),
+                                        fontFamily: 'Advent Sans',
+                                        color: Colors.white,
+                                        useGoogleFonts: false,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -1050,7 +1054,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -1058,7 +1062,7 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     final lideresAuroraCreateData =
-                                        createLideresAuroraRecordData(
+                                    createLideresAuroraRecordData(
                                       nome: nomeAuroraController.text,
                                       img: uploadedFileUrl4,
                                       cargo: cargoAuroraController.text,
@@ -1077,10 +1081,10 @@ class _AddLideresWidgetState extends State<AddLideresWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Advent Sans',
-                                          color: Colors.white,
-                                          useGoogleFonts: false,
-                                        ),
+                                      fontFamily: 'Advent Sans',
+                                      color: Colors.white,
+                                      useGoogleFonts: false,
+                                    ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,

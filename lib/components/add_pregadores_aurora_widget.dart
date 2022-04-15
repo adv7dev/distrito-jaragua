@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -87,6 +86,7 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                         final selectedMedia =
                         await selectMediaWithSourceBottomSheet(
                           context: context,
+                          imageQuality: 50,
                           allowPhoto: true,
                         );
                         if (selectedMedia != null &&

@@ -192,6 +192,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                             final selectedMedia =
                                             await selectMediaWithSourceBottomSheet(
                                               context: context,
+                                              imageQuality: 40,
                                               allowPhoto: true,
                                             );
                                             if (selectedMedia != null &&
@@ -694,6 +695,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         final selectedMedia =
                                         await selectMediaWithSourceBottomSheet(
                                           context: context,
+                                          imageQuality: 40,
                                           allowPhoto: true,
                                         );
                                         if (selectedMedia != null &&
@@ -1134,6 +1136,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         final selectedMedia =
                                         await selectMediaWithSourceBottomSheet(
                                           context: context,
+                                          imageQuality: 50,
                                           allowPhoto: true,
                                         );
                                         if (selectedMedia != null &&
@@ -1574,6 +1577,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         final selectedMedia =
                                         await selectMediaWithSourceBottomSheet(
                                           context: context,
+                                          imageQuality: 50,
                                           allowPhoto: true,
                                         );
                                         if (selectedMedia != null &&
@@ -2012,6 +2016,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         final selectedMedia =
                                         await selectMediaWithSourceBottomSheet(
                                           context: context,
+                                          imageQuality: 50,
                                           allowPhoto: true,
                                         );
                                         if (selectedMedia != null &&

@@ -1,9 +1,8 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/add_kits_musical_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../kits_musical_list/kits_musical_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,14 +15,7 @@ class KitsMusicalWidget extends StatefulWidget {
 }
 
 class _KitsMusicalWidgetState extends State<KitsMusicalWidget> {
-  TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +23,11 @@ class _KitsMusicalWidgetState extends State<KitsMusicalWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        iconTheme:
+        IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
         automaticallyImplyLeading: true,
         title: Text(
-          'KITS MUSICAL',
+          'KITS MUSICAIS',
           style: FlutterFlowTheme.of(context).title2.override(
             fontFamily: 'Advent Sans',
             color: Colors.white,
@@ -46,126 +40,159 @@ class _KitsMusicalWidgetState extends State<KitsMusicalWidget> {
         elevation: 2,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            context: context,
+            builder: (context) {
+              return Padding(
+                padding: MediaQuery.of(context).viewInsets,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: AddKitsMusicalWidget(),
+                ),
+              );
+            },
+          );
+        },
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        elevation: 8,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              StreamBuilder<List<KitsMusicalRecord>>(
-                stream: queryKitsMusicalRecord(),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: SpinKitRing(
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          size: 50,
-                        ),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+            child: StreamBuilder<List<KitsMusicalRecord>>(
+              stream: queryKitsMusicalRecord(
+                queryBuilder: (kitsMusicalRecord) =>
+                    kitsMusicalRecord.orderBy('banda'),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: SpinKitRing(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        size: 50,
                       ),
-                    );
-                  }
-                  List<KitsMusicalRecord> columnKitsMusicalRecordList =
-                      snapshot.data;
-                  return SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(
-                          columnKitsMusicalRecordList.length, (columnIndex) {
+                    ),
+                  );
+                }
+                List<KitsMusicalRecord> columnKitsMusicalRecordList =
+                    snapshot.data;
+                return Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(columnKitsMusicalRecordList.length,
+                          (columnIndex) {
                         final columnKitsMusicalRecord =
                         columnKitsMusicalRecordList[columnIndex];
                         return Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color:
-                                FlutterFlowTheme.of(context).secondaryColor,
-                              ),
-                              child: Text(
-                                columnKitsMusicalRecord.nome,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                  fontFamily: 'Advent Sans',
-                                  color: Colors.white,
-                                  useGoogleFonts: false,
+                            Expanded(
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration: Duration(milliseconds: 300),
+                                      child: KitsMusicalListWidget(
+                                        nome: columnKitsMusicalRecord.nome,
+                                        banda: columnKitsMusicalRecord.banda,
+                                        cantada: columnKitsMusicalRecord.cantada,
+                                        playback: columnKitsMusicalRecord.playback,
+                                        baixo: columnKitsMusicalRecord.baixo,
+                                        barito: columnKitsMusicalRecord.barito,
+                                        tenor: columnKitsMusicalRecord.tenor,
+                                        contralto:
+                                        columnKitsMusicalRecord.contralto,
+                                        soprano: columnKitsMusicalRecord.soprano,
+                                        letra: columnKitsMusicalRecord.letras,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  child: Padding(
+                                    padding:
+                                    EdgeInsetsDirectional.fromSTEB(7, 7, 7, 7),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                columnKitsMusicalRecord.nome,
+                                                style: FlutterFlowTheme.of(context)
+                                                    .subtitle1
+                                                    .override(
+                                                  fontFamily: 'Advent Sans',
+                                                  color: Colors.white,
+                                                  useGoogleFonts: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                columnKitsMusicalRecord.banda,
+                                                style: FlutterFlowTheme.of(context)
+                                                    .subtitle2
+                                                    .override(
+                                                  fontFamily: 'Advent Sans',
+                                                  color: FlutterFlowTheme.of(
+                                                      context)
+                                                      .secondaryColor,
+                                                  useGoogleFonts: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              dateTimeFormat('d/M h:mm a',
+                                                  columnKitsMusicalRecord.data),
+                                              style: FlutterFlowTheme.of(context)
+                                                  .bodyText1,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         );
                       }),
-                    ),
-                  );
-                },
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  TextFormField(
-                    controller: textController,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: '[Some hint text...]',
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyText1,
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      final kitsMusicalCreateData = createKitsMusicalRecordData(
-                        nome: textController.text,
-                      );
-                      await KitsMusicalRecord.collection
-                          .doc()
-                          .set(kitsMusicalCreateData);
-                    },
-                    text: 'Button',
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      textStyle:
-                      FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Advent Sans',
-                        color: Colors.white,
-                        useGoogleFonts: false,
-                      ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: 12,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                );
+              },
+            ),
           ),
         ),
       ),

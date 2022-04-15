@@ -53,11 +53,11 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                   Text(
                     'ADD Cantores - IPANEMA',
                     style: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Advent Sans',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: false,
-                        ),
+                      fontFamily: 'Advent Sans',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      useGoogleFonts: false,
+                    ),
                   ),
                 ],
               ),
@@ -83,8 +83,9 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                     child: InkWell(
                       onTap: () async {
                         final selectedMedia =
-                            await selectMediaWithSourceBottomSheet(
+                        await selectMediaWithSourceBottomSheet(
                           context: context,
+                          imageQuality: 50,
                           allowPhoto: true,
                         );
                         if (selectedMedia != null &&
@@ -97,11 +98,11 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                           );
                           final downloadUrls = await Future.wait(
                               selectedMedia.map((m) async =>
-                                  await uploadData(m.storagePath, m.bytes)));
+                              await uploadData(m.storagePath, m.bytes)));
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           if (downloadUrls != null) {
                             setState(
-                                () => uploadedFileUrl = downloadUrls.first);
+                                    () => uploadedFileUrl = downloadUrls.first);
                             showUploadMessage(
                               context,
                               'Success!',
@@ -168,10 +169,10 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Advent Sans',
-                            color: Color(0xFFF3F3F3),
-                            useGoogleFonts: false,
-                          ),
+                        fontFamily: 'Advent Sans',
+                        color: Color(0xFFF3F3F3),
+                        useGoogleFonts: false,
+                      ),
                     ),
                   ),
                 ),
@@ -218,10 +219,10 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                           ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: Colors.white,
-                              useGoogleFonts: false,
-                            ),
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                       ),
                     ),
                   ),
@@ -269,10 +270,10 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                           ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: Colors.white,
-                              useGoogleFonts: false,
-                            ),
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                       ),
                     ),
                   ),
@@ -329,7 +330,7 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         final ipanemaMusicaCreateData =
-                            createIpanemaMusicaRecordData(
+                        createIpanemaMusicaRecordData(
                           nome: textController1.text,
                           data: calendarSelectedDay.start,
                           whatsapp: textController3.text,
@@ -348,11 +349,11 @@ class _AddMusicaIpanemaWidgetState extends State<AddMusicaIpanemaWidget> {
                         height: 40,
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Advent Sans',
-                                  color: Colors.white,
-                                  useGoogleFonts: false,
-                                ),
+                        FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,
