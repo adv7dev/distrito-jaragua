@@ -77,6 +77,7 @@ class _AgendaIpanemaWidgetState extends State<AgendaIpanemaWidget> {
                   iconColor: FlutterFlowTheme.of(context).primaryText,
                   weekFormat: false,
                   weekStartsMonday: false,
+                  locale: FFLocalizations.of(context).languageCode,
                   onChange: (DateTimeRange newSelectedDate) {
                     setState(() => calendarSelectedDay = newSelectedDate);
                   },

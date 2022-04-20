@@ -531,6 +531,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                             .primaryText,
                                         weekFormat: false,
                                         weekStartsMonday: false,
+                                        locale: FFLocalizations.of(context).languageCode,
                                         onChange:
                                             (DateTimeRange newSelectedDate) {
                                           setState(() =>
@@ -992,6 +993,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         .primaryText,
                                     weekFormat: false,
                                     weekStartsMonday: false,
+                                    locale: FFLocalizations.of(context).languageCode,
                                     onChange: (DateTimeRange newSelectedDate) {
                                       setState(() =>
                                       calendarJARAGUASelectedDay =
@@ -1433,6 +1435,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         .primaryText,
                                     weekFormat: false,
                                     weekStartsMonday: false,
+                                    locale: FFLocalizations.of(context).languageCode,
                                     onChange: (DateTimeRange newSelectedDate) {
                                       setState(() =>
                                       calendarIPANEMASelectedDay =
@@ -1874,6 +1877,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         .primaryText,
                                     weekFormat: false,
                                     weekStartsMonday: false,
+                                    locale: FFLocalizations.of(context).languageCode,
                                     onChange: (DateTimeRange newSelectedDate) {
                                       setState(() => calendarPANSelectedDay =
                                           newSelectedDate);
@@ -2313,6 +2317,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                         .primaryText,
                                     weekFormat: false,
                                     weekStartsMonday: false,
+                                    locale: FFLocalizations.of(context).languageCode,
                                     onChange: (DateTimeRange newSelectedDate) {
                                       setState(() => calendarAURORASelectedDay =
                                           newSelectedDate);

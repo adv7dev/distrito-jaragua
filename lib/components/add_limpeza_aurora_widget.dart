@@ -110,7 +110,7 @@ class _AddLimpezaAuroraWidgetState extends State<AddLimpezaAuroraWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
                     ),
@@ -119,6 +119,7 @@ class _AddLimpezaAuroraWidgetState extends State<AddLimpezaAuroraWidget> {
                       iconColor: FlutterFlowTheme.of(context).primaryText,
                       weekFormat: false,
                       weekStartsMonday: false,
+                      locale: FFLocalizations.of(context).languageCode,
                       onChange: (DateTimeRange newSelectedDate) {
                         setState(() => calendarSelectedDay = newSelectedDate);
                       },
