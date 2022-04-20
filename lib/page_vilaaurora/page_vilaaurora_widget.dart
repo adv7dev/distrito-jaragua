@@ -1,3 +1,4 @@
+import '../agenda_aurora/agenda_aurora_widget.dart';
 import '../backend/backend.dart';
 import '../esc_escola_s_aurora/esc_escola_s_aurora_widget.dart';
 import '../esc_limpeza_aurora/esc_limpeza_aurora_widget.dart';
@@ -9,7 +10,7 @@ import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../itinerario_pastoral/itinerario_pastoral_widget.dart';
-import '../kits_musical_widget/kits_musical_widget.dart';
+import '../kits_musical/kits_musical_widget.dart';
 import '../lideres_page_aurora/lideres_page_aurora_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -179,6 +180,84 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                    Duration(milliseconds: 300),
+                                    child: AgendaAuroraWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color:
+                                  FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: Icon(
+                                                Icons.date_range_outlined,
+                                                color:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                                size: 60,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              AutoSizeText(
+                                                'Agenda \nda IGREJA',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                    context)
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  useGoogleFonts: false,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                             InkWell(
                               onTap: () async {
                                 await Navigator.push(
@@ -425,6 +504,84 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                   context,
                                   PageTransition(
                                     type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                    Duration(milliseconds: 300),
+                                    child: LideresPageAuroraWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height * 1,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.emoji_people,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 50,
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 10, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: AutoSizeText(
+                                                'Lideres por DEPARTAMENTO',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                    context)
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  fontSize: 12,
+                                                  useGoogleFonts: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 500),
                                     reverseDuration:
                                     Duration(milliseconds: 500),
@@ -497,84 +654,6 @@ class _PageVilaauroraWidgetState extends State<PageVilaauroraWidget> {
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.bottomToTop,
-                                    duration: Duration(milliseconds: 300),
-                                    reverseDuration:
-                                    Duration(milliseconds: 300),
-                                    child: LideresPageAuroraWidget(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height * 1,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 5, 5, 5),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.emoji_people,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 50,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          children: [
-                                            Expanded(
-                                              child: AutoSizeText(
-                                                'Lideres por DEPARTAMENTO',
-                                                textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                    context)
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color:
-                                                  FlutterFlowTheme.of(
-                                                      context)
-                                                      .primaryText,
-                                                  fontSize: 12,
-                                                  useGoogleFonts: false,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ),
                               ),

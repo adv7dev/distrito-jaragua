@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../create_your_profile/create_your_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -16,7 +15,6 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  TextEditingController codigodeacessoController;
   TextEditingController confirmPasswordController;
   bool confirmPasswordVisibility;
   TextEditingController createEmailController;
@@ -30,7 +28,6 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   void initState() {
     super.initState();
-    codigodeacessoController = TextEditingController();
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
     createEmailController = TextEditingController();
@@ -686,117 +683,43 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 16, 20, 0),
-                                  child: TextFormField(
-                                    controller: codigodeacessoController,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: Color(0xFF2B343A),
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
-                                      hintText: 'Codigo de acesso',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                        fontFamily: 'Advent Sans',
-                                        color: Color(0xFF2B343A),
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.white,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.white,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                      fontFamily: 'Advent Sans',
-                                      color: Color(0xFF2B343A),
-                                      fontWeight: FontWeight.normal,
-                                      useGoogleFonts: false,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 20, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if ((codigodeacessoController.text) ==
-                                          '@iasd7') {
-                                        if (createPasswordController.text !=
-                                            confirmPasswordController.text) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Passwords don\'t match!',
-                                              ),
+                                      if (createPasswordController.text !=
+                                          confirmPasswordController.text) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Passwords don\'t match!',
                                             ),
-                                          );
-                                          return;
-                                        }
-
-                                        final user =
-                                        await createAccountWithEmail(
-                                          context,
-                                          createEmailController.text,
-                                          createPasswordController.text,
-                                        );
-                                        if (user == null) {
-                                          return;
-                                        }
-
-                                        await Navigator.push(
-                                          context,
-                                          PageTransition(
-                                            type:
-                                            PageTransitionType.bottomToTop,
-                                            duration:
-                                            Duration(milliseconds: 300),
-                                            reverseDuration:
-                                            Duration(milliseconds: 300),
-                                            child: CreateYourProfileWidget(),
                                           ),
                                         );
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Acesso Negado! ):'),
-                                              content: Text(
-                                                  'Entre em contato com os administradores.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
+                                        return;
                                       }
+
+                                      final user = await createAccountWithEmail(
+                                        context,
+                                        loginEmailAddressController.text,
+                                        createPasswordController.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      await Navigator.pushAndRemoveUntil(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.bottomToTop,
+                                          duration: Duration(milliseconds: 300),
+                                          reverseDuration:
+                                          Duration(milliseconds: 300),
+                                          child: NavBarPage(
+                                              initialPage: 'HomePage'),
+                                        ),
+                                            (r) => false,
+                                      );
                                     },
                                     text: 'Criar Conta',
                                     options: FFButtonOptions(

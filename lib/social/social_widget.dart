@@ -553,22 +553,28 @@ class _SocialWidgetState extends State<SocialWidget>
                                                   Row(
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
-                                                      Icon(
-                                                        Icons.mode_comment_outlined,
-                                                        color: Color(0xFF95A1AC),
-                                                        size: 24,
-                                                      ),
+                                                      if (socialFeedUserPostsRecord
+                                                          .postOwner ??
+                                                          true)
+                                                        Icon(
+                                                          Icons
+                                                              .mode_comment_outlined,
+                                                          color: Color(0xFF95A1AC),
+                                                          size: 24,
+                                                        ),
                                                       Padding(
                                                         padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                             4, 0, 0, 0),
                                                         child: Text(
-                                                          valueOrDefault<String>(
+                                                          formatNumber(
                                                             socialFeedUserPostsRecord
-                                                                .numComments
-                                                                .toString(),
-                                                            'Sem Comentários',
+                                                                .numComments,
+                                                            formatType:
+                                                            FormatType.decimal,
+                                                            decimalType: DecimalType
+                                                                .automatic,
                                                           ),
                                                           style:
                                                           FlutterFlowTheme.of(
@@ -598,7 +604,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                         .fromSTEB(0, 2, 8, 0),
                                                     child: Text(
                                                       dateTimeFormat(
-                                                          'relative',
+                                                          'd/M H:mm',
                                                           socialFeedUserPostsRecord
                                                               .timePosted),
                                                       style: FlutterFlowTheme.of(

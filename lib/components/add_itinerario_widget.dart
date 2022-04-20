@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -18,7 +19,7 @@ class AddItinerarioWidget extends StatefulWidget {
 
 class _AddItinerarioWidgetState extends State<AddItinerarioWidget> {
   DateTimeRange calendarSelectedDay;
-  TextEditingController textController;
+  String radioButtonValue;
 
   @override
   void initState() {
@@ -27,7 +28,6 @@ class _AddItinerarioWidgetState extends State<AddItinerarioWidget> {
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
-    textController = TextEditingController();
   }
 
   @override
@@ -60,44 +60,38 @@ class _AddItinerarioWidgetState extends State<AddItinerarioWidget> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: 50,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).alternate,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                    child: TextFormField(
-                      controller: textController,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Igreja',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 2,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 2,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                    child: FlutterFlowRadioButton(
+                      options: [
+                        'Jaraguá',
+                        'Ipanema',
+                        'Panamericano',
+                        'Vila Aurora',
+                        'Reservado'
+                      ].toList(),
+                      onChanged: (value) {
+                        setState(() => radioButtonValue = value);
+                      },
+                      optionHeight: 25,
+                      textStyle:
+                      FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Advent Sans',
-                        color: Color(0xFFF3F3F3),
+                        color: Colors.white,
                         useGoogleFonts: false,
                       ),
+                      buttonPosition: RadioButtonPosition.left,
+                      direction: Axis.vertical,
+                      radioButtonColor: Colors.blue,
+                      inactiveRadioButtonColor: Color(0x8A000000),
+                      toggleable: false,
+                      horizontalAlignment: WrapAlignment.start,
+                      verticalAlignment: WrapCrossAlignment.start,
                     ),
                   ),
                 ),
@@ -156,7 +150,7 @@ class _AddItinerarioWidgetState extends State<AddItinerarioWidget> {
                         createEscalaPastoralRecordData(
                           data: calendarSelectedDay.start,
                           ativo: true,
-                          igreja: textController.text,
+                          igreja: radioButtonValue,
                         );
                         await EscalaPastoralRecord.collection
                             .doc()

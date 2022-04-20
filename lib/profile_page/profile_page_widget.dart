@@ -12,6 +12,7 @@ import '../page_ipanema_adm/page_ipanema_adm_widget.dart';
 import '../page_jaragua_adm/page_jaragua_adm_widget.dart';
 import '../page_panamericano_adm/page_panamericano_adm_widget.dart';
 import '../termos_de_servicos/termos_de_servicos_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -118,8 +119,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                     PageTransitionType.fade,
                                                     child:
                                                     FlutterFlowExpandedImageView(
-                                                      image: Image.network(
-                                                        valueOrDefault<String>(
+                                                      image: CachedNetworkImage(
+                                                        imageUrl:
+                                                        valueOrDefault<
+                                                            String>(
                                                           columnUsersRecord
                                                               .capa,
                                                           'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
@@ -143,7 +146,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                   'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
                                                 ),
                                                 transitionOnUserGestures: true,
-                                                child: Image.network(
+                                                child: CachedNetworkImage(
+                                                  imageUrl:
                                                   valueOrDefault<String>(
                                                     columnUsersRecord.capa,
                                                     'https://cdn.pixabay.com/photo/2018/10/01/13/53/droplet-3716288_960_720.jpg',
@@ -172,7 +176,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                           .fade,
                                                       child:
                                                       FlutterFlowExpandedImageView(
-                                                        image: Image.network(
+                                                        image:
+                                                        CachedNetworkImage(
+                                                          imageUrl:
                                                           valueOrDefault<
                                                               String>(
                                                             columnUsersRecord
@@ -208,8 +214,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
-                                                    child: Image.network(
-                                                      valueOrDefault<String>(
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: valueOrDefault<
+                                                          String>(
                                                         columnUsersRecord
                                                             .photoUrl,
                                                         'https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/f/4/7/3f4782a691f4b5986ea9f9697010a16d.jpg',

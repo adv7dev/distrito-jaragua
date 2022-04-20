@@ -146,24 +146,19 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(40),
                                       ),
-                                      child: InkWell(
-                                        onDoubleTap: () async {
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        buttonSize: 46,
+                                        icon: Icon(
+                                          Icons.arrow_back_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          size: 24,
+                                        ),
+                                        onPressed: () async {
                                           Navigator.pop(context);
                                         },
-                                        child: FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 30,
-                                          buttonSize: 46,
-                                          icon: Icon(
-                                            Icons.arrow_back_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
-                                            size: 24,
-                                          ),
-                                          onPressed: () {
-                                            print('IconButton pressed ...');
-                                          },
-                                        ),
                                       ),
                                     ),
                                     if (currentUserDocument?.admGeral ?? true)
@@ -237,7 +232,7 @@ class _PostDetailsWidgetState extends State<PostDetailsWidget> {
                                         widget.userRecord.photoUrl,
                                         'https://i.ibb.co/cC6RmGZ/businessman.png',
                                       ),
-                                      fit: BoxFit.fitWidth,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),

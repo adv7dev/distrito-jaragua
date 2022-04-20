@@ -1,5 +1,7 @@
+import '../agenda_ipanema/agenda_ipanema_widget.dart';
 import '../esc_musica_ipanema/esc_musica_ipanema_widget.dart';
 import '../esc_pregadores_ipanema/esc_pregadores_ipanema_widget.dart';
+import '../esc_pregadores_jaragua/esc_pregadores_jaragua_widget.dart';
 import '../esc_sonoplastia_ipanema/esc_sonoplastia_ipanema_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_google_map.dart';
@@ -48,7 +50,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                             child: Stack(
                               children: [
                                 InkWell(
@@ -124,24 +126,24 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.03, 1.08),
+                                        AlignmentDirectional(0.03, 1.08),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 2),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 2),
                                           child: AutoSizeText(
                                             'IASD JD. IPANEMA',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Advent Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 35,
-                                                  useGoogleFonts: false,
-                                                ),
+                                              fontFamily: 'Advent Sans',
+                                              color: FlutterFlowTheme.of(
+                                                  context)
+                                                  .primaryText,
+                                              fontSize: 35,
+                                              useGoogleFonts: false,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -165,7 +167,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                         child: GridView(
                           padding: EdgeInsets.zero,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                          SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
@@ -183,17 +185,17 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
-                                    child: EscPregadoresIpanemaWidget(),
+                                    Duration(milliseconds: 300),
+                                    child: AgendaIpanemaWidget(),
                                   ),
                                 );
                               },
                               child: Container(
-                                width: 100,
-                                height: 100,
+                                width: double.infinity,
+                                height: double.infinity,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -204,19 +206,21 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
-                                            Icon(
-                                              Icons.people_sharp,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 50,
+                                            Expanded(
+                                              child: Icon(
+                                                Icons.date_range_outlined,
+                                                color:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                                size: 60,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -225,22 +229,22 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               AutoSizeText(
-                                                'Escala de \nPREGADORES',
+                                                'Agenda \nda IGREJA',
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -259,7 +263,83 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
+                                    child: EscPregadoresIpanemaWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                  FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.people_sharp,
+                                              color:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                              size: 50,
+                                            ),
+                                          ],
+                                        ),
+                                        SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              AutoSizeText(
+                                                'Escala de \nPREGADORES',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                    context)
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  useGoogleFonts: false,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                    Duration(milliseconds: 300),
                                     child: EscSonoplastiaIpanemaWidget(),
                                   ),
                                 );
@@ -269,7 +349,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -280,48 +360,48 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.mouse,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da\nSONOPLASTIA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -341,7 +421,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: EscMusicaIpanemaWidget(),
                                   ),
                                 );
@@ -351,7 +431,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                 height: 100,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).customColor1,
+                                  FlutterFlowTheme.of(context).customColor1,
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -362,130 +442,48 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.mic_external_on,
                                               color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
                                               size: 50,
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                               children: [
                                                 AutoSizeText(
                                                   'Escala da\nMUSICA',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.bottomToTop,
-                                    duration: Duration(milliseconds: 500),
-                                    reverseDuration:
-                                        Duration(milliseconds: 500),
-                                    child: ItinerarioPastoralWidget(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color:
-                                      FlutterFlowTheme.of(context).customColor1,
-                                  borderRadius: BorderRadius.circular(10),
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 5, 5, 5),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.person_search_sharp,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 50,
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                AutoSizeText(
-                                                  'Itinerario\nPASTORAL',
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -505,7 +503,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration:
-                                        Duration(milliseconds: 300),
+                                    Duration(milliseconds: 300),
                                     child: LideresPageIpanemaWidget(),
                                   ),
                                 );
@@ -526,12 +524,12 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    CrossAxisAlignment.center,
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         children: [
                                           Icon(
                                             Icons.emoji_people,
@@ -547,30 +545,112 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               child: AutoSizeText(
                                                 'Lideres por DEPARTAMENTO',
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
-                                                        context)
+                                                    context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Advent Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 12,
-                                                      useGoogleFonts: false,
-                                                    ),
+                                                  fontFamily: 'Advent Sans',
+                                                  color:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .primaryText,
+                                                  fontSize: 12,
+                                                  useGoogleFonts: false,
+                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 500),
+                                    reverseDuration:
+                                    Duration(milliseconds: 500),
+                                    child: ItinerarioPastoralWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                  FlutterFlowTheme.of(context).customColor1,
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.person_search_sharp,
+                                              color:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                              size: 50,
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Itinerario\nPASTORAL',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily:
+                                                    'Advent Sans',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -596,7 +676,7 @@ class _PageJaIpanemaWidgetState extends State<PageJaIpanemaWidget> {
                             height: 200,
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                              EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                               child: FlutterFlowGoogleMap(
                                 controller: googleMapsController,
                                 onCameraIdle: (latLng) =>

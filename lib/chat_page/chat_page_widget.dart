@@ -57,7 +57,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -66,7 +66,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Colors.black,
+            color: FlutterFlowTheme.of(context).secondaryColor,
             size: 24,
           ),
           onPressed: () async {
@@ -80,7 +80,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                 widget.chatUser.displayName,
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                   fontFamily: 'Advent Sans',
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   useGoogleFonts: false,
@@ -107,7 +107,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                 },
                 child: Icon(
                   Icons.person_add,
-                  color: Colors.black,
+                  color: Colors.white,
                   size: 24,
                 ),
               ),
@@ -127,7 +127,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               ? FFChatPage(
             chatInfo: snapshot.data,
             allowImages: true,
-            backgroundColor: Color(0xFFF2F4F8),
+            backgroundColor:
+            FlutterFlowTheme.of(context).primaryBackground,
             timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
             currentUserBoxDecoration: BoxDecoration(
               color: Colors.white,

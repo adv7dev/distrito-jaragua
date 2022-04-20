@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../components/add_itinerario_widget.dart';
 import '../components/delete_itinerario_widget.dart';
 import '../components/historico_itinerario_widget.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -20,6 +21,7 @@ class ItinerarioPastoralWidget extends StatefulWidget {
 }
 
 class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
+  String dropDownValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -211,6 +213,30 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                     ),
                   ],
                 ),
+                FlutterFlowDropDown(
+                  options: [
+                    'Jaraguá',
+                    'Ipanema',
+                    'Panamericano',
+                    'Vila Aurora',
+                    'Reservado'
+                  ].toList(),
+                  onChanged: (val) => setState(() => dropDownValue = val),
+                  width: double.infinity,
+                  height: 50,
+                  textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Advent Sans',
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    useGoogleFonts: false,
+                  ),
+                  hintText: 'FILTRAR POR IGREJA',
+                  fillColor: FlutterFlowTheme.of(context).primaryText,
+                  elevation: 2,
+                  borderColor: Colors.transparent,
+                  borderWidth: 0,
+                  borderRadius: 0,
+                  margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                   child: Column(
@@ -224,6 +250,10 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                               stream: queryEscalaPastoralRecord(
                                 queryBuilder: (escalaPastoralRecord) =>
                                     escalaPastoralRecord
+                                        .where('igreja',
+                                        isEqualTo: dropDownValue != ''
+                                            ? dropDownValue
+                                            : null)
                                         .where('ativo', isEqualTo: true)
                                         .orderBy('data'),
                               ),
