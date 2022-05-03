@@ -3,11 +3,14 @@ import '../backend/backend.dart';
 import '../components/add_anuncios_widget.dart';
 import '../components/delete_anuncios_distrital_widget.dart';
 import '../components/detalhes_anuncios_widget.dart';
+import '../components/edit_anuncios_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,26 +39,59 @@ class _ViewAllAnunciosDistritalWidgetState
           borderColor: Colors.transparent,
           borderRadius: 30,
           borderWidth: 1,
-          buttonSize: 60,
+          buttonSize: 70,
           icon: Icon(
-            Icons.chevron_left_sharp,
+            Icons.chevron_left,
             color: FlutterFlowTheme.of(context).secondaryColor,
-            size: 30,
+            size: 40,
           ),
           onPressed: () async {
             Navigator.pop(context);
           },
         ),
         title: Text(
-          'Anuncios Distrital',
+          'ANÚNCIOS DISTRITAL',
           style: FlutterFlowTheme.of(context).title2.override(
             fontFamily: 'Advent Sans',
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 20,
             useGoogleFonts: false,
           ),
         ),
-        actions: [],
+        actions: [
+          Visibility(
+            visible: (currentUserDocument?.admGeral) == true,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+              child: AuthUserStreamWidget(
+                child: InkWell(
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor:
+                      FlutterFlowTheme.of(context).primaryBackground,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.9,
+                            child: AddAnunciosWidget(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Icon(
+                    Icons.add_circle,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
         centerTitle: true,
         elevation: 2,
       ),
@@ -64,76 +100,26 @@ class _ViewAllAnunciosDistritalWidgetState
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Ativos:',
-                            style:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryText,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              useGoogleFonts: false,
-                            ),
-                          ),
-                          if (currentUserDocument?.admGeral ?? true)
-                            Padding(
-                              padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: AuthUserStreamWidget(
-                                child: InkWell(
-                                  onTap: () async {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor:
-                                      FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                          MediaQuery.of(context).viewInsets,
-                                          child: Container(
-                                            height: MediaQuery.of(context)
-                                                .size
-                                                .height *
-                                                0.7,
-                                            child: AddAnunciosWidget(),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Icon(
-                                    Icons.add_circle,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    size: 24,
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  child: Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.7,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: StreamBuilder<List<AnunciosDistritalRecord>>(
                         stream: queryAnunciosDistritalRecord(
                           queryBuilder: (anunciosDistritalRecord) =>
-                              anunciosDistritalRecord.where('ativo',
-                                  isEqualTo: true),
+                              anunciosDistritalRecord
+                                  .where('ativo', isEqualTo: true)
+                                  .orderBy('data', descending: true),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -151,753 +137,955 @@ class _ViewAllAnunciosDistritalWidgetState
                             );
                           }
                           List<AnunciosDistritalRecord>
-                          columnAnunciosDistritalRecordList = snapshot.data;
-                          return Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: List.generate(
-                                columnAnunciosDistritalRecordList.length,
-                                    (columnIndex) {
-                                  final columnAnunciosDistritalRecord =
-                                  columnAnunciosDistritalRecordList[
-                                  columnIndex];
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Card(
-                                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return Padding(
-                                                        padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                        child: Container(
-                                                          height:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                              0.7,
-                                                          child:
-                                                          DetalhesAnunciosWidget(
-                                                            titulo:
-                                                            columnAnunciosDistritalRecord
-                                                                .titulo,
-                                                            descricao:
-                                                            columnAnunciosDistritalRecord
-                                                                .descricao,
-                                                            data:
-                                                            columnAnunciosDistritalRecord
-                                                                .data,
-                                                            horario:
-                                                            columnAnunciosDistritalRecord
-                                                                .horario,
-                                                            img:
-                                                            columnAnunciosDistritalRecord
-                                                                .img,
-                                                            local:
-                                                            columnAnunciosDistritalRecord
-                                                                .local,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                                onLongPress: () async {
-                                                  if ((currentUserDocument
-                                                      ?.admGeral) ==
-                                                      true) {
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                      Colors.transparent,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return Padding(
-                                                          padding:
-                                                          MediaQuery.of(context)
-                                                              .viewInsets,
-                                                          child: Container(
-                                                            height: MediaQuery.of(
+                          listViewAnunciosDistritalRecordList =
+                              snapshot.data;
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            primary: false,
+                            scrollDirection: Axis.vertical,
+                            itemCount:
+                            listViewAnunciosDistritalRecordList.length,
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewAnunciosDistritalRecord =
+                              listViewAnunciosDistritalRecordList[
+                              listViewIndex];
+                              return Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 3),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Card(
+                                            clipBehavior:
+                                            Clip.antiAliasWithSaveLayer,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                        true,
+                                                        backgroundColor:
+                                                        Color(0x3A000000),
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return Padding(
+                                                            padding:
+                                                            MediaQuery.of(
                                                                 context)
-                                                                .size
-                                                                .height *
-                                                                0.5,
-                                                            child:
-                                                            DeleteAnunciosDistritalWidget(
-                                                              anunciosdistrital:
-                                                              columnAnunciosDistritalRecord
-                                                                  .reference,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
-                                                  }
-                                                },
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding: EdgeInsetsDirectional
-                                                          .fromSTEB(5, 5, 5, 5),
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          await Navigator.push(
-                                                            context,
-                                                            PageTransition(
-                                                              type:
-                                                              PageTransitionType
-                                                                  .fade,
+                                                                .viewInsets,
+                                                            child: Container(
+                                                              height: MediaQuery.of(
+                                                                  context)
+                                                                  .size
+                                                                  .height *
+                                                                  0.9,
                                                               child:
-                                                              FlutterFlowExpandedImageView(
-                                                                image:
-                                                                Image.network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    columnAnunciosDistritalRecord
-                                                                        .img,
-                                                                    'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                                  ),
-                                                                  fit: BoxFit
-                                                                      .contain,
-                                                                ),
-                                                                allowRotation:
-                                                                false,
-                                                                tag: valueOrDefault<
-                                                                    String>(
-                                                                  columnAnunciosDistritalRecord
-                                                                      .img,
-                                                                  'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                                      '$columnIndex',
-                                                                ),
-                                                                useHeroAnimation:
-                                                                true,
+                                                              DetalhesAnunciosWidget(
+                                                                titulo:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .titulo,
+                                                                descricao:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .descricao,
+                                                                data:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .data,
+                                                                horario:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .horario,
+                                                                img:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .img,
+                                                                local:
+                                                                listViewAnunciosDistritalRecord
+                                                                    .local,
                                                               ),
                                                             ),
                                                           );
                                                         },
-                                                        child: Hero(
-                                                          tag: valueOrDefault<
-                                                              String>(
-                                                            columnAnunciosDistritalRecord
-                                                                .img,
-                                                            'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                                '$columnIndex',
-                                                          ),
-                                                          transitionOnUserGestures:
+                                                      );
+                                                    },
+                                                    onDoubleTap: () async {
+                                                      if ((currentUserDocument
+                                                          ?.admGeral) ==
+                                                          true) {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
                                                           true,
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                            child: Image.network(
+                                                          backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                              context)
+                                                              .primaryBackground,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                  .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                    context)
+                                                                    .size
+                                                                    .height *
+                                                                    0.9,
+                                                                child:
+                                                                EditAnunciosWidget(
+                                                                  titulo:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .titulo,
+                                                                  descricao:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .descricao,
+                                                                  img:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .img,
+                                                                  horario:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .horario,
+                                                                  data:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .data,
+                                                                  local:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .local,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      } else {
+                                                        await Future.delayed(
+                                                            const Duration(
+                                                                milliseconds:
+                                                                1000));
+                                                      }
+                                                    },
+                                                    onLongPress: () async {
+                                                      if (currentUserDocument
+                                                          ?.admGeral) {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                          true,
+                                                          backgroundColor:
+                                                          Colors
+                                                              .transparent,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                  .of(context)
+                                                                  .viewInsets,
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                    context)
+                                                                    .size
+                                                                    .height *
+                                                                    0.5,
+                                                                child:
+                                                                DeleteAnunciosDistritalWidget(
+                                                                  anunciosdistrital:
+                                                                  listViewAnunciosDistritalRecord
+                                                                      .reference,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      } else {
+                                                        await Future.delayed(
+                                                            const Duration(
+                                                                milliseconds:
+                                                                1000));
+                                                      }
+                                                    },
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                      MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(5,
+                                                              5, 5, 5),
+                                                          child: InkWell(
+                                                            onTap: () async {
+                                                              await Navigator
+                                                                  .push(
+                                                                context,
+                                                                PageTransition(
+                                                                  type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                                  child:
+                                                                  FlutterFlowExpandedImageView(
+                                                                    image:
+                                                                    CachedNetworkImage(
+                                                                      imageUrl:
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        listViewAnunciosDistritalRecord
+                                                                            .img,
+                                                                        'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                                                      ),
+                                                                      fit: BoxFit
+                                                                          .contain,
+                                                                    ),
+                                                                    allowRotation:
+                                                                    false,
+                                                                    tag: valueOrDefault<
+                                                                        String>(
+                                                                      listViewAnunciosDistritalRecord
+                                                                          .img,
+                                                                      'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
+                                                                          '$listViewIndex',
+                                                                    ),
+                                                                    useHeroAnimation:
+                                                                    true,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                            child: Hero(
+                                                              tag:
                                                               valueOrDefault<
                                                                   String>(
-                                                                columnAnunciosDistritalRecord
+                                                                listViewAnunciosDistritalRecord
                                                                     .img,
-                                                                'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
+                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
+                                                                    '$listViewIndex',
                                                               ),
-                                                              width: 100,
-                                                              height: 100,
-                                                              fit: BoxFit.cover,
+                                                              transitionOnUserGestures:
+                                                              true,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    5),
+                                                                child:
+                                                                CachedNetworkImage(
+                                                                  imageUrl:
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    listViewAnunciosDistritalRecord
+                                                                        .img,
+                                                                    'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                                                  ),
+                                                                  width: 100,
+                                                                  height: 100,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            5, 15, 0, 0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                          MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                          children: [
-                                                            Row(
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                5,
+                                                                5,
+                                                                5,
+                                                                5),
+                                                            child: Column(
                                                               mainAxisSize:
-                                                              MainAxisSize.max,
+                                                              MainAxisSize
+                                                                  .max,
+                                                              crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
                                                               children: [
-                                                                Expanded(
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          listViewAnunciosDistritalRecord
+                                                                              .titulo,
+                                                                          'S/ Titulo',
+                                                                        ).maybeHandleOverflow(
+                                                                          maxChars:
+                                                                          20,
+                                                                          replacement:
+                                                                          '…',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1
+                                                                            .override(
+                                                                          fontFamily: 'Advent Sans',
+                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                          fontSize: 16,
+                                                                          fontWeight: FontWeight.w600,
+                                                                          useGoogleFonts: false,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                          0,
+                                                                          0,
+                                                                          5,
+                                                                          0),
+                                                                      child:
+                                                                      Text(
+                                                                        listViewIndex
+                                                                            .toString(),
+                                                                        textAlign:
+                                                                        TextAlign.end,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyText1,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Divider(
+                                                                  height: 10,
+                                                                  color: Color(
+                                                                      0xFFD4D4D4),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0,
+                                                                            0,
+                                                                            0,
+                                                                            2),
+                                                                        child:
+                                                                        Text(
+                                                                          listViewAnunciosDistritalRecord
+                                                                              .descricao
+                                                                              .maybeHandleOverflow(
+                                                                            maxChars:
+                                                                            30,
+                                                                            replacement:
+                                                                            '…',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyText1
+                                                                              .override(
+                                                                            fontFamily: 'Advent Sans',
+                                                                            color: Colors.white,
+                                                                            fontWeight: FontWeight.normal,
+                                                                            fontStyle: FontStyle.italic,
+                                                                            useGoogleFonts: false,
+                                                                            lineHeight: 2,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                      0,
+                                                                      0,
+                                                                      0,
+                                                                      3),
                                                                   child:
-                                                                  AutoSizeText(
-                                                                    columnAnunciosDistritalRecord
-                                                                        .titulo
-                                                                        .maybeHandleOverflow(
-                                                                        maxChars:
-                                                                        30),
-                                                                    style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                      fontFamily:
-                                                                      'Advent Sans',
-                                                                      color: Colors
-                                                                          .white,
-                                                                      useGoogleFonts:
-                                                                      false,
+                                                                  SingleChildScrollView(
+                                                                    scrollDirection:
+                                                                    Axis.horizontal,
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                      children: [
+                                                                        AutoSizeText(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            dateTimeFormat('d/M/y',
+                                                                                listViewAnunciosDistritalRecord.data),
+                                                                            'S/ data',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyText1
+                                                                              .override(
+                                                                            fontFamily: 'Advent Sans',
+                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                            fontWeight: FontWeight.w600,
+                                                                            useGoogleFonts: false,
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              10,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                          AutoSizeText(
+                                                                            valueOrDefault<String>(
+                                                                              dateTimeFormat('EEEE', listViewAnunciosDistritalRecord.data),
+                                                                              'S/ data',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              fontFamily: 'Advent Sans',
+                                                                              color: Color(0xFFD4D4D4),
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              10,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                          AutoSizeText(
+                                                                            valueOrDefault<String>(
+                                                                              listViewAnunciosDistritalRecord.horario,
+                                                                              'S/ data',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              fontFamily: 'Advent Sans',
+                                                                              color: Color(0xFFD4D4D4),
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                            Divider(
-                                                              height: 10,
-                                                              color:
-                                                              Color(0xFFD4D4D4),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                  0, 0, 5),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        columnAnunciosDistritalRecord
-                                                                            .descricao,
-                                                                        'Sem Descrição',
-                                                                      ).maybeHandleOverflow(
-                                                                          maxChars:
-                                                                          50),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Local:',
                                                                       style: FlutterFlowTheme.of(
                                                                           context)
                                                                           .bodyText1
                                                                           .override(
                                                                         fontFamily:
                                                                         'Advent Sans',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color:
+                                                                        Colors.white,
                                                                         fontWeight:
-                                                                        FontWeight.normal,
-                                                                        fontStyle:
-                                                                        FontStyle.italic,
+                                                                        FontWeight.w600,
                                                                         useGoogleFonts:
                                                                         false,
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                              MainAxisSize.max,
-                                                              children: [
-                                                                Text(
-                                                                  'DATA: ',
-                                                                  style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                    'Advent Sans',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    useGoogleFonts:
-                                                                    false,
-                                                                  ),
-                                                                ),
-                                                                Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    dateTimeFormat(
-                                                                        'd/M/y',
-                                                                        columnAnunciosDistritalRecord
-                                                                            .data),
-                                                                    'S/ Data',
-                                                                  ),
-                                                                  style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                    'Advent Sans',
-                                                                    color: Color(
-                                                                        0xFFDBDBDB),
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                    useGoogleFonts:
-                                                                    false,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                      10,
-                                                                      0,
-                                                                      0,
-                                                                      0),
-                                                                  child: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      dateTimeFormat(
-                                                                          'Hm',
-                                                                          columnAnunciosDistritalRecord
-                                                                              .data),
-                                                                      'Sem Horário',
+                                                                    Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        listViewAnunciosDistritalRecord
+                                                                            .local,
+                                                                        'S/ Igreja',
+                                                                      ).maybeHandleOverflow(
+                                                                        maxChars:
+                                                                        20,
+                                                                        replacement:
+                                                                        '…',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Advent Sans',
+                                                                        color:
+                                                                        Color(0xFFDBDBDB),
+                                                                        fontWeight:
+                                                                        FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                        false,
+                                                                      ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                      fontFamily:
-                                                                      'Advent Sans',
-                                                                      color: Color(
-                                                                          0xFFF9F9F9),
-                                                                      fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                      useGoogleFonts:
-                                                                      false,
-                                                                    ),
-                                                                  ),
+                                                                  ],
                                                                 ),
                                                               ],
                                                             ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                              MainAxisSize.max,
-                                                              crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                              children: [
-                                                                Text(
-                                                                  'LOCAL: ',
-                                                                  style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                    'Advent Sans',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    useGoogleFonts:
-                                                                    false,
-                                                                  ),
-                                                                ),
-                                                                Expanded(
-                                                                  child:
-                                                                  AutoSizeText(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      columnAnunciosDistritalRecord
-                                                                          .local,
-                                                                      'S/ Igreja',
-                                                                    ).maybeHandleOverflow(
-                                                                      maxChars: 20,
-                                                                      replacement:
-                                                                      '…',
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                      fontFamily:
-                                                                      'Advent Sans',
-                                                                      color: Color(
-                                                                          0xFFDBDBDB),
-                                                                      fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                      useGoogleFonts:
-                                                                      false,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  );
-                                }),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
                     ),
-                  ],
+                  ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
-                      child: Row(
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Histórico:',
-                            style:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Advent Sans',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryText,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              useGoogleFonts: false,
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              color: Color(0xFFA4A4A4),
+                              child: ExpandableNotifier(
+                                initialExpanded: false,
+                                child: ExpandablePanel(
+                                  header: Text(
+                                    '  Histórico',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title1
+                                        .override(
+                                      fontFamily: 'Advent Sans',
+                                      color: Colors.black,
+                                      useGoogleFonts: false,
+                                    ),
+                                  ),
+                                  collapsed: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFEEEEEE),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Text(
+                                        '  Ver histórico de Pregadores',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                          fontFamily: 'Advent Sans',
+                                          color: Color(0x8A000000),
+                                          useGoogleFonts: false,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  expanded: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 5, 0, 0),
+                                    child: StreamBuilder<
+                                        List<AnunciosDistritalRecord>>(
+                                      stream: queryAnunciosDistritalRecord(
+                                        queryBuilder:
+                                            (anunciosDistritalRecord) =>
+                                            anunciosDistritalRecord
+                                                .where('ativo',
+                                                isEqualTo: false)
+                                                .orderBy('data'),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50,
+                                              height: 50,
+                                              child: SpinKitRing(
+                                                color:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
+                                                size: 50,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<AnunciosDistritalRecord>
+                                        columnAnunciosDistritalRecordList =
+                                            snapshot.data;
+                                        return SingleChildScrollView(
+                                          primary: false,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: List.generate(
+                                                columnAnunciosDistritalRecordList
+                                                    .length, (columnIndex) {
+                                              final columnAnunciosDistritalRecord =
+                                              columnAnunciosDistritalRecordList[
+                                              columnIndex];
+                                              return Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color:
+                                                      FlutterFlowTheme.of(
+                                                          context)
+                                                          .alternate,
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                        MainAxisSize.max,
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                true,
+                                                                backgroundColor:
+                                                                Color(
+                                                                    0x45000000),
+                                                                context:
+                                                                context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return Padding(
+                                                                    padding: MediaQuery.of(
+                                                                        context)
+                                                                        .viewInsets,
+                                                                    child:
+                                                                    Container(
+                                                                      height: MediaQuery.of(context)
+                                                                          .size
+                                                                          .height *
+                                                                          0.9,
+                                                                      child:
+                                                                      DetalhesAnunciosWidget(
+                                                                        titulo:
+                                                                        columnAnunciosDistritalRecord.titulo,
+                                                                        descricao:
+                                                                        columnAnunciosDistritalRecord.descricao,
+                                                                        data: columnAnunciosDistritalRecord
+                                                                            .data,
+                                                                        horario:
+                                                                        columnAnunciosDistritalRecord.horario,
+                                                                        img: columnAnunciosDistritalRecord
+                                                                            .img,
+                                                                        local: columnAnunciosDistritalRecord
+                                                                            .local,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                            onLongPress:
+                                                                () async {
+                                                              if (currentUserDocument
+                                                                  ?.admGeral) {
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                  true,
+                                                                  backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                                  context:
+                                                                  context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return Padding(
+                                                                      padding: MediaQuery.of(
+                                                                          context)
+                                                                          .viewInsets,
+                                                                      child:
+                                                                      Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.5,
+                                                                        child:
+                                                                        DeleteAnunciosDistritalWidget(
+                                                                          anunciosdistrital:
+                                                                          columnAnunciosDistritalRecord.reference,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              } else {
+                                                                await Future.delayed(
+                                                                    const Duration(
+                                                                        milliseconds:
+                                                                        1000));
+                                                              }
+                                                            },
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                              MainAxisSize
+                                                                  .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                      5,
+                                                                      5,
+                                                                      5,
+                                                                      5),
+                                                                  child:
+                                                                  InkWell(
+                                                                    onTap:
+                                                                        () async {
+                                                                      await Navigator
+                                                                          .push(
+                                                                        context,
+                                                                        PageTransition(
+                                                                          type:
+                                                                          PageTransitionType.fade,
+                                                                          child:
+                                                                          FlutterFlowExpandedImageView(
+                                                                            image:
+                                                                            CachedNetworkImage(
+                                                                              imageUrl: valueOrDefault<String>(
+                                                                                columnAnunciosDistritalRecord.img,
+                                                                                'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                                                              ),
+                                                                              fit: BoxFit.contain,
+                                                                            ),
+                                                                            allowRotation:
+                                                                            false,
+                                                                            tag:
+                                                                            valueOrDefault<String>(
+                                                                              columnAnunciosDistritalRecord.img,
+                                                                              'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' + '$columnIndex',
+                                                                            ),
+                                                                            useHeroAnimation:
+                                                                            true,
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                    child: Hero(
+                                                                      tag: valueOrDefault<
+                                                                          String>(
+                                                                        columnAnunciosDistritalRecord
+                                                                            .img,
+                                                                        'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg' +
+                                                                            '$columnIndex',
+                                                                      ),
+                                                                      transitionOnUserGestures:
+                                                                      true,
+                                                                      child:
+                                                                      ClipRRect(
+                                                                        borderRadius:
+                                                                        BorderRadius.circular(5),
+                                                                        child:
+                                                                        CachedNetworkImage(
+                                                                          imageUrl:
+                                                                          valueOrDefault<String>(
+                                                                            columnAnunciosDistritalRecord.img,
+                                                                            'https://cdn.pixabay.com/photo/2018/04/07/08/28/notepad-3297994_960_720.jpg',
+                                                                          ),
+                                                                          width:
+                                                                          100,
+                                                                          height:
+                                                                          100,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child:
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                        5,
+                                                                        0,
+                                                                        0,
+                                                                        0),
+                                                                    child:
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                      crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                      children: [
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                          MainAxisSize.max,
+                                                                          children: [
+                                                                            Expanded(
+                                                                              child: Text(
+                                                                                valueOrDefault<String>(
+                                                                                  columnAnunciosDistritalRecord.titulo,
+                                                                                  'S/ Titulo',
+                                                                                ).maybeHandleOverflow(
+                                                                                  maxChars: 20,
+                                                                                  replacement: '…',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Advent Sans',
+                                                                                  color: Color(0xFFDBDBDB),
+                                                                                  fontSize: 16,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                              child: Text(
+                                                                                columnIndex.toString(),
+                                                                                textAlign: TextAlign.end,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        Divider(
+                                                                          height:
+                                                                          10,
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                          MainAxisSize.max,
+                                                                          children: [
+                                                                            Expanded(
+                                                                              child: Text(
+                                                                                columnAnunciosDistritalRecord.descricao.maybeHandleOverflow(
+                                                                                  maxChars: 40,
+                                                                                  replacement: '…',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Advent Sans',
+                                                                                  color: Colors.white,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  fontStyle: FontStyle.italic,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                          MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              dateTimeFormat('d/M/y', columnAnunciosDistritalRecord.data),
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                fontFamily: 'Advent Sans',
+                                                                                color: Colors.white,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                              child: Text(
+                                                                                dateTimeFormat('EEEE', columnAnunciosDistritalRecord.data),
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Advent Sans',
+                                                                                  color: Colors.white,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                              child: Text(
+                                                                                columnAnunciosDistritalRecord.horario,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Advent Sans',
+                                                                                  color: Colors.white,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                          MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              'Local: ',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                fontFamily: 'Advent Sans',
+                                                                                color: Colors.white,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                            ),
+                                                                            Text(
+                                                                              valueOrDefault<String>(
+                                                                                columnAnunciosDistritalRecord.local,
+                                                                                'S/ Local',
+                                                                              ).maybeHandleOverflow(
+                                                                                maxChars: 20,
+                                                                                replacement: '…',
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                fontFamily: 'Advent Sans',
+                                                                                color: Color(0xFFDBDBDB),
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            }),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  theme: ExpandableThemeData(
+                                    tapHeaderToExpand: true,
+                                    tapBodyToExpand: false,
+                                    tapBodyToCollapse: false,
+                                    headerAlignment:
+                                    ExpandablePanelHeaderAlignment.center,
+                                    hasIcon: true,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 0),
-                  child: StreamBuilder<List<AnunciosDistritalRecord>>(
-                    stream: queryAnunciosDistritalRecord(
-                      queryBuilder: (anunciosDistritalRecord) =>
-                          anunciosDistritalRecord.where('ativo',
-                              isEqualTo: false),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: SpinKitRing(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              size: 50,
-                            ),
-                          ),
-                        );
-                      }
-                      List<AnunciosDistritalRecord>
-                      columnAnunciosDistritalRecordList = snapshot.data;
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            columnAnunciosDistritalRecordList.length,
-                                (columnIndex) {
-                              final columnAnunciosDistritalRecord =
-                              columnAnunciosDistritalRecordList[columnIndex];
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Card(
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      color: FlutterFlowTheme.of(context).alternate,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 5, 5, 5),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    await Navigator.push(
-                                                      context,
-                                                      PageTransition(
-                                                        type:
-                                                        PageTransitionType.fade,
-                                                        child:
-                                                        FlutterFlowExpandedImageView(
-                                                          image: Image.network(
-                                                            valueOrDefault<String>(
-                                                              columnAnunciosDistritalRecord
-                                                                  .img,
-                                                              'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                            ),
-                                                            fit: BoxFit.contain,
-                                                          ),
-                                                          allowRotation: false,
-                                                          tag: valueOrDefault<
-                                                              String>(
-                                                            columnAnunciosDistritalRecord
-                                                                .img,
-                                                            'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                                '$columnIndex',
-                                                          ),
-                                                          useHeroAnimation: true,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Hero(
-                                                    tag: valueOrDefault<String>(
-                                                      columnAnunciosDistritalRecord
-                                                          .img,
-                                                      'https://cdn-icons-png.flaticon.com/512/4064/4064205.png' +
-                                                          '$columnIndex',
-                                                    ),
-                                                    transitionOnUserGestures: true,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                      BorderRadius.circular(10),
-                                                      child: Image.network(
-                                                        valueOrDefault<String>(
-                                                          columnAnunciosDistritalRecord
-                                                              .img,
-                                                          'https://cdn-icons-png.flaticon.com/512/4064/4064205.png',
-                                                        ),
-                                                        width: 100,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(5, 0, 0, 0),
-                                                  child: Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                        MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: AutoSizeText(
-                                                              columnAnunciosDistritalRecord
-                                                                  .titulo
-                                                                  .maybeHandleOverflow(
-                                                                  maxChars: 30),
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Divider(
-                                                        height: 10,
-                                                        color: Color(0xFFD4D4D4),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            0, 0, 0, 5),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                          MainAxisSize.max,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  columnAnunciosDistritalRecord
-                                                                      .descricao,
-                                                                  'Sem Descrição',
-                                                                ).maybeHandleOverflow(
-                                                                    maxChars: 40),
-                                                                style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                                  fontStyle:
-                                                                  FontStyle
-                                                                      .italic,
-                                                                  useGoogleFonts:
-                                                                  false,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                        MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            'DATA: ',
-                                                            style: FlutterFlowTheme
-                                                                .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                              'Advent Sans',
-                                                              color:
-                                                              Colors.white,
-                                                              useGoogleFonts:
-                                                              false,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            valueOrDefault<String>(
-                                                              dateTimeFormat(
-                                                                  'd/M/y',
-                                                                  columnAnunciosDistritalRecord
-                                                                      .data),
-                                                              'S/ Data',
-                                                            ),
-                                                            style:
-                                                            FlutterFlowTheme.of(
-                                                                context)
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                              'Advent Sans',
-                                                              color: Color(
-                                                                  0xFFDBDBDB),
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .normal,
-                                                              useGoogleFonts:
-                                                              false,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(10, 0,
-                                                                0, 0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                dateTimeFormat(
-                                                                    'Hm',
-                                                                    columnAnunciosDistritalRecord
-                                                                        .data),
-                                                                'Sem Horário',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFF9F9F9),
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                        MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                        children: [
-                                                          Text(
-                                                            'LOCAL: ',
-                                                            style: FlutterFlowTheme
-                                                                .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                              'Advent Sans',
-                                                              color:
-                                                              Colors.white,
-                                                              useGoogleFonts:
-                                                              false,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                columnAnunciosDistritalRecord
-                                                                    .local,
-                                                                'S/ Igreja',
-                                                              ).maybeHandleOverflow(
-                                                                maxChars: 20,
-                                                                replacement: '…',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                  .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                fontFamily:
-                                                                'Advent Sans',
-                                                                color: Color(
-                                                                    0xFFDBDBDB),
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                                useGoogleFonts:
-                                                                false,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }),
-                      );
-                    },
+                    ],
                   ),
                 ),
               ],

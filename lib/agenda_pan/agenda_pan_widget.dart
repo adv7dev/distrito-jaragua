@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -111,9 +112,7 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                           StreamBuilder<List<AnunciosPanamericanoRecord>>(
                             stream: queryAnunciosPanamericanoRecord(
                               queryBuilder: (anunciosPanamericanoRecord) =>
-                                  anunciosPanamericanoRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  anunciosPanamericanoRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -488,9 +487,7 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                           StreamBuilder<List<PanamericanoPregadoresRecord>>(
                             stream: queryPanamericanoPregadoresRecord(
                               queryBuilder: (panamericanoPregadoresRecord) =>
-                                  panamericanoPregadoresRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  panamericanoPregadoresRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -705,24 +702,20 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(
@@ -822,9 +815,7 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                               List<PanamericanoSonoplastiaRecord>>(
                             stream: queryPanamericanoSonoplastiaRecord(
                               queryBuilder: (panamericanoSonoplastiaRecord) =>
-                                  panamericanoSonoplastiaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  panamericanoSonoplastiaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1097,9 +1088,7 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                           child: StreamBuilder<List<PanamericanoMusicaRecord>>(
                             stream: queryPanamericanoMusicaRecord(
                               queryBuilder: (panamericanoMusicaRecord) =>
-                                  panamericanoMusicaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  panamericanoMusicaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1313,24 +1302,20 @@ class _AgendaPanWidgetState extends State<AgendaPanWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(

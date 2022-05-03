@@ -25,6 +25,14 @@ class _$AnunciosDistritalRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     Object value;
+    value = object.nome;
+    if (value != null) {
+      result
+        ..add('nome')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType(Object)])));
+    }
     value = object.data;
     if (value != null) {
       result
@@ -74,6 +82,15 @@ class _$AnunciosDistritalRecordSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
+    value = object.pushnotification;
+    if (value != null) {
+      result
+        ..add('pushnotification')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(DocumentReference, const [const FullType(Object)])
+            ])));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -97,6 +114,12 @@ class _$AnunciosDistritalRecordSerializer
       iterator.moveNext();
       final Object value = iterator.current;
       switch (key) {
+        case 'nome':
+          result.nome = serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      DocumentReference, const [const FullType(Object)]))
+              as DocumentReference<Object>;
+          break;
         case 'data':
           result.data = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
@@ -125,6 +148,13 @@ class _$AnunciosDistritalRecordSerializer
           result.ativo = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
+        case 'pushnotification':
+          result.pushnotification.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType(Object)])
+              ])) as BuiltList<Object>);
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -140,6 +170,8 @@ class _$AnunciosDistritalRecordSerializer
 
 class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
   @override
+  final DocumentReference<Object> nome;
+  @override
   final DateTime data;
   @override
   final String img;
@@ -154,6 +186,8 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
   @override
   final bool ativo;
   @override
+  final BuiltList<DocumentReference<Object>> pushnotification;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$AnunciosDistritalRecord(
@@ -161,13 +195,15 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
       (new AnunciosDistritalRecordBuilder()..update(updates)).build();
 
   _$AnunciosDistritalRecord._(
-      {this.data,
+      {this.nome,
+      this.data,
       this.img,
       this.local,
       this.titulo,
       this.descricao,
       this.horario,
       this.ativo,
+      this.pushnotification,
       this.reference})
       : super._();
 
@@ -184,6 +220,7 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AnunciosDistritalRecord &&
+        nome == other.nome &&
         data == other.data &&
         img == other.img &&
         local == other.local &&
@@ -191,6 +228,7 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
         descricao == other.descricao &&
         horario == other.horario &&
         ativo == other.ativo &&
+        pushnotification == other.pushnotification &&
         reference == other.reference;
   }
 
@@ -201,18 +239,23 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, data.hashCode), img.hashCode),
-                            local.hashCode),
-                        titulo.hashCode),
-                    descricao.hashCode),
-                horario.hashCode),
-            ativo.hashCode),
+                        $jc(
+                            $jc(
+                                $jc($jc($jc(0, nome.hashCode), data.hashCode),
+                                    img.hashCode),
+                                local.hashCode),
+                            titulo.hashCode),
+                        descricao.hashCode),
+                    horario.hashCode),
+                ativo.hashCode),
+            pushnotification.hashCode),
         reference.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AnunciosDistritalRecord')
+          ..add('nome', nome)
           ..add('data', data)
           ..add('img', img)
           ..add('local', local)
@@ -220,6 +263,7 @@ class _$AnunciosDistritalRecord extends AnunciosDistritalRecord {
           ..add('descricao', descricao)
           ..add('horario', horario)
           ..add('ativo', ativo)
+          ..add('pushnotification', pushnotification)
           ..add('reference', reference))
         .toString();
   }
@@ -229,6 +273,10 @@ class AnunciosDistritalRecordBuilder
     implements
         Builder<AnunciosDistritalRecord, AnunciosDistritalRecordBuilder> {
   _$AnunciosDistritalRecord _$v;
+
+  DocumentReference<Object> _nome;
+  DocumentReference<Object> get nome => _$this._nome;
+  set nome(DocumentReference<Object> nome) => _$this._nome = nome;
 
   DateTime _data;
   DateTime get data => _$this._data;
@@ -258,6 +306,13 @@ class AnunciosDistritalRecordBuilder
   bool get ativo => _$this._ativo;
   set ativo(bool ativo) => _$this._ativo = ativo;
 
+  ListBuilder<DocumentReference<Object>> _pushnotification;
+  ListBuilder<DocumentReference<Object>> get pushnotification =>
+      _$this._pushnotification ??= new ListBuilder<DocumentReference<Object>>();
+  set pushnotification(
+          ListBuilder<DocumentReference<Object>> pushnotification) =>
+      _$this._pushnotification = pushnotification;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -270,6 +325,7 @@ class AnunciosDistritalRecordBuilder
   AnunciosDistritalRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _nome = $v.nome;
       _data = $v.data;
       _img = $v.img;
       _local = $v.local;
@@ -277,6 +333,7 @@ class AnunciosDistritalRecordBuilder
       _descricao = $v.descricao;
       _horario = $v.horario;
       _ativo = $v.ativo;
+      _pushnotification = $v.pushnotification?.toBuilder();
       _reference = $v.reference;
       _$v = null;
     }
@@ -296,16 +353,31 @@ class AnunciosDistritalRecordBuilder
 
   @override
   _$AnunciosDistritalRecord build() {
-    final _$result = _$v ??
-        new _$AnunciosDistritalRecord._(
-            data: data,
-            img: img,
-            local: local,
-            titulo: titulo,
-            descricao: descricao,
-            horario: horario,
-            ativo: ativo,
-            reference: reference);
+    _$AnunciosDistritalRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$AnunciosDistritalRecord._(
+              nome: nome,
+              data: data,
+              img: img,
+              local: local,
+              titulo: titulo,
+              descricao: descricao,
+              horario: horario,
+              ativo: ativo,
+              pushnotification: _pushnotification?.build(),
+              reference: reference);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'pushnotification';
+        _pushnotification?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AnunciosDistritalRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

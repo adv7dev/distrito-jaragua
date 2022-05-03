@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +8,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,13 +19,58 @@ class AgendaJaraguaWidget extends StatefulWidget {
   _AgendaJaraguaWidgetState createState() => _AgendaJaraguaWidgetState();
 }
 
-class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
+class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget>
+    with TickerProviderStateMixin {
   DateTimeRange calendarSelectedDay;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'calendarOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 2,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'listViewOnActionTriggerAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 2,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+    setupTriggerAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+      this,
+    );
+
     calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
@@ -94,7 +141,7 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                     color: Colors.white,
                   ),
                   inactiveDateStyle: TextStyle(),
-                ),
+                ).animated([animationsMap['calendarOnPageLoadAnimation']]),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -110,9 +157,7 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                           child: StreamBuilder<List<AnunciosJaraguaRecord>>(
                             stream: queryAnunciosJaraguaRecord(
                               queryBuilder: (anunciosJaraguaRecord) =>
-                                  anunciosJaraguaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  anunciosJaraguaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -462,7 +507,10 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                                     ),
                                   );
                                 },
-                              );
+                              ).animated([
+                                animationsMap[
+                                'listViewOnActionTriggerAnimation']
+                              ]);
                             },
                           ),
                         ),
@@ -485,9 +533,7 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                           child: StreamBuilder<List<JaraguaPregadoresRecord>>(
                             stream: queryJaraguaPregadoresRecord(
                               queryBuilder: (jaraguaPregadoresRecord) =>
-                                  jaraguaPregadoresRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  jaraguaPregadoresRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -701,24 +747,20 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(
@@ -817,9 +859,7 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                           child: StreamBuilder<List<JaraguaSonoplastiaRecord>>(
                             stream: queryJaraguaSonoplastiaRecord(
                               queryBuilder: (jaraguaSonoplastiaRecord) =>
-                                  jaraguaSonoplastiaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  jaraguaSonoplastiaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1091,9 +1131,7 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                           child: StreamBuilder<List<JaraguaMusicaRecord>>(
                             stream: queryJaraguaMusicaRecord(
                               queryBuilder: (jaraguaMusicaRecord) =>
-                                  jaraguaMusicaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  jaraguaMusicaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1307,24 +1345,20 @@ class _AgendaJaraguaWidgetState extends State<AgendaJaraguaWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(

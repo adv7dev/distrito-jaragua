@@ -27,6 +27,9 @@ abstract class AuroraPregadoresRecord
   String get whatsapp;
 
   @nullable
+  String get anciao;
+
+  @nullable
   bool get ativo;
 
   @nullable
@@ -42,6 +45,7 @@ abstract class AuroraPregadoresRecord
         ..img = ''
         ..igreja = ''
         ..whatsapp = ''
+        ..anciao = ''
         ..ativo = false
         ..usarios = ListBuilder();
 
@@ -74,6 +78,7 @@ Map<String, dynamic> createAuroraPregadoresRecordData({
   String img,
   String igreja,
   String whatsapp,
+  String anciao,
   bool ativo,
 }) =>
     serializers.toFirestore(
@@ -84,6 +89,7 @@ Map<String, dynamic> createAuroraPregadoresRecordData({
           ..img = img
           ..igreja = igreja
           ..whatsapp = whatsapp
+          ..anciao = anciao
           ..ativo = ativo
           ..usarios = null));
 

@@ -60,6 +60,13 @@ class _$AuroraPregadoresRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.anciao;
+    if (value != null) {
+      result
+        ..add('anciao')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ativo;
     if (value != null) {
       result
@@ -119,6 +126,10 @@ class _$AuroraPregadoresRecordSerializer
           result.whatsapp = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'anciao':
+          result.anciao = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'ativo':
           result.ativo = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
@@ -155,6 +166,8 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
   @override
   final String whatsapp;
   @override
+  final String anciao;
+  @override
   final bool ativo;
   @override
   final BuiltList<DocumentReference<Object>> usarios;
@@ -171,6 +184,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
       this.img,
       this.igreja,
       this.whatsapp,
+      this.anciao,
       this.ativo,
       this.usarios,
       this.reference})
@@ -194,6 +208,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
         img == other.img &&
         igreja == other.igreja &&
         whatsapp == other.whatsapp &&
+        anciao == other.anciao &&
         ativo == other.ativo &&
         usarios == other.usarios &&
         reference == other.reference;
@@ -206,10 +221,12 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, nome.hashCode), data.hashCode),
-                            img.hashCode),
-                        igreja.hashCode),
-                    whatsapp.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, nome.hashCode), data.hashCode),
+                                img.hashCode),
+                            igreja.hashCode),
+                        whatsapp.hashCode),
+                    anciao.hashCode),
                 ativo.hashCode),
             usarios.hashCode),
         reference.hashCode));
@@ -223,6 +240,7 @@ class _$AuroraPregadoresRecord extends AuroraPregadoresRecord {
           ..add('img', img)
           ..add('igreja', igreja)
           ..add('whatsapp', whatsapp)
+          ..add('anciao', anciao)
           ..add('ativo', ativo)
           ..add('usarios', usarios)
           ..add('reference', reference))
@@ -254,6 +272,10 @@ class AuroraPregadoresRecordBuilder
   String get whatsapp => _$this._whatsapp;
   set whatsapp(String whatsapp) => _$this._whatsapp = whatsapp;
 
+  String _anciao;
+  String get anciao => _$this._anciao;
+  set anciao(String anciao) => _$this._anciao = anciao;
+
   bool _ativo;
   bool get ativo => _$this._ativo;
   set ativo(bool ativo) => _$this._ativo = ativo;
@@ -281,6 +303,7 @@ class AuroraPregadoresRecordBuilder
       _img = $v.img;
       _igreja = $v.igreja;
       _whatsapp = $v.whatsapp;
+      _anciao = $v.anciao;
       _ativo = $v.ativo;
       _usarios = $v.usarios?.toBuilder();
       _reference = $v.reference;
@@ -311,6 +334,7 @@ class AuroraPregadoresRecordBuilder
               img: img,
               igreja: igreja,
               whatsapp: whatsapp,
+              anciao: anciao,
               ativo: ativo,
               usarios: _usarios?.build(),
               reference: reference);

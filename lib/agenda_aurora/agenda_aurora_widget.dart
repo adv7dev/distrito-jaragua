@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -43,7 +44,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
           borderWidth: 1,
           buttonSize: 60,
           icon: Icon(
-            Icons.arrow_back_rounded,
+            Icons.chevron_left,
             color: FlutterFlowTheme.of(context).secondaryColor,
             size: 30,
           ),
@@ -72,58 +73,28 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                StreamBuilder<List<AnunciosAuroraRecord>>(
-                  stream: queryAnunciosAuroraRecord(
-                    singleRecord: true,
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SpinKitRing(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            size: 50,
-                          ),
-                        ),
-                      );
-                    }
-                    List<AnunciosAuroraRecord>
-                    calendarAnunciosAuroraRecordList = snapshot.data;
-                    // Return an empty Container when the document does not exist.
-                    if (snapshot.data.isEmpty) {
-                      return Container();
-                    }
-                    final calendarAnunciosAuroraRecord =
-                    calendarAnunciosAuroraRecordList.isNotEmpty
-                        ? calendarAnunciosAuroraRecordList.first
-                        : null;
-                    return FlutterFlowCalendar(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      iconColor: FlutterFlowTheme.of(context).primaryText,
-                      weekFormat: false,
-                      weekStartsMonday: false,
-                      locale: FFLocalizations.of(context).languageCode,
-                      onChange: (DateTimeRange newSelectedDate) {
-                        setState(() => calendarSelectedDay = newSelectedDate);
-                      },
-                      titleStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).primaryText,
-                      ),
-                      dayOfWeekStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
-                      ),
-                      dateStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                      ),
-                      selectedDateStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                      inactiveDateStyle: TextStyle(),
-                    );
+                FlutterFlowCalendar(
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  iconColor: FlutterFlowTheme.of(context).primaryText,
+                  weekFormat: false,
+                  weekStartsMonday: false,
+                  locale: FFLocalizations.of(context).languageCode,
+                  onChange: (DateTimeRange newSelectedDate) {
+                    setState(() => calendarSelectedDay = newSelectedDate);
                   },
+                  titleStyle: TextStyle(
+                    color: FlutterFlowTheme.of(context).primaryText,
+                  ),
+                  dayOfWeekStyle: TextStyle(
+                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                  ),
+                  dateStyle: TextStyle(
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                  ),
+                  selectedDateStyle: TextStyle(
+                    color: Colors.white,
+                  ),
+                  inactiveDateStyle: TextStyle(),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
@@ -140,9 +111,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AnunciosAuroraRecord>>(
                             stream: queryAnunciosAuroraRecord(
                               queryBuilder: (anunciosAuroraRecord) =>
-                                  anunciosAuroraRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  anunciosAuroraRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -515,9 +484,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AuroraPregadoresRecord>>(
                             stream: queryAuroraPregadoresRecord(
                               queryBuilder: (auroraPregadoresRecord) =>
-                                  auroraPregadoresRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  auroraPregadoresRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -731,24 +698,20 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(
@@ -847,9 +810,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AuroraSonoplastiaRecord>>(
                             stream: queryAuroraSonoplastiaRecord(
                               queryBuilder: (auroraSonoplastiaRecord) =>
-                                  auroraSonoplastiaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  auroraSonoplastiaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1065,7 +1026,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Text(
-                                                                  'Sonoplasta responsável por esse dia.',
+                                                                  'Sonoplasta responsável por ficar no som!',
                                                                   style: FlutterFlowTheme.of(
                                                                       context)
                                                                       .subtitle1
@@ -1121,9 +1082,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AuroraMusicaRecord>>(
                             stream: queryAuroraMusicaRecord(
                               queryBuilder: (auroraMusicaRecord) =>
-                                  auroraMusicaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  auroraMusicaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1337,24 +1296,20 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                             MainAxisAlignment
                                                                 .start,
                                                             children: [
-                                                              Text(
-                                                                'WhatsApp:  ',
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .subtitle1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Advent Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                  15,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  useGoogleFonts:
-                                                                  false,
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    3,
+                                                                    0,
+                                                                    5,
+                                                                    0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .whatsapp,
+                                                                  color: Color(
+                                                                      0xFF1FDC21),
+                                                                  size: 20,
                                                                 ),
                                                               ),
                                                               Expanded(
@@ -1453,9 +1408,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AuroraSabatinaRecord>>(
                             stream: queryAuroraSabatinaRecord(
                               queryBuilder: (auroraSabatinaRecord) =>
-                                  auroraSabatinaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  auroraSabatinaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1514,17 +1467,22 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                   mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                                   children: [
-                                                    Text(
-                                                      'PROF. ESCOLA SABATINA',
-                                                      style: FlutterFlowTheme
-                                                          .of(context)
-                                                          .title3
-                                                          .override(
-                                                        fontFamily:
-                                                        'Advent Sans',
-                                                        color: Colors.white,
-                                                        useGoogleFonts:
-                                                        false,
+                                                    Expanded(
+                                                      child: Text(
+                                                        'PROF. ESCOLA SABATINA',
+                                                        textAlign:
+                                                        TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                            .of(context)
+                                                            .title3
+                                                            .override(
+                                                          fontFamily:
+                                                          'Advent Sans',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -1649,7 +1607,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Text(
-                                                                  'Sonoplasta responsável por esse dia.',
+                                                                  'Professor(a) responsável por passar a lição da escola sabatina.',
                                                                   style: FlutterFlowTheme.of(
                                                                       context)
                                                                       .subtitle1
@@ -1705,9 +1663,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                           child: StreamBuilder<List<AuroraLimpezaRecord>>(
                             stream: queryAuroraLimpezaRecord(
                               queryBuilder: (auroraLimpezaRecord) =>
-                                  auroraLimpezaRecord
-                                      .where('ativo', isEqualTo: true)
-                                      .where('data',
+                                  auroraLimpezaRecord.where('data',
                                       isEqualTo: calendarSelectedDay.start),
                             ),
                             builder: (context, snapshot) {
@@ -1767,7 +1723,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                   MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      'LIMPEZA',
+                                                      'LIMPEZA DA IGREJA',
                                                       style: FlutterFlowTheme
                                                           .of(context)
                                                           .title3
@@ -1901,7 +1857,7 @@ class _AgendaAuroraWidgetState extends State<AgendaAuroraWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Text(
-                                                                  'Responsável por esse dia na limpeza da igreja.',
+                                                                  'Família resposánvel por limpar a igreja essa semana!',
                                                                   style: FlutterFlowTheme.of(
                                                                       context)
                                                                       .subtitle1

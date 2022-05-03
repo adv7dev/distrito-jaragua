@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../create_your_profile/create_your_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -231,6 +232,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                          keyboardType:
+                                          TextInputType.emailAddress,
                                         ),
                                       ),
                                     ],
@@ -310,6 +313,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                          keyboardType:
+                                          TextInputType.visiblePassword,
                                         ),
                                       ),
                                     ],
@@ -516,6 +521,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                          keyboardType:
+                                          TextInputType.emailAddress,
                                         ),
                                       ),
                                     ],
@@ -596,6 +603,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                          keyboardType:
+                                          TextInputType.visiblePassword,
                                         ),
                                       ),
                                     ],
@@ -676,6 +685,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                          keyboardType:
+                                          TextInputType.visiblePassword,
                                         ),
                                       ),
                                     ],
@@ -708,17 +719,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         return;
                                       }
 
-                                      await Navigator.pushAndRemoveUntil(
+                                      await Navigator.push(
                                         context,
                                         PageTransition(
                                           type: PageTransitionType.bottomToTop,
                                           duration: Duration(milliseconds: 300),
                                           reverseDuration:
                                           Duration(milliseconds: 300),
-                                          child: NavBarPage(
-                                              initialPage: 'HomePage'),
+                                          child: CreateYourProfileWidget(),
                                         ),
-                                            (r) => false,
                                       );
                                     },
                                     text: 'Criar Conta',

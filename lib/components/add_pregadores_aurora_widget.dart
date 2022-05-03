@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -21,6 +22,7 @@ class AddPregadoresAuroraWidget extends StatefulWidget {
 
 class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
   DateTimeRange calendarSelectedDay;
+  String radioButtonValue;
   String uploadedFileUrl = '';
   TextEditingController textController1;
   TextEditingController textController2;
@@ -288,6 +290,50 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width * 0.8,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).alternate,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                      child: FlutterFlowRadioButton(
+                        options: [
+                          'Camilla D.',
+                          'Henrique M.',
+                          'Natalino B.',
+                          'Reservado'
+                        ].toList(),
+                        onChanged: (value) {
+                          setState(() => radioButtonValue = value);
+                        },
+                        optionHeight: 25,
+                        textStyle:
+                        FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Advent Sans',
+                          color: Colors.white,
+                          useGoogleFonts: false,
+                        ),
+                        buttonPosition: RadioButtonPosition.left,
+                        direction: Axis.vertical,
+                        radioButtonColor: Colors.blue,
+                        inactiveRadioButtonColor: Color(0x8A000000),
+                        toggleable: false,
+                        horizontalAlignment: WrapAlignment.start,
+                        verticalAlignment: WrapCrossAlignment.start,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.height * 0.6,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -297,7 +343,6 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                       iconColor: FlutterFlowTheme.of(context).primaryText,
                       weekFormat: false,
                       weekStartsMonday: false,
-                      locale: FFLocalizations.of(context).languageCode,
                       onChange: (DateTimeRange newSelectedDate) {
                         setState(() => calendarSelectedDay = newSelectedDate);
                       },
@@ -339,6 +384,7 @@ class _AddPregadoresAuroraWidgetState extends State<AddPregadoresAuroraWidget> {
                           igreja: textController2.text,
                           ativo: true,
                           img: uploadedFileUrl,
+                          anciao: radioButtonValue,
                         );
                         await AuroraPregadoresRecord.collection
                             .doc()

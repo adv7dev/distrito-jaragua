@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -12,14 +11,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AddAnunciosWidget extends StatefulWidget {
-  const AddAnunciosWidget({Key key}) : super(key: key);
+class EditAnunciosWidget extends StatefulWidget {
+  const EditAnunciosWidget({
+    Key key,
+    this.titulo,
+    this.descricao,
+    this.img,
+    this.horario,
+    this.data,
+    this.local,
+  }) : super(key: key);
+
+  final String titulo;
+  final String descricao;
+  final String img;
+  final String horario;
+  final DateTime data;
+  final String local;
 
   @override
-  _AddAnunciosWidgetState createState() => _AddAnunciosWidgetState();
+  _EditAnunciosWidgetState createState() => _EditAnunciosWidgetState();
 }
 
-class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
+class _EditAnunciosWidgetState extends State<EditAnunciosWidget> {
   DateTimeRange calendarAURORASelectedDay;
   String uploadedFileUrl5 = '';
   TextEditingController tituloAuroraController;
@@ -66,10 +80,10 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
-    horarioDistritalController = TextEditingController();
-    textController2 = TextEditingController();
-    tituloDistritalController = TextEditingController();
-    lOCALDistritalController = TextEditingController();
+    horarioDistritalController = TextEditingController(text: widget.horario);
+    textController2 = TextEditingController(text: widget.descricao);
+    tituloDistritalController = TextEditingController(text: widget.titulo);
+    lOCALDistritalController = TextEditingController(text: widget.local);
     calendarJARAGUASelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
@@ -104,41 +118,40 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
         children: [
           if (currentUserDocument?.admGeral ?? true)
             AuthUserStreamWidget(
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 10),
-                    child: StreamBuilder<List<AnunciosDistritalRecord>>(
-                      stream: queryAnunciosDistritalRecord(
-                        singleRecord: true,
+              child: StreamBuilder<List<AnunciosDistritalRecord>>(
+                stream: queryAnunciosDistritalRecord(
+                  singleRecord: true,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: SpinKitRing(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 50,
+                        ),
                       ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: SpinKitRing(
-                                color:
-                                FlutterFlowTheme.of(context).primaryColor,
-                                size: 50,
-                              ),
-                            ),
-                          );
-                        }
-                        List<AnunciosDistritalRecord>
-                        columnAnunciosDistritalRecordList = snapshot.data;
-                        // Return an empty Container when the document does not exist.
-                        if (snapshot.data.isEmpty) {
-                          return Container();
-                        }
-                        final columnAnunciosDistritalRecord =
-                        columnAnunciosDistritalRecordList.isNotEmpty
-                            ? columnAnunciosDistritalRecordList.first
-                            : null;
-                        return SingleChildScrollView(
+                    );
+                  }
+                  List<AnunciosDistritalRecord>
+                  distritalAnunciosDistritalRecordList = snapshot.data;
+                  // Return an empty Container when the document does not exist.
+                  if (snapshot.data.isEmpty) {
+                    return Container();
+                  }
+                  final distritalAnunciosDistritalRecord =
+                  distritalAnunciosDistritalRecordList.isNotEmpty
+                      ? distritalAnunciosDistritalRecordList.first
+                      : null;
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 10),
+                        child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -149,7 +162,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'ADD ANUNCIOS DISTRITAL',
+                                      'EDITAR ANUNCIO DISTRITAL',
                                       style: FlutterFlowTheme.of(context)
                                           .title3
                                           .override(
@@ -235,7 +248,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                             borderRadius:
                                             BorderRadius.circular(100),
                                             child: Image.network(
-                                              'https://cdn-icons-png.flaticon.com/512/2659/2659360.png',
+                                              widget.img,
                                               width: 90,
                                               height: 90,
                                               fit: BoxFit.cover,
@@ -531,6 +544,7 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                             .primaryText,
                                         weekFormat: false,
                                         weekStartsMonday: false,
+                                        initialDate: widget.data,
                                         onChange:
                                             (DateTimeRange newSelectedDate) {
                                           setState(() =>
@@ -570,11 +584,10 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        final anunciosDistritalCreateData =
+                                        final anunciosDistritalUpdateData =
                                         createAnunciosDistritalRecordData(
                                           data: calendarDISTRITALSelectedDay
                                               .start,
-                                          ativo: true,
                                           img: uploadedFileUrl1,
                                           local: lOCALDistritalController.text,
                                           titulo:
@@ -583,22 +596,12 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                                           horario:
                                           horarioDistritalController.text,
                                         );
-                                        await AnunciosDistritalRecord.collection
-                                            .doc()
-                                            .set(anunciosDistritalCreateData);
-                                        triggerPushNotification(
-                                          notificationTitle:
-                                          tituloDistritalController.text,
-                                          notificationText:
-                                          textController2.text,
-                                          notificationSound: 'default',
-                                          userRefs: [currentUserReference],
-                                          initialPageName: 'HomePage',
-                                          parameterData: {},
-                                        );
-                                        Navigator.pop(context);
+                                        await distritalAnunciosDistritalRecord
+                                            .reference
+                                            .update(
+                                            anunciosDistritalUpdateData);
                                       },
-                                      text: 'Adicionar',
+                                      text: 'Atualizar',
                                       options: FFButtonOptions(
                                         width: 130,
                                         height: 40,
@@ -623,11 +626,11 @@ class _AddAnunciosWidgetState extends State<AddAnunciosWidget> {
                               ),
                             ],
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           if (currentUserDocument?.admJaragua ?? true)
