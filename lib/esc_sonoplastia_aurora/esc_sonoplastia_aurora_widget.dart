@@ -796,7 +796,7 @@ class _EscSonoplastiaAuroraWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnAuroraSonoplastiaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnAuroraSonoplastiaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

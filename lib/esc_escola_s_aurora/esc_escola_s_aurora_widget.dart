@@ -419,7 +419,7 @@ class _EscEscolaSAuroraWidgetState extends State<EscEscolaSAuroraWidget> {
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewAuroraSabatinaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -755,7 +755,7 @@ class _EscEscolaSAuroraWidgetState extends State<EscEscolaSAuroraWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnAuroraSabatinaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnAuroraSabatinaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

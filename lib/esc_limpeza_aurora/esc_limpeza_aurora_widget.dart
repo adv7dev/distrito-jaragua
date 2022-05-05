@@ -420,7 +420,7 @@ class _EscLimpezaAuroraWidgetState extends State<EscLimpezaAuroraWidget> {
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewAuroraLimpezaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -756,7 +756,7 @@ class _EscLimpezaAuroraWidgetState extends State<EscLimpezaAuroraWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnAuroraLimpezaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnAuroraLimpezaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

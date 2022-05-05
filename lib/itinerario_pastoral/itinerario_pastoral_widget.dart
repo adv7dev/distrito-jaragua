@@ -380,7 +380,7 @@ class _ItinerarioPastoralWidgetState extends State<ItinerarioPastoralWidget> {
                                                     Expanded(
                                                       child: Text(
                                                         dateTimeFormat(
-                                                            'd/M/y',
+                                                            'dd/MM/y',
                                                             gridViewEscalaPastoralRecord
                                                                 .data),
                                                         textAlign:

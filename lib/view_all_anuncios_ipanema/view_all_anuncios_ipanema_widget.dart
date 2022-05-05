@@ -426,7 +426,7 @@ class _ViewAllAnunciosIpanemaWidgetState
                                                                     valueOrDefault<
                                                                         String>(
                                                                       dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          'dd/MM/y',
                                                                           columnAnunciosIpanemaRecord
                                                                               .data),
                                                                       'S/ Data',
@@ -786,7 +786,7 @@ class _ViewAllAnunciosIpanemaWidgetState
                                                           Text(
                                                             valueOrDefault<String>(
                                                               dateTimeFormat(
-                                                                  'd/M/y',
+                                                                  'dd/MM/y',
                                                                   columnAnunciosIpanemaRecord
                                                                       .data),
                                                               'S/ Data',

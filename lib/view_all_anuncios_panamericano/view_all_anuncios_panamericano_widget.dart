@@ -394,7 +394,7 @@ class _ViewAllAnunciosPanamericanoWidgetState
                                                                   valueOrDefault<
                                                                       String>(
                                                                     dateTimeFormat(
-                                                                        'd/M/y',
+                                                                        'dd/MM/y',
                                                                         columnAnunciosPanamericanoRecord
                                                                             .data),
                                                                     'S/ Data',
@@ -753,7 +753,7 @@ class _ViewAllAnunciosPanamericanoWidgetState
                                                           Text(
                                                             valueOrDefault<String>(
                                                               dateTimeFormat(
-                                                                  'd/M/y',
+                                                                  'dd/MM/y',
                                                                   columnAnunciosPanamericanoRecord
                                                                       .data),
                                                               'S/ Data',

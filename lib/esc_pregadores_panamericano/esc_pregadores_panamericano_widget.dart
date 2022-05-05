@@ -418,7 +418,7 @@ class _EscPregadoresPanamericanoWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewPanamericanoPregadoresRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -862,7 +862,7 @@ class _EscPregadoresPanamericanoWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnPanamericanoPregadoresRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnPanamericanoPregadoresRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

@@ -426,7 +426,7 @@ class _ViewAllAnunciosAuroraWidgetState
                                                                     valueOrDefault<
                                                                         String>(
                                                                       dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          'dd/MM/y',
                                                                           columnAnunciosAuroraRecord
                                                                               .data),
                                                                       'S/ Data',
@@ -786,7 +786,7 @@ class _ViewAllAnunciosAuroraWidgetState
                                                           Text(
                                                             valueOrDefault<String>(
                                                               dateTimeFormat(
-                                                                  'd/M/y',
+                                                                  'dd/MM/y',
                                                                   columnAnunciosAuroraRecord
                                                                       .data),
                                                               'S/ Data',

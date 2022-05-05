@@ -445,7 +445,7 @@ class _EscPregadoresJaraguaWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewJaraguaPregadoresRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -891,7 +891,7 @@ class _EscPregadoresJaraguaWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnJaraguaPregadoresRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnJaraguaPregadoresRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

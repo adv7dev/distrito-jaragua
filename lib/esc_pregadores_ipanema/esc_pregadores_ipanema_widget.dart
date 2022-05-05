@@ -445,7 +445,7 @@ class _EscPregadoresIpanemaWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewIpanemaPregadoresRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -891,7 +891,7 @@ class _EscPregadoresIpanemaWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnIpanemaPregadoresRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnIpanemaPregadoresRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

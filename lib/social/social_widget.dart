@@ -568,13 +568,11 @@ class _SocialWidgetState extends State<SocialWidget>
                                                             .fromSTEB(
                                                             4, 0, 0, 0),
                                                         child: Text(
-                                                          formatNumber(
+                                                          valueOrDefault<String>(
                                                             socialFeedUserPostsRecord
-                                                                .numComments,
-                                                            formatType:
-                                                            FormatType.decimal,
-                                                            decimalType: DecimalType
-                                                                .automatic,
+                                                                .numComments
+                                                                .toString(),
+                                                            '0',
                                                           ),
                                                           style:
                                                           FlutterFlowTheme.of(
@@ -604,7 +602,7 @@ class _SocialWidgetState extends State<SocialWidget>
                                                         .fromSTEB(0, 2, 8, 0),
                                                     child: Text(
                                                       dateTimeFormat(
-                                                          'd/M H:mm',
+                                                          'dd/MM/y | H:mm',
                                                           socialFeedUserPostsRecord
                                                               .timePosted),
                                                       style: FlutterFlowTheme.of(
@@ -637,6 +635,9 @@ class _SocialWidgetState extends State<SocialWidget>
                                                       socialFeedUserPostsRecord
                                                           .postDescription,
                                                       'SEM DESCRIÇÃO',
+                                                    ).maybeHandleOverflow(
+                                                      maxChars: 500,
+                                                      replacement: '…',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                         context)

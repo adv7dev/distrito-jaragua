@@ -425,7 +425,7 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                                     valueOrDefault<
                                                                         String>(
                                                                       dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          'dd/MM/y',
                                                                           columnAnunciosJaraguaRecord
                                                                               .data),
                                                                       'S/ Data',
@@ -784,7 +784,7 @@ class _ViewAllAnunciosJaraguaWidgetState
                                                           Text(
                                                             valueOrDefault<String>(
                                                               dateTimeFormat(
-                                                                  'd/M/y',
+                                                                  'dd/MM/y',
                                                                   columnAnunciosJaraguaRecord
                                                                       .data),
                                                               'S/ Data',

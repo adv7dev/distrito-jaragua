@@ -518,7 +518,7 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                         AutoSizeText(
                                                                           valueOrDefault<
                                                                               String>(
-                                                                            dateTimeFormat('d/M/y',
+                                                                            dateTimeFormat('dd/MM/y',
                                                                                 listViewAnunciosDistritalRecord.data),
                                                                             'S/ data',
                                                                           ),
@@ -988,7 +988,7 @@ class _ViewAllAnunciosDistritalWidgetState
                                                                           MainAxisSize.max,
                                                                           children: [
                                                                             Text(
-                                                                              dateTimeFormat('d/M/y', columnAnunciosDistritalRecord.data),
+                                                                              dateTimeFormat('dd/MM/y', columnAnunciosDistritalRecord.data),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                 fontFamily: 'Advent Sans',
                                                                                 color: Colors.white,

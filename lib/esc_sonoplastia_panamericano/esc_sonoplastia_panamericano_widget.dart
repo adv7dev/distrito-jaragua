@@ -447,7 +447,7 @@ class _EscSonoplastiaPanamericanoWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewPanamericanoSonoplastiaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -800,7 +800,7 @@ class _EscSonoplastiaPanamericanoWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnPanamericanoSonoplastiaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnPanamericanoSonoplastiaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

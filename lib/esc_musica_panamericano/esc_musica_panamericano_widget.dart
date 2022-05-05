@@ -449,7 +449,7 @@ class _EscMusicaPanamericanoWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewPanamericanoMusicaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -895,7 +895,7 @@ class _EscMusicaPanamericanoWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnPanamericanoMusicaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnPanamericanoMusicaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

@@ -445,7 +445,7 @@ class _EscMusicaJaraguaWidgetState extends State<EscMusicaJaraguaWidget> {
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewJaraguaMusicaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -890,7 +890,7 @@ class _EscMusicaJaraguaWidgetState extends State<EscMusicaJaraguaWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnJaraguaMusicaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnJaraguaMusicaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

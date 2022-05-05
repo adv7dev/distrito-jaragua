@@ -443,7 +443,7 @@ class _EscMusicaAuroraWidgetState extends State<EscMusicaAuroraWidget> {
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewAuroraMusicaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -888,7 +888,7 @@ class _EscMusicaAuroraWidgetState extends State<EscMusicaAuroraWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnAuroraMusicaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnAuroraMusicaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

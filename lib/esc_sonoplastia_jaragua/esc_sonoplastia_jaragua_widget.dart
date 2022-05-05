@@ -447,7 +447,7 @@ class _EscSonoplastiaJaraguaWidgetState
                                                                       valueOrDefault<
                                                                           String>(
                                                                         dateTimeFormat(
-                                                                            'd/M/y',
+                                                                            'dd/MM/y',
                                                                             listViewJaraguaSonoplastiaRecord.data),
                                                                         'S/ Data',
                                                                       ),
@@ -799,7 +799,7 @@ class _EscSonoplastiaJaraguaWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnJaraguaSonoplastiaRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnJaraguaSonoplastiaRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(

@@ -485,7 +485,7 @@ class _EscPregadoresVilaauroraWidgetState
                                                                         valueOrDefault<
                                                                             String>(
                                                                           dateTimeFormat(
-                                                                              'd/M/y',
+                                                                              'dd/MM/y',
                                                                               listViewAuroraPregadoresRecord.data),
                                                                           'S/ Data',
                                                                         ),
@@ -977,7 +977,7 @@ class _EscPregadoresVilaauroraWidgetState
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                dateTimeFormat('d/M/y', columnAuroraPregadoresRecord.data),
+                                                                                dateTimeFormat('dd/MM/y', columnAuroraPregadoresRecord.data),
                                                                                 'S/ Data',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
