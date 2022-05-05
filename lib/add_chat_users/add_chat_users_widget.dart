@@ -23,7 +23,7 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         iconTheme:
-            IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
+        IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
         automaticallyImplyLeading: true,
         title: Column(
           mainAxisSize: MainAxisSize.max,
@@ -32,20 +32,20 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
             Text(
               'Adicionar amigos ao Chat',
               style: FlutterFlowTheme.of(context).subtitle1.override(
-                    fontFamily: 'Lexend Deca',
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
+                fontFamily: 'Lexend Deca',
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             Text(
               'Selecione Alguém para conversar.',
               style: FlutterFlowTheme.of(context).bodyText2.override(
-                    fontFamily: 'Lexend Deca',
-                    color: Color(0xFFD2D2D2),
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                  ),
+                fontFamily: 'Lexend Deca',
+                color: Color(0xFFD2D2D2),
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+              ),
             ),
           ],
         ),
@@ -74,125 +74,139 @@ class _AddChatUsersWidgetState extends State<AddChatUsersWidget> {
                 );
               }
               List<UsersRecord> columnUsersRecordList = snapshot.data;
-              return Column(
-                mainAxisSize: MainAxisSize.max,
-                children:
-                    List.generate(columnUsersRecordList.length, (columnIndex) {
-                  final columnUsersRecord = columnUsersRecordList[columnIndex];
-                  return Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.bottomToTop,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: ChatPageWidget(
-                                  chatUser: columnUsersRecord,
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(columnUsersRecordList.length,
+                          (columnIndex) {
+                        final columnUsersRecord =
+                        columnUsersRecordList[columnIndex];
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.bottomToTop,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration: Duration(milliseconds: 300),
+                                      child: ChatPageWidget(
+                                        chatUser: columnUsersRecord,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                5, 5, 5, 5),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                              BorderRadius.circular(100),
+                                              child: Image.network(
+                                                valueOrDefault<String>(
+                                                  columnUsersRecord.photoUrl,
+                                                  'https://i.ibb.co/cC6RmGZ/businessman.png',
+                                                ),
+                                                width: 70,
+                                                height: 70,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize: MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          columnUsersRecord
+                                                              .displayName,
+                                                          'sem nome',
+                                                        ),
+                                                        style: FlutterFlowTheme.of(
+                                                            context)
+                                                            .subtitle2
+                                                            .override(
+                                                          fontFamily:
+                                                          'Advent Sans',
+                                                          color: Colors.white,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize: MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          columnUsersRecord.bio,
+                                                          'Sem igreja',
+                                                        ),
+                                                        style: FlutterFlowTheme.of(
+                                                            context)
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily:
+                                                          'Advent Sans',
+                                                          color:
+                                                          Color(0xFFCBCBCB),
+                                                          fontStyle:
+                                                          FontStyle.italic,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                0, 0, 10, 0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Icon(
+                                                  Icons.message,
+                                                  color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                                  size: 30,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            );
-                          },
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context).alternate,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 5, 5),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        child: Image.network(
-                                          columnUsersRecord.photoUrl,
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  columnUsersRecord.displayName,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  columnUsersRecord.bio,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Advent Sans',
-                                                        color:
-                                                            Color(0xFFCBCBCB),
-                                                        fontStyle:
-                                                            FontStyle.italic,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 10, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Icon(
-                                            Icons.message,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
-                                            size: 30,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                }),
+                          ],
+                        );
+                      }),
+                ),
               );
             },
           ),

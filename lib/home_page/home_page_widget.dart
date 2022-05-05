@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/detalhes_anuncios_widget.dart';
@@ -29,6 +31,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
     with TickerProviderStateMixin {
   PagingController<DocumentSnapshot, AnunciosDistritalRecord>
   _pagingController = PagingController(firstPageKey: null);
+  List<StreamSubscription> _streamSubscriptions = [];
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'rowOnPageLoadAnimation1': AnimationInfo(
@@ -147,11 +151,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
             .orderBy('data'),
         nextPageMarker: nextPageMarker,
         pageSize: 10,
+        isStream: false,
       ).then((page) {
         _pagingController.appendPage(
           page.data,
           page.nextPageMarker,
         );
+        final streamSubscription = page.dataStream?.listen((data) {
+          final itemIndexes = _pagingController.itemList
+              .asMap()
+              .map((k, v) => MapEntry(v.reference.id, k));
+          data.forEach((item) {
+            final index = itemIndexes[item.reference.id];
+            if (index != null) {
+              _pagingController.itemList.replaceRange(index, index + 1, [item]);
+            }
+          });
+          setState(() {});
+        });
+        _streamSubscriptions.add(streamSubscription);
       });
     });
 
@@ -165,6 +183,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
+  }
+
+  @override
+  void dispose() {
+    _streamSubscriptions.forEach((s) => s?.cancel());
+    super.dispose();
   }
 
   @override
@@ -233,11 +257,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'DIST. JARAGUÁ',
+                    'DISTRITO JARAGUÁ',
                     style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Advent Sans',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25,
+                      fontSize: 20,
                       useGoogleFonts: false,
                     ),
                   ),
@@ -527,7 +551,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       children: [
                                                         Text(
                                                           dateTimeFormat(
-                                                              'd/MM/y',
+                                                              'dd/MM/y',
                                                               listViewAnunciosDistritalRecord
                                                                   .data),
                                                           style: FlutterFlowTheme
@@ -566,7 +590,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             listViewAnunciosDistritalRecord
                                                                 .local
                                                                 .maybeHandleOverflow(
-                                                              maxChars: 15,
+                                                              maxChars: 10,
                                                               replacement: '…',
                                                             ),
                                                             textAlign: TextAlign
@@ -854,7 +878,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                                'd/MM/y',
+                                                                'dd/MM/y',
                                                                 listViewAnunciosJaraguaRecord
                                                                     .data),
                                                             style: FlutterFlowTheme
@@ -891,7 +915,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           Expanded(
                                                             child: Text(
                                                               listViewAnunciosJaraguaRecord
-                                                                  .local,
+                                                                  .local
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 10,
+                                                                replacement:
+                                                                '…',
+                                                              ),
                                                               textAlign:
                                                               TextAlign
                                                                   .center,
@@ -1178,7 +1207,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                                'd/MM/y',
+                                                                'dd/MM/y',
                                                                 listViewAnunciosIpanemaRecord
                                                                     .data),
                                                             style: FlutterFlowTheme
@@ -1215,7 +1244,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           Expanded(
                                                             child: Text(
                                                               listViewAnunciosIpanemaRecord
-                                                                  .local,
+                                                                  .local
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 10,
+                                                                replacement:
+                                                                '…',
+                                                              ),
                                                               textAlign:
                                                               TextAlign
                                                                   .center,
@@ -1510,7 +1544,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                                'd/MM/y',
+                                                                'dd/MM/y',
                                                                 listViewAnunciosPanamericanoRecord
                                                                     .data),
                                                             style: FlutterFlowTheme
@@ -1547,7 +1581,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           Expanded(
                                                             child: Text(
                                                               listViewAnunciosPanamericanoRecord
-                                                                  .local,
+                                                                  .local
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 10,
+                                                                replacement:
+                                                                '…',
+                                                              ),
                                                               textAlign:
                                                               TextAlign
                                                                   .center,
@@ -1835,7 +1874,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         children: [
                                                           Text(
                                                             dateTimeFormat(
-                                                                'd/MM/y',
+                                                                'dd/MM/y',
                                                                 listViewAnunciosAuroraRecord
                                                                     .data),
                                                             style: FlutterFlowTheme
@@ -1872,7 +1911,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           Expanded(
                                                             child: Text(
                                                               listViewAnunciosAuroraRecord
-                                                                  .local,
+                                                                  .local
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 10,
+                                                                replacement:
+                                                                '…',
+                                                              ),
                                                               textAlign:
                                                               TextAlign
                                                                   .center,

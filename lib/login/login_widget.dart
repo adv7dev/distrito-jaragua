@@ -712,7 +712,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                       final user = await createAccountWithEmail(
                                         context,
-                                        loginEmailAddressController.text,
+                                        createEmailController.text,
                                         createPasswordController.text,
                                       );
                                       if (user == null) {

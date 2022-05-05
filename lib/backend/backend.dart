@@ -336,7 +336,7 @@ Future<FFFirestorePage<AnunciosDistritalRecord>>
     queryAnunciosDistritalRecordPage({
   Query Function(Query) queryBuilder,
   DocumentSnapshot nextPageMarker,
-  int pageSize,
+  int pageSize, bool isStream,
 }) =>
         queryCollectionPage(AnunciosDistritalRecord.collection,
             AnunciosDistritalRecord.serializer,
@@ -1052,6 +1052,8 @@ class FFFirestorePage<T> {
   final QueryDocumentSnapshot nextPageMarker;
 
   FFFirestorePage(this.data, this.nextPageMarker);
+
+  get dataStream => null;
 }
 
 Future<FFFirestorePage<T>> queryCollectionPage<T>(

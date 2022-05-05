@@ -30,11 +30,11 @@ class _LideresPagePanamericanoWidgetState
         IconThemeData(color: FlutterFlowTheme.of(context).secondaryColor),
         automaticallyImplyLeading: true,
         title: Text(
-          'LIDERES PAN',
+          'LIDERES PANAMERICANO',
           style: FlutterFlowTheme.of(context).title2.override(
             fontFamily: 'Advent Sans',
             color: Colors.white,
-            fontSize: 22,
+            fontSize: 20,
             useGoogleFonts: false,
           ),
         ),

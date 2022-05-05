@@ -178,7 +178,7 @@ class _DetalhesAnunciosWidgetState extends State<DetalhesAnunciosWidget> {
                                 padding:
                                 EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
-                                  dateTimeFormat('d/M/y', widget.data),
+                                  dateTimeFormat('dd/MM/y', widget.data),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
