@@ -37,7 +37,7 @@ class _PTBRMaterialLocalizationsDelegate
   bool shouldReload(_PTBRMaterialLocalizationsDelegate old) => false;
 }
 
-class PTBRMaterialLocalizations extends GlobalMaterialLocalizations {
+abstract class PTBRMaterialLocalizations extends GlobalMaterialLocalizations {
   const PTBRMaterialLocalizations({
     String localeName = 'pt',
     @required intl.DateFormat fullYearFormat,

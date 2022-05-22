@@ -59,7 +59,7 @@ class _DetalhesAnunciosWidgetState extends State<DetalhesAnunciosWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
-                                child: Text(
+                                child: SelectableText(
                                   widget.titulo,
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
@@ -139,7 +139,7 @@ class _DetalhesAnunciosWidgetState extends State<DetalhesAnunciosWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
-                                child: AutoSizeText(
+                                child: SelectableText(
                                   widget.descricao,
                                   textAlign: TextAlign.justify,
                                   style: FlutterFlowTheme.of(context)

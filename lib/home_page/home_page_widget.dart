@@ -239,7 +239,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                SelectableText(
                   'Igreja Adventista do',
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                     fontFamily: 'Advent Sans',
@@ -256,7 +256,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  SelectableText(
                     'DISTRITO JARAGUÁ',
                     style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Advent Sans',
@@ -648,7 +648,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
+                          SelectableText(
                             'Jaraguá Anuncios',
                             style: FlutterFlowTheme.of(context).title2.override(
                               fontFamily: 'Advent Sans',
